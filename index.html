@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Occelatus Research - Crypto Market Intelligence</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #fafafa;
+    }
+    
+    /* Header */
+    header {
+      background: white;
+      border-bottom: 1px solid #eee;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0066cc;
+    }
+    
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+    
+    nav a {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+    
+    nav a:hover {
+      color: #0066cc;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero .subtitle {
+      font-size: 20px;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+    
+    .hero-ctas {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: white;
+      color: #0066cc;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: #0066cc;
+    }
+    
+    /* Disclaimer */
+    .disclaimer-banner {
+      background: #fff3cd;
+      border-left: 4px solid #d32f2f;
+      padding: 15px 20px;
+      margin: 30px 0;
+      border-radius: 4px;
+      font-size: 14px;
+      color: #d32f2f;
+    }
+    
+    /* Features Section */
+    .features {
+      padding: 80px 20px;
+      background: white;
+    }
+    
+    .features h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 60px;
+      color: #333;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+    }
+    
+    .feature-card {
+      padding: 30px;
+      background: #f9f9f9;
+      border-radius: 8px;
+      border-left: 4px solid #0066cc;
+    }
+    
+    .feature-card h3 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #0066cc;
+    }
+    
+    .feature-card p {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    
+    /* Pricing Section */
+    .pricing {
+      padding: 80px 20px;
+      background: #fafafa;
+    }
+    
+    .pricing h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 60px;
+      color: #333;
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card {
+      background: white;
+      border-radius: 8px;
+      padding: 40px 30px;
+      text-align: center;
+      border: 2px solid #eee;
+      transition: all 0.3s;
+    }
+    
+    .pricing-card:hover {
+      border-color: #0066cc;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,102,204,0.1);
+    }
+    
+    .pricing-card.featured {
+      border-color: #0066cc;
+      background: #f0f8ff;
+      transform: scale(1.05);
+    }
+    
+    .pricing-card h3 {
+      font-size: 20px;
+      margin: 20px 0;
+      color: #333;
+    }
+    
+    .price {
+      font-size: 42px;
+      font-weight: bold;
+      color: #0066cc;
+      margin: 20px 0;
+    }
+    
+    .price-description {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+    
+    .pricing-features {
+      text-align: left;
+      margin: 30px 0;
+      font-size: 14px;
+    }
+    
+    .pricing-features li {
+      list-style: none;
+      padding: 8px 0;
+      color: #666;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .pricing-features li:before {
+      content: "✓ ";
+      color: #0066cc;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    
+    .pricing-card .btn {
+      width: 100%;
+      margin-top: 20px;
+    }
+    
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    
+    .cta h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .cta p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+    
+    .email-signup {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+      gap: 10px;
+    }
+    
+    .email-signup input {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    
+    .email-signup button {
+      padding: 12px 32px;
+      background: white;
+      color: #0066cc;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .email-signup button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    /* FAQ Section */
+    .faq {
+      padding: 80px 20px;
+      background: white;
+    }
+    
+    .faq h2 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 60px;
+      color: #333;
+    }
+    
+    .faq-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .faq-item {
+      margin-bottom: 20px;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .faq-question {
+      padding: 20px;
+      background: #f9f9f9;
+      cursor: pointer;
+      font-weight: 600;
+      color: #0066cc;
+      display: flex;
+      justify-content: space-between;
+      user-select: none;
+    }
+    
+    .faq-answer {
+      padding: 20px;
+      color: #666;
+      display: none;
+      background: white;
+    }
+    
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+    
+    /* Footer */
+    footer {
+      background: #1a1a1a;
+      color: #999;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+    
+    .footer-links {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: #999;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: #0066cc;
+    }
+    
+    .footer-disclaimer {
+      background: #0a0a0a;
+      padding: 20px;
+      margin: 20px -20px 0 -20px;
+      font-size: 12px;
+      color: #666;
+      line-height: 1.7;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero-ctas {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+      
+      nav {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 12px;
+      }
+      
+      .pricing-card.featured {
+        transform: scale(1);
+      }
+      
+      .email-signup {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">🔬 Occelatus Research</div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="/terms">Terms</a>
+        <a href="/risk-disclosure">Risk Disclosure</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <h1>Professional Crypto Market Intelligence</h1>
+    <p class="subtitle">Real smart money tracking, honest analysis, no hype</p>
+    <div class="hero-ctas">
+      <button class="btn btn-primary" onclick="document.querySelector('.cta').scrollIntoView({behavior: 'smooth'})">Get Free Sample Report</button>
+      <button class="btn btn-secondary" onclick="document.querySelector('#pricing').scrollIntoView({behavior: 'smooth'})">View Pricing</button>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="disclaimer-banner">
+    <strong>⚠️ IMPORTANT DISCLAIMER:</strong> This is informational research content only, NOT financial advice or investment recommendations. Cryptocurrency is highly volatile and risky. You are solely responsible for your investment decisions. Read our full <a href="/terms" style="color: #d32f2f; text-decoration: underline;">Terms of Service</a> and <a href="/risk-disclosure" style="color: #d32f2f; text-decoration: underline;">Risk Disclosure</a>.
+  </div>
+</div>
+
+<!-- Features Section -->
+<section class="features" id="features">
+  <div class="container">
+    <h2>What You Get</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3>📊 Smart Money Tracking</h3>
+        <p>Real-time monitoring of whale wallet movements and large position changes. Track accumulation patterns to understand market direction.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📈 Professional Analysis</h3>
+        <p>5-10 page bi-weekly reports covering market opportunities, risks, and on-chain intelligence. Transparent methodology, no black boxes.</p>
+      </div>
+      <div class="feature-card">
+        <h3>⚠️ Risk Assessment</h3>
+        <p>Detailed liquidity analysis, slippage breakdown, and identified risk factors. Understand what can go wrong before it does.</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔍 Honest Methodology</h3>
+        <p>We show our work. Where data comes from, how it's analyzed, limitations, and what it doesn't tell us. Complete transparency.</p>
+      </div>
+      <div class="feature-card">
+        <h3>💬 Direct Support</h3>
+        <p>Questions about a report? Reply to email and our research team responds. You're not dealing with a chatbot.</p>
+      </div>
+      <div class="feature-card">
+        <h3>📱 Dashboard Access</h3>
+        <p>Daily updated smart money metrics and market signals. One data point (among many) to inform your research.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing Section -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <h2>Simple Pricing. No Surprises.</h2>
+    
+    <div class="pricing-grid">
+      <!-- Single Report -->
+      <div class="pricing-card">
+        <h3>Single Report</h3>
+        <div class="price">$49</div>
+        <p class="price-description">One-time purchase</p>
+        <ul class="pricing-features">
+          <li>5-10 page analysis</li>
+          <li>Smart money data</li>
+          <li>Liquidity breakdown</li>
+          <li>Risk assessment</li>
+          <li>Email delivery</li>
+        </ul>
+        <a href="#checkout" class="btn btn-primary">Get Report</a>
+      </div>
+      
+      <!-- Bi-Weekly (Featured) -->
+      <div class="pricing-card featured">
+        <h3>Bi-Weekly Reports</h3>
+        <div class="price">$99</div>
+        <p class="price-description">per month, cancel anytime</p>
+        <ul class="pricing-features">
+          <li>2 reports per month</li>
+          <li>Everything in Single Report</li>
+          <li>Dashboard access</li>
+          <li>Priority support</li>
+          <li>Early notifications</li>
+        </ul>
+        <a href="#checkout" class="btn btn-primary">Subscribe</a>
+      </div>
+      
+      <!-- Custom Deep-Dive -->
+      <div class="pricing-card">
+        <h3>Custom Analysis</h3>
+        <div class="price">$199+</div>
+        <p class="price-description">one-time, per request</p>
+        <ul class="pricing-features">
+          <li>Deep-dive on your topic</li>
+          <li>Advanced analysis</li>
+          <li>Custom datasets</li>
+          <li>Detailed walkthrough</li>
+          <li>1-on-1 support</li>
+        </ul>
+        <a href="mailto:research@occelatus.io" class="btn btn-primary">Inquire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+  <div class="container">
+    <h2>Start With Our Free Sample</h2>
+    <p>Get a complete market analysis report to see our methodology. No strings attached.</p>
+    <div class="email-signup">
+      <input type="email" placeholder="Your email address" id="emailInput">
+      <button onclick="handleSignup()">Send Me Report</button>
+    </div>
+    <p style="font-size: 12px; margin-top: 15px; opacity: 0.8;">We respect your privacy. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq" id="faq">
+  <div class="container">
+    <h2>Common Questions</h2>
+    <div class="faq-container">
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>Is this financial advice?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          No. We provide informational analysis and data only. We're not your financial advisor, and we don't give "buy/sell/hold" recommendations. You make your own decisions based on your research and risk tolerance.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>Are you a registered investment advisor?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          No. Occelatus Research is not registered as a financial advisor, broker, or investment professional. We're a research and analysis service providing informational content onl.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>Will this help me make money?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Better information can support better decisions, but crypto is risky and unpredictable. You might lose money. Only invest what you can afford to lose, and never risk your financial security.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>What if I lose money?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          You're responsible for your own financial decisions. Our Terms of Service includes full disclaimers. We're not liable for your investment outcomes. Consult a qualified financial advisor for advice specific to your situation.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question" onclick="this.parentElement.classList.toggle('open')">
+          <span>Is this good for beginners?</span>
+          <span>+</span>
+        </div>
+        <div class="faq-answer">
+          Yes, if you understand crypto basics and risk. Our reports assume some market familiarity but explain concepts clearly. If you're new to crypto, start with educational resources before using our reports.
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-links">
+    <a href="/terms">Terms of Service</a>
+    <span>•</span>
+    <a href="/risk-disclosure">Risk Disclosure</a>
+    <span>•</span>
+    <a href="mailto:research@occelatus.io">Contact Us</a>
+    <span>•</span>
+    <a href="/">Home</a>
+  </div>
+  <div class="footer-disclaimer">
+    <strong>⚠️ LEGAL DISCLAIMER:</strong><br>
+    Occelatus Research provides informational content and analysis only. This is NOT financial advice, investment advice, or professional financial services. Cryptocurrency is highly volatile and risky. You are solely responsible for your investment decisions. Past performance does not guarantee future results. Consult a qualified financial advisor. Occelatus Research is not a registered investment advisor.
+  </div>
+  <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #333;">© 2026 Occelatus Research. All rights reserved.</p>
+</footer>
+
+<script>
+function handleSignup() {
+  const email = document.getElementById('emailInput').value;
+  if (email) {
+    // In production, this would POST to your landing page API endpoint
+    // which triggers Resend to send the free report
+    alert('Check your email for the free sample report!');
+    document.getElementById('emailInput').value = '';
+  }
+}
+</script>
+
+</body>
+</html>
