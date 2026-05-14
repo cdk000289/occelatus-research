@@ -27,6 +27,104 @@
       --radius-sm: 8px;
     }
 
+    /* ---------- Order modal ---------- */
+    .modal-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(6, 8, 16, 0.72);
+      backdrop-filter: blur(10px) saturate(140%);
+      -webkit-backdrop-filter: blur(10px) saturate(140%);
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 24px;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 180ms ease;
+    }
+    .modal-backdrop.open { display: flex; opacity: 1; }
+    .modal {
+      width: 100%; max-width: 520px;
+      background: linear-gradient(180deg, rgba(20,24,38,0.96) 0%, rgba(12,14,24,0.96) 100%);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+      padding: 28px;
+      position: relative;
+      transform: translateY(8px);
+      transition: transform 220ms ease;
+    }
+    .modal-backdrop.open .modal { transform: translateY(0); }
+    .modal-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.08em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .modal h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px; font-weight: 500; line-height: 1.25;
+      margin: 0 0 6px;
+    }
+    .modal p.modal-sub {
+      color: var(--text-muted); font-size: 14px; margin: 0 0 22px;
+    }
+    .modal label {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.06em;
+      color: var(--text-dim); text-transform: uppercase;
+      margin: 14px 0 8px;
+    }
+    .modal input, .modal textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      padding: 12px 14px;
+      font-family: inherit; font-size: 15px;
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+    .modal textarea { min-height: 96px; resize: vertical; }
+    .modal input::placeholder, .modal textarea::placeholder { color: var(--text-dim); }
+    .modal input:focus, .modal textarea:focus {
+      outline: none; border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(125,249,255,0.18);
+    }
+    .modal .hint {
+      font-size: 12px; color: var(--text-dim); margin-top: 6px;
+      font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;
+    }
+    .modal-actions {
+      display: flex; gap: 10px; margin-top: 22px;
+      flex-wrap: wrap;
+    }
+    .modal-actions .btn { flex: 1; min-width: 140px; }
+    .modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 32px; height: 32px;
+      background: transparent; border: 1px solid var(--line-strong);
+      border-radius: 50%; color: var(--text-muted);
+      cursor: pointer; font-size: 18px; line-height: 1;
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: color 160ms ease, border-color 160ms ease;
+    }
+    .modal-close:hover { color: var(--accent); border-color: var(--accent); }
+    .modal-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px; color: var(--text-muted);
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--line-strong);
+    }
+    .modal-price strong { color: var(--text); font-weight: 700; }
+    @media (max-width: 480px) {
+      .modal { padding: 22px; }
+      .modal h3 { font-size: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .modal-backdrop, .modal { transition: none; }
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     html { scroll-behavior: smooth; }
@@ -716,7 +814,7 @@
           <li>Risk assessment</li>
           <li>Email delivery</li>
         </ul>
-        <a href="https://buy.stripe.com/cNi28sbhHdz54CBaKo2go00" class="btn btn-ghost">Buy report</a>
+        <button type="button" class="btn btn-ghost" data-buy="token">Buy report</button>
       </article>
 
       <article class="pricing-card featured">
@@ -730,7 +828,7 @@
           <li>Risk & liquidity breakdown</li>
           <li>Email delivery</li>
         </ul>
-        <a href="https://buy.stripe.com/dRmfZi0D3dz51qpf0E2go01" class="btn btn-primary">Buy report</a>
+        <button type="button" class="btn btn-primary" data-buy="market">Buy report</button>
       </article>
 
       <article class="pricing-card">
@@ -744,7 +842,7 @@
           <li>Detailed walkthrough</li>
           <li>1-on-1 follow-up</li>
         </ul>
-        <a href="https://buy.stripe.com/cNidRa3PfamTfhf7yc2go02" class="btn btn-ghost">Buy report</a>
+        <button type="button" class="btn btn-ghost" data-buy="custom">Buy report</button>
       </article>
     </div>
   </div>
@@ -815,7 +913,152 @@
   </div>
 </footer>
 
+<div class="modal-backdrop" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle" hidden>
+  <div class="modal">
+    <button type="button" class="modal-close" aria-label="Close" data-modal-close>×</button>
+    <div class="modal-eyebrow" id="modalEyebrow">// New order</div>
+    <h3 id="orderModalTitle">Title</h3>
+    <p class="modal-sub" id="modalSub">Subtitle</p>
+    <form id="orderForm" novalidate>
+      <label for="orderSubject" id="orderSubjectLabel">Subject</label>
+      <input type="text" id="orderSubject" name="subject" autocomplete="off" required>
+      <textarea id="orderScope" name="scope" hidden></textarea>
+      <div class="hint" id="orderHint"></div>
+
+      <label for="orderEmail">Delivery email <span style="color:var(--text-dim);text-transform:none;letter-spacing:0;">(optional — Stripe will collect it too)</span></label>
+      <input type="email" id="orderEmail" name="email" autocomplete="email" placeholder="you@domain.com">
+
+      <div class="modal-price" id="modalPrice"></div>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" data-modal-close>Cancel</button>
+        <button type="submit" class="btn btn-primary" id="orderSubmit">Continue to payment →</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <script>
+  const REPORTS = {
+    token: {
+      eyebrow: '// Token Analysis Report',
+      title: 'Which token should we research?',
+      sub: 'Enter a token symbol, name, or contract address. We support Solana, Ethereum, Base, and most major chains.',
+      label: 'Token name, symbol, or contract address',
+      placeholder: 'e.g. BONK, SOL, or So11111111111111111111111111111111111111112',
+      hint: 'Contract address is most precise. We resolve symbols against CoinGecko + DexScreener.',
+      price: 'Token Analysis Report · <strong>$19</strong> · one-time',
+      stripeUrl: 'https://buy.stripe.com/cNi28sbhHdz54CBaKo2go00',
+      scope: false,
+    },
+    market: {
+      eyebrow: '// Market Research Report',
+      title: 'Which market or sector should we cover?',
+      sub: 'A narrative, sector, or theme. We map flows, rotation, liquidity, and the leading tokens.',
+      label: 'Market, sector, or narrative',
+      placeholder: 'e.g. Solana DeFi, AI agents, memecoins, L2 scaling',
+      hint: 'Be as specific as you like — "Base memecoins last 30 days" works fine.',
+      price: 'Market Research Report · <strong>$49</strong> · 5–10 pages',
+      stripeUrl: 'https://buy.stripe.com/dRmfZi0D3dz51qpf0E2go01',
+      scope: false,
+    },
+    custom: {
+      eyebrow: '// Custom Analysis Report',
+      title: 'What would you like us to research?',
+      sub: 'Bespoke scope. Give us the topic and any specifics — tokens, timeframes, datasets, comparisons.',
+      label: 'Topic / scope of analysis',
+      placeholder: 'e.g. Compare top 5 Solana DEXs on liquidity depth and smart-money usage over the last 90 days',
+      hint: 'The more detail, the better. You\'ll also get a 1-on-1 follow-up.',
+      price: 'Custom Analysis Report · <strong>$99</strong> · bespoke',
+      stripeUrl: 'https://buy.stripe.com/cNidRa3PfamTfhf7yc2go02',
+      scope: true,
+    },
+  };
+
+  const modal = document.getElementById('orderModal');
+  const form = document.getElementById('orderForm');
+  const subjectInput = document.getElementById('orderSubject');
+  const scopeInput = document.getElementById('orderScope');
+  const emailInput = document.getElementById('orderEmail');
+  let currentType = null;
+  let lastTrigger = null;
+
+  function openModal(type, trigger) {
+    const cfg = REPORTS[type];
+    if (!cfg) return;
+    currentType = type;
+    lastTrigger = trigger || null;
+
+    document.getElementById('modalEyebrow').textContent = cfg.eyebrow;
+    document.getElementById('orderModalTitle').textContent = cfg.title;
+    document.getElementById('modalSub').textContent = cfg.sub;
+    document.getElementById('orderSubjectLabel').textContent = cfg.label;
+    document.getElementById('orderHint').textContent = cfg.hint;
+    document.getElementById('modalPrice').innerHTML = cfg.price;
+
+    if (cfg.scope) {
+      subjectInput.hidden = true; subjectInput.required = false; subjectInput.value = '';
+      scopeInput.hidden = false; scopeInput.required = true; scopeInput.placeholder = cfg.placeholder;
+      scopeInput.value = '';
+    } else {
+      scopeInput.hidden = true; scopeInput.required = false; scopeInput.value = '';
+      subjectInput.hidden = false; subjectInput.required = true; subjectInput.placeholder = cfg.placeholder;
+      subjectInput.value = '';
+    }
+
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add('open'));
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => (cfg.scope ? scopeInput : subjectInput).focus(), 50);
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+    setTimeout(() => {
+      modal.hidden = true;
+      if (lastTrigger) try { lastTrigger.focus(); } catch (_) {}
+    }, 200);
+  }
+
+  // base64url-encode UTF-8 text so any subject survives Stripe's client_reference_id constraints.
+  function encodeRef(type, value) {
+    const prefix = { token: 'tok', market: 'mkt', custom: 'cus' }[type] || 'gen';
+    const b64 = btoa(unescape(encodeURIComponent(value.trim())))
+      .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    return (prefix + '_' + b64).slice(0, 200);
+  }
+
+  document.querySelectorAll('[data-buy]').forEach(btn => {
+    btn.addEventListener('click', () => openModal(btn.getAttribute('data-buy'), btn));
+  });
+  document.querySelectorAll('[data-modal-close]').forEach(el => {
+    el.addEventListener('click', closeModal);
+  });
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!currentType) return;
+    const cfg = REPORTS[currentType];
+    const raw = (cfg.scope ? scopeInput.value : subjectInput.value).trim();
+    if (!raw) return;
+    const ref = encodeRef(currentType, raw);
+    const url = new URL(cfg.stripeUrl);
+    url.searchParams.set('client_reference_id', ref);
+    const email = emailInput.value.trim();
+    if (email) url.searchParams.set('prefilled_email', email);
+    // Stash a local copy so we can recover the request if Stripe drops the ref.
+    try {
+      localStorage.setItem('occelatus.lastOrder', JSON.stringify({
+        type: currentType, subject: raw, email, ref, ts: Date.now(),
+      }));
+    } catch (_) {}
+    window.location.href = url.toString();
+  });
+
   function toggleFaq(btn) {
     const item = btn.parentElement;
     const open = item.getAttribute('aria-expanded') === 'true';
