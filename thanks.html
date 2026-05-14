@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order received · Occelatus Research</title>
+  <meta name="description" content="Your research report is queued. We'll email the PDF when it's ready.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-0: #0b0e17;
+      --line-strong: rgba(255,255,255,0.12);
+      --text: #e6e8ef;
+      --text-muted: #8b91a8;
+      --text-dim: #5a6079;
+      --accent: #7df9ff;
+      --radius: 14px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg-0);
+      background-image:
+        radial-gradient(ellipse 60% 50% at 18% 8%, rgba(125,249,255,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 82% 18%, rgba(255,107,157,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 60% at 50% 110%, rgba(125,249,255,0.05) 0%, transparent 60%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .card {
+      width: 100%; max-width: 560px;
+      background: linear-gradient(180deg, rgba(20,24,38,0.96) 0%, rgba(12,14,24,0.96) 100%);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 80px -20px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+      padding: 40px;
+    }
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.08em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.85); }
+    }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px; font-weight: 500; line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    h1 strong { color: var(--accent); font-weight: 700; }
+    p { color: var(--text-muted); font-size: 15px; margin-bottom: 14px; }
+    .meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px; color: var(--text-dim);
+      letter-spacing: 0.03em;
+      margin-top: 28px; padding-top: 20px;
+      border-top: 1px dashed var(--line-strong);
+    }
+    .meta div { margin-bottom: 6px; }
+    .meta strong { color: var(--text); font-weight: 600; }
+    .actions { margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 22px; border-radius: 8px;
+      font-family: 'IBM Plex Sans', sans-serif; font-weight: 600;
+      text-decoration: none; font-size: 14px; letter-spacing: 0.02em;
+      transition: transform 160ms ease, border-color 160ms ease, color 160ms ease;
+      border: 1px solid var(--line-strong);
+      color: var(--text-muted);
+    }
+    .btn:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+    .stages {
+      margin-top: 24px;
+      display: flex; flex-direction: column; gap: 10px;
+      font-family: 'JetBrains Mono', monospace; font-size: 12px;
+      color: var(--text-dim);
+    }
+    .stage { display: flex; gap: 10px; align-items: center; }
+    .stage::before {
+      content: '✓'; color: var(--accent);
+      width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1px solid var(--accent);
+      font-size: 11px;
+    }
+    .stage.pending::before { content: '·'; color: var(--text-dim); border-color: var(--text-dim); }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="eyebrow"><span class="dot"></span> Order received</div>
+    <h1>Your report is <strong>in research.</strong></h1>
+    <p>Payment confirmed. Our research pipeline is now pulling on-chain data, smart-money flows, and liquidity context for the subject you submitted.</p>
+    <p>The finished PDF will arrive at the email on file. Most reports complete in <strong style="color:var(--text);">3–10 minutes</strong>. Custom reports can take a bit longer.</p>
+
+    <div class="stages">
+      <div class="stage">Payment captured</div>
+      <div class="stage">Subject decoded and queued</div>
+      <div class="stage pending">Research in progress…</div>
+      <div class="stage pending">PDF delivery to your inbox</div>
+    </div>
+
+    <div class="meta" id="orderMeta">
+      <div><strong>STATUS:</strong> Processing</div>
+      <div><strong>DELIVERY:</strong> Email (PDF attachment)</div>
+      <div><strong>SUPPORT:</strong> research@occelatus.io</div>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="/">← Back to site</a>
+      <a class="btn" href="mailto:research@occelatus.io?subject=Order%20question">Contact research</a>
+    </div>
+  </main>
+
+  <script>
+    // Surface the subject the user typed (we stash it in localStorage at checkout time).
+    try {
+      const raw = localStorage.getItem('occelatus.lastOrder');
+      if (raw) {
+        const o = JSON.parse(raw);
+        const typeLabel = { token: 'Token Analysis', market: 'Market Research', custom: 'Custom Analysis' }[o.type] || 'Report';
+        const meta = document.getElementById('orderMeta');
+        const subjectEl = document.createElement('div');
+        subjectEl.innerHTML = '<strong>REPORT:</strong> ' + typeLabel;
+        meta.insertBefore(subjectEl, meta.firstChild);
+        const subjEl = document.createElement('div');
+        const safe = String(o.subject || '').slice(0, 140).replace(/[<>]/g, '');
+        subjEl.innerHTML = '<strong>SUBJECT:</strong> ' + safe;
+        meta.insertBefore(subjEl, meta.children[1]);
+      }
+    } catch (_) {}
+  </script>
+</body>
+</html>
