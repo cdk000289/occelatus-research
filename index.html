@@ -1064,13 +1064,34 @@
     const open = item.getAttribute('aria-expanded') === 'true';
     item.setAttribute('aria-expanded', String(!open));
   }
-  function handleSignup(e) {
+  async function handleSignup(e) {
     e.preventDefault();
     const input = document.getElementById('emailInput');
-    if (!input.value) return;
-    // TODO: POST to landing API → triggers Resend with the free sample
-    alert('Thanks — check your inbox for the sample report.');
-    input.value = '';
+    const btn = e.target.querySelector('button[type="submit"]');
+    const email = (input.value || '').trim();
+    if (!email) return;
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const r = await fetch('https://occelatus-stripe-relay.oceelatus.workers.dev/sample', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok || data.ok === false) {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+        return;
+      }
+      input.value = '';
+      btn.textContent = data.deduped ? 'Already sent ✓' : 'Sent — check inbox ✓';
+    } catch (_) {
+      btn.textContent = 'Network error — retry';
+      btn.disabled = false;
+      setTimeout(() => { btn.textContent = originalLabel; }, 4000);
+    }
   }
 </script>
 
