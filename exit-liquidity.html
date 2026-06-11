@@ -1,381 +1,257 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exit Liquidity Tracker — Occelatus Research | June 2026</title>
-<meta name="description" content="Live DEX exit liquidity tracker: $10K and $50K exit slippage estimates across 20 tokens. Updated daily at 7 AM CT. Data sourced from DexScreener and CoinGecko.">
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: #0d0d1a;
-    color: #e0e0ff;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    line-height: 1.5;
-    padding: 0 16px 40px;
-  }
-  .header {
-    text-align: center;
-    padding: 40px 16px 24px;
-    border-bottom: 1px solid #2a2a4a;
-    margin-bottom: 28px;
-  }
-  .header h1 {
-    font-size: clamp(1.4rem, 4vw, 2rem);
-    color: #ffffff;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-  .header .subtitle {
-    color: #8888aa;
-    margin-top: 8px;
-    font-size: 0.95rem;
-  }
-  .timestamp {
-    display: inline-block;
-    background: #1a1a3a;
-    border: 1px solid #3333aa;
-    border-radius: 6px;
-    padding: 4px 14px;
-    font-size: 0.8rem;
-    color: #7777cc;
-    margin-top: 12px;
-  }
-  .legend {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-    font-size: 0.82rem;
-    color: #888899;
-  }
-  .legend span { display: flex; align-items: center; gap: 6px; }
-  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid #2a2a4a; }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 0.88rem;
-  }
-  thead th {
-    background: #12122a;
-    color: #aaaacc;
-    font-weight: 600;
-    padding: 12px 14px;
-    text-align: left;
-    white-space: nowrap;
-    border-bottom: 2px solid #2a2a4a;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  tbody td {
-    padding: 11px 14px;
-    border-bottom: 1px solid #1a1a2e;
-    white-space: nowrap;
-  }
-  tbody tr:hover td { background: #1e1e3a !important; }
-  .cta-block {
-    margin: 36px auto;
-    max-width: 600px;
-    text-align: center;
-    background: #12122a;
-    border: 1px solid #333366;
-    border-radius: 10px;
-    padding: 28px 24px;
-  }
-  .cta-block h2 { font-size: 1.15rem; color: #ffffff; margin-bottom: 10px; }
-  .cta-block p { color: #8888aa; font-size: 0.88rem; margin-bottom: 20px; line-height: 1.6; }
-  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .btn {
-    display: inline-block;
-    padding: 10px 24px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 0.88rem;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .btn-primary { background: #4444ff; color: #ffffff; }
-  .btn-secondary { background: #1a1a3a; border: 1px solid #444488; color: #aaaaff; }
-  .email-capture {
-    margin: 28px auto;
-    max-width: 500px;
-    text-align: center;
-  }
-  .email-capture p { color: #666688; font-size: 0.82rem; margin-bottom: 12px; }
-  .email-form { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
-  .email-form input {
-    flex: 1;
-    min-width: 200px;
-    padding: 9px 14px;
-    background: #1a1a2e;
-    border: 1px solid #333366;
-    border-radius: 6px;
-    color: #ffffff;
-    font-size: 0.88rem;
-  }
-  .email-form button {
-    padding: 9px 20px;
-    background: #4444ff;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 700;
-    font-size: 0.88rem;
-  }
-  .disclaimer {
-    margin: 36px auto;
-    max-width: 700px;
-    padding: 20px;
-    background: #0f0f1e;
-    border: 1px solid #1e1e3a;
-    border-radius: 8px;
-    font-size: 0.75rem;
-    color: #555577;
-    line-height: 1.7;
-    text-align: center;
-  }
-  @media (max-width: 600px) {
-    table { font-size: 0.78rem; }
-    tbody td, thead th { padding: 9px 10px; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exit Liquidity Tracker — Occelatus Research</title>
+  <meta name="description" content="What does a $10,000 market exit cost in slippage today? Live data for top crypto tokens — updated daily.">
+  <meta property="og:title" content="Exit Liquidity Tracker — $10K Exit Slippage by Token">
+  <meta property="og:description" content="Live slippage cost estimates for a $10K exit across 20 major tokens. Free daily update from Occelatus Research.">
+  <link rel="canonical" href="https://occelatus.io/exit-liquidity">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0f;color:#e2e8f0;min-height:100vh}
+    header{background:#111827;border-bottom:1px solid #1f2937;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:700;font-size:1.1rem;color:#60a5fa;text-decoration:none}
+    .nav-link{color:#94a3b8;text-decoration:none;font-size:.9rem;margin-left:20px}
+    .nav-link:hover{color:#e2e8f0}
+    main{max-width:900px;margin:0 auto;padding:40px 20px}
+    h1{font-size:1.8rem;font-weight:700;color:#f8fafc;margin-bottom:8px}
+    .subtitle{color:#94a3b8;font-size:.95rem;margin-bottom:6px}
+    .dateline{color:#6b7280;font-size:.82rem;margin-bottom:28px}
+    .dateline em{color:#60a5fa}
+    .what-is{background:#111827;border:1px solid #1f2937;border-radius:8px;padding:16px 20px;margin-bottom:28px;font-size:.9rem;line-height:1.6;color:#cbd5e1}
+    .what-is strong{color:#f8fafc}
+    table{width:100%;border-collapse:collapse;font-size:.9rem}
+    thead tr{background:#111827;border-bottom:2px solid #1f2937}
+    th{padding:10px 12px;text-align:left;color:#94a3b8;font-weight:600;font-size:.82rem;text-transform:uppercase;letter-spacing:.04em}
+    tbody tr{border-bottom:1px solid #1a2030}
+    tbody tr:hover{background:#0f172a}
+    td{padding:10px 12px;vertical-align:middle}
+    .ticker{font-weight:700;color:#f8fafc;font-size:.95rem}
+    .cta-box{margin-top:36px;background:#1e293b;border:1px solid #334155;border-radius:10px;padding:24px;text-align:center}
+    .cta-box h3{font-size:1.1rem;margin-bottom:8px;color:#f8fafc}
+    .cta-box p{color:#94a3b8;font-size:.9rem;margin-bottom:16px}
+    .btn{display:inline-block;background:#3b82f6;color:#fff;padding:10px 24px;border-radius:6px;text-decoration:none;font-weight:600;font-size:.9rem}
+    .btn:hover{background:#2563eb}
+    .legend{margin-top:16px;display:flex;gap:16px;font-size:.8rem;color:#6b7280;justify-content:flex-end}
+    .leg{display:flex;align-items:center;gap:4px}
+    .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+    .disclaimer{margin-top:28px;font-size:.78rem;color:#4b5563;line-height:1.6;border-top:1px solid #1f2937;padding-top:16px}
+    footer{text-align:center;padding:24px;color:#374151;font-size:.8rem;border-top:1px solid #111827}
+    footer a{color:#4b5563;text-decoration:none}
+  </style>
 </head>
 <body>
-
-<div class="header">
+<header>
+  <a href="/" class="logo">Occelatus Research</a>
+  <nav>
+    <a href="/" class="nav-link">Reports</a>
+    <a href="/exit-liquidity" class="nav-link" style="color:#60a5fa">Exit Tracker</a>
+    <a href="/risk-disclosure.html" class="nav-link">Risk Disclosure</a>
+  </nav>
+</header>
+<main>
   <h1>Exit Liquidity Tracker</h1>
-  <p class="subtitle">Live DEX depth and exit slippage estimates for 20 tokens — updated daily 7 AM CT</p>
-  <div class="timestamp">Generated: 2026-06-11 12:17 UTC | Source: DexScreener + CoinGecko</div>
-</div>
+  <p class="subtitle">What does a <strong>$10,000 market exit</strong> cost in slippage — right now?</p>
+  <p class="dateline">Updated: <em>June 11, 2026 at 21:16 UTC</em> &nbsp;·&nbsp; Powered by CoinGecko + DexScreener live data</p>
 
-<div class="legend">
-  <span>🟢 &lt;0.3% slippage — deep liquidity</span>
-  <span>🟡 0.3–1.0% — moderate</span>
-  <span>🔴 &gt;1.0% — thin, exit risk</span>
-</div>
-
-<div class="table-wrap">
-<table>
-  <thead>
-    <tr>
-      <th>Token</th>
-      <th>Name</th>
-      <th>Price</th>
-      <th>24h Volume</th>
-      <th>Top-Pair Liquidity</th>
-      <th>$10K Exit Slippage</th>
-      <th>$50K Exit Slippage</th>
-    </tr>
-  </thead>
-  <tbody>
-
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">APT</td>
-            <td style="color:#aaaacc;">Aptos</td>
-            <td style="color:#ffffff;">$0.6319</td>
-            <td style="color:#88aaff;">$54.9M</td>
-            <td style="color:#88ffcc;">$2.53B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">SOL</td>
-            <td style="color:#aaaacc;">Solana</td>
-            <td style="color:#ffffff;">$65.60</td>
-            <td style="color:#88aaff;">$3.2B</td>
-            <td style="color:#88ffcc;">$2.00B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">ZEC</td>
-            <td style="color:#aaaacc;">Zcash</td>
-            <td style="color:#ffffff;">$429.83</td>
-            <td style="color:#88aaff;">$636.1M</td>
-            <td style="color:#88ffcc;">$1.75B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">TRUMP</td>
-            <td style="color:#aaaacc;">TRUMP</td>
-            <td style="color:#ffffff;">$1.70</td>
-            <td style="color:#88aaff;">$93.2M</td>
-            <td style="color:#88ffcc;">$1.68B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">ARB</td>
-            <td style="color:#aaaacc;">Arbitrum</td>
-            <td style="color:#ffffff;">$0.0813</td>
-            <td style="color:#88aaff;">$64.6M</td>
-            <td style="color:#88ffcc;">$1.58B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">HYPE</td>
-            <td style="color:#aaaacc;">Hyperliquid</td>
-            <td style="color:#ffffff;">$56.86</td>
-            <td style="color:#88aaff;">$1.1B</td>
-            <td style="color:#88ffcc;">$1.52B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">SEI</td>
-            <td style="color:#aaaacc;">SEI</td>
-            <td style="color:#ffffff;">$0.0486</td>
-            <td style="color:#88aaff;">$36.1M</td>
-            <td style="color:#88ffcc;">$1.43B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">INJ</td>
-            <td style="color:#aaaacc;">Injective</td>
-            <td style="color:#ffffff;">$5.27</td>
-            <td style="color:#88aaff;">$99.6M</td>
-            <td style="color:#88ffcc;">$1.24B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">TIA</td>
-            <td style="color:#aaaacc;">Celestia</td>
-            <td style="color:#ffffff;">$0.3221</td>
-            <td style="color:#88aaff;">$34.4M</td>
-            <td style="color:#88ffcc;">$1.08B</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">BTC</td>
-            <td style="color:#aaaacc;">Bitcoin</td>
-            <td style="color:#ffffff;">$63,080</td>
-            <td style="color:#88aaff;">$29.6B</td>
-            <td style="color:#88ffcc;">$762.6M</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">ETH</td>
-            <td style="color:#aaaacc;">Ethereum</td>
-            <td style="color:#ffffff;">$1,659</td>
-            <td style="color:#88aaff;">$12.5B</td>
-            <td style="color:#88ffcc;">$517.7M</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">SUI</td>
-            <td style="color:#aaaacc;">Sui</td>
-            <td style="color:#ffffff;">$0.7515</td>
-            <td style="color:#88aaff;">$389.5M</td>
-            <td style="color:#88ffcc;">$77.4M</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.03%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">JUP</td>
-            <td style="color:#aaaacc;">Jupiter</td>
-            <td style="color:#ffffff;">$0.1549</td>
-            <td style="color:#88aaff;">$19.4M</td>
-            <td style="color:#88ffcc;">$71.2M</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 <0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.04%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">BONK</td>
-            <td style="color:#aaaacc;">Bonk</td>
-            <td style="color:#ffffff;">$0.000004</td>
-            <td style="color:#88aaff;">$30.6M</td>
-            <td style="color:#88ffcc;">$50.4M</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.05%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">AVAX</td>
-            <td style="color:#aaaacc;">Avalanche</td>
-            <td style="color:#ffffff;">$6.58</td>
-            <td style="color:#88aaff;">$225.2M</td>
-            <td style="color:#88ffcc;">$45.2M</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.06%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">PENGU</td>
-            <td style="color:#aaaacc;">Pudgy Penguins</td>
-            <td style="color:#ffffff;">$0.006712</td>
-            <td style="color:#88aaff;">$95.4M</td>
-            <td style="color:#88ffcc;">$44.3M</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.01%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.06%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">PEPE</td>
-            <td style="color:#aaaacc;">Pepe</td>
-            <td style="color:#ffffff;">$0.000003</td>
-            <td style="color:#88aaff;">$193.1M</td>
-            <td style="color:#88ffcc;">$19.6M</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.03%</td>
-            <td style="color:#00ff88;font-weight:600;">🟢 0.13%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">OP</td>
-            <td style="color:#aaaacc;">Optimism</td>
-            <td style="color:#ffffff;">$0.0943</td>
-            <td style="color:#88aaff;">$53.7M</td>
-            <td style="color:#88ffcc;">$237.1K</td>
-            <td style="color:#ff4444;font-weight:600;">🔴 2.11%</td>
-            <td style="color:#ff4444;font-weight:600;">🔴 10.55%</td>
-        </tr>
-        <tr style="background:#1a1a2e;">
-            <td style="font-weight:700;color:#ffffff;">WIF</td>
-            <td style="color:#aaaacc;">dogwifhat</td>
-            <td style="color:#ffffff;">$0.1545</td>
-            <td style="color:#88aaff;">$30.8M</td>
-            <td style="color:#88ffcc;">$63.8K</td>
-            <td style="color:#ff4444;font-weight:600;">🔴 7.84%</td>
-            <td style="color:#ff4444;font-weight:600;">🔴 39.19%</td>
-        </tr>
-        <tr style="background:#16213e;">
-            <td style="font-weight:700;color:#ffffff;">DYDX</td>
-            <td style="color:#aaaacc;">dYdX</td>
-            <td style="color:#ffffff;">$0.1171</td>
-            <td style="color:#88aaff;">$7.6M</td>
-            <td style="color:#88ffcc;">$25.3K</td>
-            <td style="color:#ff4444;font-weight:600;">🔴 19.73%</td>
-            <td style="color:#ff4444;font-weight:600;">🔴 98.66%</td>
-        </tr>
-  </tbody>
-</table>
-</div>
-
-<div class="email-capture">
-  <p>Get daily exit slippage alerts before the market moves — free.</p>
-  <form class="email-form" action="https://occelatus.io/thanks.html" method="get">
-    <input type="email" name="email" placeholder="your@email.com" required>
-    <button type="submit">Get Alerts</button>
-  </form>
-</div>
-
-<div class="cta-block">
-  <h2>Need a deeper read?</h2>
-  <p>This tracker shows surface-level depth. Full reports add holder concentration, depth under stress, unlock calendar context, and historical comparisons for the specific token you're sizing.</p>
-  <div class="cta-row">
-    <a href="https://occelatus.io/#pricing" class="btn btn-primary">$19 Token Analysis</a>
-    <a href="https://occelatus.io/#pricing" class="btn btn-secondary">$49 Deep Dive</a>
+  <div class="what-is">
+    <strong>How to read this table:</strong> "Est. Slippage" is the approximate price impact of selling $10K at market across the most liquid DEX pairs for each token. Lower = more liquid. Color-coded: <span style="color:#22c55e">green</span> = liquid (&lt;0.5%), <span style="color:#eab308">yellow</span> = moderate (0.5–1.5%), <span style="color:#f97316">orange</span> = notable (1.5–3%), <span style="color:#ef4444">red</span> = illiquid (&gt;3%). Estimates use 2-hour rolling volume as available order depth proxy.
   </div>
-</div>
 
-<div class="disclaimer">
-  <strong>Disclaimer:</strong> This tracker is for informational purposes only and does not constitute financial, investment, or trading advice. Slippage estimates are mathematical approximations based on reported DEX liquidity and actual execution may differ materially. Liquidity data is sourced from DexScreener and may not reflect all trading venues. Past market behavior is not indicative of future results. You could lose all funds. Not a recommendation to buy, sell, or hold any asset. Occelatus Research is not a registered investment adviser. Always conduct your own research and consult a licensed financial professional before making any investment decision.
-</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Token</th>
+        <th>Price</th>
+        <th>24h Change</th>
+        <th>24h Volume</th>
+        <th>Est. Slippage</th>
+        <th>$10K Exit Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="ticker">W</td>
+      <td>$0.01</td>
+      <td style="color:#22c55e">+6.6%</td>
+      <td>$12.54M</td>
+      <td style="color:#eab308;font-weight:600">0.96%</td>
+      <td style="color:#eab308">$95.72</td>
+    </tr>
+    <tr>
+      <td class="ticker">STRK</td>
+      <td>$0.04</td>
+      <td style="color:#22c55e">+5.6%</td>
+      <td>$22.22M</td>
+      <td style="color:#eab308;font-weight:600">0.54%</td>
+      <td style="color:#eab308">$54.02</td>
+    </tr>
+    <tr>
+      <td class="ticker">JUP</td>
+      <td>$0.16</td>
+      <td style="color:#22c55e">+9.9%</td>
+      <td>$22.47M</td>
+      <td style="color:#eab308;font-weight:600">0.53%</td>
+      <td style="color:#eab308">$53.41</td>
+    </tr>
+    <tr>
+      <td class="ticker">TIA</td>
+      <td>$0.32</td>
+      <td style="color:#22c55e">+7.3%</td>
+      <td>$33.01M</td>
+      <td style="color:#22c55e;font-weight:600">0.36%</td>
+      <td style="color:#22c55e">$36.35</td>
+    </tr>
+    <tr>
+      <td class="ticker">SEI</td>
+      <td>$0.05</td>
+      <td style="color:#22c55e">+7.9%</td>
+      <td>$39.82M</td>
+      <td style="color:#22c55e;font-weight:600">0.30%</td>
+      <td style="color:#22c55e">$30.14</td>
+    </tr>
+    <tr>
+      <td class="ticker">OP</td>
+      <td>$0.10</td>
+      <td style="color:#22c55e">+6.7%</td>
+      <td>$49.15M</td>
+      <td style="color:#22c55e;font-weight:600">0.24%</td>
+      <td style="color:#22c55e">$24.42</td>
+    </tr>
+    <tr>
+      <td class="ticker">APT</td>
+      <td>$0.65</td>
+      <td style="color:#22c55e">+6.0%</td>
+      <td>$58.64M</td>
+      <td style="color:#22c55e;font-weight:600">0.20%</td>
+      <td style="color:#22c55e">$20.47</td>
+    </tr>
+    <tr>
+      <td class="ticker">ARB</td>
+      <td>$0.08</td>
+      <td style="color:#22c55e">+9.8%</td>
+      <td>$78.37M</td>
+      <td style="color:#22c55e;font-weight:600">0.15%</td>
+      <td style="color:#22c55e">$15.31</td>
+    </tr>
+    <tr>
+      <td class="ticker">ATOM</td>
+      <td>$2.02</td>
+      <td style="color:#22c55e">+15.8%</td>
+      <td>$81.76M</td>
+      <td style="color:#22c55e;font-weight:600">0.15%</td>
+      <td style="color:#22c55e">$14.68</td>
+    </tr>
+    <tr>
+      <td class="ticker">DOT</td>
+      <td>$0.96</td>
+      <td style="color:#22c55e">+6.0%</td>
+      <td>$96.99M</td>
+      <td style="color:#22c55e;font-weight:600">0.12%</td>
+      <td style="color:#22c55e">$12.37</td>
+    </tr>
+    <tr>
+      <td class="ticker">INJ</td>
+      <td>$5.40</td>
+      <td style="color:#22c55e">+8.6%</td>
+      <td>$108.50M</td>
+      <td style="color:#22c55e;font-weight:600">0.11%</td>
+      <td style="color:#22c55e">$11.06</td>
+    </tr>
+    <tr>
+      <td class="ticker">AVAX</td>
+      <td>$6.65</td>
+      <td style="color:#22c55e">+4.1%</td>
+      <td>$209.81M</td>
+      <td style="color:#22c55e;font-weight:600">0.06%</td>
+      <td style="color:#22c55e">$5.72</td>
+    </tr>
+    <tr>
+      <td class="ticker">LINK</td>
+      <td>$7.92</td>
+      <td style="color:#22c55e">+5.1%</td>
+      <td>$296.61M</td>
+      <td style="color:#22c55e;font-weight:600">0.04%</td>
+      <td style="color:#22c55e">$4.05</td>
+    </tr>
+    <tr>
+      <td class="ticker">SUI</td>
+      <td>$0.76</td>
+      <td style="color:#22c55e">+5.6%</td>
+      <td>$381.17M</td>
+      <td style="color:#22c55e;font-weight:600">0.03%</td>
+      <td style="color:#22c55e">$3.15</td>
+    </tr>
+    <tr>
+      <td class="ticker">NEAR</td>
+      <td>$2.09</td>
+      <td style="color:#22c55e">+6.3%</td>
+      <td>$491.01M</td>
+      <td style="color:#22c55e;font-weight:600">0.02%</td>
+      <td style="color:#22c55e">$2.44</td>
+    </tr>
+    <tr>
+      <td class="ticker">ZEC</td>
+      <td>$437.85</td>
+      <td style="color:#22c55e">+7.9%</td>
+      <td>$577.19M</td>
+      <td style="color:#22c55e;font-weight:600">0.02%</td>
+      <td style="color:#22c55e">$2.08</td>
+    </tr>
+    <tr>
+      <td class="ticker">HYPE</td>
+      <td>$58.97</td>
+      <td style="color:#22c55e">+10.3%</td>
+      <td>$944.81M</td>
+      <td style="color:#22c55e;font-weight:600">0.01%</td>
+      <td style="color:#22c55e">$1.27</td>
+    </tr>
+    <tr>
+      <td class="ticker">SOL</td>
+      <td>$66.83</td>
+      <td style="color:#22c55e">+6.4%</td>
+      <td>$3.00B</td>
+      <td style="color:#22c55e;font-weight:600">0.00%</td>
+      <td style="color:#22c55e">$0.40</td>
+    </tr>
+    <tr>
+      <td class="ticker">ETH</td>
+      <td>$1.7K</td>
+      <td style="color:#22c55e">+3.6%</td>
+      <td>$12.68B</td>
+      <td style="color:#22c55e;font-weight:600">0.00%</td>
+      <td style="color:#22c55e">$0.09</td>
+    </tr>
+    <tr>
+      <td class="ticker">BTC</td>
+      <td>$63.5K</td>
+      <td style="color:#22c55e">+3.2%</td>
+      <td>$30.54B</td>
+      <td style="color:#22c55e;font-weight:600">0.00%</td>
+      <td style="color:#22c55e">$0.04</td>
+    </tr>
+    </tbody>
+  </table>
 
+  <div class="legend">
+    <span class="leg"><span class="dot" style="background:#22c55e"></span> &lt;0.5% liquid</span>
+    <span class="leg"><span class="dot" style="background:#eab308"></span> 0.5–1.5% moderate</span>
+    <span class="leg"><span class="dot" style="background:#f97316"></span> 1.5–3% notable</span>
+    <span class="leg"><span class="dot" style="background:#ef4444"></span> &gt;3% illiquid</span>
+  </div>
+
+  <div class="cta-box">
+    <h3>Need deeper analysis before an unlock event?</h3>
+    <p>Full token unlock reports include multi-pair depth analysis, holder concentration, exit slippage modeling at $10K–$500K, and historical post-unlock behavior — delivered in under 30 minutes.</p>
+    <a href="/" class="btn">Get a Token Unlock Report — $19</a>
+  </div>
+
+  <p class="disclaimer">This page is for informational purposes only and does not constitute financial advice. All figures are from live data pulls. Crypto markets are highly volatile. Slippage estimates are approximate and based on top DEX pair depth at time of generation. <a href='/risk-disclosure.html'>Full risk disclosure →</a></p>
+</main>
+<footer>
+  <p>© 2026 Occelatus Research · <a href="/terms.html">Terms</a> · <a href="/risk-disclosure.html">Risk Disclosure</a> · Not financial advice</p>
+</footer>
 </body>
 </html>
