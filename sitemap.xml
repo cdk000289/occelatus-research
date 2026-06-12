@@ -34,4 +34,24 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url><loc>https://occelatus.io/reports/beat-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/hmstr-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/aio-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/op-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/strk-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/sui-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/avax-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/apt-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/w-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
+
+  <url><loc>https://occelatus.io/reports/sol-liquidity-snapshot</loc><lastmod>June 12, 2</lastmod></url>
 </urlset>
