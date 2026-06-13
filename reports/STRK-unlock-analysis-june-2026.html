@@ -26,11 +26,11 @@
 </head>
 <body>
 <div class="wrap">
-<p class="dateline">Occelatus Research &middot; Published June 12, 2026 — 12:30 UTC</p>
-<h1>STRK Unlock Analysis — June 2026 <span class="badge badge-warn">T-3</span></h1>
+<p class="dateline">Occelatus Research &middot; Updated June 13, 2026 — 12:30 UTC</p>
+<h1>STRK Unlock Analysis — June 2026 <span class="badge badge-warn">T-2</span></h1>
 
 <div class="summary">
-Starknet (STRK) is scheduled to unlock 127M tokens — 3.89% of circulating supply — on June 15, 2026. At current prices the event represents approximately $4.38M in unlocked value entering a market that traded $22.6M in the last 24 hours (unlock-to-volume ratio: 0.19x). DEX liquidity on the native Starknet chain is thin: the deepest STRK/USDC pool on Ekubo holds $600K, implying significant slippage for any sizeable exit before or immediately after the event. Data pulled June 12, 2026 — 12:30 UTC.
+Starknet (STRK) unlocks 127M tokens — 3.89% of circulating supply — on June 15, 2026. Tomorrow. At current prices ($0.0348) the event represents approximately $4.38M in unlocked value entering a market that traded $23.0M in the last 24 hours (unlock-to-volume ratio: 0.19x). DEX liquidity on the native Starknet chain remains thin: the deepest STRK/USDC pool on Ekubo holds $602K, implying ~3.3% slippage on a $10K exit and ~16.6% on $50K — before any unlock-day selling pressure. Data pulled June 13, 2026 — 12:30 UTC.
 </div>
 
 <h2>Unlock Event Summary</h2>
@@ -38,13 +38,13 @@ Starknet (STRK) is scheduled to unlock 127M tokens — 3.89% of circulating supp
 <thead><tr><th>Field</th><th>Value</th></tr></thead>
 <tbody>
 <tr><td>Token</td><td>Starknet (STRK)</td></tr>
-<tr><td>Unlock Date</td><td>June 15, 2026</td></tr>
+<tr><td>Unlock Date</td><td>June 15, 2026 (T-2)</td></tr>
 <tr><td>Tokens Unlocking</td><td>127.00M STRK</td></tr>
 <tr><td>% of Circulating Supply</td><td>3.89%</td></tr>
 <tr><td>Est. USD Value</td><td>$4.38M</td></tr>
-<tr><td>Current Price</td><td>$0.03466</td></tr>
-<tr><td>24h Volume</td><td>$22,580,024</td></tr>
-<tr><td>Market Cap</td><td>$215,583,876</td></tr>
+<tr><td>Current Price</td><td>$0.03481</td></tr>
+<tr><td>24h Volume</td><td>$22,987,295</td></tr>
+<tr><td>Market Cap</td><td>$221,343,643</td></tr>
 <tr><td>Unlock Value / 24h Volume</td><td>0.19x</td></tr>
 <tr><td>Data Source</td><td><a href="https://tokenomist.ai/starknet" style="color:#58a6ff">https://tokenomist.ai/starknet</a></td></tr>
 </tbody>
@@ -53,15 +53,20 @@ Starknet (STRK) is scheduled to unlock 127M tokens — 3.89% of circulating supp
 <h2>DEX Liquidity — Top Pairs (Starknet Chain, live pull)</h2>
 <table>
 <thead><tr><th>DEX</th><th>Pair</th><th>Liquidity (USD)</th><th>24h Volume</th><th>Price</th></tr></thead>
-<tbody><tr><td>Ekubo</td><td>STRK/USDC</td><td>$600,809</td><td>$2,485,642</td><td>$0.03466</td></tr><tr><td>Ekubo</td><td>xSTRK/STRK</td><td>$966,162</td><td>$8,230</td><td>$0.04012</td></tr><tr><td>Ekubo</td><td>strkBTC/STRK</td><td>$657,066</td><td>$262,542</td><td>$63,549</td></tr></tbody>
+<tbody>
+<tr><td>Ekubo</td><td>xSTRK/STRK</td><td>$955,029</td><td>$6,461</td><td>$0.03966</td></tr>
+<tr><td>Ekubo</td><td>strkBTC/STRK</td><td>$659,120</td><td>$198,882</td><td>$63,985</td></tr>
+<tr><td>Ekubo</td><td>STRK/USDC</td><td>$602,599</td><td>$1,920,523</td><td>$0.03473</td></tr>
+<tr><td>Ekubo</td><td>ETH/STRK</td><td>$293,633</td><td>$68,415</td><td>$1,678.93</td></tr>
+</tbody>
 </table>
 
 <h2>Exit Slippage Estimates (STRK/USDC on Ekubo)</h2>
 <table>
 <thead><tr><th>Exit Size</th><th>Estimated Slippage</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>$10,000</td><td>~3.2%</td><td>Based on STRK-side depth ~$300K (constant product model)</td></tr>
-<tr><td>$50,000</td><td>~14.3%</td><td>Represents ~17% of the top pair's total liquidity</td></tr>
+<tr><td>$10,000</td><td>~3.3%</td><td>Based on STRK-side depth ~$301K (constant product model)</td></tr>
+<tr><td>$50,000</td><td>~16.6%</td><td>Represents ~17% of the top pair's STRK-side liquidity</td></tr>
 </tbody>
 </table>
 
@@ -70,9 +75,10 @@ Starknet (STRK) is scheduled to unlock 127M tokens — 3.89% of circulating supp
 <thead><tr><th>Metric</th><th>Finding</th></tr></thead>
 <tbody>
 <tr><td>Unlock vs. Volume Ratio</td><td>0.19x — unlock value is 0.19x the token's average 24h trading volume</td></tr>
-<tr><td>Deepest Active Pair</td><td>Ekubo STRK/USDC — $600,809 total liquidity, $2.49M 24h volume</td></tr>
-<tr><td>Cross-chain Liquidity</td><td>PancakeSwap (BSC) shows $343M listed but $0 24h volume — not a viable exit venue</td></tr>
-<tr><td>Slippage Risk</td><td>$50K exit on deepest native pair incurs ~14% slippage before any unlock pressure is applied</td></tr>
+<tr><td>Best Exit Pair</td><td>Ekubo STRK/USDC — $602,599 total liquidity, $1.92M 24h volume</td></tr>
+<tr><td>Cross-chain Liquidity</td><td>xSTRK/STRK pool has $955K but near-zero volume — not a liquid exit venue</td></tr>
+<tr><td>Slippage Risk</td><td>$50K exit on deepest native pair incurs ~16.6% slippage before any unlock-day pressure</td></tr>
+<tr><td>Timing</td><td>Unlock is in 2 days — depth conditions can shift materially overnight</td></tr>
 </tbody>
 </table>
 
