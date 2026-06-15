@@ -26,11 +26,11 @@
 </head>
 <body>
 <div class="wrap">
-<p class="dateline">Occelatus Research &middot; Updated June 14, 2026 — 12:30 UTC</p>
-<h1>OP Unlock Analysis — June 2026 <span class="badge badge-warn">T-16</span></h1>
+<p class="dateline">Occelatus Research &middot; Updated June 15, 2026 — 12:30 UTC</p>
+<h1>OP Unlock Analysis — June 2026 <span class="badge badge-warn">T-15</span></h1>
 
 <div class="summary">
-Optimism (OP) is scheduled to unlock 31.34M tokens — 1.48% of circulating supply — on June 30, 2026. At current prices ($0.10656) the event represents approximately $3.34M in unlocked value against $56.5M in 24h trading volume (unlock-to-volume ratio: 0.06x). On-chain liquidity on the native Optimism network is limited: the four deepest pairs on Velodrome and Uniswap combine for $622K total liquidity. The Uniswap OP/USDC pair carries the highest single-pair volume but only $86K in liquidity, resulting in approximately 18.8% estimated slippage on a $10K single-pair exit. Data pulled June 14, 2026 — 12:30 UTC.
+Optimism (OP) is scheduled to unlock 31.34M tokens — 1.48% of circulating supply — on June 30, 2026. At current prices ($0.1114) the event represents approximately $3.49M in unlocked value against $46.8M in 24h trading volume (unlock-to-volume ratio: 0.075x). On-chain liquidity on the native Optimism network is constrained: the top four pairs across Velodrome and Uniswap combine for $663K total liquidity, with the deepest single pair (Velodrome OP/WETH) holding $263K. A $10K exit on the best available pair incurs an estimated 7.1% price impact; a $50K exit rises to approximately 27.5%. Data pulled June 15, 2026 — 12:30 UTC.
 </div>
 
 <h2>Unlock Event Summary</h2>
@@ -38,35 +38,35 @@ Optimism (OP) is scheduled to unlock 31.34M tokens — 1.48% of circulating supp
 <thead><tr><th>Field</th><th>Value</th></tr></thead>
 <tbody>
 <tr><td>Token</td><td>Optimism (OP)</td></tr>
-<tr><td>Unlock Date</td><td>June 30, 2026 (T-16)</td></tr>
+<tr><td>Unlock Date</td><td>June 30, 2026 (T-15)</td></tr>
 <tr><td>Tokens Unlocking</td><td>31.34M OP</td></tr>
 <tr><td>% of Circulating Supply</td><td>1.48%</td></tr>
-<tr><td>Est. USD Value</td><td>$3.34M</td></tr>
-<tr><td>Current Price</td><td>$0.10656</td></tr>
-<tr><td>24h Volume</td><td>$56,455,117</td></tr>
-<tr><td>Market Cap</td><td>$229,706,204</td></tr>
-<tr><td>Unlock Value / 24h Volume</td><td>0.06x</td></tr>
-<tr><td>Data Source</td><td><a href="https://tokenomist.ai/optimism" style="color:#58a6ff">https://tokenomist.ai/optimism</a></td></tr>
+<tr><td>Est. USD Value</td><td>$3.49M</td></tr>
+<tr><td>Current Price</td><td>$0.1114</td></tr>
+<tr><td>24h Volume</td><td>$46,795,447</td></tr>
+<tr><td>Market Cap</td><td>$239,806,672</td></tr>
+<tr><td>Unlock Value / 24h Volume</td><td>0.075x</td></tr>
+<tr><td>Data Source</td><td><a href="https://tokenomist.ai/optimism" style="color:#58a6ff">tokenomist.ai/optimism</a></td></tr>
 </tbody>
 </table>
 
 <h2>DEX Liquidity — Top Pairs (Optimism Chain, live pull)</h2>
 <table>
-<thead><tr><th>DEX</th><th>Pair</th><th>Liquidity (USD)</th><th>24h Volume</th><th>Price</th></tr></thead>
+<thead><tr><th>DEX</th><th>Pair</th><th>Liquidity (USD)</th><th>24h Volume</th></tr></thead>
 <tbody>
-<tr><td>Velodrome</td><td>OP/WETH</td><td>$250,244</td><td>$52,203</td><td>$0.1064</td></tr>
-<tr><td>Uniswap</td><td>OP/WETH</td><td>$191,214</td><td>$87,293</td><td>$0.1066</td></tr>
-<tr><td>Velodrome</td><td>OP/VELO</td><td>$94,770</td><td>$3,141</td><td>$0.1044</td></tr>
-<tr><td>Uniswap</td><td>OP/USDC</td><td>$86,108</td><td>$37,382</td><td>$0.1063</td></tr>
+<tr><td>Velodrome</td><td>OP/WETH</td><td>$263,076</td><td>$37,634</td></tr>
+<tr><td>Uniswap</td><td>OP/WETH</td><td>$202,787</td><td>$62,848</td></tr>
+<tr><td>Velodrome</td><td>OP/VELO</td><td>$104,113</td><td>$4,213</td></tr>
+<tr><td>Uniswap</td><td>OP/USDC</td><td>$92,602</td><td>$23,082</td></tr>
 </tbody>
 </table>
 
-<h2>Exit Slippage Estimates (Uniswap OP/USDC)</h2>
+<h2>Exit Slippage Estimates (Velodrome OP/WETH — deepest pair)</h2>
 <table>
 <thead><tr><th>Exit Size</th><th>Estimated Slippage</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>$10,000</td><td>~18.8%</td><td>Based on OP-side depth ~$43K (constant product model, single pair)</td></tr>
-<tr><td>$50,000</td><td>~53.7%</td><td>Exceeds OP-side depth on this pair — aggressive price impact expected; multi-pair routing required</td></tr>
+<tr><td>$10,000</td><td>~7.1%</td><td>OP-side depth ~$131.5K; constant product model, single pair</td></tr>
+<tr><td>$50,000</td><td>~27.5%</td><td>Exceeds 38% of OP-side depth on this pair; multi-pair routing required for size</td></tr>
 </tbody>
 </table>
 
@@ -74,11 +74,11 @@ Optimism (OP) is scheduled to unlock 31.34M tokens — 1.48% of circulating supp
 <table>
 <thead><tr><th>Metric</th><th>Finding</th></tr></thead>
 <tbody>
-<tr><td>Unlock vs. Volume Ratio</td><td>0.06x — unlock value is 0.06x the 24h trading volume (relatively low pressure ratio)</td></tr>
-<tr><td>Highest Liquidity Pair</td><td>Velodrome OP/WETH — $250,244 liquidity, $52,203 24h volume</td></tr>
-<tr><td>Highest Volume Pair</td><td>Uniswap OP/WETH — $87,293 24h volume, $191,214 liquidity</td></tr>
-<tr><td>Combined Native Liquidity</td><td>$622,336 across top 4 Optimism DEX pairs</td></tr>
-<tr><td>Slippage Risk</td><td>$50K exit on any single native pair incurs severe slippage; routing across all 4 pairs is required for size</td></tr>
+<tr><td>Unlock vs. Volume Ratio</td><td>0.075x — unlock value is 7.5% of 24h trading volume</td></tr>
+<tr><td>Deepest Single Pair</td><td>Velodrome OP/WETH — $263K liquidity, $37.6K 24h volume</td></tr>
+<tr><td>Highest Volume Pair</td><td>Uniswap OP/WETH — $62.8K 24h volume, $202.8K liquidity</td></tr>
+<tr><td>Combined Native Liquidity</td><td>$663K across top 4 Optimism DEX pairs</td></tr>
+<tr><td>Slippage Risk</td><td>$50K single-pair exit incurs 27–54% impact depending on pair; routing across all 4 native pairs still concentrates significant depth risk</td></tr>
 </tbody>
 </table>
 
