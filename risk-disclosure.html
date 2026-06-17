@@ -3,111 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Risk Disclosure - Occelatus Research</title>
+  <title>Risk Disclosure — Occelatus Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg-0: #0b0e17;
+      --bg-1: #11141f;
+      --bg-2: #181c2a;
+      --line: rgba(255,255,255,0.06);
+      --line-strong: rgba(255,255,255,0.12);
+      --text: #e6e8ef;
+      --text-muted: #8b91a8;
+      --text-dim: #5a6079;
+      --accent: #7df9ff;
+      --accent-warm: #ff6b9d;
+      --accent-soft: rgba(125,249,255,0.10);
+      --danger: #ff5d5d;
+      --warn: #f5c451;
+      --radius: 14px;
+      --radius-sm: 8px;
     }
-    
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      background: var(--bg-0);
+      color: var(--text);
+      min-height: 100vh;
       line-height: 1.7;
-      color: #333;
-      background: #fafafa;
     }
-    
+
+    /* nav */
     header {
-      background: #d32f2f;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
+      border-bottom: 1px solid var(--line);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      background: rgba(11,14,23,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    
-    header h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
     }
-    
-    .container {
-      max-width: 800px;
+    .nav-logo span { color: var(--accent); }
+    nav { display: flex; gap: 28px; align-items: center; }
+    nav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 150ms;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* page hero */
+    .page-hero {
+      padding: 56px 32px 40px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 40px 20px;
-      background: white;
     }
-    
+    .page-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--warn);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .page-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .page-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* content */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .warn-box {
+      background: rgba(245,196,81,0.07);
+      border: 1px solid rgba(245,196,81,0.25);
+      border-left: 3px solid var(--warn);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 32px 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .warn-box strong { color: var(--warn); }
+
     h2 {
-      color: #d32f2f;
-      margin: 40px 0 20px 0;
-      font-size: 20px;
-      border-bottom: 2px solid #d32f2f;
-      padding-bottom: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 48px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
     }
-    
+
     h3 {
-      color: #b71c1c;
-      margin: 25px 0 15px 0;
-      font-size: 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--accent);
+      margin: 24px 0 10px;
     }
-    
-    p {
-      margin-bottom: 15px;
-    }
-    
+
+    p { margin-bottom: 14px; color: var(--text-muted); font-size: 15px; }
+    p strong { color: var(--text); }
+
     ul, ol {
       margin-left: 20px;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
-    
     li {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+      font-size: 15px;
     }
-    
-    .warning {
-      background: #ffebee;
-      padding: 20px;
-      border-left: 4px solid #d32f2f;
-      margin: 20px 0;
-      border-radius: 4px;
-    }
-    
-    .warning strong {
-      color: #d32f2f;
-    }
-    
+    li strong { color: var(--text); }
+
+    /* footer */
     footer {
-      background: #1a1a1a;
-      color: #999;
-      padding: 30px 20px;
+      border-top: 1px solid var(--line);
+      padding: 32px;
       text-align: center;
-      font-size: 12px;
-      margin-top: 60px;
     }
-    
-    footer a {
-      color: #0066cc;
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .footer-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
       text-decoration: none;
+      transition: color 150ms;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    footer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      margin: 0;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>⚠️ Risk Disclosure</h1>
-  <p>Please Read Carefully Before Using Occelatus Research</p>
-  <p style="font-size: 12px; opacity: 0.9;">Last Updated: May 13, 2026</p>
+  <a href="/" class="nav-logo">Occelatus<span>.</span></a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/exit-liquidity">Tracker</a>
+    <a href="/terms">Terms</a>
+  </nav>
 </header>
 
-<div class="container">
-  
-  <div class="warning">
+<div class="page-hero">
+  <div class="page-eyebrow">Risk Disclosure</div>
+  <h1>Please Read Before Using Occelatus Research</h1>
+  <div class="page-meta">Last Updated: May 13, 2026</div>
+</div>
+
+<div class="content">
+
+  <div class="warn-box">
     <strong>CRITICAL WARNING:</strong> Cryptocurrency is one of the riskiest investment categories in existence. You could lose 100% of your money. Do not use our research if you cannot afford to lose your entire investment.
   </div>
 
   <h2>1. Cryptocurrency Volatility</h2>
   <p>Cryptocurrency prices are extremely volatile and unpredictable. Bitcoin has dropped 80%+ in single years. Smaller tokens move even more dramatically.</p>
-  
   <p><strong>What this means:</strong> A token you buy today could be worth 10x more tomorrow, or 90% less. There is no pattern or guarantee.</p>
 
   <h2>2. Market Manipulation</h2>
@@ -130,7 +225,7 @@
     <li><strong>Exit scams:</strong> Exchanges or platforms disappear with customer funds</li>
   </ul>
 
-  <div class="warning">
+  <div class="warn-box">
     <strong>Reality:</strong> If a project sounds too good to be true, it is. Our analysis can identify some obvious red flags, but we cannot catch all scams. Assume every new project could be fraudulent unless proven otherwise.
   </div>
 
@@ -155,13 +250,12 @@
   <h2>6. Regulatory Risk</h2>
   <p>Government regulations could dramatically impact cryptocurrency:</p>
   <ul>
-    <li>Bans on crypto trading (China, UK considering)</li>
+    <li>Bans on crypto trading</li>
     <li>Heavy taxation changes</li>
     <li>Stablecoin regulation eliminating key pairs</li>
     <li>Security restrictions on exchanges</li>
   </ul>
-
-  <p><strong>What this means:</strong> A legal investment today could become illegal tomorrow. Your holdings could be forced liquidation at unfavorable prices.</p>
+  <p><strong>What this means:</strong> A legal investment today could become illegal tomorrow. Your holdings could face forced liquidation at unfavorable prices.</p>
 
   <h2>7. Liquidity Risk</h2>
   <p>Many tokens have thin liquidity, meaning:</p>
@@ -176,7 +270,7 @@
   <p>Blockchain technology itself has risks:</p>
   <ul>
     <li><strong>51% attacks:</strong> Smaller blockchains can be taken over and reversed</li>
-    <li><strong>Network failures:</strong> Ethereum has experienced extended outages</li>
+    <li><strong>Network failures:</strong> Blockchains have experienced extended outages</li>
     <li><strong>Obsolescence:</strong> Newer technology could replace current protocols</li>
     <li><strong>Consensus changes:</strong> Protocol forks can split communities and value</li>
   </ul>
@@ -198,7 +292,7 @@
     <li>Market sentiment changes instantly and unexpectedly</li>
   </ul>
 
-  <div class="warning">
+  <div class="warn-box">
     <strong>Our analysis identifies some risks and opportunities, but is NOT a guarantee against losses.</strong> Use it as ONE data point among MANY in your research, not as a foundation for your entire investment decision.
   </div>
 
@@ -206,7 +300,7 @@
   <p><strong>This is not hyperbole.</strong> In cryptocurrency, it's completely possible to:</p>
   <ul>
     <li>Invest $10,000 and have it become $0</li>
-    <li>Have legitimate investment go to zero overnight due to hacks or scams</li>
+    <li>Have a legitimate investment go to zero overnight due to hacks or scams</li>
     <li>Be locked out of your funds permanently</li>
     <li>Have your exchange disappear with your money</li>
   </ul>
@@ -232,7 +326,7 @@
     <li>Never invest your rent, medical fund, or emergency savings</li>
     <li>Diversify outside of crypto</li>
     <li>Secure your wallets properly (cold storage, secure passwords)</li>
-    <li>Consult a qualified financial advisor about YOUR situation</li>
+    <li>Consult a qualified financial advisor about your situation</li>
     <li>Take personal responsibility for all your decisions</li>
   </ul>
 
@@ -243,19 +337,23 @@
     <li>Cannot predict future price movements</li>
     <li>Cannot catch all risks or scams</li>
     <li>Is based on available data, which may be incomplete or incorrect</li>
-    <li>Should be ONE data point in YOUR comprehensive research</li>
+    <li>Should be ONE data point in your comprehensive research</li>
     <li>Does not guarantee any outcomes</li>
   </ul>
 
-  <div class="warning">
+  <div class="warn-box">
     <strong>Bottom line:</strong> If you use our research and lose money, that's on you. We're not responsible. You're responsible for your own decisions.
   </div>
 
 </div>
 
 <footer>
-  <p><a href="/">← Back to Home</a> | <a href="/terms">Read Terms of Service</a></p>
-  <p style="margin-top: 20px;">© 2026 Occelatus Research. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/">← Home</a>
+    <a href="/terms">Terms of Service</a>
+    <a href="/exit-liquidity">Tracker</a>
+  </div>
+  <p>© 2026 Occelatus Research. All rights reserved.</p>
 </footer>
 
 </body>

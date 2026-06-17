@@ -3,108 +3,218 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service - Occelatus Research</title>
+  <title>Terms of Service — Occelatus Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --bg-0: #0b0e17;
+      --bg-1: #11141f;
+      --bg-2: #181c2a;
+      --line: rgba(255,255,255,0.06);
+      --line-strong: rgba(255,255,255,0.12);
+      --text: #e6e8ef;
+      --text-muted: #8b91a8;
+      --text-dim: #5a6079;
+      --accent: #7df9ff;
+      --accent-warm: #ff6b9d;
+      --accent-soft: rgba(125,249,255,0.10);
+      --danger: #ff5d5d;
+      --warn: #f5c451;
+      --radius: 14px;
+      --radius-sm: 8px;
     }
-    
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      background: var(--bg-0);
+      color: var(--text);
+      min-height: 100vh;
       line-height: 1.7;
-      color: #333;
-      background: #fafafa;
     }
-    
+
+    /* nav */
     header {
-      background: #0066cc;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
+      border-bottom: 1px solid var(--line);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      background: rgba(11,14,23,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    
-    header h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
     }
-    
-    .container {
-      max-width: 800px;
+    .nav-logo span { color: var(--accent); }
+    nav { display: flex; gap: 28px; align-items: center; }
+    nav a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 150ms;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* page hero */
+    .page-hero {
+      padding: 56px 32px 40px;
+      max-width: 860px;
       margin: 0 auto;
-      padding: 40px 20px;
-      background: white;
     }
-    
+    .page-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .page-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .page-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* content */
+    .content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px 80px;
+    }
+
+    .notice-box {
+      background: var(--accent-soft);
+      border: 1px solid rgba(125,249,255,0.18);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 32px 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .notice-box strong { color: var(--accent); }
+
+    .warn-box {
+      background: rgba(245,196,81,0.07);
+      border: 1px solid rgba(245,196,81,0.25);
+      border-left: 3px solid var(--warn);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 32px 0;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .warn-box strong { color: var(--warn); }
+
     h2 {
-      color: #0066cc;
-      margin: 40px 0 20px 0;
-      font-size: 20px;
-      border-bottom: 2px solid #0066cc;
-      padding-bottom: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      margin: 48px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
     }
-    
+
     h3 {
-      color: #004499;
-      margin: 25px 0 15px 0;
-      font-size: 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--accent);
+      margin: 24px 0 10px;
     }
-    
-    p {
-      margin-bottom: 15px;
-    }
-    
+
+    p { margin-bottom: 14px; color: var(--text-muted); font-size: 15px; }
+    p strong { color: var(--text); }
+
     ul, ol {
       margin-left: 20px;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
-    
     li {
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+      font-size: 15px;
     }
-    
-    .highlight {
-      background: #fff3cd;
-      padding: 20px;
-      border-left: 4px solid #d32f2f;
-      margin: 20px 0;
-      border-radius: 4px;
-      color: #d32f2f;
-    }
-    
+    li strong { color: var(--text); }
+
+    /* footer */
     footer {
-      background: #1a1a1a;
-      color: #999;
-      padding: 30px 20px;
+      border-top: 1px solid var(--line);
+      padding: 32px;
       text-align: center;
-      font-size: 12px;
-      margin-top: 60px;
     }
-    
-    footer a {
-      color: #0066cc;
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .footer-links a {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
       text-decoration: none;
+      transition: color 150ms;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    footer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      margin: 0;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Terms of Service</h1>
-  <p>Occelatus Research</p>
-  <p style="font-size: 12px; opacity: 0.9;">Last Updated: May 13, 2026</p>
+  <a href="/" class="nav-logo">Occelatus<span>.</span></a>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/exit-liquidity">Tracker</a>
+    <a href="/risk-disclosure">Risk Disclosure</a>
+  </nav>
 </header>
 
-<div class="container">
-  
-  <div class="highlight">
+<div class="page-hero">
+  <div class="page-eyebrow">Terms of Service</div>
+  <h1>Occelatus Research</h1>
+  <div class="page-meta">Last Updated: May 13, 2026</div>
+</div>
+
+<div class="content">
+
+  <div class="notice-box">
     <strong>⚠️ CRITICAL DISCLAIMER:</strong> By using Occelatus Research, you agree that you have read, understood, and accept all terms below, including the disclaimer that this is NOT financial advice and we are NOT a registered investment advisor.
   </div>
 
   <h2>1. Disclaimer of Professional Services</h2>
   <p>Occelatus Research is NOT a registered investment advisor, broker, broker-dealer, money manager, or financial consultant. We do NOT hold any licenses or credentials as financial professionals. We provide informational analysis and content only.</p>
-  
   <p>NOTHING on this website or in our reports constitutes financial advice, investment advice, investment recommendations, or professional financial services. We do not advise you to buy, sell, or hold any asset.</p>
 
   <h2>2. Informational Content Only</h2>
@@ -125,7 +235,6 @@
     <li>Future market performance or price movements</li>
     <li>That our analysis will prevent losses or guarantee profits</li>
   </ul>
-  
   <p>Past performance does not guarantee future results. Market conditions change rapidly.</p>
 
   <h2>4. Sole Responsibility for Decisions</h2>
@@ -187,8 +296,7 @@
     <li>You understand the transaction is non-refundable unless otherwise stated</li>
     <li>You accept the informational content as-is</li>
   </ul>
-  
-  <p>If you believe a transaction was made in error, contact research@occelatus.io within 24 hours.</p>
+  <p>If you believe a transaction was made in error, contact <strong>research@occelatus.io</strong> within 24 hours.</p>
 
   <h2>10. Intellectual Property</h2>
   <p>All content, analysis, reports, and materials provided by Occelatus Research are the intellectual property of Occelatus Research and protected by copyright law. You may not:</p>
@@ -206,18 +314,21 @@
   <p>These terms are governed by the laws of the jurisdiction where Occelatus Research operates. Any disputes shall be resolved through binding arbitration.</p>
 
   <h2>13. Contact</h2>
-  <p>Questions about these terms? Contact us at:</p>
-  <p><strong>Email:</strong> research@occelatus.io</p>
+  <p>Questions about these terms? Contact us at <strong>research@occelatus.io</strong>.</p>
 
-  <div class="highlight" style="margin-top: 40px;">
+  <div class="warn-box" style="margin-top: 40px;">
     By purchasing or using Occelatus Research, you acknowledge that you have read these terms, understand them, and accept all conditions including the disclaimers above. If you do not agree, do not use our service.
   </div>
 
 </div>
 
 <footer>
-  <p><a href="/">← Back to Home</a> | <a href="/risk-disclosure">Read Risk Disclosure</a></p>
-  <p style="margin-top: 20px;">© 2026 Occelatus Research. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="/">← Home</a>
+    <a href="/risk-disclosure">Risk Disclosure</a>
+    <a href="/exit-liquidity">Tracker</a>
+  </div>
+  <p>© 2026 Occelatus Research. All rights reserved.</p>
 </footer>
 
 </body>
