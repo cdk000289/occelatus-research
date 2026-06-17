@@ -4,39 +4,167 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Starknet (STRK) Liquidity Snapshot — June 2026 | Occelatus Research</title>
-  <meta name="description" content="Starknet live liquidity data: price, 24h volume, DEX depth, exit slippage. Updated June 17, 2026 14:03 UTC.">
+  <meta name="description" content="Starknet live liquidity data: price, 24h volume, DEX depth, exit slippage. Updated June 17, 2026 16:15 UTC.">
   <link rel="canonical" href="https://occelatus.io/reports/strk-liquidity-snapshot">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body{font-family:-apple-system,sans-serif;background:#0a0a0f;color:#e2e8f0;max-width:800px;margin:40px auto;padding:0 20px}
-    a{color:#60a5fa} h1{color:#f8fafc} .meta{color:#6b7280;font-size:.85rem}
-    table{border-collapse:collapse;width:100%;margin:20px 0}
-    td,th{padding:10px;border:1px solid #1f2937;text-align:left}
-    th{background:#111827;color:#94a3b8;font-size:.82rem}
-    .cta{background:#1e293b;border:1px solid #334155;border-radius:8px;padding:20px;margin:24px 0;text-align:center}
-    .btn{display:inline-block;background:#3b82f6;color:#fff;padding:8px 20px;border-radius:5px;text-decoration:none;font-weight:600}
-    .disc{font-size:.78rem;color:#4b5563;margin-top:24px;border-top:1px solid #1f2937;padding-top:12px}
+    :root{
+      --bg-0:#0b0e17;--bg-1:#11141f;--bg-2:#181c2a;
+      --line:rgba(255,255,255,0.06);--line-strong:rgba(255,255,255,0.12);
+      --text:#e6e8ef;--text-muted:#8b91a8;--text-dim:#5a6079;
+      --accent:#7df9ff;--accent-warm:#ff6b9d;--accent-soft:rgba(125,249,255,0.10);
+      --danger:#ff5d5d;--warn:#f5c451;--radius:14px;--radius-sm:8px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'IBM Plex Sans',sans-serif;font-weight:300;
+      background:var(--bg-0);color:var(--text);min-height:100vh;line-height:1.65;
+      overflow-x:hidden;
+      background-image:
+        radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),
+        radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%),
+        radial-gradient(ellipse 70% 60% at 50% 110%,rgba(125,249,255,0.05) 0%,transparent 60%);
+      background-attachment:fixed;
+    }
+    body::before{
+      content:"";position:fixed;inset:0;
+      background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+      background-size:80px 80px;
+      mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);
+      pointer-events:none;z-index:0;opacity:0.5;
+    }
+    .container{max-width:900px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px) saturate(140%);
+      -webkit-backdrop-filter:blur(18px) saturate(140%);
+      background:rgba(11,14,23,0.72);
+      border-bottom:1px solid var(--line);
+    }
+    .header-content{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+    .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+    .logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-warm) 100%);position:relative;box-shadow:0 0 24px rgba(125,249,255,0.35);flex-shrink:0}
+    .logo-mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--bg-0)}
+    nav{display:flex;gap:28px;align-items:center}
+    nav a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:0.02em;transition:color 180ms ease}
+    nav a:hover{color:var(--text)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform 180ms ease,box-shadow 220ms ease,background 180ms ease,border-color 180ms ease;white-space:nowrap}
+    .btn-primary{background:var(--accent);color:var(--bg-0);box-shadow:0 0 0 1px var(--accent),0 10px 30px -10px rgba(125,249,255,0.5)}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px var(--accent),0 16px 36px -10px rgba(125,249,255,0.7)}
+    .btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
+    .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+    main{padding:56px 0 80px}
+    .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+    h1{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(26px,4vw,42px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
+    h1 strong{font-weight:700}
+    .dateline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--text-dim);margin-bottom:36px}
+    .dateline em{color:var(--accent);font-style:normal}
+    .data-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+    .data-card{background:linear-gradient(180deg,rgba(255,255,255,0.025) 0%,rgba(255,255,255,0.005) 100%);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:16px 20px}
+    .data-card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
+    .data-card-value{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text)}
+    .data-card-value.accent{color:var(--accent)}
+    .table-section{background:var(--bg-1);border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;margin-bottom:28px}
+    .table-section table{width:100%;border-collapse:collapse;font-size:13px}
+    .table-section thead tr{background:var(--bg-2);border-bottom:1px solid var(--line-strong)}
+    .table-section th{padding:11px 16px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--text-dim);text-transform:uppercase;font-weight:400}
+    .table-section td{padding:11px 16px;border-bottom:1px solid var(--line);color:var(--text-muted);vertical-align:middle}
+    .table-section td:first-child{color:var(--text)}
+    .table-section tr:last-child td{border-bottom:none}
+    .cta-card{background:linear-gradient(135deg,rgba(125,249,255,0.06) 0%,rgba(17,20,31,0.8) 100%);border:1px solid rgba(125,249,255,0.18);border-radius:var(--radius);padding:32px;margin:36px 0;text-align:center}
+    .cta-card h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;margin-bottom:10px}
+    .cta-card p{color:var(--text-muted);font-size:14px;max-width:500px;margin:0 auto 22px;line-height:1.7}
+    .disclaimer-banner{margin:28px 0 0;padding:14px 20px;background:rgba(245,196,81,0.06);border:1px solid rgba(245,196,81,0.25);border-radius:var(--radius-sm);font-size:13px;color:var(--warn);line-height:1.55}
+    .disclaimer-banner a{color:var(--warn);text-decoration:underline}
+    footer{padding:56px 0 32px;border-top:1px solid var(--line-strong);margin-top:40px;font-size:13px;color:var(--text-dim)}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:40px}
+    .footer-brand p{max-width:380px;line-height:1.7}
+    .footer-links{display:flex;gap:28px;flex-wrap:wrap;justify-content:flex-end}
+    .footer-links a{color:var(--text-muted);text-decoration:none;transition:color 180ms ease}
+    .footer-links a:hover{color:var(--accent)}
+    .footer-legal{padding:24px 0 0;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:var(--text-dim)}
+    .footer-legal strong{color:var(--text-muted)}
+    .copyright{margin-top:20px;font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;font-size:11px}
+    @media(max-width:700px){
+      .data-grid{grid-template-columns:1fr}
+      nav a:not(.btn){display:none}
+      .footer-grid{grid-template-columns:1fr}
+      .footer-links{justify-content:flex-start}
+    }
   </style>
 </head>
 <body>
-  <p><a href="/">← Occelatus Research</a> | <a href="/exit-liquidity.html">Exit Liquidity Tracker →</a></p>
-  <h1>Starknet (STRK) — Liquidity Snapshot</h1>
-  <p class="meta">Generated: June 17, 2026 14:03 UTC · Data: CoinGecko + DexScreener</p>
-
-  <table>
-    <tr><th>Metric</th><th>Value</th></tr>
-    <tr><td>Price</td><td>$0.0354</td></tr>
-    <tr><td>24h Change</td><td>-2.8%</td></tr>
-    <tr><td>24h Volume</td><td>$16.44M</td></tr>
-    <tr><td>Market Cap</td><td>$231.56M</td></tr>
-    <tr><td>Top Pair Liquidity (DEX)</td><td>N/A</td></tr>
-    <tr><td>$10K Exit Slippage (est.)</td><td>N/A</td></tr>
-  </table>
-
-  <div class="cta">
-    <p>Need a full liquidity analysis for STRK — depth at $10K–$500K, holder concentration, exit slippage at scale, and historical behavior?</p>
-    <a href="/" class="btn">Get the Full Report — $19</a>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
+      <nav>
+        <a href="/#features">Coverage</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/exit-liquidity.html">Exit Tracker</a>
+        <a href="/#signup" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;">Get sample</a>
+      </nav>
+    </div>
   </div>
+</header>
 
-  <p class="disc">Informational only. Not financial advice. All figures sourced from live data at generation time. <a href='/risk-disclosure.html'>Full risk disclosure →</a></p>
+<main>
+  <div class="container">
+    <div class="eyebrow">Liquidity Snapshot · June 2026</div>
+    <h1>Starknet (<strong>STRK</strong>)</h1>
+    <div class="dateline">Generated: <em>June 17, 2026 16:15 UTC</em> &nbsp;·&nbsp; Data: CoinGecko + DexScreener</div>
+
+    <div class="data-grid">
+      <div class="data-card"><div class="data-card-label">Price</div><div class="data-card-value">$0.0359</div></div>
+      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value">+0.6%</div></div>
+      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value accent">$15.20M</div></div>
+      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$233.67M</div></div>
+    </div>
+
+    <div class="table-section">
+      <table>
+        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Top Pair Liquidity (DEX)</td><td>N/A</td></tr>
+          <tr><td>$10K Exit Slippage (est.)</td><td>N/A</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cta-card">
+      <h3>Need deeper analysis for <strong>STRK</strong>?</h3>
+      <p>Full reports include multi-pair depth breakdown, exit slippage at $10K–$500K, holder concentration, and historical post-unlock behavior — delivered to your inbox in under 30 minutes.</p>
+      <a href="/" class="btn btn-primary">Get the Full Report — $19 →</a>
+    </div>
+
+    <div class="disclaimer-banner">
+      <strong>Disclaimer:</strong> Informational only. Not financial advice. All figures sourced from live data at generation time. <a href='/risk-disclosure.html'>Full risk disclosure →</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:12px;"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></div>
+        <p>On-chain crypto intelligence. Liquidity depth, unlock risk, honest methodology — delivered as readable reports.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/risk-disclosure.html">Risk Disclosure</a>
+        <a href="mailto:research@occelatus.io">Contact</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <strong>LEGAL:</strong> Occelatus Research provides informational content and analysis only. This is NOT financial advice, investment advice, or professional financial services. Cryptocurrency is highly volatile and risky. You are solely responsible for your investment decisions. Past performance does not guarantee future results. Consult a qualified financial advisor. Occelatus Research is not a registered investment advisor.
+      <div class="copyright">© 2026 OCCELATUS_RESEARCH · ALL RIGHTS RESERVED</div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>

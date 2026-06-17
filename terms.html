@@ -35,48 +35,51 @@
       color: var(--text);
       min-height: 100vh;
       line-height: 1.7;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(ellipse 60% 50% at 18% 8%, rgba(125,249,255,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 82% 18%, rgba(255,107,157,0.05) 0%, transparent 55%);
+      background-attachment: fixed;
     }
 
     /* nav */
     header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      background: rgba(11,14,23,0.72);
       border-bottom: 1px solid var(--line);
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      background: rgba(11,14,23,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
     }
-    .nav-logo {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 17px;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.01em;
+    .header-content { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px;
+      letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px;
+      text-decoration: none; color: var(--text);
     }
-    .nav-logo span { color: var(--accent); }
+    .logo-mark {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent) 0%, #ff6b9d 100%);
+      position: relative; box-shadow: 0 0 24px rgba(125,249,255,0.35); flex-shrink: 0;
+    }
+    .logo-mark::after { content: ""; position: absolute; inset: 6px; border-radius: 4px; background: var(--bg-0); }
     nav { display: flex; gap: 28px; align-items: center; }
     nav a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      color: var(--text-muted);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 150ms;
+      color: var(--text-muted); text-decoration: none; font-size: 13px;
+      font-weight: 400; letter-spacing: 0.02em; transition: color 180ms ease;
     }
-    nav a:hover { color: var(--accent); }
+    nav a:hover { color: var(--text); }
+    .btn-ghost-sm {
+      display: inline-flex; align-items: center; padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
+      font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none;
+      transition: border-color 180ms ease, color 180ms ease;
+    }
+    .btn-ghost-sm:hover { border-color: var(--accent); color: var(--accent); }
 
     /* page hero */
     .page-hero {
-      padding: 56px 32px 40px;
-      max-width: 860px;
-      margin: 0 auto;
+      padding: 56px 0 40px;
     }
     .page-eyebrow {
       font-family: 'JetBrains Mono', monospace;
@@ -101,9 +104,7 @@
 
     /* content */
     .content {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 32px 80px;
+      padding: 0 0 80px;
     }
 
     .notice-box {
@@ -164,43 +165,40 @@
 
     /* footer */
     footer {
-      border-top: 1px solid var(--line);
-      padding: 32px;
-      text-align: center;
-    }
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .footer-links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
+      padding: 56px 0 32px;
+      border-top: 1px solid var(--line-strong);
+      margin-top: 40px;
+      font-size: 13px;
       color: var(--text-dim);
-      text-decoration: none;
-      transition: color 150ms;
     }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; margin-bottom: 40px; }
+    .footer-brand p { max-width: 380px; line-height: 1.7; }
+    .footer-links { display: flex; gap: 28px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 180ms ease; }
     .footer-links a:hover { color: var(--accent); }
-    footer p {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--text-dim);
-      margin: 0;
-    }
+    .footer-legal { padding: 24px 0 0; border-top: 1px solid var(--line); font-size: 12px; line-height: 1.7; color: var(--text-dim); }
+    .footer-legal strong { color: var(--text-muted); }
+    .copyright { margin-top: 20px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; font-size: 11px; }
+    @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr; } .footer-links { justify-content: flex-start; } nav a:not(.btn-ghost-sm) { display: none; } }
   </style>
 </head>
 <body>
 
 <header>
-  <a href="/" class="nav-logo">Occelatus<span>.</span></a>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/exit-liquidity">Tracker</a>
-    <a href="/risk-disclosure">Risk Disclosure</a>
-  </nav>
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
+      <nav>
+        <a href="/#features">Coverage</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/exit-liquidity.html">Exit Tracker</a>
+        <a href="/#signup" class="btn-ghost-sm">Get sample</a>
+      </nav>
+    </div>
+  </div>
 </header>
 
+<div class="container">
 <div class="page-hero">
   <div class="page-eyebrow">Terms of Service</div>
   <h1>Occelatus Research</h1>
@@ -321,14 +319,27 @@
   </div>
 
 </div>
+</div>
 
 <footer>
-  <div class="footer-links">
-    <a href="/">← Home</a>
-    <a href="/risk-disclosure">Risk Disclosure</a>
-    <a href="/exit-liquidity">Tracker</a>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:12px;"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></div>
+        <p>On-chain crypto intelligence. Liquidity depth, unlock risk, honest methodology — delivered as readable reports.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/risk-disclosure.html">Risk Disclosure</a>
+        <a href="mailto:research@occelatus.io">Contact</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <strong>LEGAL:</strong> Occelatus Research provides informational content and analysis only. This is NOT financial advice, investment advice, or professional financial services. Cryptocurrency is highly volatile and risky. You are solely responsible for your investment decisions. Past performance does not guarantee future results. Consult a qualified financial advisor. Occelatus Research is not a registered investment advisor.
+      <div class="copyright">© 2026 OCCELATUS_RESEARCH · ALL RIGHTS RESERVED</div>
+    </div>
   </div>
-  <p>© 2026 Occelatus Research. All rights reserved.</p>
 </footer>
 
 </body>

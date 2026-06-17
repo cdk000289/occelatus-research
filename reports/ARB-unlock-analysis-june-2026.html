@@ -1,83 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARB Unlock Analysis June 2026 | Liquidity Depth, Exit Slippage, Holder Data</title>
-<meta name="description" content="ARB (Arbitrum) unlocks 1.15% of circulating supply on June 16, 2026. Live liquidity depth, exit slippage estimates, and on-chain data analysis.">
-<style>
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 820px; margin: 0 auto; padding: 20px 24px; color: #1a1a1a; background: #fff; }
-  h1 { font-size: 1.6rem; margin-bottom: 4px; }
-  .dateline { color: #666; font-size: 0.85rem; margin-bottom: 20px; }
-  .summary { background: #f8f8f8; border-left: 3px solid #333; padding: 14px 18px; margin: 20px 0; line-height: 1.6; }
-  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.92rem; }
-  th { background: #1a1a1a; color: #fff; text-align: left; padding: 8px 12px; }
-  td { padding: 8px 12px; border-bottom: 1px solid #e5e5e5; }
-  tr:nth-child(even) td { background: #fafafa; }
-  .cta { background: #1a1a1a; color: #fff; padding: 18px 24px; margin: 28px 0; text-align: center; }
-  .cta a { color: #fff; font-weight: bold; font-size: 1.05rem; }
-  .disclaimer { font-size: 0.78rem; color: #888; border-top: 1px solid #e5e5e5; padding-top: 14px; margin-top: 28px; line-height: 1.5; }
-  h2 { font-size: 1.05rem; margin-top: 28px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARB Unlock Analysis — June 16, 2026 | Occelatus Research</title>
+  <meta name="description" content="Arbitrum (ARB) token unlock on June 16, 2026. Preview: 71.9M ARB tokens (1.15% of supply), est. $5.5M. Full liquidity analysis available.">
+  <link rel="canonical" href="https://occelatus.io/reports/arb-unlock-analysis">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+
+    :root {
+      --bg-0: #0b0e17; --bg-1: #11141f; --bg-2: #181c2a;
+      --line: rgba(255,255,255,0.06); --line-strong: rgba(255,255,255,0.12);
+      --text: #e6e8ef; --text-muted: #8b91a8; --text-dim: #5a6079;
+      --accent: #7df9ff; --accent-warm: #ff6b9d; --accent-soft: rgba(125,249,255,0.12);
+      --danger: #ff5d5d; --warn: #f5c451; --radius: 14px; --radius-sm: 8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'IBM Plex Sans', system-ui, sans-serif;
+      font-weight: 300; line-height: 1.65;
+      color: var(--text); background: var(--bg-0);
+      background-image:
+        radial-gradient(ellipse 60% 50% at 18% 8%, rgba(125,249,255,0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 82% 18%, rgba(255,107,157,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 70% 60% at 50% 110%, rgba(125,249,255,0.05) 0%, transparent 60%);
+      background-attachment: fixed; min-height: 100vh; overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 70%);
+      pointer-events: none; z-index: 0; opacity: 0.5;
+    }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      background: rgba(11,14,23,0.72);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-content { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .logo-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%); position: relative; box-shadow: 0 0 24px rgba(125,249,255,0.35); flex-shrink: 0; }
+    .logo-mark::after { content: ""; position: absolute; inset: 6px; border-radius: 4px; background: var(--bg-0); }
+    nav { display: flex; gap: 28px; align-items: center; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; letter-spacing: 0.02em; transition: color 180ms ease; }
+    nav a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border: 1px solid transparent; border-radius: var(--radius-sm); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; text-decoration: none; transition: transform 180ms ease, box-shadow 220ms ease, background 180ms ease, border-color 180ms ease; white-space: nowrap; }
+    .btn-primary { background: var(--accent); color: var(--bg-0); box-shadow: 0 0 0 1px var(--accent), 0 10px 30px -10px rgba(125,249,255,0.5); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px var(--accent), 0 16px 36px -12px rgba(125,249,255,0.7); }
+    .btn-ghost { background: transparent; color: var(--text); border-color: var(--line-strong); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    main { padding: 56px 0 80px; }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
+    h1 strong { font-weight: 700; }
+    .dateline { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 32px; }
+    .dateline em { color: var(--accent); font-style: normal; }
+    .summary-card {
+      padding: 24px 28px; background: linear-gradient(180deg, rgba(125,249,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(125,249,255,0.25); border-radius: var(--radius);
+      font-size: 15px; line-height: 1.75; color: var(--text-muted); margin-bottom: 32px;
+    }
+    .summary-card strong { color: var(--text); }
+    .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 28px; }
+    .data-card { background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 100%); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 16px 20px; }
+    .data-card-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+    .data-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); }
+    .data-card-value.accent { color: var(--accent); }
+    .data-card-value.warn { color: var(--warn); }
+    .data-card-value.danger { color: var(--danger); }
+    .table-section { background: var(--bg-1); border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
+    .table-section table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .table-section thead tr { background: var(--bg-2); border-bottom: 1px solid var(--line-strong); }
+    .table-section th { padding: 11px 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-dim); text-transform: uppercase; font-weight: 400; }
+    .table-section td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--text-muted); vertical-align: middle; }
+    .table-section td:first-child { color: var(--text); font-weight: 400; }
+    .table-section tr:last-child td { border-bottom: none; }
+    .teaser-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin: 28px 0 12px; }
+    .gate-block {
+      position: relative; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden;
+    }
+    .gate-blur {
+      filter: blur(6px); opacity: 0.3; pointer-events: none; user-select: none;
+      padding: 20px; background: var(--bg-1);
+    }
+    .gate-overlay {
+      position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      background: rgba(11,14,23,0.75); backdrop-filter: blur(2px); padding: 28px; text-align: center;
+    }
+    .gate-overlay h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+    .gate-overlay p { font-size: 14px; color: var(--text-muted); max-width: 440px; margin-bottom: 20px; line-height: 1.6; }
+    .gate-features { display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; text-align: left; }
+    .gate-features li { font-size: 13px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; list-style: none; }
+    .gate-features li::before { content: "→"; color: var(--accent); font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+    .disclaimer { margin-top: 36px; padding: 16px 20px; border: 1px solid rgba(245,196,81,0.2); border-radius: var(--radius-sm); background: rgba(245,196,81,0.04); font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+    .disclaimer a { color: var(--text-dim); text-decoration: underline; }
+    footer { padding: 48px 0 28px; border-top: 1px solid var(--line-strong); margin-top: 64px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; margin-bottom: 32px; }
+    .footer-brand p { max-width: 360px; font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-top: 10px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 180ms ease; }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-legal { padding: 20px 0 0; border-top: 1px solid var(--line); font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+    .footer-legal strong { color: var(--text-muted); }
+    .copyright { margin-top: 16px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; font-size: 11px; }
+    @media (max-width: 700px) {
+      .data-grid { grid-template-columns: 1fr; }
+      nav a:not(.btn) { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-links { justify-content: flex-start; }
+    }
+
+  </style>
 </head>
 <body>
 
-<p class="dateline">Published: June 11, 2026 | Data pulled: 2026-06-11 12:30 UTC | Source: CoinGecko, DexScreener</p>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
+      <nav>
+        <a href="/#features">Coverage</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/exit-liquidity.html">Exit Tracker</a>
+        <a href="/#signup" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;">Get sample</a>
+      </nav>
+    </div>
+  </div>
+</header>
 
-<h1>ARB Unlock Analysis — June 2026</h1>
-<h2 style="font-size:1rem;color:#444;margin-top:4px;">Arbitrum | June 16, 2026 Unlock | Liquidity Depth &amp; Exit Slippage</h2>
+<main>
+  <div class="container">
+    <div class="eyebrow">Unlock Analysis · Arbitrum</div>
+    <h1>Arbitrum (<strong>ARB</strong>) — Unlock Preview</h1>
+    <p class="dateline">Unlock date: <em>June 16, 2026</em> &nbsp;·&nbsp; COMPLETED &nbsp;·&nbsp; Data: CoinGecko + DexScreener + Tokenomist</p>
 
-<div class="summary">
-ARB unlocks approximately 1.15% of circulating supply — roughly 71.9 million tokens (~$5.5M at current prices) — on June 16, 2026. Against a 24-hour trading volume of $66.2M and an active DEX liquidity pool depth of ~$5.9M across the top three pairs, the unlock represents roughly 8.3% of a single day's volume. The data shows that real on-chain exit depth (active pools only) is significantly tighter than headline liquidity figures suggest: a $10K exit costs an estimated 0.17% slippage at current depth, scaling to ~0.84% for a $50K position. Holders planning exits around the unlock window should model both pre-event liquidity compression and post-event absorption capacity.
-</div>
+    <div class="summary-card">
+      Arbitrum (ARB) unlocked 71.9M tokens — approximately <strong>1.15% of circulating supply (~$5.5M)</strong> — on June 16, 2026. Against $66.2M in 24-hour volume, the unlock represented ~8.3% of a single day's flow. On-chain DEX liquidity across the top three active pairs totaled $5.9M, producing a manageable $10K exit slippage of ~0.17%. The caveat: at $50K, slippage rises to ~0.84%, and actual exit depth compresses further when unlock recipients begin selling concurrently.
+    </div>
 
-<h2>Unlock Event Summary</h2>
-<table>
-  <tr><th>Field</th><th>Value</th></tr>
-  <tr><td>Token</td><td>ARB (Arbitrum)</td></tr>
-  <tr><td>Unlock Date</td><td>June 16, 2026</td></tr>
-  <tr><td>Days Until Unlock</td><td>5</td></tr>
-  <tr><td>Unlock % of Circulating Supply</td><td>1.15%</td></tr>
-  <tr><td>Est. Unlock Value</td><td>~$5,493,919</td></tr>
-  <tr><td>Circulating Supply</td><td>6,255,821,492 ARB</td></tr>
-  <tr><td>Confidence</td><td>Medium (tokenomist.ai + docs cross-referenced)</td></tr>
-</table>
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-card-label">Tokens unlocking</div>
+        <div class="data-card-value">71.9M ARB</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">% of supply</div>
+        <div class="data-card-value warn">1.15%</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">Est. unlock value</div>
+        <div class="data-card-value accent">$5.5M</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">Unlock / 24h volume</div>
+        <div class="data-card-value warn">8.3%</div>
+      </div>
+    </div>
 
-<h2>Live Market Data (as of 2026-06-11)</h2>
-<table>
-  <tr><th>Metric</th><th>Value</th></tr>
-  <tr><td>Price (USD)</td><td>$0.0802</td></tr>
-  <tr><td>Market Cap</td><td>$502,180,984</td></tr>
-  <tr><td>Market Cap Rank</td><td>#103</td></tr>
-  <tr><td>24h Volume</td><td>$66,188,447</td></tr>
-  <tr><td>Unlock Value vs. 24h Volume</td><td>8.3%</td></tr>
-</table>
+    <div class="teaser-label">[ preview ] Event snapshot</div>
+    <div class="table-section" style="margin-bottom:28px;">
+      <table>
+        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>Token</td><td>Arbitrum (ARB)</td></tr>
+          <tr><td>Chain</td><td>Arbitrum</td></tr>
+          <tr><td>Unlock date</td><td>June 16, 2026</td></tr>
+          <tr><td>Tokens unlocking</td><td>71.9M ARB</td></tr>
+          <tr><td>% of circulating supply</td><td>1.15%</td></tr>
+          <tr><td>Est. USD value</td><td>$5.5M</td></tr>
+          <tr><td>Current price</td><td>$0.077</td></tr>
+          <tr><td>24h trading volume</td><td>$66.2M</td></tr>
+          <tr><td>Unlock / 24h volume ratio</td><td style="color:var(--warn)">8.3%</td></tr>
+          <tr><td>$10K exit slippage (est.)</td><td style="color:var(--accent)">~0.17%</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-<h2>On-Chain Liquidity Depth (Active Pairs Only)</h2>
-<table>
-  <tr><th>Exchange / Chain</th><th>Liquidity (USD)</th><th>24h Volume</th></tr>
-  <tr><td>Uniswap / Arbitrum</td><td>$3,286,553</td><td>$771,005</td></tr>
-  <tr><td>Uniswap / Arbitrum (pair 2)</td><td>$1,533,845</td><td>active</td></tr>
-  <tr><td>Raydium / Solana</td><td>$1,104,333</td><td>active</td></tr>
-  <tr><td><strong>Total (top-3 active)</strong></td><td><strong>$5,924,730</strong></td><td></td></tr>
-</table>
+    <div class="teaser-label">[ full report ] What's inside</div>
+    <div class="gate-block">
+      <div class="gate-blur">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead><tr><th style="padding:10px 16px;background:#181c2a;color:#5a6079;font-size:10px;">Metric</th><th style="padding:10px 16px;background:#181c2a;color:#5a6079;font-size:10px;">Value</th><th style="padding:10px 16px;background:#181c2a;color:#5a6079;font-size:10px;">Notes</th></tr></thead>
+          <tbody>
+            <tr><td>DEX pair breakdown (all chains)</td><td>—</td><td>—</td></tr>
+<tr><td>Exit slippage at $10K / $50K / $100K / $500K</td><td>—</td><td>—</td></tr>
+<tr><td>Historical post-unlock price behavior</td><td>—</td><td>—</td></tr>
+<tr><td>Holder concentration + insider sell indicators</td><td>—</td><td>—</td></tr>
+<tr><td>Unlock timing risk assessment + rating</td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:16px;font-size:13px;color:#5a6079;">[ 5-10 page report · delivered in under 30 minutes ]</p>
+      </div>
+      <div class="gate-overlay">
+        <h3>Full analysis — <span style="color:var(--accent)">$19</span></h3>
+        <p>Complete DEX depth breakdown, multi-size exit slippage ($10K–$500K), holder concentration, historical post-unlock behavior, and a risk rating — delivered to your inbox in under 30 minutes.</p>
+        <ul class="gate-features">
+          <li>All DEX pairs — liquidity depth by chain</li>
+          <li>Exit slippage at $10K, $50K, $100K, $500K</li>
+          <li>Holder concentration + insider sell pressure</li>
+          <li>Historical post-unlock price comparisons</li>
+          <li>Unlock timing risk rating (Low / Medium / High)</li>
+        </ul>
+        <a href="https://buy.stripe.com/cNi28sbhHdz54CBaKo2go00?client_reference_id=tok_arb_unlock_June_16,_2026" class="btn btn-primary" style="margin-bottom:10px;">Get the Full Report — $19 →</a>
+        <p style="font-size:12px;color:var(--text-dim);">or <a href="https://buy.stripe.com/dRmfZi0D3dz51qpf0E2go01?client_reference_id=mkt_arb_unlock_June_16,_2026" style="color:var(--accent);">Market Deep Dive — $49</a> (full sector + liquidity rotation context)</p>
+      </div>
+    </div>
 
-<h2>Exit Slippage Estimates</h2>
-<table>
-  <tr><th>Trade Size</th><th>Est. Slippage</th><th>Notes</th></tr>
-  <tr><td>$10,000</td><td>~0.17%</td><td>Linear approximation, pre-event depth</td></tr>
-  <tr><td>$50,000</td><td>~0.84%</td><td>Assumes no concurrent sell pressure</td></tr>
-  <tr><td>$100,000+</td><td>Model required</td><td>Full depth analysis in paid report</td></tr>
-</table>
+    <div class="disclaimer">
+      This preview is for informational purposes only and does not constitute financial advice. All figures are sourced from live on-chain data at time of generation. Unlock dates may shift. Slippage estimates are approximations based on DEX pool depth. <a href="/risk-disclosure.html">Full risk disclosure →</a>
+    </div>
+  </div>
+</main>
 
-<div class="cta">
-  <p style="margin:0 0 10px;">Full ARB unlock analysis — holder concentration, depth under stress, comparable unlock outcomes — $19</p>
-  <a href="https://occelatus.io/#reports">Get the Full Report →</a>
-</div>
-
-<p class="disclaimer">
-  <strong>Disclaimer:</strong> This page is for informational purposes only and does not constitute financial, investment, or trading advice. Data sourced from CoinGecko and DexScreener and may not be real-time. Past unlock events are not predictive of future outcomes. Slippage estimates are simplified models and will vary under live market conditions. Always conduct your own research. Occelatus Labs is not a registered investment adviser.
-</p>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></div>
+        <p>On-chain crypto intelligence. Liquidity depth, unlock risk, honest methodology — delivered as readable reports.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/risk-disclosure.html">Risk Disclosure</a>
+        <a href="mailto:research@occelatus.io">Contact</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <strong>LEGAL:</strong> Occelatus Research provides informational content and analysis only. This is NOT financial advice, investment advice, or professional financial services. Cryptocurrency is highly volatile and risky. You are solely responsible for your investment decisions. Past performance does not guarantee future results. Consult a qualified financial advisor. Occelatus Research is not a registered investment advisor.
+      <div class="copyright">© 2026 OCCELATUS_RESEARCH · ALL RIGHTS RESERVED</div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
