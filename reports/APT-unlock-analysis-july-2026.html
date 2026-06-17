@@ -26,11 +26,11 @@
 </head>
 <body>
 <div class="wrap">
-<p class="dateline">Occelatus Research &middot; Updated June 16, 2026 — 12:30 UTC</p>
-<h1>APT Unlock Analysis — July 2026 <span class="badge badge-ok">T-26</span></h1>
+<p class="dateline">Occelatus Research &middot; Updated June 17, 2026 — 12:30 UTC</p>
+<h1>APT Unlock Analysis — July 2026 <span class="badge badge-warn">T-25</span></h1>
 
 <div class="summary">
-Aptos (APT) is scheduled to unlock 11.31M tokens — 0.66% of released supply — on July 12, 2026. At current prices ($0.6818) the event represents approximately $7.71M in unlocked value against $58.8M in 24h trading volume (unlock-to-volume ratio: 0.13x). On-chain DEX liquidity on the Aptos chain is thin relative to the unlock size: the three deepest pairs across PancakeSwap, Cellana, and LiquidSwap combine for $557K total liquidity. The deepest single pair (PancakeSwap APT/USDC) carries $373K in liquidity, yielding an estimated 5.3% price impact on a $10K exit and approximately 22% on a $50K exit. The unlock represents 13% of daily volume — meaningful but not extreme at current depth levels. Data pulled June 16, 2026 — 12:30 UTC.
+Aptos (APT) is scheduled to unlock 11.31M tokens — 0.66% of released supply — on July 12, 2026. At current prices ($0.6606) the event represents approximately $7.47M in unlocked value against $48.2M in 24h trading volume (unlock-to-volume ratio: 0.155x). On-chain liquidity across Aptos DEXes is moderate: the top three pairs on PancakeSwap, Cellana, and LiquidSwap combine for $548K total liquidity, with the deepest single pair (PancakeSwap APT/USDC) holding $367K. A $10K exit on the deepest pair incurs an estimated 5.5% price impact; a $50K exit rises to approximately 27%. Data pulled June 17, 2026 — 12:30 UTC.
 </div>
 
 <h2>Unlock Event Summary</h2>
@@ -38,15 +38,14 @@ Aptos (APT) is scheduled to unlock 11.31M tokens — 0.66% of released supply �
 <thead><tr><th>Field</th><th>Value</th></tr></thead>
 <tbody>
 <tr><td>Token</td><td>Aptos (APT)</td></tr>
-<tr><td>Unlock Date</td><td>July 12, 2026 (T-26)</td></tr>
+<tr><td>Unlock Date</td><td>July 12, 2026 (T-25)</td></tr>
 <tr><td>Tokens Unlocking</td><td>11.31M APT</td></tr>
 <tr><td>% of Released Supply</td><td>0.66%</td></tr>
-<tr><td>Est. USD Value</td><td>$7.71M</td></tr>
-<tr><td>Current Price</td><td>$0.6818</td></tr>
-<tr><td>24h Change</td><td>-1.59%</td></tr>
-<tr><td>24h Volume</td><td>$58,832,077</td></tr>
-<tr><td>Market Cap</td><td>$567,213,548</td></tr>
-<tr><td>Unlock Value / 24h Volume</td><td>0.13x</td></tr>
+<tr><td>Est. USD Value</td><td>$7.47M</td></tr>
+<tr><td>Current Price</td><td>$0.6606</td></tr>
+<tr><td>24h Volume</td><td>$48,213,319</td></tr>
+<tr><td>Market Cap</td><td>$550,147,239</td></tr>
+<tr><td>Unlock Value / 24h Volume</td><td>0.155x</td></tr>
 <tr><td>Data Source</td><td><a href="https://tokenomist.ai/aptos" style="color:#58a6ff">tokenomist.ai/aptos</a></td></tr>
 </tbody>
 </table>
@@ -55,9 +54,9 @@ Aptos (APT) is scheduled to unlock 11.31M tokens — 0.66% of released supply �
 <table>
 <thead><tr><th>DEX</th><th>Pair</th><th>Liquidity (USD)</th><th>24h Volume</th></tr></thead>
 <tbody>
-<tr><td>PancakeSwap</td><td>APT/USDC</td><td>$372,567</td><td>$38,758</td></tr>
-<tr><td>Cellana</td><td>APT/zUSDC</td><td>$100,874</td><td>$20,705</td></tr>
-<tr><td>LiquidSwap</td><td>APT/USDC</td><td>$83,378</td><td>$5,968</td></tr>
+<tr><td>PancakeSwap</td><td>APT/USDC</td><td>$366,733</td><td>$42,862</td></tr>
+<tr><td>Cellana</td><td>APT/zUSDC</td><td>$99,237</td><td>$21,326</td></tr>
+<tr><td>LiquidSwap</td><td>APT/USDC</td><td>$82,047</td><td>$5,671</td></tr>
 </tbody>
 </table>
 
@@ -65,8 +64,8 @@ Aptos (APT) is scheduled to unlock 11.31M tokens — 0.66% of released supply �
 <table>
 <thead><tr><th>Exit Size</th><th>Estimated Slippage</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>$10,000</td><td>~5.3%</td><td>APT-side depth ~$186.3K; constant product model, single pair</td></tr>
-<tr><td>$50,000</td><td>~22%</td><td>Consumes ~26.8% of APT-side depth; routing across all 3 native pairs reduces impact but combined depth still only $557K</td></tr>
+<tr><td>$10,000</td><td>~5.5%</td><td>APT-side depth ~$183K; constant product model, single pair</td></tr>
+<tr><td>$50,000</td><td>~27%</td><td>Represents 27% of APT-side depth on this pair; significant multi-pair routing required at unlock scale</td></tr>
 </tbody>
 </table>
 
@@ -74,15 +73,15 @@ Aptos (APT) is scheduled to unlock 11.31M tokens — 0.66% of released supply �
 <table>
 <thead><tr><th>Metric</th><th>Finding</th></tr></thead>
 <tbody>
-<tr><td>Unlock vs. Volume Ratio</td><td>0.13x — unlock value is 13% of 24h trading volume</td></tr>
-<tr><td>Deepest Single Pair</td><td>PancakeSwap APT/USDC — $373K liquidity, $38.8K 24h volume</td></tr>
-<tr><td>Combined Native Liquidity</td><td>$557K across top 3 Aptos DEX pairs</td></tr>
-<tr><td>Unlock vs. Liquidity</td><td>$7.71M unlock vs. $557K combined DEX depth — unlock value is 13.8x native DEX liquidity</td></tr>
-<tr><td>Slippage Risk</td><td>$50K single-pair exit on best pair incurs ~22% impact; size sellers will need to route across all native pools and potentially bridge to CEX volume</td></tr>
+<tr><td>Unlock vs. Volume Ratio</td><td>0.155x — unlock value is 15.5% of 24h trading volume</td></tr>
+<tr><td>Deepest Single Pair</td><td>PancakeSwap APT/USDC — $367K liquidity, $42.9K 24h volume</td></tr>
+<tr><td>Highest Volume Pair</td><td>PancakeSwap APT/USDC — $42.9K 24h volume, $367K liquidity</td></tr>
+<tr><td>Combined Native Liquidity</td><td>$548K across top 3 Aptos DEX pairs</td></tr>
+<tr><td>Slippage Risk</td><td>$7.47M unlock vs. $548K combined native liquidity — a 13.6x mismatch; significant portion of unlock would route through CEX or cross-chain liquidity</td></tr>
 </tbody>
 </table>
 
-<div class="cta"><p>Want the full APT unlock analysis — holder concentration, depth under stress, and historical comparisons?</p>
+<div class="cta"><p>Want the full unlock analysis — holder concentration, depth under stress, and historical comparisons?</p>
 <a href="https://occelatus.io/#pricing" class="cta-btn">Get the Deep Dive — $49</a>
 <a href="https://occelatus.io/#pricing" class="cta-btn secondary">Standard Report — $19</a></div>
 
