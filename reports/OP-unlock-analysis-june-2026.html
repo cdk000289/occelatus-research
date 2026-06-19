@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OP Unlock Analysis — June 30, 2026 | Occelatus Research</title>
-  <meta name="description" content="Optimism (OP) token unlock on June 30, 2026. Preview: 31.34M OP tokens (1.48% of supply), est. $3.35M. Full liquidity analysis available.">
-  <link rel="canonical" href="https://occelatus.io/reports/op-unlock-analysis">
+  <title>OP Unlock Analysis — June 30, 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
+  <meta name="description" content="Optimism (OP) token unlock June 30, 2026: 31.34M OP (1.48% of supply), est. $3.16M. Live DEX liquidity depth, $10K/$50K exit slippage, unlock-to-volume ratio. Free preview.">
+  <link rel="canonical" href="https://occelatus.io/reports/OP-unlock-analysis-june-2026.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-
     :root {
       --bg-0: #0b0e17; --bg-1: #11141f; --bg-2: #181c2a;
       --line: rgba(255,255,255,0.06); --line-strong: rgba(255,255,255,0.12);
@@ -20,31 +19,10 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: 'IBM Plex Sans', system-ui, sans-serif;
-      font-weight: 300; line-height: 1.65;
-      color: var(--text); background: var(--bg-0);
-      background-image:
-        radial-gradient(ellipse 60% 50% at 18% 8%, rgba(125,249,255,0.10) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 82% 18%, rgba(255,107,157,0.07) 0%, transparent 55%),
-        radial-gradient(ellipse 70% 60% at 50% 110%, rgba(125,249,255,0.05) 0%, transparent 60%);
-      background-attachment: fixed; min-height: 100vh; overflow-x: hidden;
-    }
-    body::before {
-      content: ""; position: fixed; inset: 0;
-      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 80px 80px;
-      mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 70%);
-      pointer-events: none; z-index: 0; opacity: 0.5;
-    }
+    body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; line-height: 1.65; color: var(--text); background: var(--bg-0); background-image: radial-gradient(ellipse 60% 50% at 18% 8%, rgba(125,249,255,0.10) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 82% 18%, rgba(255,107,157,0.07) 0%, transparent 55%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
+    body::before { content: ""; position: fixed; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 70%); pointer-events: none; z-index: 0; opacity: 0.5; }
     .container { max-width: 900px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
-    header {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
-      background: rgba(11,14,23,0.72);
-      border-bottom: 1px solid var(--line);
-    }
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); background: rgba(11,14,23,0.72); border-bottom: 1px solid var(--line); }
     .header-content { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
     .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
     .logo-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%); position: relative; box-shadow: 0 0 24px rgba(125,249,255,0.35); flex-shrink: 0; }
@@ -52,9 +30,9 @@
     nav { display: flex; gap: 28px; align-items: center; }
     nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; letter-spacing: 0.02em; transition: color 180ms ease; }
     nav a:hover { color: var(--text); }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border: 1px solid transparent; border-radius: var(--radius-sm); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; text-decoration: none; transition: transform 180ms ease, box-shadow 220ms ease, background 180ms ease, border-color 180ms ease; white-space: nowrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border: 1px solid transparent; border-radius: var(--radius-sm); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; text-decoration: none; transition: transform 180ms ease, box-shadow 220ms ease; white-space: nowrap; }
     .btn-primary { background: var(--accent); color: var(--bg-0); box-shadow: 0 0 0 1px var(--accent), 0 10px 30px -10px rgba(125,249,255,0.5); }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 0 0 1px var(--accent), 0 16px 36px -12px rgba(125,249,255,0.7); }
+    .btn-primary:hover { transform: translateY(-1px); }
     .btn-ghost { background: transparent; color: var(--text); border-color: var(--line-strong); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
     main { padding: 56px 0 80px; }
@@ -63,11 +41,7 @@
     h1 strong { font-weight: 700; }
     .dateline { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 32px; }
     .dateline em { color: var(--accent); font-style: normal; }
-    .summary-card {
-      padding: 24px 28px; background: linear-gradient(180deg, rgba(125,249,255,0.06) 0%, rgba(255,255,255,0.01) 100%);
-      border: 1px solid rgba(125,249,255,0.25); border-radius: var(--radius);
-      font-size: 15px; line-height: 1.75; color: var(--text-muted); margin-bottom: 32px;
-    }
+    .summary-card { padding: 24px 28px; background: linear-gradient(180deg, rgba(125,249,255,0.06) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(125,249,255,0.25); border-radius: var(--radius); font-size: 15px; line-height: 1.75; color: var(--text-muted); margin-bottom: 32px; }
     .summary-card strong { color: var(--text); }
     .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 28px; }
     .data-card { background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 100%); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 16px 20px; }
@@ -84,24 +58,15 @@
     .table-section td:first-child { color: var(--text); font-weight: 400; }
     .table-section tr:last-child td { border-bottom: none; }
     .teaser-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin: 28px 0 12px; }
-    .gate-block {
-      position: relative; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden;
-    }
-    .gate-blur {
-      filter: blur(6px); opacity: 0.3; pointer-events: none; user-select: none; min-height: 460px;
-      padding: 20px; background: var(--bg-1);
-    }
-    .gate-overlay {
-      position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background: rgba(11,14,23,0.75); backdrop-filter: blur(2px); padding: 28px; text-align: center;
-    }
+    .gate-block { position: relative; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; }
+    .gate-blur { filter: blur(6px); opacity: 0.3; pointer-events: none; user-select: none; min-height: 460px; padding: 20px; background: var(--bg-1); }
+    .gate-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(11,14,23,0.75); backdrop-filter: blur(2px); padding: 28px; text-align: center; }
     .gate-overlay h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; margin-bottom: 8px; }
     .gate-overlay p { font-size: 14px; color: var(--text-muted); max-width: 440px; margin-bottom: 20px; line-height: 1.6; }
     .gate-features { display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; text-align: left; }
     .gate-features li { font-size: 13px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; list-style: none; }
     .gate-features li::before { content: "→"; color: var(--accent); font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
     .disclaimer { margin-top: 36px; padding: 16px 20px; border: 1px solid rgba(245,196,81,0.2); border-radius: var(--radius-sm); background: rgba(245,196,81,0.04); font-size: 12px; color: var(--text-dim); line-height: 1.7; }
-    .disclaimer a { color: var(--text-dim); text-decoration: underline; }
     footer { padding: 48px 0 28px; border-top: 1px solid var(--line-strong); margin-top: 64px; }
     .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; margin-bottom: 32px; }
     .footer-brand p { max-width: 360px; font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-top: 10px; }
@@ -109,19 +74,11 @@
     .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 180ms ease; }
     .footer-links a:hover { color: var(--accent); }
     .footer-legal { padding: 20px 0 0; border-top: 1px solid var(--line); font-size: 12px; color: var(--text-dim); line-height: 1.7; }
-    .footer-legal strong { color: var(--text-muted); }
     .copyright { margin-top: 16px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; font-size: 11px; }
-    @media (max-width: 700px) {
-      .data-grid { grid-template-columns: 1fr; }
-      nav a:not(.btn) { display: none; }
-      .footer-grid { grid-template-columns: 1fr; }
-      .footer-links { justify-content: flex-start; }
-    }
-
-  </style>
+    @media (max-width: 700px) { .data-grid { grid-template-columns: 1fr; } nav a:not(.btn) { display: none; } .footer-grid { grid-template-columns: 1fr; } .footer-links { justify-content: flex-start; } }
+</style>
 </head>
 <body>
-
 <header>
   <div class="container">
     <div class="header-content">
@@ -135,111 +92,60 @@
     </div>
   </div>
 </header>
-
 <main>
   <div class="container">
-    <div class="eyebrow">Unlock Analysis · Optimism</div>
-    <h1>Optimism (<strong>OP</strong>) — Unlock Preview</h1>
-    <p class="dateline">Unlock date: <em>June 30, 2026</em> &nbsp;·&nbsp; T-12 &nbsp;·&nbsp; Data: CoinGecko + DexScreener + Tokenomist</p>
+    <div class="eyebrow">Unlock Analysis · Optimism · T-11</div>
+    <h1>Optimism (<strong>OP</strong>) Unlock Analysis — June 2026</h1>
+    <p class="dateline">Unlock date: <em>June 30, 2026</em> &nbsp;·&nbsp; T-11 &nbsp;·&nbsp; Data: CoinGecko + DexScreener + Tokenomist &nbsp;·&nbsp; Pulled 2026-06-19 12:30 UTC</p>
+    <div class="summary-card">On <strong>June 30, 2026</strong>, <strong>31.34M OP tokens</strong> (approximately <strong>1.48% of circulating supply</strong>) are scheduled to unlock, representing an estimated <strong>$3.16M</strong> at current prices. Against a 24-hour trading volume of <strong>$58M</strong>, the unlock equals roughly <strong>5.4%</strong> of daily volume — moderate on an absolute basis but concentrated: DEX liquidity across the top three OP/WETH pairs on Optimism totals approximately <strong>$529K</strong>, meaning a fraction of the unlocked supply would meaningfully exhaust on-chain exit depth. The free preview below covers top-level metrics; the paid report adds holder concentration, per-pair depth maps, and historical comparisons.</div>
+    <div class="data-grid"><div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.1008</div></div>
+<div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value ">$58.0M</div></div>
+<div class="data-card"><div class="data-card-label">Unlock Size (est.)</div><div class="data-card-value warn">$3.16M</div></div>
+<div class="data-card"><div class="data-card-label">Unlock / Daily Vol</div><div class="data-card-value ">5.4%</div></div>
+<div class="data-card"><div class="data-card-label">Top DEX Pair Liquidity</div><div class="data-card-value warn">$245K</div></div>
+<div class="data-card"><div class="data-card-label">$10K Exit Slippage (est.)</div><div class="data-card-value warn">~2.0%</div></div>
+</div>
+    <div class="table-section"><table><thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead><tbody><tr><td>Token</td><td>Optimism (OP)</td><td>CoinGecko</td></tr><tr><td>Unlock Date</td><td>June 30, 2026</td><td>Tokenomist</td></tr><tr><td>Tokens Unlocking</td><td>31.34M OP</td><td>Tokenomist</td></tr><tr><td>% of Circulating Supply</td><td>1.48%</td><td>Tokenomist</td></tr><tr><td>Est. USD Value</td><td>~$3.16M</td><td>CoinGecko × Tokenomist</td></tr><tr><td>Market Cap</td><td>$217.6M</td><td>CoinGecko</td></tr><tr><td>24h Volume</td><td>$58.0M</td><td>CoinGecko</td></tr><tr><td>Confidence</td><td>High</td><td>Dual-source verified</td></tr></tbody></table></div>
+<div class="table-section"><table><thead><tr><th>Pair</th><th>DEX</th><th>Liquidity (USD)</th><th>24h Vol (USD)</th><th>Source</th></tr></thead><tbody><tr><td>OP/WETH</td><td>Uniswap v3</td><td>$244,879</td><td>$117,729</td><td>DexScreener</td></tr><tr><td>OP/WETH</td><td>Uniswap v3 (pool 2)</td><td>$190,661</td><td>$93,316</td><td>DexScreener</td></tr><tr><td>OP/WETH</td><td>Uniswap v3 (pool 3)</td><td>$93,443</td><td>$711,311</td><td>DexScreener</td></tr></tbody></table></div>
+<div class="table-section"><table><thead><tr><th>Exit Size</th><th>Est. Slippage</th><th>Note</th></tr></thead><tbody><tr><td>$10,000</td><td>~2.0%</td><td>Constant-product AMM estimate</td></tr><tr><td>$50,000</td><td>~10.2%</td><td>Assumes single-pool routing</td></tr><tr><td>Note</td><td>—</td><td>CEX order book depth not included</td></tr></tbody></table></div>
 
-    <div class="summary-card">
-      Optimism (OP) is scheduled to unlock 31.34M tokens — <strong>1.48% of circulating supply</strong> — on June 30, 2026. At $3.38M unlock value against $53.5M daily volume, the unlock-to-volume ratio is 6.3%. DEX depth on Optimism remains tight: native on-chain liquidity across Velodrome and Uniswap tops out at approximately $555K, meaning a $10K exit carries an estimated <strong>7.7% slippage</strong> — and a $50K exit approaches 38%. Headline volume is largely CEX-driven; on-chain exit depth is significantly tighter.
-    </div>
-
-    <div class="data-grid">
-      <div class="data-card">
-        <div class="data-card-label">Tokens unlocking</div>
-        <div class="data-card-value">31.34M OP</div>
-      </div>
-      <div class="data-card">
-        <div class="data-card-label">% of supply</div>
-        <div class="data-card-value warn">1.48%</div>
-      </div>
-      <div class="data-card">
-        <div class="data-card-label">Est. unlock value</div>
-        <div class="data-card-value accent">$3.38M</div>
-      </div>
-      <div class="data-card">
-        <div class="data-card-label">Unlock / 24h volume</div>
-        <div class="data-card-value accent">0.063x</div>
-      </div>
-    </div>
-
-    <div class="teaser-label">[ preview ] Event snapshot</div>
-    <div class="table-section" style="margin-bottom:28px;">
-      <table>
-        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-        <tbody>
-          <tr><td>Token</td><td>Optimism (OP)</td></tr>
-          <tr><td>Chain</td><td>Optimism</td></tr>
-          <tr><td>Unlock date</td><td>June 30, 2026</td></tr>
-          <tr><td>Tokens unlocking</td><td>31.34M OP</td></tr>
-          <tr><td>% of circulating supply</td><td>1.48%</td></tr>
-          <tr><td>Est. USD value</td><td>$3.38M</td></tr>
-          <tr><td>Current price</td><td>$0.1077</td></tr>
-          <tr><td>24h trading volume</td><td>$53.5M</td></tr>
-          <tr><td>Unlock / 24h volume ratio</td><td style="color:var(--accent)">0.063x</td></tr>
-          <tr><td>$10K exit slippage (est.)</td><td style="color:var(--danger)">~7.7%</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="teaser-label">[ full report ] What's inside</div>
+    <p class="teaser-label">Full Analysis — Gated</p>
     <div class="gate-block">
       <div class="gate-blur">
-        <table style="width:100%;border-collapse:collapse;font-size:13px;">
-          <thead><tr><th style="padding:10px 16px;background:#181c2a;color:#5a6079;font-size:10px;">Metric</th><th style="padding:10px 16px;background:#181c2a;color:#5a6079;font-size:10px;">Value</th><th style="padding:10px 16px;background:#181c2a;color:#5a6079;font-size:10px;">Notes</th></tr></thead>
-          <tbody>
-            <tr><td>DEX pair breakdown (all chains)</td><td>—</td><td>—</td></tr>
-<tr><td>Exit slippage at $10K / $50K / $100K / $500K</td><td>—</td><td>—</td></tr>
-<tr><td>Historical post-unlock price behavior</td><td>—</td><td>—</td></tr>
-<tr><td>Holder concentration + insider sell indicators</td><td>—</td><td>—</td></tr>
-<tr><td>Unlock timing risk assessment + rating</td><td>—</td><td>—</td></tr>
-          </tbody>
-        </table>
-        <p style="margin-top:16px;font-size:13px;color:#5a6079;">[ 5-10 page report · delivered in under 30 minutes ]</p>
+        <div style="height:460px;background:var(--bg-1)"></div>
       </div>
       <div class="gate-overlay">
-        <h3>Full analysis — <span style="color:var(--accent)">$19</span></h3>
-        <p>Complete DEX depth breakdown, multi-size exit slippage ($10K–$500K), holder concentration, historical post-unlock behavior, and a risk rating — delivered to your inbox in under 30 minutes.</p>
-        <ul class="gate-features">
-          <li>All DEX pairs — liquidity depth by chain</li>
-          <li>Exit slippage at $10K, $50K, $100K, $500K</li>
-          <li>Holder concentration + insider sell pressure</li>
-          <li>Historical post-unlock price comparisons</li>
-          <li>Unlock timing risk rating (Low / Medium / High)</li>
-        </ul>
-        <a href="https://buy.stripe.com/cNi28sbhHdz54CBaKo2go00?client_reference_id=tok_op_unlock_June_30,_2026" class="btn btn-primary" style="margin-bottom:10px;">Get the Full Report — $19 →</a>
-        <p style="font-size:12px;color:var(--text-dim);">or <a href="https://buy.stripe.com/dRmfZi0D3dz51qpf0E2go01?client_reference_id=mkt_op_unlock_June_30,_2026" style="color:var(--accent);">Market Deep Dive — $49</a> (full sector + liquidity rotation context)</p>
+        <h3>Full unlock analysis</h3>
+        <p>The free preview shows top-level metrics. The paid report adds holder concentration, per-pair depth maps, historical unlock comparisons, and stress-scenario slippage.</p>
+        <ul class="gate-features"><li>Holder concentration: top-10 wallets % of supply</li><li>Per-pair depth maps: full AMM curve simulation</li><li>$10K / $50K / $100K slippage across all qualifying pairs</li><li>Historical comparisons: last 3 comparable OP unlock events</li><li>Stress scenario: liquidity under 20% sell pressure</li></ul>
+        <a href="https://occelatus.io/#pricing?utm_source=seo&utm_medium=report&utm_campaign=op-unlock-jun26" class="btn btn-primary">Get the full report — $19</a>
       </div>
     </div>
-
     <div class="disclaimer">
-      This preview is for informational purposes only and does not constitute financial advice. All figures are sourced from live on-chain data at time of generation. Unlock dates may shift. Slippage estimates are approximations based on DEX pool depth. <a href="/risk-disclosure.html">Full risk disclosure →</a>
+      <strong>Data sources:</strong> CoinGecko (price, market cap, volume), DexScreener (DEX liquidity pairs), Tokenomist (unlock schedule). All figures pulled June 19, 2026 at approximately 12:30 UTC. Liquidity depth reflects on-chain AMM pools only; CEX order book depth is not included.<br><br>
+      <strong>Not financial advice.</strong> This page contains data aggregation only. Nothing here constitutes a recommendation to buy, sell, or hold any asset. Slippage estimates use a constant-product AMM approximation and will vary with actual market conditions. Past unlock outcomes are not indicative of future results.
     </div>
   </div>
 </main>
-
 <footer>
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></div>
-        <p>On-chain crypto intelligence. Liquidity depth, unlock risk, honest methodology — delivered as readable reports.</p>
+        <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
+        <p>On-chain liquidity intelligence for crypto traders. Data-only. No forecasts, no advice.</p>
       </div>
       <div class="footer-links">
-        <a href="/terms.html">Terms</a>
-        <a href="/risk-disclosure.html">Risk Disclosure</a>
-        <a href="mailto:research@occelatus.io">Contact</a>
+        <a href="/">Home</a>
+        <a href="/exit-liquidity.html">Exit Tracker</a>
         <a href="/#pricing">Pricing</a>
+        <a href="mailto:research@occelatus.io">Contact</a>
       </div>
     </div>
     <div class="footer-legal">
-      <strong>LEGAL:</strong> Occelatus Research provides informational content and analysis only. This is NOT financial advice, investment advice, or professional financial services. Cryptocurrency is highly volatile and risky. You are solely responsible for your investment decisions. Past performance does not guarantee future results. Consult a qualified financial advisor. Occelatus Research is not a registered investment advisor.
-      <div class="copyright">© 2026 OCCELATUS_RESEARCH · ALL RIGHTS RESERVED</div>
+      <strong>Not financial advice.</strong> All data sourced from CoinGecko, DexScreener, and Tokenomist at time of publication. Past liquidity conditions are not indicative of future results. Occelatus Research provides data aggregation and analysis tools only. Nothing on this site constitutes investment advice, a recommendation to buy or sell any asset, or a solicitation of any kind. Always do your own research.
+      <div class="copyright">© 2026 Occelatus Labs — occelatus.io</div>
     </div>
   </div>
 </footer>
-
 </body>
 </html>
