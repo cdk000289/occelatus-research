@@ -54,10 +54,10 @@
 <main>
   <h1>Exit Liquidity Tracker</h1>
   <p class="subtitle">What does a <strong>$10,000 market exit</strong> cost in slippage — right now?</p>
-  <p class="dateline">Updated: <em>June 21, 2026 at 12:16 UTC</em> &nbsp;·&nbsp; Powered by CoinGecko + DexScreener live data</p>
+  <p class="dateline">Updated: <em>June 21, 2026 at 12:17 UTC</em> &nbsp;·&nbsp; Powered by CoinGecko + DexScreener live data</p>
 
   <div class="what-is">
-    <strong>How to read this table:</strong> "Est. Slippage" is the approximate price impact of selling $10K at market across the most liquid DEX pairs for each token. Lower = more liquid. Color-coded: <span style="color:#22c55e">green</span> = liquid (&lt;0.5%), <span style="color:#eab308">yellow</span> = moderate (0.5–1.5%), <span style="color:#f97316">orange</span> = notable (1.5–3%), <span style="color:#ef4444">red</span> = illiquid (&gt;3%). Estimates use 2-hour rolling volume as available order depth proxy.
+    <strong>How to read this table:</strong> Slippage % is the approximate price impact of exiting $10K or $50K at market across the most liquid DEX pair for each token. Lower = more liquid exit path. Color-coded: <span style="color:#22c55e">green</span> = &lt;0.3% (very liquid), <span style="color:#eab308">yellow</span> = 0.3–1% (moderate), <span style="color:#ef4444">red</span> = &gt;1% (illiquid). Estimates use 2-hour rolling volume as available order depth proxy.
   </div>
 
   <table>
@@ -67,8 +67,9 @@
         <th>Price</th>
         <th>24h Change</th>
         <th>24h Volume</th>
-        <th>Est. Slippage</th>
-        <th>$10K Exit Cost</th>
+        <th>Top-Pair Liquidity</th>
+        <th>$10K Exit Slippage</th>
+        <th>$50K Exit Slippage</th>
       </tr>
     </thead>
     <tbody>
@@ -76,170 +77,189 @@
       <td class="ticker">STRK</td>
       <td>$0.03</td>
       <td style="color:#ef4444">-0.8%</td>
-      <td>$12.34M</td>
+      <td>$12.36M</td>
+      <td>$3.58B</td>
       <td style="color:#eab308;font-weight:600">0.97%</td>
-      <td style="color:#eab308">$97.28</td>
+      <td style="color:#ef4444;font-weight:600">4.85%</td>
     </tr>
     <tr>
       <td class="ticker">ATOM</td>
       <td>$1.77</td>
-      <td style="color:#ef4444">-0.8%</td>
-      <td>$22.57M</td>
+      <td style="color:#ef4444">-0.7%</td>
+      <td>$22.59M</td>
+      <td>$1.86B</td>
       <td style="color:#eab308;font-weight:600">0.53%</td>
-      <td style="color:#eab308">$53.17</td>
+      <td style="color:#ef4444;font-weight:600">2.66%</td>
     </tr>
     <tr>
       <td class="ticker">TIA</td>
       <td>$0.37</td>
       <td style="color:#ef4444">-0.7%</td>
       <td>$24.11M</td>
-      <td style="color:#22c55e;font-weight:600">0.50%</td>
-      <td style="color:#22c55e">$49.78</td>
+      <td>$1.86B</td>
+      <td style="color:#eab308;font-weight:600">0.50%</td>
+      <td style="color:#ef4444;font-weight:600">2.49%</td>
     </tr>
     <tr>
       <td class="ticker">ARB</td>
       <td>$0.08</td>
       <td style="color:#ef4444">-0.5%</td>
-      <td>$27.21M</td>
-      <td style="color:#22c55e;font-weight:600">0.44%</td>
-      <td style="color:#22c55e">$44.10</td>
+      <td>$27.28M</td>
+      <td>$2.82B</td>
+      <td style="color:#eab308;font-weight:600">0.44%</td>
+      <td style="color:#ef4444;font-weight:600">2.20%</td>
     </tr>
     <tr>
       <td class="ticker">SEI</td>
       <td>$0.05</td>
       <td style="color:#ef4444">-0.2%</td>
       <td>$32.11M</td>
-      <td style="color:#22c55e;font-weight:600">0.37%</td>
-      <td style="color:#22c55e">$37.37</td>
+      <td>$1.57B</td>
+      <td style="color:#eab308;font-weight:600">0.37%</td>
+      <td style="color:#ef4444;font-weight:600">1.87%</td>
     </tr>
     <tr>
       <td class="ticker">OP</td>
       <td>$0.10</td>
       <td style="color:#22c55e">+0.9%</td>
-      <td>$35.06M</td>
-      <td style="color:#22c55e;font-weight:600">0.34%</td>
-      <td style="color:#22c55e">$34.23</td>
+      <td>$35.11M</td>
+      <td>$5.02B</td>
+      <td style="color:#eab308;font-weight:600">0.34%</td>
+      <td style="color:#ef4444;font-weight:600">1.71%</td>
     </tr>
     <tr>
       <td class="ticker">APT</td>
       <td>$0.65</td>
-      <td style="color:#22c55e">+1.9%</td>
-      <td>$38.66M</td>
-      <td style="color:#22c55e;font-weight:600">0.31%</td>
-      <td style="color:#22c55e">$31.04</td>
+      <td style="color:#22c55e">+1.8%</td>
+      <td>$39.93M</td>
+      <td>$9.84B</td>
+      <td style="color:#eab308;font-weight:600">0.30%</td>
+      <td style="color:#ef4444;font-weight:600">1.50%</td>
     </tr>
     <tr>
       <td class="ticker">W</td>
       <td>$0.01</td>
-      <td style="color:#22c55e">+8.4%</td>
-      <td>$44.00M</td>
+      <td style="color:#22c55e">+8.3%</td>
+      <td>$44.39M</td>
+      <td>—</td>
       <td style="color:#22c55e;font-weight:600">0.27%</td>
-      <td style="color:#22c55e">$27.27</td>
+      <td style="color:#ef4444;font-weight:600">1.35%</td>
     </tr>
     <tr>
       <td class="ticker">INJ</td>
       <td>$4.96</td>
       <td style="color:#ef4444">-2.6%</td>
-      <td>$67.91M</td>
+      <td>$67.88M</td>
+      <td>$2.56B</td>
       <td style="color:#22c55e;font-weight:600">0.18%</td>
-      <td style="color:#22c55e">$17.67</td>
+      <td style="color:#eab308;font-weight:600">0.88%</td>
     </tr>
     <tr>
       <td class="ticker">JUP</td>
       <td>$0.22</td>
       <td style="color:#22c55e">+10.7%</td>
-      <td>$68.87M</td>
+      <td>$68.97M</td>
+      <td>$8.00B</td>
       <td style="color:#22c55e;font-weight:600">0.17%</td>
-      <td style="color:#22c55e">$17.42</td>
+      <td style="color:#eab308;font-weight:600">0.87%</td>
     </tr>
     <tr>
       <td class="ticker">DOT</td>
       <td>$0.96</td>
-      <td style="color:#ef4444">-0.2%</td>
-      <td>$74.41M</td>
+      <td style="color:#ef4444">-0.3%</td>
+      <td>$74.55M</td>
+      <td>$9.94B</td>
       <td style="color:#22c55e;font-weight:600">0.16%</td>
-      <td style="color:#22c55e">$16.13</td>
+      <td style="color:#eab308;font-weight:600">0.80%</td>
     </tr>
     <tr>
       <td class="ticker">LINK</td>
       <td>$7.92</td>
-      <td style="color:#ef4444">-0.2%</td>
-      <td>$137.92M</td>
+      <td style="color:#ef4444">-0.3%</td>
+      <td>$137.84M</td>
+      <td>$9.18B</td>
       <td style="color:#22c55e;font-weight:600">0.09%</td>
-      <td style="color:#22c55e">$8.70</td>
+      <td style="color:#eab308;font-weight:600">0.44%</td>
     </tr>
     <tr>
       <td class="ticker">AVAX</td>
-      <td>$6.27</td>
+      <td>$6.26</td>
       <td style="color:#22c55e">+1.6%</td>
-      <td>$250.48M</td>
+      <td>$249.79M</td>
+      <td>$45.18M</td>
       <td style="color:#22c55e;font-weight:600">0.05%</td>
-      <td style="color:#22c55e">$4.79</td>
+      <td style="color:#22c55e;font-weight:600">0.24%</td>
     </tr>
     <tr>
       <td class="ticker">ZEC</td>
-      <td>$451.28</td>
+      <td>$451.31</td>
       <td style="color:#ef4444">-4.6%</td>
-      <td>$263.73M</td>
+      <td>$263.74M</td>
+      <td>$3.31B</td>
       <td style="color:#22c55e;font-weight:600">0.05%</td>
-      <td style="color:#22c55e">$4.55</td>
+      <td style="color:#22c55e;font-weight:600">0.23%</td>
     </tr>
     <tr>
       <td class="ticker">SUI</td>
       <td>$0.70</td>
       <td style="color:#ef4444">-2.0%</td>
-      <td>$269.34M</td>
+      <td>$269.37M</td>
+      <td>$1.27B</td>
       <td style="color:#22c55e;font-weight:600">0.04%</td>
-      <td style="color:#22c55e">$4.46</td>
+      <td style="color:#22c55e;font-weight:600">0.22%</td>
     </tr>
     <tr>
       <td class="ticker">NEAR</td>
       <td>$2.22</td>
       <td style="color:#22c55e">+3.5%</td>
-      <td>$269.37M</td>
+      <td>$277.36M</td>
+      <td>$6.10B</td>
       <td style="color:#22c55e;font-weight:600">0.04%</td>
-      <td style="color:#22c55e">$4.45</td>
+      <td style="color:#22c55e;font-weight:600">0.22%</td>
     </tr>
     <tr>
       <td class="ticker">HYPE</td>
-      <td>$67.51</td>
-      <td style="color:#ef4444">-5.2%</td>
-      <td>$441.60M</td>
+      <td>$67.45</td>
+      <td style="color:#ef4444">-5.3%</td>
+      <td>$442.16M</td>
+      <td>$1.52B</td>
       <td style="color:#22c55e;font-weight:600">0.03%</td>
-      <td style="color:#22c55e">$2.72</td>
+      <td style="color:#22c55e;font-weight:600">0.14%</td>
     </tr>
     <tr>
       <td class="ticker">SOL</td>
-      <td>$73.05</td>
+      <td>$73.04</td>
       <td style="color:#22c55e">+1.7%</td>
       <td>$2.22B</td>
+      <td>$2.01B</td>
       <td style="color:#22c55e;font-weight:600">0.01%</td>
-      <td style="color:#22c55e">$0.54</td>
+      <td style="color:#22c55e;font-weight:600">0.03%</td>
     </tr>
     <tr>
       <td class="ticker">ETH</td>
       <td>$1.7K</td>
       <td style="color:#ef4444">-0.5%</td>
-      <td>$9.50B</td>
+      <td>$9.61B</td>
+      <td>$1.80B</td>
       <td style="color:#22c55e;font-weight:600">0.00%</td>
-      <td style="color:#22c55e">$0.13</td>
+      <td style="color:#22c55e;font-weight:600">0.01%</td>
     </tr>
     <tr>
       <td class="ticker">BTC</td>
       <td>$64.0K</td>
       <td style="color:#22c55e">+0.5%</td>
-      <td>$17.16B</td>
+      <td>$17.72B</td>
+      <td>$7.98B</td>
       <td style="color:#22c55e;font-weight:600">0.00%</td>
-      <td style="color:#22c55e">$0.07</td>
+      <td style="color:#22c55e;font-weight:600">0.00%</td>
     </tr>
     </tbody>
   </table>
 
   <div class="legend">
-    <span class="leg"><span class="dot" style="background:#22c55e"></span> &lt;0.5% liquid</span>
-    <span class="leg"><span class="dot" style="background:#eab308"></span> 0.5–1.5% moderate</span>
-    <span class="leg"><span class="dot" style="background:#f97316"></span> 1.5–3% notable</span>
-    <span class="leg"><span class="dot" style="background:#ef4444"></span> &gt;3% illiquid</span>
+    <span class="leg"><span class="dot" style="background:#22c55e"></span> &lt;0.3% (green)</span>
+    <span class="leg"><span class="dot" style="background:#eab308"></span> 0.3–1% (yellow)</span>
+    <span class="leg"><span class="dot" style="background:#ef4444"></span> &gt;1% (red)</span>
   </div>
 
   <div class="cta-box">
