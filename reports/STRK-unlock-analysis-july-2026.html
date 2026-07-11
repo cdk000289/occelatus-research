@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STRK Unlock Analysis — July 2026, 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
-  <meta name="description" content="STRK token unlock 2026-07-15: 1.93% of supply, est. $3,899,000. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio.">
+  <title>STRK Unlock Analysis — July 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
+  <meta name="description" content="STRK token unlock 2026-07-15: 3.45% of supply, est. $3,917,594. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio.">
   <link rel="canonical" href="https://occelatus.io/reports/STRK-unlock-analysis-july-2026.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,12 +41,13 @@
     .dateline em { color: var(--accent); font-style: normal; }
     .summary-card { padding: 24px 28px; background: linear-gradient(180deg, rgba(125,249,255,0.06) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(125,249,255,0.25); border-radius: var(--radius); font-size: 15px; line-height: 1.75; color: var(--text-muted); margin-bottom: 32px; }
     .summary-card strong { color: var(--text); }
-    .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 28px; }
+    .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
     .data-card { background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 100%); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 16px 20px; }
     .data-card-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
     .data-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); }
     .data-card-value.accent { color: var(--accent); }
     .data-card-value.warn { color: var(--warn); }
+    .data-card-value.danger { color: var(--danger); }
     .table-section { background: var(--bg-1); border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
     .table-section table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .table-section thead tr { background: var(--bg-2); border-bottom: 1px solid var(--line-strong); }
@@ -54,7 +55,7 @@
     .table-section td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--text-muted); vertical-align: middle; }
     .table-section td:first-child { color: var(--text); font-weight: 400; }
     .table-section tr:last-child td { border-bottom: none; }
-    .gate-block { position: relative; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; }
+    .gate-block { position: relative; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
     .gate-blur { filter: blur(6px); opacity: 0.3; pointer-events: none; user-select: none; min-height: 460px; padding: 20px; background: var(--bg-1); }
     .gate-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(11,14,23,0.75); backdrop-filter: blur(2px); padding: 28px; text-align: center; }
     .gate-overlay h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; margin-bottom: 8px; }
@@ -87,34 +88,51 @@
 </header>
 <main>
   <div class="container">
-    <div class="eyebrow">Unlock Analysis · STRK · T-9</div>
-    <h1>STRK Unlock Analysis — July 2026</h1>
-    <p class="dateline">Unlock date: <em>2026-07-15</em> &nbsp;·&nbsp; T-9 &nbsp;·&nbsp; Data: CoinGecko + DexScreener + Tokenomist &nbsp;·&nbsp; Pulled 2026-07-06 12:30 UTC</p>
+    <div class="eyebrow">Unlock Analysis · STRK · T-3</div>
+    <h1><strong>STRK</strong> Unlock Analysis — July 2026</h1>
+    <p class="dateline">Unlock date: <em>2026-07-15</em> &nbsp;·&nbsp; T-3 &nbsp;·&nbsp; Data: CoinGecko + DexScreener + Tokenomist &nbsp;·&nbsp; Pulled 2026-07-11 12:33 UTC</p>
     <div class="summary-card">
-      On <strong>2026-07-15</strong>, <strong>127.00M STRK</strong> (approximately <strong>1.93% of circulating supply</strong>) are scheduled to unlock, representing an estimated <strong>$3,908,000</strong> at current prices. Against a 24-hour trading volume of <strong>$16.3M</strong>, the unlock equals roughly <strong>24.0%</strong> of daily volume. Top active DEX liquidity is split between Ekubo STRK/USDC ($564K) and Meteora STRK/USDC ($83K) for a combined <strong>$647,000</strong>. The free preview below covers top-level metrics; the paid report adds holder concentration, per-pair depth maps, and historical comparisons.
+      On <strong>2026-07-15</strong>, <strong>127.00M STRK</strong> (approximately <strong>3.45% of circulating supply</strong>) are scheduled to unlock, representing an estimated <strong>$3,917,594</strong> at current prices. Against a 24-hour trading volume of <strong>$10.3M</strong>, the unlock equals roughly <strong>38.0%</strong> of daily volume. The largest qualifying DEX pool carries approximately <strong>$562,992</strong> in liquidity; combined top-3 liquidity is <strong>$587,910</strong>. The free preview below covers top-level metrics; the paid report adds holder concentration, per-pair depth maps, and historical comparisons.
     </div>
     <div class="data-grid">
       <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.0308</div></div>
-      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$16.3M</div></div>
-      <div class="data-card"><div class="data-card-label">Unlock Size (est.)</div><div class="data-card-value warn">$3,908,000</div></div>
-      <div class="data-card"><div class="data-card-label">Unlock / Daily Vol</div><div class="data-card-value warn">24.0%</div></div>
-      <div class="data-card"><div class="data-card-label">Top Active DEX Liquidity</div><div class="data-card-value warn">$647,000</div></div>
-      <div class="data-card"><div class="data-card-label">$10K Exit Slippage (est.)</div><div class="data-card-value warn">~0.9%</div></div>
+      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$10.3M</div></div>
+      <div class="data-card"><div class="data-card-label">Unlock Value (est.)</div><div class="data-card-value warn">$3.92M</div></div>
+      <div class="data-card"><div class="data-card-label">Unlock / Daily Vol</div><div class="data-card-value danger">38.0%</div></div>
+      <div class="data-card"><div class="data-card-label">Top Pool Liquidity</div><div class="data-card-value warn">$562,992</div></div>
+      <div class="data-card"><div class="data-card-label">$10K Exit Slippage</div><div class="data-card-value warn">~0.89%</div></div>
     </div>
-    <div class="table-section"><table><thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead><tbody>
-      <tr><td>Token</td><td>Starknet (STRK)</td><td>CoinGecko</td></tr>
-      <tr><td>Unlock Date</td><td>2026-07-15</td><td>Tokenomist</td></tr>
-      <tr><td>Tokens Unlocking</td><td>127.00M STRK</td><td>Tokenomist</td></tr>
-      <tr><td>% of Circulating Supply</td><td>1.93%</td><td>Tokenomist</td></tr>
-      <tr><td>Est. USD Value</td><td>~$3,899,000</td><td>CoinGecko × Tokenomist</td></tr>
-      <tr><td>24h Volume</td><td>$16.3M</td><td>CoinGecko</td></tr>
-      <tr><td>Top Active DEX Pair</td><td>Ekubo STRK/USDC — $564K liq; Meteora STRK/USDC — $83K liq</td><td>DexScreener</td></tr>
-      <tr><td>Confidence</td><td>High</td><td>Dual-source verified</td></tr>
-    </tbody></table></div>
+
+    <div class="table-section">
+      <table>
+        <thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead>
+        <tbody>
+          <tr><td>Unlock Date</td><td>2026-07-15</td><td>Tokenomist</td></tr>
+          <tr><td>Tokens Unlocking</td><td>127.00M STRK</td><td>Tokenomist</td></tr>
+          <tr><td>% of Circulating Supply</td><td>3.45%</td><td>Tokenomist</td></tr>
+          <tr><td>Est. USD Value</td><td>~$3,917,594</td><td>CoinGecko × Tokenomist</td></tr>
+          <tr><td>24h Volume</td><td>$10.3M</td><td>CoinGecko</td></tr>
+          <tr><td>Unlock / Daily Volume</td><td>38.0%</td><td>Calculated</td></tr>
+          <tr><td>Data Pulled</td><td>2026-07-11 12:33 UTC</td><td>Live</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-section">
+      <table>
+        <thead><tr><th>Pair</th><th>DEX</th><th>Liquidity (USD)</th><th>24h Volume</th></tr></thead>
+        <tbody>
+          <tr><td>STRK/ETH</td><td>Ekubo</td><td>$562,992</td><td>$731,829</td></tr>
+<tr><td>STRK/USDC</td><td>Ekubo</td><td>$14,230</td><td>$39</td></tr>
+<tr><td>STRK/USDT</td><td>Ekubo</td><td>$10,688</td><td>$1,208</td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="gate-block">
       <div class="gate-blur"><div style="height:460px;background:var(--bg-1)"></div></div>
       <div class="gate-overlay">
-        <h3>Full unlock analysis</h3>
+        <h3>Full unlock analysis — $STRK</h3>
         <p>The free preview shows top-level metrics. The paid report adds holder concentration, per-pair depth maps, historical unlock comparisons, and stress-scenario slippage.</p>
         <ul class="gate-features">
           <li>Holder concentration: top-10 wallets % of supply</li>
@@ -126,8 +144,9 @@
         <a href="https://occelatus.io/#pricing?utm_source=seo&utm_medium=report&utm_campaign=strk-unlock-july2026" class="btn btn-primary">Get the full report — $19</a>
       </div>
     </div>
+
     <div class="disclaimer">
-      <strong>Data sources:</strong> CoinGecko (price, market cap, volume), DexScreener (DEX liquidity pairs), Tokenomist (unlock schedule). All figures pulled 2026-07-06 at approximately 12:30 UTC. Liquidity depth reflects on-chain AMM pools only; CEX order book depth is not included.<br><br>
+      <strong>Data sources:</strong> CoinGecko (price, market cap, volume), DexScreener (DEX liquidity pairs), Tokenomist (unlock schedule). All figures pulled 2026-07-11 at approximately 12:33 UTC. Liquidity depth reflects on-chain AMM pools only; CEX order book depth is not included.<br><br>
       <strong>Not financial advice.</strong> This page contains data aggregation only. Nothing here constitutes a recommendation to buy, sell, or hold any asset. Slippage estimates use a constant-product AMM approximation and will vary with actual market conditions. Past unlock outcomes are not indicative of future results.
     </div>
   </div>
