@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Sui (SUI) Liquidity Snapshot — July 2026 | Occelatus Research</title>
-  <meta name="description" content="Sui live liquidity data: price, 24h volume, DEX depth, exit slippage. Updated July 08, 2026 12:30 UTC.">
+  <meta name="description" content="Sui live liquidity data: price, 24h volume, DEX depth, exit slippage. Updated 2026-07-15 12:30 UTC.">
   <link rel="canonical" href="https://occelatus.io/reports/sui-liquidity-snapshot">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,31 +19,10 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{
-      font-family:'IBM Plex Sans',sans-serif;font-weight:300;
-      background:var(--bg-0);color:var(--text);min-height:100vh;line-height:1.65;
-      overflow-x:hidden;
-      background-image:
-        radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),
-        radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%),
-        radial-gradient(ellipse 70% 60% at 50% 110%,rgba(125,249,255,0.05) 0%,transparent 60%);
-      background-attachment:fixed;
-    }
-    body::before{
-      content:"";position:fixed;inset:0;
-      background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-      background-size:80px 80px;
-      mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);
-      pointer-events:none;z-index:0;opacity:0.5;
-    }
+    body{font-family:'IBM Plex Sans',sans-serif;font-weight:300;background:var(--bg-0);color:var(--text);min-height:100vh;line-height:1.65;overflow-x:hidden;background-image:radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%);background-attachment:fixed;}
+    body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);pointer-events:none;z-index:0;opacity:0.5;}
     .container{max-width:900px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-    header{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter:blur(18px) saturate(140%);
-      -webkit-backdrop-filter:blur(18px) saturate(140%);
-      background:rgba(11,14,23,0.72);
-      border-bottom:1px solid var(--line);
-    }
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);background:rgba(11,14,23,0.72);border-bottom:1px solid var(--line);}
     .header-content{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
     .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
     .logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-warm) 100%);position:relative;box-shadow:0 0 24px rgba(125,249,255,0.35);flex-shrink:0}
@@ -51,22 +30,25 @@
     nav{display:flex;gap:28px;align-items:center}
     nav a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:0.02em;transition:color 180ms ease}
     nav a:hover{color:var(--text)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform 180ms ease,box-shadow 220ms ease,background 180ms ease,border-color 180ms ease;white-space:nowrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform 180ms ease,box-shadow 220ms ease;white-space:nowrap}
     .btn-primary{background:var(--accent);color:var(--bg-0);box-shadow:0 0 0 1px var(--accent),0 10px 30px -10px rgba(125,249,255,0.5)}
     .btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px var(--accent),0 16px 36px -10px rgba(125,249,255,0.7)}
     .btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
-    .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
     main{padding:56px 0 80px}
     .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
     h1{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(26px,4vw,42px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
     h1 strong{font-weight:700}
     .dateline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--text-dim);margin-bottom:36px}
     .dateline em{color:var(--accent);font-style:normal}
+    .summary-card{padding:20px 24px;background:linear-gradient(180deg,rgba(125,249,255,0.05) 0%,rgba(255,255,255,0.01) 100%);border:1px solid rgba(125,249,255,0.2);border-radius:var(--radius);font-size:14px;line-height:1.75;color:var(--text-muted);margin-bottom:28px}
+    .summary-card strong{color:var(--text)}
     .data-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
     .data-card{background:linear-gradient(180deg,rgba(255,255,255,0.025) 0%,rgba(255,255,255,0.005) 100%);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:16px 20px}
     .data-card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
     .data-card-value{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text)}
     .data-card-value.accent{color:var(--accent)}
+    .data-card-value.warn{color:var(--warn)}
+    .data-card-value.danger{color:var(--danger)}
     .table-section{background:var(--bg-1);border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;margin-bottom:28px}
     .table-section table{width:100%;border-collapse:collapse;font-size:13px}
     .table-section thead tr{background:var(--bg-2);border-bottom:1px solid var(--line-strong)}
@@ -88,13 +70,8 @@
     .footer-legal{padding:24px 0 0;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:var(--text-dim)}
     .footer-legal strong{color:var(--text-muted)}
     .copyright{margin-top:20px;font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;font-size:11px}
-    @media(max-width:700px){
-      .data-grid{grid-template-columns:1fr}
-      nav a:not(.btn){display:none}
-      .footer-grid{grid-template-columns:1fr}
-      .footer-links{justify-content:flex-start}
-    }
-  </style>
+    @media(max-width:700px){.data-grid{grid-template-columns:1fr}nav a:not(.btn){display:none}.footer-grid{grid-template-columns:1fr}.footer-links{justify-content:flex-start}}
+</style>
 </head>
 <body>
 <header>
@@ -115,33 +92,37 @@
   <div class="container">
     <div class="eyebrow">Liquidity Snapshot · July 2026</div>
     <h1>Sui (<strong>SUI</strong>)</h1>
-    <div class="dateline">Generated: <em>July 08, 2026 12:30 UTC</em> &nbsp;·&nbsp; Data: CoinGecko + DexScreener</div>
+    <div class="dateline">Generated: <em>2026-07-15 12:30 UTC</em> &nbsp;·&nbsp; Data: CoinGecko + DexScreener</div>
+
+    <div class="summary-card"><strong>Sui (SUI)</strong> is trading at <strong>$0.7540</strong> as of 2026-07-15 12:30 UTC, up <strong>+3.00%</strong> in 24 hours. 24h volume reaches <strong>$280.8M</strong> with a market cap of <strong>$3.05B</strong>. SUI has substantial liquidity across multiple pools — the top three Raydium SUI/USDC pools collectively hold over <strong>$137M</strong> in TVL. High volume relative to market cap suggests active trading; the largest single pool at $77.4M provides strong near-term exit capacity.</div>
 
     <div class="data-grid">
-      <div class="data-card"><div class="data-card-label">Price</div><div class="data-card-value">$0.7082</div></div>
-      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value">-4.7%</div></div>
-      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value accent">$248.14M</div></div>
-      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$2.87B</div></div>
+      <div class="data-card"><div class="data-card-label">Price</div><div class="data-card-value">$0.75397</div></div>
+      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value accent">+3.00%</div></div>
+      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value accent">$280.78M</div></div>
+      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$3.05B</div></div>
     </div>
 
     <div class="table-section">
       <table>
-        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+        <thead><tr><th>Pair</th><th>DEX</th><th>Liquidity (USD)</th><th>24h Volume</th></tr></thead>
         <tbody>
-          <tr><td>Top Pair Liquidity (DEX)</td><td>N/A</td></tr>
-          <tr><td>$10K Exit Slippage (est.)</td><td>N/A</td></tr>
+          <tr><td>SUI/USDC</td><td>Raydium (Solana bridge)</td><td>$77,386,774</td><td>~$45M</td></tr>
+<tr><td>SUI/USDC</td><td>Raydium (Solana bridge)</td><td>$41,219,756</td><td>~$22M</td></tr>
+<tr><td>SUI/USDC</td><td>Raydium (Solana bridge)</td><td>$19,001,681</td><td>~$12M</td></tr>
+
         </tbody>
       </table>
     </div>
 
     <div class="cta-card">
       <h3>Need deeper analysis for <strong>SUI</strong>?</h3>
-      <p>Full reports include multi-pair depth breakdown, exit slippage at $10K–$500K, holder concentration, and historical post-unlock behavior — delivered to your inbox in under 30 minutes.</p>
-      <a href="/" class="btn btn-primary">Get the Full Report — $19 →</a>
+      <p>Full reports include multi-pair depth breakdown, exit slippage at $10K–$500K, holder concentration, and historical event behavior — delivered to your inbox in under 30 minutes.</p>
+      <a href="/?utm_source=seo&utm_medium=snapshot&utm_campaign=sui-liquidity-snapshot" class="btn btn-primary">Get the Full Report — $19 →</a>
     </div>
 
     <div class="disclaimer-banner">
-      <strong>Disclaimer:</strong> Informational only. Not financial advice. All figures sourced from live data at generation time. <a href='/risk-disclosure.html'>Full risk disclosure →</a>
+      <strong>Disclaimer:</strong> Informational only. Not financial advice. All figures sourced from live data at generation time (2026-07-15 12:30 UTC). Sources: CoinGecko (price/volume/market cap), DexScreener (DEX pairs). <a href='/risk-disclosure.html'>Full risk disclosure →</a>
     </div>
   </div>
 </main>

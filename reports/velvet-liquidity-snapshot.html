@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Velvet Capital (VELVET) Liquidity Snapshot — Occelatus Research</title>
-  <meta name="description" content="Velvet Capital live liquidity data: price, 24h volume, DEX depth, exit slippage. Occelatus Research.">
+  <title>Velvet Capital (VELVET) Liquidity Snapshot — July 2026 | Occelatus Research</title>
+  <meta name="description" content="Velvet Capital live liquidity data: price, 24h volume, DEX depth, exit slippage. Updated 2026-07-15 12:30 UTC.">
   <link rel="canonical" href="https://occelatus.io/reports/velvet-liquidity-snapshot">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,31 +19,10 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{
-      font-family:'IBM Plex Sans',sans-serif;font-weight:300;
-      background:var(--bg-0);color:var(--text);min-height:100vh;line-height:1.65;
-      overflow-x:hidden;
-      background-image:
-        radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),
-        radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%),
-        radial-gradient(ellipse 70% 60% at 50% 110%,rgba(125,249,255,0.05) 0%,transparent 60%);
-      background-attachment:fixed;
-    }
-    body::before{
-      content:"";position:fixed;inset:0;
-      background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-      background-size:80px 80px;
-      mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);
-      pointer-events:none;z-index:0;opacity:0.5;
-    }
+    body{font-family:'IBM Plex Sans',sans-serif;font-weight:300;background:var(--bg-0);color:var(--text);min-height:100vh;line-height:1.65;overflow-x:hidden;background-image:radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%);background-attachment:fixed;}
+    body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);pointer-events:none;z-index:0;opacity:0.5;}
     .container{max-width:900px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-    header{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter:blur(18px) saturate(140%);
-      -webkit-backdrop-filter:blur(18px) saturate(140%);
-      background:rgba(11,14,23,0.72);
-      border-bottom:1px solid var(--line);
-    }
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);background:rgba(11,14,23,0.72);border-bottom:1px solid var(--line);}
     .header-content{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
     .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
     .logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-warm) 100%);position:relative;box-shadow:0 0 24px rgba(125,249,255,0.35);flex-shrink:0}
@@ -51,21 +30,25 @@
     nav{display:flex;gap:28px;align-items:center}
     nav a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:0.02em;transition:color 180ms ease}
     nav a:hover{color:var(--text)}
-    .btn-ghost-sm{display:inline-flex;align-items:center;padding:8px 16px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;font-size:13px;font-weight:600;color:var(--text);text-decoration:none;transition:border-color 180ms,color 180ms}
-    .btn-ghost-sm:hover{border-color:var(--accent);color:var(--accent)}
-    .btn-primary{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;background:var(--accent);color:var(--bg-0);border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:transform 180ms,box-shadow 220ms;box-shadow:0 0 0 1px var(--accent),0 10px 30px -10px rgba(125,249,255,0.5)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform 180ms ease,box-shadow 220ms ease;white-space:nowrap}
+    .btn-primary{background:var(--accent);color:var(--bg-0);box-shadow:0 0 0 1px var(--accent),0 10px 30px -10px rgba(125,249,255,0.5)}
     .btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px var(--accent),0 16px 36px -10px rgba(125,249,255,0.7)}
+    .btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
     main{padding:56px 0 80px}
     .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
     h1{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(26px,4vw,42px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:10px}
     h1 strong{font-weight:700}
     .dateline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--text-dim);margin-bottom:36px}
     .dateline em{color:var(--accent);font-style:normal}
+    .summary-card{padding:20px 24px;background:linear-gradient(180deg,rgba(125,249,255,0.05) 0%,rgba(255,255,255,0.01) 100%);border:1px solid rgba(125,249,255,0.2);border-radius:var(--radius);font-size:14px;line-height:1.75;color:var(--text-muted);margin-bottom:28px}
+    .summary-card strong{color:var(--text)}
     .data-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
     .data-card{background:linear-gradient(180deg,rgba(255,255,255,0.025) 0%,rgba(255,255,255,0.005) 100%);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:16px 20px}
     .data-card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
     .data-card-value{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text)}
     .data-card-value.accent{color:var(--accent)}
+    .data-card-value.warn{color:var(--warn)}
+    .data-card-value.danger{color:var(--danger)}
     .table-section{background:var(--bg-1);border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;margin-bottom:28px}
     .table-section table{width:100%;border-collapse:collapse;font-size:13px}
     .table-section thead tr{background:var(--bg-2);border-bottom:1px solid var(--line-strong)}
@@ -82,13 +65,13 @@
     .footer-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:40px}
     .footer-brand p{max-width:380px;line-height:1.7}
     .footer-links{display:flex;gap:28px;flex-wrap:wrap;justify-content:flex-end}
-    .footer-links a{color:var(--text-muted);text-decoration:none;transition:color 180ms}
+    .footer-links a{color:var(--text-muted);text-decoration:none;transition:color 180ms ease}
     .footer-links a:hover{color:var(--accent)}
     .footer-legal{padding:24px 0 0;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:var(--text-dim)}
     .footer-legal strong{color:var(--text-muted)}
     .copyright{margin-top:20px;font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;font-size:11px}
-    @media(max-width:700px){.data-grid{grid-template-columns:1fr};nav a:not(.btn-ghost-sm){display:none};.footer-grid{grid-template-columns:1fr};.footer-links{justify-content:flex-start}}
-  </style>
+    @media(max-width:700px){.data-grid{grid-template-columns:1fr}nav a:not(.btn){display:none}.footer-grid{grid-template-columns:1fr}.footer-links{justify-content:flex-start}}
+</style>
 </head>
 <body>
 <header>
@@ -99,7 +82,7 @@
         <a href="/#features">Coverage</a>
         <a href="/#pricing">Pricing</a>
         <a href="/exit-liquidity.html">Exit Tracker</a>
-        <a href="/#signup" class="btn-ghost-sm">Get sample</a>
+        <a href="/#signup" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;">Get sample</a>
       </nav>
     </div>
   </div>
@@ -107,30 +90,36 @@
 
 <main>
   <div class="container">
-    <div class="eyebrow">Liquidity Snapshot</div>
+    <div class="eyebrow">Liquidity Snapshot · July 2026</div>
     <h1>Velvet Capital (<strong>VELVET</strong>)</h1>
-    <div class="dateline">Data: <em>CoinGecko + DexScreener</em> &nbsp;·&nbsp; Occelatus Research</div>
+    <div class="dateline">Generated: <em>2026-07-15 12:30 UTC</em> &nbsp;·&nbsp; Data: CoinGecko + DexScreener</div>
+
+    <div class="summary-card"><strong>Velvet Capital (VELVET)</strong> is trading at <strong>$0.5109</strong> as of 2026-07-15 12:30 UTC, down <strong>9.98%</strong> in 24 hours — a notable single-session drop. 24h volume is <strong>$14.3M</strong> with a market cap of <strong>$215.2M</strong>. The sharp decline warrants attention to on-chain liquidity conditions; significant sell pressure in thin pools could accelerate moves. DEX pair data not available at pull time.</div>
+
+    <div class="data-grid">
+      <div class="data-card"><div class="data-card-label">Price</div><div class="data-card-value">$0.51093</div></div>
+      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value danger">-9.98%</div></div>
+      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value accent">$14.28M</div></div>
+      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$215.2M</div></div>
+    </div>
 
     <div class="table-section">
       <table>
-        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-        <tbody>          <tr><td>Price</td><td>$0.37</td></tr>
-          <tr><td>24h Change</td><td>-78.2%</td></tr>
-          <tr><td>24h Volume</td><td>$111.11M</td></tr>
-          <tr><td>Market Cap</td><td>$155.46M</td></tr>
-          <tr><td>Top Pair Liquidity (DEX)</td><td>N/A</td></tr>
-          <tr><td>$10K Exit Slippage (est.)</td><td>N/A</td></tr></tbody>
+        <thead><tr><th>Pair</th><th>DEX</th><th>Liquidity (USD)</th><th>24h Volume</th></tr></thead>
+        <tbody>
+          <tr><td colspan='4' style='color:var(--text-dim);font-style:italic;'>No DEX pair data available for this token</td></tr>
+        </tbody>
       </table>
     </div>
 
     <div class="cta-card">
       <h3>Need deeper analysis for <strong>VELVET</strong>?</h3>
-      <p>Full reports include multi-pair depth breakdown, exit slippage at $10K–$500K, holder concentration, and historical post-unlock behavior — delivered to your inbox in under 30 minutes.</p>
-      <a href="/" class="btn-primary">Get the Full Report — $19 →</a>
+      <p>Full reports include multi-pair depth breakdown, exit slippage at $10K–$500K, holder concentration, and historical event behavior — delivered to your inbox in under 30 minutes.</p>
+      <a href="/?utm_source=seo&utm_medium=snapshot&utm_campaign=velvet-liquidity-snapshot" class="btn btn-primary">Get the Full Report — $19 →</a>
     </div>
 
     <div class="disclaimer-banner">
-      <strong>Disclaimer:</strong> Informational only. Not financial advice. All figures sourced from live data at generation time. <a href="/risk-disclosure.html">Full risk disclosure →</a>
+      <strong>Disclaimer:</strong> Informational only. Not financial advice. All figures sourced from live data at generation time (2026-07-15 12:30 UTC). Sources: CoinGecko (price/volume/market cap), DexScreener (DEX pairs). <a href='/risk-disclosure.html'>Full risk disclosure →</a>
     </div>
   </div>
 </main>
