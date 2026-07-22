@@ -54,11 +54,11 @@
 
     .card {
       width: 100%;
-      max-width: 600px;
+      max-width: 520px;
       background: linear-gradient(180deg, #13172480 0%, #0c0e1a80 100%);
       border: 1px solid var(--line-strong);
       border-radius: var(--radius);
-      padding: 48px 40px;
+      padding: 44px 40px;
     }
 
     .eyebrow {
@@ -72,7 +72,7 @@
 
     h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(26px, 5vw, 36px);
+      font-size: clamp(24px, 5vw, 32px);
       font-weight: 500;
       line-height: 1.2;
       margin-bottom: 28px;
@@ -80,10 +80,10 @@
 
     .bullets {
       list-style: none;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
     }
 
     .bullets li {
@@ -105,23 +105,97 @@
     .divider {
       border: none;
       border-top: 1px solid var(--line);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
-    .form-wrap {
-      display: flex;
-      justify-content: center;
-    }
-
-    iframe {
+    .form-label {
       display: block;
-      max-width: 100%;
-      border: none;
-      background: transparent;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    @media (max-width: 520px) {
+    .input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .email-input {
+      flex: 1;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 150ms ease, background 150ms ease;
+      min-width: 0;
+    }
+
+    .email-input::placeholder { color: var(--text-dim); }
+
+    .email-input:focus {
+      border-color: var(--accent);
+      background: rgba(125,249,255,0.04);
+    }
+
+    .submit-btn {
+      background: var(--accent);
+      color: #0b0e17;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 12px 22px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 150ms ease, transform 100ms ease;
+      flex-shrink: 0;
+    }
+
+    .submit-btn:hover { opacity: 0.85; }
+    .submit-btn:active { transform: scale(0.97); }
+    .submit-btn:disabled { opacity: 0.5; cursor: default; }
+
+    .form-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .success-msg {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: rgba(125,249,255,0.06);
+      border: 1px solid rgba(125,249,255,0.2);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .error-msg {
+      display: none;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #ff6b6b;
+    }
+
+    @media (max-width: 480px) {
       .card { padding: 32px 20px; }
+      .input-row { flex-direction: column; }
+      .submit-btn { width: 100%; }
     }
   </style>
 </head>
@@ -141,17 +215,67 @@
 
     <hr class="divider">
 
-    <div class="form-wrap">
-      <iframe
-        width="540"
-        height="305"
-        src="https://174f132b.sibforms.com/v2/serve/MUIFANGd9Lkcp4tL_cwjV4w5rrudcRdauMTOmN-qzY02Ce3-l-8UuaEGSlARM0bl9nzHZApYDRRhI02x6mtdgGJGcVPtRz6zaDXXzLDD7mWtcatP9JejO86ZJ98T_teFHbpMSL4BR6MzHzEGO_BAlJZg7qBsZDq_3a3jG33qd4EZ4DCDAIhEhYK0ttirmLbejpz0kuViyY0uzYEctg=="
-        scrolling="auto"
-        allowfullscreen
-        style="max-width:100%;"
-      ></iframe>
-    </div>
+    <form id="signup-form" novalidate>
+      <label class="form-label" for="email">Your email address</label>
+      <div class="input-row">
+        <input
+          class="email-input"
+          type="email"
+          id="email"
+          name="EMAIL"
+          placeholder="you@example.com"
+          required
+          autocomplete="email"
+        >
+        <button class="submit-btn" type="submit">Get it free</button>
+      </div>
+      <p class="form-note">No spam. Unsubscribe anytime.</p>
+      <div class="success-msg" id="success-msg">✓ Check your inbox — checklist on its way.</div>
+      <div class="error-msg" id="error-msg">Something went wrong. Try again or email us directly.</div>
+    </form>
   </div>
+
+  <script>
+    const FORM_ACTION = 'https://174f132b.sibforms.com/v2/serve/MUIFANGd9Lkcp4tL_cwjV4w5rrudcRdauMTOmN-qzY02Ce3-l-8UuaEGSlARM0bl9nzHZApYDRRhI02x6mtdgGJGcVPtRz6zaDXXzLDD7mWtcatP9JejO86ZJ98T_teFHbpMSL4BR6MzHzEGO_BAlJZg7qBsZDq_3a3jG33qd4EZ4DCDAIhEhYK0ttirmLbejpz0kuViyY0uzYEctg==';
+
+    document.getElementById('signup-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const btn = this.querySelector('.submit-btn');
+      const successEl = document.getElementById('success-msg');
+      const errorEl = document.getElementById('error-msg');
+
+      if (!email) return;
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      successEl.style.display = 'none';
+      errorEl.style.display = 'none';
+
+      const body = new URLSearchParams();
+      body.append('EMAIL', email);
+      body.append('email_address_check', '');
+      body.append('locale', 'en');
+
+      try {
+        await fetch(FORM_ACTION, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString()
+        });
+        // no-cors means we can't read the response; treat completion as success
+        successEl.style.display = 'block';
+        this.querySelector('.input-row').style.display = 'none';
+        this.querySelector('.form-note').style.display = 'none';
+        this.querySelector('.form-label').style.display = 'none';
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Get it free';
+        errorEl.style.display = 'block';
+      }
+    });
+  </script>
 
 </body>
 </html>
