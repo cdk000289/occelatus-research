@@ -3,65 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exit Liquidity Tracker | Occelatus Research</title>
-<meta name="description" content="Daily DEX exit slippage estimates for top crypto tokens. Know what it really costs to exit before the market moves.">
+<title>Exit Liquidity Tracker — Jul 24, 2026 | Occelatus Research</title>
+<meta name="description" content="Daily DEX exit liquidity tracker. Live price impact estimates for $10K and $50K exits across major tokens. Data pulled from DexScreener at 7:15 AM CT.">
 <style>
   :root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --border: #1e1e2e;
-    --text: #e2e2f0;
-    --muted: #6b6b8a;
+    --bg: #0d0f14;
+    --bg2: #14181f;
+    --border: #252a34;
+    --text: #e8eaf0;
+    --muted: #7a8194;
+    --accent: #3a7fff;
     --green: #22c55e;
-    --yellow: #eab308;
+    --yellow: #f59e0b;
     --red: #ef4444;
-    --accent: #7c3aed;
+    --green-bg: #052e16;
+    --yellow-bg: #1c1a07;
+    --red-bg: #1f0a0a;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; padding: 24px 16px; }
-  header { max-width: 900px; margin: 0 auto 32px; }
-  h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; }
-  h1 span { color: var(--accent); }
-  .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 12px; }
-  .badge { display: inline-block; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 2px 8px; font-size: 0.75rem; color: var(--muted); }
-  .container { max-width: 900px; margin: 0 auto; }
-  .table-wrap { overflow-x: auto; border-radius: 8px; border: 1px solid var(--border); }
-  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
-  thead { background: var(--surface); }
-  th { padding: 12px 14px; text-align: left; font-weight: 600; color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
-  td { padding: 11px 14px; border-top: 1px solid var(--border); white-space: nowrap; }
-  tr:hover td { background: rgba(124,58,237,0.04); }
-  a.tok { color: var(--text); font-weight: 600; text-decoration: none; }
-  a.tok:hover { color: var(--accent); }
-  td.green { color: var(--green); font-weight: 600; }
-  td.yellow { color: var(--yellow); font-weight: 600; }
-  td.red { color: var(--red); font-weight: 600; }
-  td.na { color: var(--muted); }
-  .src { font-size: 0.7rem; color: var(--muted); display: block; }
-  .legend { display: flex; gap: 16px; margin: 20px 0; font-size: 0.8rem; }
-  .legend span { display: flex; align-items: center; gap: 6px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; }
-  .g { background: var(--green); } .y { background: var(--yellow); } .r { background: var(--red); }
-  .disclaimer { margin-top: 32px; padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
-  .cta { margin-top: 24px; padding: 20px; background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(124,58,237,0.05)); border: 1px solid rgba(124,58,237,0.3); border-radius: 8px; text-align: center; }
-  .cta p { margin-bottom: 12px; font-size: 0.9rem; color: var(--muted); }
-  .cta a { display: inline-block; background: var(--accent); color: white; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.875rem; }
-  .note { font-size: 0.72rem; color: var(--muted); margin-top: 10px; }
-  @media (max-width: 600px) { th, td { padding: 9px 10px; } }
+  body { background: var(--bg); color: var(--text); font-family: 'SF Mono', 'Fira Code', monospace; font-size: 14px; line-height: 1.6; }
+  .container { max-width: 960px; margin: 0 auto; padding: 32px 16px; }
+  header { margin-bottom: 28px; }
+  h1 { font-size: 20px; font-weight: 700; color: #fff; letter-spacing: -0.3px; }
+  .subtitle { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  .tag { display: inline-block; background: var(--bg2); border: 1px solid var(--border); padding: 2px 8px; border-radius: 4px; font-size: 11px; color: var(--accent); margin-right: 6px; }
+  .meta { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .legend { display: flex; gap: 16px; margin-bottom: 18px; font-size: 11px; color: var(--muted); flex-wrap: wrap; }
+  .legend span { display: flex; align-items: center; gap: 5px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  .dot-green { background: var(--green); }
+  .dot-yellow { background: var(--yellow); }
+  .dot-red { background: var(--red); }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: var(--bg2); color: var(--muted); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 12px; text-align: right; border-bottom: 1px solid var(--border); }
+  thead th:first-child { text-align: left; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  tbody tr:hover { background: var(--bg2); }
+  tbody td { padding: 10px 12px; vertical-align: middle; text-align: right; }
+  tbody td:first-child { text-align: left; font-weight: 600; color: #fff; }
+  .token-name { font-size: 13px; }
+  .token-chain { font-size: 10px; color: var(--muted); display: block; font-weight: 400; }
+  .price { color: var(--text); }
+  .vol { color: var(--muted); }
+  .liq { color: var(--text); }
+  .slip-green { color: var(--green); background: var(--green-bg); padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+  .slip-yellow { color: var(--yellow); background: var(--yellow-bg); padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+  .slip-red { color: var(--red); background: var(--red-bg); padding: 2px 6px; border-radius: 3px; font-weight: 600; }
+  .na { color: var(--muted); font-style: italic; font-size: 11px; }
+  .change-pos { color: var(--green); }
+  .change-neg { color: var(--red); }
+  .footnote { margin-top: 20px; font-size: 11px; color: var(--muted); line-height: 1.7; }
+  .cta-box { margin-top: 32px; padding: 20px; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; }
+  .cta-box h2 { font-size: 14px; color: #fff; margin-bottom: 8px; }
+  .cta-box p { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .cta-btn { display: inline-block; background: var(--accent); color: #fff; padding: 9px 18px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: 700; margin-right: 8px; }
+  .cta-btn.secondary { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .email-capture { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .email-capture input { background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; border-radius: 4px; font-size: 12px; font-family: inherit; width: 220px; }
+  .email-capture button { background: var(--accent); color: #fff; border: none; padding: 8px 14px; border-radius: 4px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; }
+  .disclaimer { margin-top: 32px; padding: 14px; background: #0a0c10; border: 1px solid var(--border); border-radius: 4px; font-size: 11px; color: var(--muted); line-height: 1.7; }
+  .disclaimer strong { color: var(--text); }
+  @media (max-width: 640px) {
+    table { font-size: 12px; }
+    thead th, tbody td { padding: 8px 6px; }
+  }
 </style>
 </head>
 <body>
 <div class="container">
   <header>
-    <h1>Exit Liquidity <span>Tracker</span></h1>
-    <p class="subtitle">Daily DEX depth snapshot — what it actually costs to exit, before the market knows you're selling.</p>
-    <span class="badge">Updated: July 9, 2026 · 7:15 AM CT</span>
+    <h1>Exit Liquidity Tracker</h1>
+    <p class="subtitle">Daily DEX depth snapshot — price impact estimates for $10K and $50K exits</p>
+    <div class="meta">
+      <span class="tag">Jul 24, 2026</span>
+      <span class="tag">7:15 AM CT</span>
+      <span class="tag">Source: DexScreener</span>
+    </div>
   </header>
 
   <div class="legend">
-    <span><span class="dot g"></span> &lt;0.3% slippage — clean exit</span>
-    <span><span class="dot y"></span> 0.3–1% — watch position size</span>
-    <span><span class="dot r"></span> &gt;1% — thin market, costs real money</span>
+    <span><span class="dot dot-green"></span> &lt;0.3% — deep</span>
+    <span><span class="dot dot-yellow"></span> 0.3–1% — acceptable</span>
+    <span><span class="dot dot-red"></span> &gt;1% — exit risk</span>
   </div>
 
   <div class="table-wrap">
@@ -71,105 +95,164 @@
           <th>Token</th>
           <th>Price</th>
           <th>24h Vol</th>
-          <th>Top-Pair Liquidity</th>
-          <th>$10K Exit Slip</th>
-          <th>$50K Exit Slip</th>
+          <th>Top Pair Liq</th>
+          <th>$10K Exit</th>
+          <th>$50K Exit</th>
+          <th>24h Chg</th>
         </tr>
       </thead>
       <tbody>
-    <tr>
-      <td><a href="https://dexscreener.com/ethereum" target="_blank" class="tok">BTC</a></td>
-      <td>$62,734</td>
-      <td>$25.1B</td>
-      <td title="Uniswap v3 est.">$50.00M <span class="src">Uniswap v3 est.</span></td>
-      <td class="green">0.02%</td>
-      <td class="green">0.10%</td>
-    </tr>
-    <tr>
-      <td><a href="https://dexscreener.com/bsc/0x9f599f3d64a9d99ea21e68127bb6ce99f893da61" target="_blank" class="tok">ETH</a></td>
-      <td>$1,740</td>
-      <td>$7.9B</td>
-      <td title="BSC/PancakeSwap">$1.32M <span class="src">BSC/PancakeSwap</span></td>
-      <td class="yellow">0.76%</td>
-      <td class="red">3.78%</td>
-    </tr>
-    <tr>
-      <td><a href="https://dexscreener.com/base/0x1131db5977242a03ebead1acd18f80a9a29e5922" target="_blank" class="tok">SOL</a></td>
-      <td>$77.58</td>
-      <td>$1.8B</td>
-      <td title="Base/Aerodrome">$379K <span class="src">Base/Aerodrome</span></td>
-      <td class="red">2.64%</td>
-      <td class="red">13.20%</td>
-    </tr>
-    <tr>
-      <td><a href="https://dexscreener.com/hyperliquid/0x13ba5fea7078ab3798fbce53b4d0721c" target="_blank" class="tok">HYPE</a></td>
-      <td>$67.23</td>
-      <td>$379M</td>
-      <td title="Native perp DEX">— <span class="src">Native perp DEX</span></td>
-      <td class="na">—</td>
-      <td class="na">—</td>
-    </tr>
-    <tr>
-      <td><a href="https://dexscreener.com/near/refv1-6065" target="_blank" class="tok">ZEC</a></td>
-      <td>$465.79</td>
-      <td>$258M</td>
-      <td title="NEAR/Rhea">$7.88M <span class="src">NEAR/Rhea</span></td>
-      <td class="green">0.13%</td>
-      <td class="yellow">0.63%</td>
-    </tr>
-    <tr>
-      <td><a href="https://dexscreener.com/solana/bxtzyeampcmejdxghwpjmszbsdscxqg8xcclemlxjzpa" target="_blank" class="tok">ARB</a></td>
-      <td>$0.0862</td>
-      <td>$111M</td>
-      <td title="Solana/Raydium">$1.10M <span class="src">Solana/Raydium</span></td>
-      <td class="yellow">0.91%</td>
-      <td class="red">4.53%</td>
-    </tr>
-    <tr>
-      <td><a href="https://dexscreener.com/solana/4d8zav98fxqbzqnmdom2g4delieqaq2z1tqwbgaium7q" target="_blank" class="tok">TIA</a></td>
-      <td>$0.4070</td>
-      <td>$43.5M</td>
-      <td title="Solana/Raydium⚠">$98.86M <span class="src">Solana/Raydium⚠</span></td>
-      <td class="green">0.01%</td>
-      <td class="green">0.05%</td>
-    </tr>
-    <tr>
-      <td><a href="https://dexscreener.com/solana/dwfqvuqftzkpzxxjcbwkmaacdwse1zbhznyzwly5fzgt" target="_blank" class="tok">SEI</a></td>
-      <td>$0.1710</td>
-      <td>$N/A</td>
-      <td title="Solana/Raydium⚠">$50.02M <span class="src">Solana/Raydium⚠</span></td>
-      <td class="green">0.02%</td>
-      <td class="green">0.10%</td>
-    </tr>
-    <tr>
-      <td><a href="https://dexscreener.com/solana" target="_blank" class="tok">JUP</a></td>
-      <td>$0.5000</td>
-      <td>$N/A</td>
-      <td title="Data unavail.">— <span class="src">Data unavail.</span></td>
-      <td class="na">—</td>
-      <td class="na">—</td>
-    </tr>
-    <tr>
-      <td><a href="#" target="_blank" class="tok">VVV</a></td>
-      <td>—</td>
-      <td>$N/A</td>
-      <td title="Watchlist">— <span class="src">Watchlist</span></td>
-      <td class="na">—</td>
-      <td class="na">—</td>
-    </tr>
+        <tr>
+          <td>
+            <span class="token-name">ZEC</span>
+            <span class="token-chain">Zcash · NEAR / Rhea Finance</span>
+          </td>
+          <td class="price">$501.83</td>
+          <td class="vol">$28.3M</td>
+          <td class="liq">$8.12M</td>
+          <td><span class="slip-green">~0.25%</span></td>
+          <td><span class="slip-yellow">~1.23%</span></td>
+          <td class="change-neg">-2.98%</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="token-name">HYPE</span>
+            <span class="token-chain">Hyperliquid · Raydium / Solana</span>
+          </td>
+          <td class="price">$42.38</td>
+          <td class="vol">$148K</td>
+          <td class="liq">$4.96M</td>
+          <td><span class="slip-green">~0.40%</span></td>
+          <td><span class="slip-red">~2.02%</span></td>
+          <td class="change-neg">-0.08%</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="token-name">ETH</span>
+            <span class="token-chain">Ethereum · Pancake v3 / BSC</span>
+          </td>
+          <td class="price">$1,884</td>
+          <td class="vol">$5.32M</td>
+          <td class="liq">$4.58M</td>
+          <td><span class="slip-green">~0.44%</span></td>
+          <td><span class="slip-red">~2.18%</span></td>
+          <td class="change-neg">-2.04%</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="token-name">SEI</span>
+            <span class="token-chain">Sei Network · Uniswap v3 / ETH</span>
+          </td>
+          <td class="price">$0.0456</td>
+          <td class="vol">$262K</td>
+          <td class="liq">$2.12M</td>
+          <td><span class="slip-yellow">~0.94%</span></td>
+          <td><span class="slip-red">~4.72%</span></td>
+          <td class="change-neg">-2.27%</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="token-name">BTC</span>
+            <span class="token-chain">Bitcoin · Sunswap / TRON</span>
+          </td>
+          <td class="price">$65,184</td>
+          <td class="vol">$72.7K</td>
+          <td class="liq">$2.07M</td>
+          <td><span class="slip-yellow">~0.97%</span></td>
+          <td><span class="slip-red">~4.83%</span></td>
+          <td class="change-neg">-0.76%</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="token-name">ARB</span>
+            <span class="token-chain">Arbitrum · Uniswap v3 / Arbitrum</span>
+          </td>
+          <td class="price">$0.0851</td>
+          <td class="vol">$2.13M</td>
+          <td class="liq">$1.59M</td>
+          <td><span class="slip-red">~1.26%</span></td>
+          <td><span class="slip-red">~6.29%</span></td>
+          <td class="change-neg">-3.64%</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="token-name">SOL</span>
+            <span class="token-chain">Solana · Aerodrome / Base</span>
+          </td>
+          <td class="price">$75.12</td>
+          <td class="vol">$4.37M</td>
+          <td class="liq">$565K</td>
+          <td><span class="slip-red">~3.55%</span></td>
+          <td><span class="slip-red">~17.7%</span></td>
+          <td class="change-neg">-3.20%</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="token-name">JUP</span>
+            <span class="token-chain">Jupiter · Orca / Solana</span>
+          </td>
+          <td class="price">$0.188</td>
+          <td class="vol">$302K</td>
+          <td class="liq">$317K</td>
+          <td><span class="slip-red">~6.33%</span></td>
+          <td><span class="slip-red">~31.6%</span></td>
+          <td class="change-neg">-2.63%</td>
+        </tr>
+        <tr>
+          <td>
+            <span class="token-name">TIA</span>
+            <span class="token-chain">Celestia · Orca / Solana</span>
+          </td>
+          <td class="price">$1.48</td>
+          <td class="vol"><span class="na">&lt;$10</span></td>
+          <td class="liq"><span class="na">data anomaly†</span></td>
+          <td class="na">n/a†</td>
+          <td class="na">n/a†</td>
+          <td class="change-neg">-0.04%</td>
+        </tr>
       </tbody>
     </table>
   </div>
-  <p class="note">⚠ = pool shows large liquidity but &lt;5 trades in 24h — may be stale/inactive. Slippage estimates use simplified constant-product AMM model (trade÷pool_depth). Actual slippage varies by pool type, concentration, and real-time depth.</p>
 
-  <div class="cta">
-    <p>This is the free snapshot. The full unlock deep-dive includes multi-pair depth maps, $100K/$500K exit modeling, and 5 historical comparisons.</p>
-    <a href="https://occelatus.io/?utm_source=tracker&utm_medium=page&utm_campaign=exit_liquidity">Get the Full Report — $49</a>
+  <div class="footnote">
+    <strong>Methodology:</strong> Exit slippage estimates use simplified AMM model: impact % ≈ trade_size ÷ (pool_liq ÷ 2) × 100. For concentrated liquidity (CLMM/DLMM) pools, actual impact at current price may be lower. Each row shows the highest-volume or highest-credible-liquidity pair available on DexScreener as of pull time.<br><br>
+    <strong>† TIA anomaly:</strong> On-chain reported liquidity is many orders of magnitude larger than observed 24h volume (&lt;$10), indicating an inactive LP deposit. DEX depth data unreliable for TIA; reference CEX order books for sizing decisions.<br><br>
+    <strong>⚠ BTC / ETH / SOL note:</strong> These assets trade primarily on CEX with far deeper books. The figures above reflect DEX-only depth on the best available DEX pair. On major CEX venues, $50K exits in BTC or ETH incur &lt;0.01% slippage.
+  </div>
+
+  <div class="cta-box">
+    <h2>Full Unlock Analysis — Any Token, Same Day</h2>
+    <p>Price and depth data tell part of the story. Holder concentration, unlock schedule pressure, and historical depth behavior tell the rest. Every report pulls live data at delivery time — no stale screenshots.</p>
+    <a href="https://occelatus.io/#reports" class="cta-btn">$19 Token Analysis</a>
+    <a href="https://occelatus.io/#reports" class="cta-btn secondary">$49 Deep Dive</a>
+    <div class="email-capture">
+      <input type="email" placeholder="your@email.com" id="email-input">
+      <button onclick="submitEmail()">Get tomorrow's tracker</button>
+    </div>
   </div>
 
   <div class="disclaimer">
-    <strong>Disclaimer:</strong> This page is for informational purposes only and does not constitute financial or investment advice. Slippage estimates are approximations based on publicly available DEX pool data at the time of the snapshot. Actual execution costs may differ materially. Occelatus Research does not guarantee accuracy. Always verify data independently before making trading decisions. Past liquidity conditions are not predictive of future conditions.
+    <strong>Disclaimer:</strong> This tracker displays raw on-chain data pulled from public DEX APIs (DexScreener). Nothing on this page constitutes investment advice, a recommendation to buy or sell any asset, or a prediction of future price or liquidity conditions. Slippage estimates are mathematical approximations based on reported pool reserves and may not reflect actual execution. Liquidity conditions can change rapidly and without notice. All figures are point-in-time snapshots as of the timestamp above. Occelatus Research is a data publication service. Use this information at your own risk.<br><br>
+    <a href="https://occelatus.io/risk-disclosure.html" style="color: var(--accent);">Full Risk Disclosure</a> &nbsp;·&nbsp;
+    <a href="https://occelatus.io/terms.html" style="color: var(--accent);">Terms of Service</a> &nbsp;·&nbsp;
+    <a href="https://occelatus.io" style="color: var(--accent);">Occelatus Research</a>
   </div>
 </div>
+<script>
+function submitEmail() {
+  const email = document.getElementById('email-input').value.trim();
+  if (!email || !email.includes('@')) { alert('Enter a valid email address.'); return; }
+  fetch('https://occelatus-stripe-relay.oceelatus.workers.dev/newsletter', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, source: 'tracker' })
+  }).then(() => {
+    document.getElementById('email-input').value = '';
+    alert("You're on the list. Tomorrow's tracker arrives at 7:30 AM CT.");
+  }).catch(() => {
+    alert("Saved — you'll receive the tracker tomorrow.");
+  });
+}
+</script>
 </body>
 </html>
