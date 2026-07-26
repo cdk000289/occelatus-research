@@ -11,12 +11,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://occelatus.io/reports/STRK-unlock-analysis-july-2026.html</loc><lastmod>2026-07-06</lastmod>
+    <loc>https://occelatus.io/reports/STRK-unlock-analysis-july-2026.html</loc><lastmod>2026-07-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://occelatus.io/reports/APT-unlock-analysis-july-2026.html</loc><lastmod>2026-07-06</lastmod>
+    <loc>https://occelatus.io/reports/APT-unlock-analysis-july-2026.html</loc><lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -75,14 +75,14 @@
   <url>
     <loc>https://occelatus.io/reports/birb-liquidity-snapshot</loc>
     <lastmod>2026-07-02</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://occelatus.io/reports/ansem-liquidity-snapshot</loc>
     <lastmod>2026-07-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url><loc>https://occelatus.io/reports/jito-liquidity-snapshot.html</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>
