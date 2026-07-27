@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>ANSEM (The Black Bull) Liquidity Snapshot — July 2026 | Occelatus Research</title>
-  <meta name="description" content="ANSEM live liquidity data: +51.5% in 24h, $36.3M volume, $3.5M DEX depth on Solana. Exit slippage analysis. Updated July 3, 2026 19:00 UTC.">
+  <title>ANSEM (The Black Bull) (ANSEM) Liquidity Snapshot — July 2026 | Occelatus Research</title>
+  <meta name="description" content="ANSEM (The Black Bull) live liquidity data: price, 24h volume, DEX depth, exit slippage. Updated July 27, 2026 12:34 UTC.">
   <link rel="canonical" href="https://occelatus.io/reports/ansem-liquidity-snapshot">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,37 +15,22 @@
       --line:rgba(255,255,255,0.06);--line-strong:rgba(255,255,255,0.12);
       --text:#e6e8ef;--text-muted:#8b91a8;--text-dim:#5a6079;
       --accent:#7df9ff;--accent-warm:#ff6b9d;--accent-soft:rgba(125,249,255,0.10);
-      --danger:#ff5d5d;--warn:#f5c451;--green:#4ade80;--radius:14px;--radius-sm:8px;
+      --danger:#ff5d5d;--warn:#f5c451;--radius:14px;--radius-sm:8px;
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
-    body{
-      font-family:'IBM Plex Sans',sans-serif;font-weight:300;
-      background:var(--bg-0);color:var(--text);min-height:100vh;line-height:1.65;
-      overflow-x:hidden;
-      background-image:
-        radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),
-        radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%),
-        radial-gradient(ellipse 70% 60% at 50% 110%,rgba(125,249,255,0.05) 0%,transparent 60%);
-      background-attachment:fixed;
-    }
-    body::before{
-      content:"";position:fixed;inset:0;
-      background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
-      background-size:80px 80px;
-      mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);
-      pointer-events:none;z-index:0;opacity:0.5;
-    }
+    body{font-family:'IBM Plex Sans',sans-serif;font-weight:300;background:var(--bg-0);color:var(--text);min-height:100vh;line-height:1.65;overflow-x:hidden;background-image:radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%);background-attachment:fixed;}
+    body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);pointer-events:none;z-index:0;opacity:0.5;}
     .container{max-width:900px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);background:rgba(11,14,23,0.72);border-bottom:1px solid var(--line)}
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);background:rgba(11,14,23,0.72);border-bottom:1px solid var(--line);}
     .header-content{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
     .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
     .logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-warm) 100%);position:relative;box-shadow:0 0 24px rgba(125,249,255,0.35);flex-shrink:0}
     .logo-mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--bg-0)}
     nav{display:flex;gap:28px;align-items:center}
-    nav a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:0.02em;transition:color 180ms ease}
+    nav a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:400;transition:color 180ms ease}
     nav a:hover{color:var(--text)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;text-decoration:none;transition:transform 180ms ease,box-shadow 220ms ease,background 180ms ease,border-color 180ms ease;white-space:nowrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 22px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;text-decoration:none;transition:transform 180ms,box-shadow 220ms,background 180ms,border-color 180ms;white-space:nowrap}
     .btn-primary{background:var(--accent);color:var(--bg-0);box-shadow:0 0 0 1px var(--accent),0 10px 30px -10px rgba(125,249,255,0.5)}
     .btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 0 1px var(--accent),0 16px 36px -10px rgba(125,249,255,0.7)}
     .btn-ghost{background:transparent;color:var(--text);border-color:var(--line-strong)}
@@ -56,15 +41,11 @@
     h1 strong{font-weight:700}
     .dateline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--text-dim);margin-bottom:36px}
     .dateline em{color:var(--accent);font-style:normal}
-    .alert-banner{display:flex;align-items:center;gap:12px;padding:14px 20px;background:rgba(74,222,128,0.07);border:1px solid rgba(74,222,128,0.25);border-radius:var(--radius-sm);margin-bottom:28px;font-size:13px;color:var(--green)}
     .data-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
     .data-card{background:linear-gradient(180deg,rgba(255,255,255,0.025) 0%,rgba(255,255,255,0.005) 100%);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:16px 20px}
     .data-card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
     .data-card-value{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text)}
     .data-card-value.accent{color:var(--accent)}
-    .data-card-value.green{color:var(--green)}
-    .data-card-value.warn{color:var(--warn)}
-    .section-title{font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:500;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
     .table-section{background:var(--bg-1);border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;margin-bottom:28px}
     .table-section table{width:100%;border-collapse:collapse;font-size:13px}
     .table-section thead tr{background:var(--bg-2);border-bottom:1px solid var(--line-strong)}
@@ -72,151 +53,84 @@
     .table-section td{padding:11px 16px;border-bottom:1px solid var(--line);color:var(--text-muted);vertical-align:middle}
     .table-section td:first-child{color:var(--text)}
     .table-section tr:last-child td{border-bottom:none}
-    .green{color:var(--green)}
-    .warn{color:var(--warn)}
-    .danger{color:var(--danger)}
-    .prose{font-size:14px;line-height:1.75;color:var(--text-muted);margin-bottom:28px}
-    .prose p{margin-bottom:14px}
-    .prose strong{color:var(--text);font-weight:500}
-    .cta-box{background:linear-gradient(135deg,rgba(125,249,255,0.06) 0%,rgba(255,107,157,0.04) 100%);border:1px solid rgba(125,249,255,0.18);border-radius:var(--radius);padding:32px;text-align:center;margin-bottom:40px}
-    .cta-box h3{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:700;margin-bottom:10px}
-    .cta-box p{font-size:14px;color:var(--text-muted);margin-bottom:24px;max-width:520px;margin-left:auto;margin-right:auto}
-    .cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-    .disclaimer{font-size:11px;color:var(--text-dim);line-height:1.7;padding:20px;background:var(--bg-1);border:1px solid var(--line);border-radius:var(--radius-sm);margin-top:40px}
-    footer{border-top:1px solid var(--line);padding:28px 0;font-size:12px;color:var(--text-dim);display:flex;justify-content:space-between;align-items:center;flex-wrap:gap}
+    .cta-card{background:linear-gradient(135deg,rgba(125,249,255,0.06) 0%,rgba(17,20,31,0.8) 100%);border:1px solid rgba(125,249,255,0.18);border-radius:var(--radius);padding:32px;margin:36px 0;text-align:center}
+    .cta-card h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;margin-bottom:10px}
+    .cta-card p{color:var(--text-muted);font-size:14px;max-width:500px;margin:0 auto 22px;line-height:1.7}
+    .disclaimer-banner{margin:28px 0 0;padding:14px 20px;background:rgba(245,196,81,0.06);border:1px solid rgba(245,196,81,0.25);border-radius:var(--radius-sm);font-size:13px;color:var(--warn);line-height:1.55}
+    .disclaimer-banner a{color:var(--warn);text-decoration:underline}
+    footer{padding:56px 0 32px;border-top:1px solid var(--line-strong);margin-top:40px;font-size:13px;color:var(--text-dim)}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:40px}
+    .footer-brand p{max-width:380px;line-height:1.7}
+    .footer-links{display:flex;gap:28px;flex-wrap:wrap;justify-content:flex-end}
+    .footer-links a{color:var(--text-muted);text-decoration:none;transition:color 180ms ease}
+    .footer-links a:hover{color:var(--accent)}
+    .footer-legal{padding:24px 0 0;border-top:1px solid var(--line);font-size:12px;line-height:1.7;color:var(--text-dim)}
+    .footer-legal strong{color:var(--text-muted)}
+    .copyright{margin-top:20px;font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;font-size:11px}
+    @media(max-width:700px){.data-grid{grid-template-columns:1fr}nav a:not(.btn){display:none}.footer-grid{grid-template-columns:1fr}.footer-links{justify-content:flex-start}}
   </style>
 </head>
 <body>
-
 <header>
   <div class="container">
     <div class="header-content">
-      <a class="logo" href="https://occelatus.io">
-        <div class="logo-mark"></div>
-        Occelatus Research
-      </a>
+      <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
       <nav>
-        <a href="https://occelatus.io/#reports">Reports</a>
-        <a href="https://occelatus.io/exit-liquidity">Tracker</a>
-        <a href="https://occelatus.io/#order" class="btn btn-primary" style="padding:8px 16px;font-size:13px">Get Full Report — $19</a>
+        <a href="/#features">Coverage</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/exit-liquidity.html">Exit Tracker</a>
+        <a href="/#signup" class="btn btn-ghost" style="padding:8px 16px;font-size:13px;">Get sample</a>
       </nav>
     </div>
   </div>
 </header>
-
 <main>
   <div class="container">
-
-    <div class="eyebrow">🔥 Trending — Rapid Response</div>
-    <h1><strong>ANSEM (The Black Bull)</strong><br>Liquidity Snapshot</h1>
-    <p class="dateline">Pulled <em>July 3, 2026 — 19:00 UTC</em> &nbsp;|&nbsp; Chain: Solana &nbsp;|&nbsp; Source: DexScreener, CoinGecko</p>
-
-    <div class="alert-banner">
-      <span>🟢</span>
-      <span>Trending trigger: +51.5% 24h price change, $3.5M aggregate DEX liquidity, $36.3M 24h volume. Complies with minimum thresholds for analysis.</span>
-    </div>
-
+    <div class="eyebrow">Liquidity Snapshot · July 2026</div>
+    <h1>ANSEM (The Black Bull) (<strong>ANSEM</strong>)</h1>
+    <div class="dateline">Generated: <em>July 27, 2026 12:34 UTC</em> &nbsp;·&nbsp; Data: CoinGecko + DexScreener</div>
     <div class="data-grid">
-      <div class="data-card">
-        <div class="data-card-label">Price (Solana)</div>
-        <div class="data-card-value accent">$0.252</div>
-      </div>
-      <div class="data-card">
-        <div class="data-card-label">24h Price Change</div>
-        <div class="data-card-value green">+51.5%</div>
-      </div>
-      <div class="data-card">
-        <div class="data-card-label">24h Volume</div>
-        <div class="data-card-value">$36.3M</div>
-      </div>
-      <div class="data-card">
-        <div class="data-card-label">Market Cap</div>
-        <div class="data-card-value">$106.4M</div>
-      </div>
-      <div class="data-card">
-        <div class="data-card-label">Total DEX Liquidity</div>
-        <div class="data-card-value accent">~$3.5M</div>
-      </div>
-      <div class="data-card">
-        <div class="data-card-label">$10K Exit Slippage (Pumpswap)</div>
-        <div class="data-card-value green">~0.25%</div>
-      </div>
+      <div class="data-card"><div class="data-card-label">Price</div><div class="data-card-value">N/A</div></div>
+      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value">N/A</div></div>
+      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value accent">N/A</div></div>
+      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">N/A</div></div>
     </div>
-
-    <div class="section-title">DEX Pool Breakdown</div>
     <div class="table-section">
       <table>
-        <thead>
-          <tr>
-            <th>Pool</th>
-            <th>Pair</th>
-            <th>Liquidity</th>
-            <th>24h Volume</th>
-            <th>Buy/Sell Txns</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Metric</th><th>Value</th></tr></thead>
         <tbody>
-          <tr>
-            <td>Pumpswap</td>
-            <td>ANSEM / SOL</td>
-            <td class="green">$2,036,652</td>
-            <td>$10,259,527</td>
-            <td>24,548 / 16,953</td>
-          </tr>
-          <tr>
-            <td>Meteora DLMM</td>
-            <td>ANSEM / SOL</td>
-            <td>$479,410</td>
-            <td>$4,049,316</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td>Meteora DLMM</td>
-            <td>ANSEM / USDC</td>
-            <td>$203,595</td>
-            <td>$2,184,131</td>
-            <td>—</td>
-          </tr>
-          <tr>
-            <td colspan="2" style="color:var(--text-dim);font-style:italic">Other pools (combined)</td>
-            <td>~$780,000</td>
-            <td>~$19.8M</td>
-            <td>—</td>
-          </tr>
+          <tr><td>Top Pair Liquidity (DEX)</td><td>$317.70M</td></tr>
+          <tr><td>$10K Exit Slippage (est.)</td><td>~0.01%</td></tr>
         </tbody>
       </table>
     </div>
-
-    <div class="section-title">What the Data Shows</div>
-    <div class="prose">
-      <p>ANSEM (The Black Bull) moved +51.5% in 24 hours on Solana with $36.3M in trading volume against a $106.4M market cap — a volume-to-cap ratio of 34%, which is elevated but not unusual for a high-conviction meme cycle in a bullish macro environment.</p>
-      <p><strong>Liquidity quality is the more important number here.</strong> At ~$3.5M in aggregate DEX depth, a $10K exit through the deepest pool (Pumpswap, $2.04M) costs approximately 0.25% in slippage. That's within normal range for a mid-cap Solana memecoin. A $100K exit through the same pool would cost roughly 2.5% — manageable but worth modeling for larger positions.</p>
-      <p><strong>Buy/sell ratio on Pumpswap:</strong> 24,548 buys vs 16,953 sells. Net buyer pressure. This doesn't confirm continuation — it reflects the 24h window and can reverse quickly. Volume at this clip can be partially painted; exit depth, as always, cannot.</p>
+    <div class="cta-card">
+      <h3>Need deeper analysis for <strong>ANSEM</strong>?</h3>
+      <p>Full reports include multi-pair depth breakdown, exit slippage at $10K–$500K, holder concentration, and historical behavior — delivered in under 30 minutes.</p>
+      <a href="/" class="btn btn-primary">Get the Full Report — $19 →</a>
     </div>
-
-    <div class="cta-box">
-      <h3>Want the full ANSEM depth report?</h3>
-      <p>Order a $19 on-demand report and get holder concentration, slippage curves for $10K / $50K / $100K exits, unlock risk, and a structured summary — delivered within 30 minutes.</p>
-      <div class="cta-row">
-        <a href="https://occelatus.io/#order?utm_source=seo&utm_medium=trending&utm_campaign=ansem-jul3" class="btn btn-primary">Run ANSEM Report — $19</a>
-        <a href="https://occelatus.io/exit-liquidity?utm_source=seo&utm_medium=trending&utm_campaign=ansem-jul3" class="btn btn-ghost">Free Exit Tracker</a>
-      </div>
-    </div>
-
-    <div class="disclaimer">
-      <strong>Risk Disclosure:</strong> This snapshot is for informational purposes only and does not constitute financial advice, investment advice, or a recommendation to buy, sell, or hold any asset. All figures are sourced from DexScreener and CoinGecko at the time of the pull (July 3, 2026, 19:00 UTC) and may not reflect current market conditions. Cryptocurrency markets are highly volatile. Past price movements are not indicative of future results. Slippage estimates are approximate and based on pool depth at time of pull; actual execution may differ. Always conduct your own research and consult a licensed financial advisor before making investment decisions. Occelatus Research does not hold positions in ANSEM and has no financial relationship with the token's team or promoters.
-    </div>
-
+    <div class="disclaimer-banner"><strong>Disclaimer:</strong> Informational only. Not financial advice. All figures sourced from live data at generation time. <a href='/risk-disclosure.html'>Full risk disclosure →</a></div>
   </div>
 </main>
-
 <footer>
-  <div class="container" style="display:flex;justify-content:space-between;align-items:center;padding-top:0;padding-bottom:0">
-    <span>© 2026 Occelatus Research</span>
-    <span>Data: DexScreener + CoinGecko · July 3, 2026 19:00 UTC</span>
-    <a href="https://occelatus.io/risk-disclosure" style="color:inherit;text-decoration:none">Risk Disclosure</a>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:12px;"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></div>
+        <p>On-chain crypto intelligence. Liquidity depth, unlock risk, honest methodology — delivered as readable reports.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/terms.html">Terms</a>
+        <a href="/risk-disclosure.html">Risk Disclosure</a>
+        <a href="mailto:research@occelatus.io">Contact</a>
+        <a href="/#pricing">Pricing</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <strong>LEGAL:</strong> Occelatus Research provides informational content and analysis only. This is NOT financial advice, investment advice, or professional financial services. Cryptocurrency is highly volatile and risky. You are solely responsible for your investment decisions. Past performance does not guarantee future results. Consult a qualified financial advisor. Occelatus Research is not a registered investment advisor.
+      <div class="copyright">© 2026 OCCELATUS_RESEARCH · ALL RIGHTS RESERVED</div>
+    </div>
   </div>
 </footer>
-
 </body>
 </html>

@@ -85,4 +85,16 @@
     <priority>0.5</priority>
   </url>
   <url><loc>https://occelatus.io/reports/jito-liquidity-snapshot.html</loc><lastmod>2026-07-26</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <url><loc>https://occelatus.io/reports/block-street-liquidity-snapshot</loc><lastmod>2026-07-27</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://occelatus.io/reports/evaa-protocol-liquidity-snapshot</loc><lastmod>2026-07-27</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://occelatus.io/reports/humanity-liquidity-snapshot</loc><lastmod>2026-07-27</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://occelatus.io/reports/portal-liquidity-snapshot</loc><lastmod>2026-07-27</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://occelatus.io/reports/siren-liquidity-snapshot</loc><lastmod>2026-07-27</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+
+  <url><loc>https://occelatus.io/reports/yooldo-games-liquidity-snapshot</loc><lastmod>2026-07-27</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
 </urlset>
