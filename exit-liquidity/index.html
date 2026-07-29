@@ -46,6 +46,7 @@
   .num { font-variant-numeric: tabular-nums; }
   .change-pos { color: var(--green); }
   .change-neg { color: var(--red); }
+  .change-na { color: var(--muted); }
   .slip-cell { border-radius: 4px; padding: 3px 8px; font-weight: 600; font-size: 12px; display: inline-block; }
   .slip-green { background: var(--green-bg); color: var(--green); }
   .slip-yellow { background: var(--yellow-bg); color: var(--yellow); }
@@ -78,7 +79,7 @@
 <main>
   <div class="meta">
     <span>Source: <strong>DexScreener + CoinGecko</strong></span>
-    <span>Updated: <strong>2026-07-28 12:15 UTC</strong></span>
+    <span>Updated: <strong>2026-07-29 12:15 UTC</strong></span>
     <span>Slippage model: <strong>AMM constant-product estimate (trade ÷ half-liquidity)</strong></span>
   </div>
 
@@ -106,43 +107,43 @@
       <!-- BTC -->
       <tr>
         <td class="token">BTC</td>
-        <td class="num">$63,405</td>
-        <td class="num change-neg">−2.54%</td>
-        <td class="num">$25.45B</td>
-        <td class="num">$2.04M <span class="note">(TRON pool)</span></td>
-        <td><span class="slip-yellow slip-cell">0.98%</span></td>
-        <td><span class="slip-red slip-cell">4.90%</span></td>
+        <td class="num">$64,400</td>
+        <td class="num change-pos">+1.74%</td>
+        <td class="num">$14.3K <span class="note">(DEX only)</span></td>
+        <td class="num">$2.06M <span class="note">(TRON/Sunswap)</span></td>
+        <td><span class="slip-yellow slip-cell">0.97%</span></td>
+        <td><span class="slip-red slip-cell">4.85%</span></td>
         <td>TRON / CEX-dominant</td>
       </tr>
       <!-- ETH -->
       <tr>
         <td class="token">ETH</td>
-        <td class="num">$1,876</td>
-        <td class="num change-neg">−4.07%</td>
-        <td class="num">$11.04B</td>
-        <td class="num">CEX-primary</td>
-        <td><span class="slip-na slip-cell">N/A</span></td>
-        <td><span class="slip-na slip-cell">N/A</span></td>
-        <td>CEX-dominant</td>
+        <td class="num">$1,912</td>
+        <td class="num change-pos">+1.86%</td>
+        <td class="num">$9.89M <span class="note">(top pair)</span></td>
+        <td class="num">$10.29M <span class="note">(BSC/PancakeSwap v3)</span></td>
+        <td><span class="slip-green slip-cell">0.19%</span></td>
+        <td><span class="slip-yellow slip-cell">0.97%</span></td>
+        <td>BSC / CEX-dominant</td>
       </tr>
       <!-- SOL -->
       <tr>
         <td class="token">SOL</td>
-        <td class="num">$73.16</td>
-        <td class="num change-neg">−4.39%</td>
-        <td class="num">$1.90B</td>
-        <td class="num">$305K <span class="note">(Base/Aerodrome)</span></td>
-        <td><span class="slip-red slip-cell">6.56%</span></td>
-        <td><span class="slip-red slip-cell">32.8%</span></td>
-        <td>Base (wrapped) / CEX-dominant</td>
+        <td class="num">$73.69</td>
+        <td class="num change-pos">+0.73%</td>
+        <td class="num">$76.9M <span class="note">(Orca pair)</span></td>
+        <td class="num">$25.8M <span class="note">(Orca SOL/USDC)</span></td>
+        <td><span class="slip-green slip-cell">0.08%</span></td>
+        <td><span class="slip-green slip-cell">0.39%</span></td>
+        <td>Solana native</td>
       </tr>
       <!-- HYPE -->
       <tr>
         <td class="token">HYPE</td>
-        <td class="num">$54.46</td>
-        <td class="num change-neg">−9.00%</td>
-        <td class="num">$479.8M</td>
-        <td class="num">$1.35B* <span class="note">(Raydium)</span></td>
+        <td class="num">$64.20</td>
+        <td class="num change-pos">+17.9%</td>
+        <td class="num">$170K <span class="note">(low txn count)</span></td>
+        <td class="num">$1.35B* <span class="note">(Raydium CLMM)</span></td>
         <td><span class="slip-green slip-cell">&lt;0.01%</span></td>
         <td><span class="slip-green slip-cell">0.004%</span></td>
         <td>Solana (CLMM)*</td>
@@ -150,32 +151,32 @@
       <!-- ZEC -->
       <tr>
         <td class="token">ZEC</td>
-        <td class="num">$465.72</td>
-        <td class="num change-neg">−7.30%</td>
-        <td class="num">$189.3M</td>
-        <td class="num">$7.36M <span class="note">(NEAR/rhea)</span></td>
-        <td><span class="slip-green slip-cell">0.27%</span></td>
-        <td><span class="slip-yellow slip-cell">1.36%</span></td>
+        <td class="num">$459.57</td>
+        <td class="num change-neg">−1.41%</td>
+        <td class="num">$7.34M</td>
+        <td class="num">$7.15M <span class="note">(NEAR/Rhea Finance)</span></td>
+        <td><span class="slip-green slip-cell">0.28%</span></td>
+        <td><span class="slip-yellow slip-cell">1.40%</span></td>
         <td>NEAR Protocol</td>
       </tr>
       <!-- ARB -->
       <tr>
         <td class="token">ARB</td>
-        <td class="num">$0.0778</td>
-        <td class="num change-neg">−4.74%</td>
-        <td class="num">$38.7M</td>
-        <td class="num">$83.7M* <span class="note">(Raydium)</span></td>
-        <td><span class="slip-green slip-cell">0.024%</span></td>
-        <td><span class="slip-green slip-cell">0.12%</span></td>
-        <td>Solana (CLMM)*</td>
+        <td class="num">$0.0782</td>
+        <td class="num change-pos">+0.41%</td>
+        <td class="num">$986K</td>
+        <td class="num">$1.38M <span class="note">(Arbitrum/Uniswap v3)</span></td>
+        <td><span class="slip-red slip-cell">1.45%</span></td>
+        <td><span class="slip-red slip-cell">7.25%</span></td>
+        <td>Arbitrum native</td>
       </tr>
       <!-- TIA -->
       <tr>
         <td class="token">TIA</td>
-        <td class="num">$0.327</td>
-        <td class="num change-neg">−5.74%</td>
-        <td class="num">$21.6M</td>
-        <td class="num">N/A <span class="note">(zero-vol pools)</span></td>
+        <td class="num">$2.67</td>
+        <td class="num change-na">—</td>
+        <td class="num">&lt;$10 <span class="note">(DEX only)</span></td>
+        <td class="num">N/A <span class="note">(zero-vol DEX pools)</span></td>
         <td><span class="slip-na slip-cell">N/A</span></td>
         <td><span class="slip-na slip-cell">N/A</span></td>
         <td>Cosmos / CEX-primary</td>
@@ -183,24 +184,24 @@
       <!-- SEI -->
       <tr>
         <td class="token">SEI</td>
-        <td class="num">$0.0426</td>
-        <td class="num change-neg">−6.06%</td>
-        <td class="num">$33.5M</td>
-        <td class="num">N/A <span class="note">(zero-vol pools)</span></td>
-        <td><span class="slip-na slip-cell">N/A</span></td>
-        <td><span class="slip-na slip-cell">N/A</span></td>
-        <td>SEI chain / CEX-primary</td>
+        <td class="num">$0.0427</td>
+        <td class="num change-neg">−0.32%</td>
+        <td class="num">$176K</td>
+        <td class="num">$1.91M <span class="note">(ETH/Uniswap v3)</span></td>
+        <td><span class="slip-red slip-cell">1.05%</span></td>
+        <td><span class="slip-red slip-cell">5.24%</span></td>
+        <td>Ethereum (bridged)</td>
       </tr>
       <!-- JUP -->
       <tr>
         <td class="token">JUP</td>
-        <td class="num">$0.1825</td>
-        <td class="num change-neg">−4.38%</td>
-        <td class="num">$511K</td>
-        <td class="num">$317K <span class="note">(Orca)</span></td>
-        <td><span class="slip-red slip-cell">6.31%</span></td>
-        <td><span class="slip-red slip-cell">31.5%</span></td>
-        <td>Solana</td>
+        <td class="num">$0.1948</td>
+        <td class="num change-pos">+6.80%</td>
+        <td class="num">$534K</td>
+        <td class="num">$336K <span class="note">(Orca JUP/SOL)</span></td>
+        <td><span class="slip-red slip-cell">5.95%</span></td>
+        <td><span class="slip-red slip-cell">29.8%</span></td>
+        <td>Solana native</td>
       </tr>
     </tbody>
   </table>
@@ -225,7 +226,7 @@
   </div>
 
   <div class="disclaimer">
-    <p><strong>Disclaimer:</strong> This tracker is for informational purposes only and does not constitute financial, investment, or trading advice. Exit slippage estimates are mathematical approximations based on AMM constant-product formulas applied to reported liquidity; actual costs will vary based on pool type, price range, routing, and market conditions at time of execution. Data sourced from DexScreener and CoinGecko APIs as of 2026-07-28 12:15 UTC. Occelatus Research LLC makes no representations about the accuracy, completeness, or timeliness of the data. DEX liquidity can change rapidly. Do not trade solely based on this information. Always verify liquidity on-chain before executing. Past liquidity depth does not predict future exit conditions.</p>
+    <p><strong>Disclaimer:</strong> This tracker is for informational purposes only and does not constitute financial, investment, or trading advice. Exit slippage estimates are mathematical approximations based on AMM constant-product formulas applied to reported liquidity; actual costs will vary based on pool type, price range, routing, and market conditions at time of execution. Data sourced from DexScreener and CoinGecko APIs as of 2026-07-29 12:15 UTC. Occelatus Research LLC makes no representations about the accuracy, completeness, or timeliness of the data. DEX liquidity can change rapidly. Do not trade solely based on this information. Always verify liquidity on-chain before executing. Past liquidity depth does not predict future exit conditions.</p>
   </div>
 </main>
 </body>
