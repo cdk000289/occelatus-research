@@ -853,20 +853,26 @@
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { showErr('Please enter a valid email address.'); return; }
       if (!msg)  { showErr('Please describe what you want automated.'); return; }
 
-      btn.textContent = 'Sending…';
+      btn.textContent = 'Opening email…';
       btn.disabled = true;
 
+      // Deliver via the visitor's own mail client → guarantees the inquiry
+      // reaches a monitored inbox (no backend dependency).
       try {
-        const res = await fetch('https://occelatus-stripe-relay.oceelatus.workers.dev/contact', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ name, email, company, message: msg }),
-        });
-        if (!res.ok) throw new Error(res.status);
+        const subject = 'n8n automation inquiry — ' + (company || name);
+        const body =
+          'Name: ' + name + '\n' +
+          'Company: ' + (company || '—') + '\n' +
+          'Email: ' + email + '\n\n' +
+          'What I want automated:\n' + msg + '\n';
+        const href = 'mailto:cdk000289@gmail.com'
+          + '?subject=' + encodeURIComponent(subject)
+          + '&body='    + encodeURIComponent(body);
+        window.location.href = href;
         document.getElementById('form-inner').style.display = 'none';
         document.getElementById('form-ok').style.display   = 'block';
       } catch {
-        showErr('Something went wrong. Email us at hello@occelatus.io');
+        showErr('Please email us directly at cdk000289@gmail.com');
         btn.textContent = 'Send inquiry →';
         btn.disabled = false;
       }
