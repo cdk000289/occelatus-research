@@ -752,33 +752,37 @@
         </div>
 
         <div class="form-wrap r d2">
-          <div id="form-inner">
+          <form id="form-inner" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST">
             <div class="fg">
               <div class="ff">
                 <label class="fl" for="f-name">Your name</label>
-                <input class="fi" type="text" id="f-name" placeholder="Alex Rivera" autocomplete="name">
+                <input class="fi" type="text" id="f-name" name="name" placeholder="Alex Rivera" autocomplete="name" required>
               </div>
               <div class="ff">
                 <label class="fl" for="f-company">Company</label>
-                <input class="fi" type="text" id="f-company" placeholder="Acme Co." autocomplete="organization">
+                <input class="fi" type="text" id="f-company" name="company" placeholder="Acme Co." autocomplete="organization">
               </div>
             </div>
             <div class="ff">
               <label class="fl" for="f-email">Work email</label>
-              <input class="fi" type="email" id="f-email" placeholder="you@company.com" autocomplete="email">
+              <input class="fi" type="email" id="f-email" name="email" placeholder="you@company.com" autocomplete="email" required>
             </div>
             <div class="ff">
               <label class="fl" for="f-msg">What do you want automated?</label>
-              <textarea class="ft" id="f-msg" placeholder="e.g. When a Typeform lead comes in, create a HubSpot contact, send a Slack alert to sales, and schedule a follow-up email — we're doing all of this manually right now."></textarea>
+              <textarea class="ft" id="f-msg" name="message" placeholder="e.g. When a Typeform lead comes in, create a HubSpot contact, send a Slack alert to sales, and schedule a follow-up email — we're doing all of this manually right now." required></textarea>
             </div>
-            <!-- Honeypot — bots fill this, humans don't -->
-            <input type="text" id="f-hp" style="display:none" tabindex="-1" autocomplete="off">
+            <!-- FormSubmit config (hidden) -->
+            <input type="hidden" name="_subject" value="New automation inquiry — occelatus.io/automate">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <!-- honeypot: bots fill this, real users can't see it -->
+            <input type="text" name="_honey" id="f-hp" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-foot">
-              <button type="button" class="btn btn-primary" id="f-btn" onclick="handleSubmit()">Send inquiry →</button>
+              <button type="submit" class="btn btn-primary" id="f-btn">Send inquiry →</button>
               <span class="form-note">Replies within 24h via email</span>
             </div>
             <div class="form-err" id="f-err"></div>
-          </div>
+          </form>
           <div class="form-ok" id="form-ok">
             <div class="form-ok-check">✓</div>
             <h3>We'll be in touch.</h3>
@@ -836,52 +840,47 @@
     document.querySelectorAll('[data-count]').forEach(el => cntObs.observe(el));
 
     // Contact form
-    async function handleSubmit() {
-      const name    = document.getElementById('f-name').value.trim();
-      const email   = document.getElementById('f-email').value.trim();
-      const company = document.getElementById('f-company').value.trim();
-      const msg     = document.getElementById('f-msg').value.trim();
-      const hp      = document.getElementById('f-hp').value;
-      const errEl   = document.getElementById('f-err');
-      const btn     = document.getElementById('f-btn');
+    (function () {
+      var form = document.getElementById('form-inner');
+      if (!form) return;
+      var btn = document.getElementById('f-btn');
+      var err = document.getElementById('f-err');
 
-      // Honeypot
-      if (hp) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        err.textContent = '';
 
-      errEl.style.display = 'none';
-      if (!name) { showErr('Please enter your name.'); return; }
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { showErr('Please enter a valid email address.'); return; }
-      if (!msg)  { showErr('Please describe what you want automated.'); return; }
+        if (form.querySelector('#f-hp').value) return;
 
-      btn.textContent = 'Opening email…';
-      btn.disabled = true;
+        var email = form.querySelector('#f-email').value.trim();
+        var msg = form.querySelector('#f-msg').value.trim();
+        if (!email || !/.+@.+\..+/.test(email)) { err.textContent = 'Please enter a valid work email.'; return; }
+        if (!msg) { err.textContent = 'Tell us what you want automated.'; return; }
 
-      // Deliver via the visitor's own mail client → guarantees the inquiry
-      // reaches a monitored inbox (no backend dependency).
-      try {
-        const subject = 'n8n automation inquiry — ' + (company || name);
-        const body =
-          'Name: ' + name + '\n' +
-          'Company: ' + (company || '—') + '\n' +
-          'Email: ' + email + '\n\n' +
-          'What I want automated:\n' + msg + '\n';
-        const href = 'mailto:research@occelatus.io'
-          + '?subject=' + encodeURIComponent(subject)
-          + '&body='    + encodeURIComponent(body);
-        window.location.href = href;
-        document.getElementById('form-inner').style.display = 'none';
-        document.getElementById('form-ok').style.display   = 'block';
-      } catch {
-        showErr('Please email us directly at research@occelatus.io');
-        btn.textContent = 'Send inquiry →';
-        btn.disabled = false;
-      }
+        var original = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Sending…';
 
-      function showErr(txt) {
-        errEl.textContent = txt;
-        errEl.style.display = 'block';
-      }
-    }
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data.success === 'true' || data.success === true) {
+              form.innerHTML = '<div class="form-sent">Thanks — your inquiry is in. Expect a reply within 24h at ' +
+                email.replace(/[<>&]/g, '') + '.</div>';
+            } else {
+              err.textContent = 'Something went wrong. Email research@occelatus.io directly and we\'ll jump on it.';
+              btn.disabled = false; btn.textContent = original;
+            }
+          })
+          .catch(function () {
+            err.textContent = 'Network error. Email research@occelatus.io directly and we\'ll jump on it.';
+            btn.disabled = false; btn.textContent = original;
+          });
+      });
+    })();
   </script>
 </body>
 </html>
