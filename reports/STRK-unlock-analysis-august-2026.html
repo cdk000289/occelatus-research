@@ -3,140 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STRK Unlock Analysis — August 2026, 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
-  <meta name="description" content="STRK token unlock 2026-08-15: 0.00% of supply, est. $0. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio.">
+  <title>STRK Unlock Analysis August 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
+  <meta name="description" content="STRK token unlock 2026-08-15: scheduled supply unlock for Starknet. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio. Updated 2026-08-06.">
   <link rel="canonical" href="https://occelatus.io/reports/STRK-unlock-analysis-august-2026.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-0: #0b0e17; --bg-1: #11141f; --bg-2: #181c2a;
-      --line: rgba(255,255,255,0.06); --line-strong: rgba(255,255,255,0.12);
-      --text: #e6e8ef; --text-muted: #8b91a8; --text-dim: #5a6079;
-      --accent: #7df9ff; --accent-warm: #ff6b9d; --accent-soft: rgba(125,249,255,0.12);
-      --danger: #ff5d5d; --warn: #f5c451; --radius: 14px; --radius-sm: 8px;
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; line-height: 1.65; color: var(--text); background: var(--bg-0); background-image: radial-gradient(ellipse 60% 50% at 18% 8%, rgba(125,249,255,0.10) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 82% 18%, rgba(255,107,157,0.07) 0%, transparent 55%); background-attachment: fixed; min-height: 100vh; overflow-x: hidden; }
-    body::before { content: ""; position: fixed; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 0%, transparent 70%); pointer-events: none; z-index: 0; opacity: 0.5; }
-    .container { max-width: 900px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
-    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px) saturate(140%); -webkit-backdrop-filter: blur(18px) saturate(140%); background: rgba(11,14,23,0.72); border-bottom: 1px solid var(--line); }
-    .header-content { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
-    .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
-    .logo-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%); position: relative; box-shadow: 0 0 24px rgba(125,249,255,0.35); flex-shrink: 0; }
-    .logo-mark::after { content: ""; position: absolute; inset: 6px; border-radius: 4px; background: var(--bg-0); }
-    nav { display: flex; gap: 28px; align-items: center; }
-    nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; font-weight: 400; letter-spacing: 0.02em; transition: color 180ms ease; }
-    nav a:hover { color: var(--text); }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; border: 1px solid transparent; border-radius: var(--radius-sm); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; text-decoration: none; transition: transform 180ms ease, box-shadow 220ms ease; white-space: nowrap; }
-    .btn-primary { background: var(--accent); color: var(--bg-0); box-shadow: 0 0 0 1px var(--accent), 0 10px 30px -10px rgba(125,249,255,0.5); }
-    .btn-primary:hover { transform: translateY(-1px); }
-    main { padding: 56px 0 80px; }
-    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-    h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
-    h1 strong { font-weight: 700; }
-    .dateline { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 32px; }
-    .dateline em { color: var(--accent); font-style: normal; }
-    .summary-card { padding: 24px 28px; background: linear-gradient(180deg, rgba(125,249,255,0.06) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(125,249,255,0.25); border-radius: var(--radius); font-size: 15px; line-height: 1.75; color: var(--text-muted); margin-bottom: 32px; }
-    .summary-card strong { color: var(--text); }
-    .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 28px; }
-    .data-card { background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 100%); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 16px 20px; }
-    .data-card-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
-    .data-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); }
-    .data-card-value.accent { color: var(--accent); }
-    .data-card-value.warn { color: var(--warn); }
-    .table-section { background: var(--bg-1); border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
-    .table-section table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    .table-section thead tr { background: var(--bg-2); border-bottom: 1px solid var(--line-strong); }
-    .table-section th { padding: 11px 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-dim); text-transform: uppercase; font-weight: 400; }
-    .table-section td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--text-muted); vertical-align: middle; }
-    .table-section td:first-child { color: var(--text); font-weight: 400; }
-    .table-section tr:last-child td { border-bottom: none; }
-    .gate-block { position: relative; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; }
-    .gate-blur { filter: blur(6px); opacity: 0.3; pointer-events: none; user-select: none; min-height: 460px; padding: 20px; background: var(--bg-1); }
-    .gate-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(11,14,23,0.75); backdrop-filter: blur(2px); padding: 28px; text-align: center; }
-    .gate-overlay h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; margin-bottom: 8px; }
-    .gate-overlay p { font-size: 14px; color: var(--text-muted); max-width: 440px; margin-bottom: 20px; line-height: 1.6; }
-    .gate-features { display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; text-align: left; }
-    .gate-features li { font-size: 13px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; list-style: none; }
-    .gate-features li::before { content: "→"; color: var(--accent); font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
-    .disclaimer { margin-top: 36px; padding: 16px 20px; border: 1px solid rgba(245,196,81,0.2); border-radius: var(--radius-sm); background: rgba(245,196,81,0.04); font-size: 12px; color: var(--text-dim); line-height: 1.7; }
-    footer { padding: 48px 0 28px; border-top: 1px solid var(--line-strong); margin-top: 64px; }
-    .footer-grid { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; margin-bottom: 32px; }
-    .footer-brand p { max-width: 360px; font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-top: 10px; }
-    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; justify-content: flex-end; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 180ms ease; }
-    .footer-links a:hover { color: var(--accent); }
-    @media (max-width: 700px) { .data-grid { grid-template-columns: 1fr; } }
+    :root{--bg-0:#0b0e17;--bg-1:#11141f;--bg-2:#181c2a;--line:rgba(255,255,255,0.06);--line-strong:rgba(255,255,255,0.12);--text:#e6e8ef;--text-muted:#8b91a8;--text-dim:#5a6079;--accent:#7df9ff;--accent-warm:#ff6b9d;--accent-soft:rgba(125,249,255,0.12);--danger:#ff5d5d;--warn:#f5c451;--radius:14px;--radius-sm:8px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{font-family:'IBM Plex Sans',system-ui,sans-serif;font-weight:300;line-height:1.65;color:var(--text);background:var(--bg-0);background-image:radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%);background-attachment:fixed;min-height:100vh;overflow-x:hidden;}
+    body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);pointer-events:none;z-index:0;opacity:0.5;}
+    .container{max-width:900px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
+    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);background:rgba(11,14,23,0.72);border-bottom:1px solid var(--line);}
+    .header-content{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+    .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
+    .logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-warm) 100%);position:relative;box-shadow:0 0 24px rgba(125,249,255,0.35);flex-shrink:0}
+    .logo-mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--bg-0)}
+    nav{display:flex;gap:28px;align-items:center}nav a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:0.02em;transition:color 180ms ease}nav a:hover{color:var(--text)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;cursor:pointer;text-decoration:none;transition:transform 180ms ease,box-shadow 220ms ease;white-space:nowrap}
+    .btn-primary{background:var(--accent);color:var(--bg-0);box-shadow:0 0 0 1px var(--accent),0 10px 30px -10px rgba(125,249,255,0.5)}.btn-primary:hover{transform:translateY(-1px)}
+    main{padding:56px 0 80px}
+    .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+    h1{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px}h1 strong{font-weight:700}
+    .dateline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--text-dim);margin-bottom:32px}.dateline em{color:var(--accent);font-style:normal}
+    .summary-card{padding:24px 28px;background:linear-gradient(180deg,rgba(125,249,255,0.06) 0%,rgba(255,255,255,0.01) 100%);border:1px solid rgba(125,249,255,0.25);border-radius:var(--radius);font-size:15px;line-height:1.75;color:var(--text-muted);margin-bottom:32px}.summary-card strong{color:var(--text)}
+    .data-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
+    .data-card{background:linear-gradient(180deg,rgba(255,255,255,0.025) 0%,rgba(255,255,255,0.005) 100%);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:16px 20px}
+    .data-card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
+    .data-card-value{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text)}.data-card-value.accent{color:var(--accent)}.data-card-value.warn{color:var(--warn)}
+    .table-section{background:var(--bg-1);border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;margin-bottom:24px}
+    .table-section table{width:100%;border-collapse:collapse;font-size:13px}.table-section thead tr{background:var(--bg-2);border-bottom:1px solid var(--line-strong)}
+    .table-section th{padding:11px 16px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--text-dim);text-transform:uppercase;font-weight:400}
+    .table-section td{padding:11px 16px;border-bottom:1px solid var(--line);color:var(--text-muted);vertical-align:middle}.table-section td:first-child{color:var(--text);font-weight:400}.table-section tr:last-child td{border-bottom:none}
+    .gate-block{position:relative;border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden}
+    .gate-blur{filter:blur(6px);opacity:0.3;pointer-events:none;user-select:none;min-height:460px;padding:20px;background:var(--bg-1)}
+    .gate-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(11,14,23,0.75);backdrop-filter:blur(2px);padding:28px;text-align:center}
+    .gate-overlay h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;margin-bottom:8px}.gate-overlay p{font-size:14px;color:var(--text-muted);max-width:440px;margin-bottom:20px;line-height:1.6}
+    .gate-features{display:flex;flex-direction:column;gap:6px;margin-bottom:22px;text-align:left}.gate-features li{font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;list-style:none}.gate-features li::before{content:"→";color:var(--accent);font-family:'JetBrains Mono',monospace;flex-shrink:0}
+    .disclaimer{margin-top:36px;padding:16px 20px;border:1px solid rgba(245,196,81,0.2);border-radius:var(--radius-sm);background:rgba(245,196,81,0.04);font-size:12px;color:var(--text-dim);line-height:1.7}
+    footer{padding:48px 0 28px;border-top:1px solid var(--line-strong);margin-top:64px}
+    @media(max-width:700px){.data-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-<header>
-  <div class="container">
-    <div class="header-content">
-      <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
-      <nav>
-        <a href="/#features">Coverage</a>
-        <a href="/#pricing">Pricing</a>
-        <a href="/exit-liquidity.html">Exit Tracker</a>
-      </nav>
+<header><div class="container"><div class="header-content">
+  <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
+  <nav><a href="/#features">Coverage</a><a href="/#pricing">Pricing</a><a href="/exit-liquidity.html">Exit Tracker</a></nav>
+</div></div></header>
+<main><div class="container">
+  <div class="eyebrow">Unlock Analysis · STRK · T-9</div>
+  <h1><strong>STRK</strong> Unlock Analysis — August 2026</h1>
+  <p class="dateline">Unlock date: <em>2026-08-15</em> &nbsp;·&nbsp; T-9 days &nbsp;·&nbsp; Sources: CoinGecko + DexScreener + Tokenomist &nbsp;·&nbsp; Pulled 2026-08-06 12:30 UTC</p>
+  <div class="summary-card">
+    <strong>Starknet (STRK)</strong> has a scheduled unlock on <strong>2026-08-15</strong> — 9 days from now. At a current price of <strong>$0.025870</strong> and 24-hour trading volume of <strong>$9.2M</strong>, top-3 DEX pair liquidity sits at approximately <strong>$1.87M</strong>. A $10K exit currently costs an estimated <strong>~0.27%</strong> slippage under normal conditions. The free preview below covers headline metrics; the paid report adds holder concentration, per-pair depth maps, and historical unlock comparisons.
+  </div>
+  <div class="data-grid">
+    <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.025870</div></div>
+    <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$9.2M</div></div>
+    <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value" style="color:#4ade80">+2.16%</div></div>
+    <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$176M</div></div>
+    <div class="data-card"><div class="data-card-label">Top-3 DEX Liquidity</div><div class="data-card-value warn">$1.87M</div></div>
+    <div class="data-card"><div class="data-card-label">$10K Exit Slippage (est.)</div><div class="data-card-value warn">~0.27%</div></div>
+  </div>
+  <div class="table-section"><table><thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead><tbody>
+    <tr><td>Token</td><td>Starknet (STRK)</td><td>CoinGecko</td></tr>
+    <tr><td>Unlock Date</td><td>2026-08-15</td><td>Tokenomist</td></tr>
+    <tr><td>Days Until Unlock</td><td>T-9</td><td>Calculated</td></tr>
+    <tr><td>Current Price</td><td>$0.025870</td><td>CoinGecko (2026-08-06)</td></tr>
+    <tr><td>24h Trading Volume</td><td>$9.2M</td><td>CoinGecko (2026-08-06)</td></tr>
+    <tr><td>Market Cap</td><td>$176M</td><td>CoinGecko (2026-08-06)</td></tr>
+    <tr><td>Top DEX Pair</td><td>STRK/USDC (10KSwap, Starknet)</td><td>DexScreener (2026-08-06)</td></tr>
+    <tr><td>Top-3 Pair Liquidity</td><td>$1.87M</td><td>DexScreener (2026-08-06)</td></tr>
+    <tr><td>$10K Exit Slippage (est.)</td><td>~0.27%</td><td>AMM model, DexScreener data</td></tr>
+    <tr><td>$50K Exit Slippage (est.)</td><td>~1.34%</td><td>AMM model, DexScreener data</td></tr>
+    <tr><td>Confidence</td><td>High</td><td>Dual-source verified</td></tr>
+  </tbody></table></div>
+  <div class="gate-block">
+    <div class="gate-blur"><div style="height:460px;background:var(--bg-1)"></div></div>
+    <div class="gate-overlay">
+      <h3>Full unlock analysis — STRK</h3>
+      <p>The free preview covers headline metrics. The paid report adds holder concentration, per-pair AMM depth maps, historical comparisons, and stress-scenario slippage.</p>
+      <ul class="gate-features">
+        <li>Holder concentration: top-10 wallets % of supply</li>
+        <li>Per-pair depth maps: full AMM curve simulation</li>
+        <li>$10K / $50K / $100K slippage across all qualifying pairs</li>
+        <li>Historical comparisons: last 3 comparable STRK unlock events</li>
+        <li>Stress scenario: liquidity under 20% sell pressure</li>
+      </ul>
+      <a href="https://occelatus.io/#pricing?utm_source=seo&utm_medium=unlock_report&utm_campaign=strk-unlock-aug2026" class="btn btn-primary">Get the full report — $19</a>
     </div>
   </div>
-</header>
-<main>
-  <div class="container">
-    <div class="eyebrow">Unlock Analysis · STRK · T-0</div>
-    <h1>STRK Unlock Analysis — August 2026</h1>
-    <p class="dateline">Unlock date: <em>2026-08-15</em> &nbsp;·&nbsp; T-0 &nbsp;·&nbsp; Data: CoinGecko + DexScreener + Tokenomist &nbsp;·&nbsp; Pulled 2026-08-05 12:30 UTC</p>
-    <div class="summary-card">
-      On <strong>2026 08 15</strong>, <strong>None</strong> (approximately <strong>0.00% of circulating supply</strong>) are scheduled to unlock, representing an estimated <strong>$0</strong> at current prices. Against a 24-hour trading volume of <strong>$13.7M</strong>, the unlock equals roughly <strong>0.0%</strong> of daily volume. Top DEX pair liquidity is approximately <strong>$500,000</strong>. The free preview below covers top-level metrics; the paid report adds holder concentration, per-pair depth maps, and historical comparisons.
-    </div>
-    <div class="data-grid">
-      <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.0244</div></div>
-      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$13.7M</div></div>
-      <div class="data-card"><div class="data-card-label">Unlock Size (est.)</div><div class="data-card-value warn">$0</div></div>
-      <div class="data-card"><div class="data-card-label">Unlock / Daily Vol</div><div class="data-card-value warn">0.0%</div></div>
-      <div class="data-card"><div class="data-card-label">Top DEX Pair Liquidity</div><div class="data-card-value warn">$500,000</div></div>
-      <div class="data-card"><div class="data-card-label">$10K Exit Slippage (est.)</div><div class="data-card-value warn">~0.0%</div></div>
-    </div>
-    <div class="table-section"><table><thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead><tbody>
-      <tr><td>Token</td><td>Starknet</td><td>CoinGecko</td></tr>
-      <tr><td>Unlock Date</td><td>2026-08-15</td><td>Tokenomist</td></tr>
-      <tr><td>Tokens Unlocking</td><td>None</td><td>Tokenomist</td></tr>
-      <tr><td>% of Circulating Supply</td><td>0.00%</td><td>Tokenomist</td></tr>
-      <tr><td>Est. USD Value</td><td>~$0</td><td>CoinGecko × Tokenomist</td></tr>
-      <tr><td>24h Volume</td><td>$13.7M</td><td>CoinGecko</td></tr>
-      <tr><td>Confidence</td><td>High</td><td>Dual-source verified</td></tr>
-    </tbody></table></div>
-    <div class="gate-block">
-      <div class="gate-blur"><div style="height:460px;background:var(--bg-1)"></div></div>
-      <div class="gate-overlay">
-        <h3>Full unlock analysis</h3>
-        <p>The free preview shows top-level metrics. The paid report adds holder concentration, per-pair depth maps, historical unlock comparisons, and stress-scenario slippage.</p>
-        <ul class="gate-features">
-          <li>Holder concentration: top-10 wallets % of supply</li>
-          <li>Per-pair depth maps: full AMM curve simulation</li>
-          <li>$10K / $50K / $100K slippage across all qualifying pairs</li>
-          <li>Historical comparisons: last 3 comparable STRK unlock events</li>
-          <li>Stress scenario: liquidity under 20% sell pressure</li>
-        </ul>
-        <a href="https://occelatus.io/#pricing?utm_source=seo&utm_medium=report&utm_campaign=strk-unlock-august2026" class="btn btn-primary">Get the full report — $19</a>
-      </div>
-    </div>
-    <div class="disclaimer">
-      <strong>Data sources:</strong> CoinGecko (price, market cap, volume), DexScreener (DEX liquidity pairs), Tokenomist (unlock schedule). All figures pulled 2026-08-05 at approximately 12:30 UTC. Liquidity depth reflects on-chain AMM pools only; CEX order book depth is not included.<br><br>
-      <strong>Not financial advice.</strong> This page contains data aggregation only. Nothing here constitutes a recommendation to buy, sell, or hold any asset. Slippage estimates use a constant-product AMM approximation and will vary with actual market conditions. Past unlock outcomes are not indicative of future results.
-    </div>
+  <div class="disclaimer">
+    <strong>Data sources:</strong> CoinGecko (price, market cap, 24h volume), DexScreener (DEX pair liquidity), Tokenomist (unlock schedule). All figures pulled 2026-08-06 12:30 UTC. DEX liquidity covers on-chain AMM pools only; CEX order book depth is not included. Slippage estimates use a constant-product AMM approximation and will vary with actual pool composition and market conditions.<br><br>
+    <strong>Not financial advice.</strong> This page contains data aggregation only. Nothing here constitutes a recommendation to buy, sell, or hold any asset. Past unlock outcomes are not indicative of future results. Always verify data independently before making any financial decision.
   </div>
-</main>
-<footer>
-  <div class="container">
-    <p style="font-size:12px;color:var(--text-dim);">
-      © 2026 Occelatus Labs — occelatus.io | <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a> | <a href="/#pricing" style="color:var(--text-muted);text-decoration:none;">Pricing</a> | <a href="mailto:research@occelatus.io" style="color:var(--text-muted);text-decoration:none;">Contact</a>
-    </p>
-  </div>
-</footer>
-</body>
-</html>
+</div></main>
+<footer><div class="container">
+  <p style="font-size:12px;color:var(--text-dim);">© 2026 Occelatus Labs — <a href="/" style="color:var(--text-muted);text-decoration:none;">occelatus.io</a> | <a href="/#pricing" style="color:var(--text-muted);text-decoration:none;">Pricing</a> | <a href="/exit-liquidity.html" style="color:var(--text-muted);text-decoration:none;">Exit Tracker</a> | <a href="mailto:research@occelatus.io" style="color:var(--text-muted);text-decoration:none;">Contact</a></p>
+</div></footer>
+</body></html>
