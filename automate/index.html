@@ -865,14 +865,14 @@
           'Company: ' + (company || '—') + '\n' +
           'Email: ' + email + '\n\n' +
           'What I want automated:\n' + msg + '\n';
-        const href = 'mailto:cdk000289@gmail.com'
+        const href = 'mailto:research@occelatus.io'
           + '?subject=' + encodeURIComponent(subject)
           + '&body='    + encodeURIComponent(body);
         window.location.href = href;
         document.getElementById('form-inner').style.display = 'none';
         document.getElementById('form-ok').style.display   = 'block';
       } catch {
-        showErr('Please email us directly at cdk000289@gmail.com');
+        showErr('Please email us directly at research@occelatus.io');
         btn.textContent = 'Send inquiry →';
         btn.disabled = false;
       }
