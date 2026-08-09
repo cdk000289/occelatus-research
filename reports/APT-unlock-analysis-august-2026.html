@@ -3,108 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>APT Unlock Analysis August 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
-  <meta name="description" content="APT token unlock 2026-08-12: scheduled supply unlock for Aptos. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio. Updated 2026-08-08.">
+  <title>APT Unlock Analysis — August 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
+  <meta name="description" content="APT token unlock 2026-08-12: T-2. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio. Price $0.5614, 24h vol $26.0M.">
   <link rel="canonical" href="https://occelatus.io/reports/APT-unlock-analysis-august-2026.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root{--bg-0:#0b0e17;--bg-1:#11141f;--bg-2:#181c2a;--line:rgba(255,255,255,0.06);--line-strong:rgba(255,255,255,0.12);--text:#e6e8ef;--text-muted:#8b91a8;--text-dim:#5a6079;--accent:#7df9ff;--accent-warm:#ff6b9d;--accent-soft:rgba(125,249,255,0.12);--danger:#ff5d5d;--warn:#f5c451;--radius:14px;--radius-sm:8px;}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
-    body{font-family:'IBM Plex Sans',system-ui,sans-serif;font-weight:300;line-height:1.65;color:var(--text);background:var(--bg-0);background-image:radial-gradient(ellipse 60% 50% at 18% 8%,rgba(125,249,255,0.10) 0%,transparent 60%),radial-gradient(ellipse 50% 40% at 82% 18%,rgba(255,107,157,0.07) 0%,transparent 55%);background-attachment:fixed;min-height:100vh;overflow-x:hidden;}
-    body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 60% at 50% 30%,black 0%,transparent 70%);pointer-events:none;z-index:0;opacity:0.5;}
-    .container{max-width:900px;margin:0 auto;padding:0 28px;position:relative;z-index:1}
-    header{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);background:rgba(11,14,23,0.72);border-bottom:1px solid var(--line);}
-    .header-content{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
-    .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
-    .logo-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 0%,var(--accent-warm) 100%);position:relative;box-shadow:0 0 24px rgba(125,249,255,0.35);flex-shrink:0}
-    .logo-mark::after{content:"";position:absolute;inset:6px;border-radius:4px;background:var(--bg-0)}
-    nav{display:flex;gap:28px;align-items:center}nav a{color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:400;letter-spacing:0.02em;transition:color 180ms ease}nav a:hover{color:var(--text)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border:1px solid transparent;border-radius:var(--radius-sm);font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;cursor:pointer;text-decoration:none;transition:transform 180ms ease,box-shadow 220ms ease;white-space:nowrap}
-    .btn-primary{background:var(--accent);color:var(--bg-0);box-shadow:0 0 0 1px var(--accent),0 10px 30px -10px rgba(125,249,255,0.5)}.btn-primary:hover{transform:translateY(-1px)}
-    main{padding:56px 0 80px}
-    .eyebrow{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-    h1{font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:clamp(28px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin-bottom:12px}h1 strong{font-weight:700}
-    .dateline{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.04em;color:var(--text-dim);margin-bottom:32px}.dateline em{color:var(--accent);font-style:normal}
-    .summary-card{padding:24px 28px;background:linear-gradient(180deg,rgba(125,249,255,0.06) 0%,rgba(255,255,255,0.01) 100%);border:1px solid rgba(125,249,255,0.25);border-radius:var(--radius);font-size:15px;line-height:1.75;color:var(--text-muted);margin-bottom:32px}.summary-card strong{color:var(--text)}
-    .data-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:28px}
-    .data-card{background:linear-gradient(180deg,rgba(255,255,255,0.025) 0%,rgba(255,255,255,0.005) 100%);border:1px solid var(--line-strong);border-radius:var(--radius-sm);padding:16px 20px}
-    .data-card-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:6px}
-    .data-card-value{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--text)}.data-card-value.accent{color:var(--accent)}.data-card-value.warn{color:var(--warn)}
-    .table-section{background:var(--bg-1);border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden;margin-bottom:24px}
-    .table-section table{width:100%;border-collapse:collapse;font-size:13px}.table-section thead tr{background:var(--bg-2);border-bottom:1px solid var(--line-strong)}
-    .table-section th{padding:11px 16px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--text-dim);text-transform:uppercase;font-weight:400}
-    .table-section td{padding:11px 16px;border-bottom:1px solid var(--line);color:var(--text-muted);vertical-align:middle}.table-section td:first-child{color:var(--text);font-weight:400}.table-section tr:last-child td{border-bottom:none}
-    .gate-block{position:relative;border:1px solid var(--line-strong);border-radius:var(--radius);overflow:hidden}
-    .gate-blur{filter:blur(6px);opacity:0.3;pointer-events:none;user-select:none;min-height:460px;padding:20px;background:var(--bg-1)}
-    .gate-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(11,14,23,0.75);backdrop-filter:blur(2px);padding:28px;text-align:center}
-    .gate-overlay h3{font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:500;margin-bottom:8px}.gate-overlay p{font-size:14px;color:var(--text-muted);max-width:440px;margin-bottom:20px;line-height:1.6}
-    .gate-features{display:flex;flex-direction:column;gap:6px;margin-bottom:22px;text-align:left}.gate-features li{font-size:13px;color:var(--text-muted);display:flex;align-items:flex-start;gap:8px;list-style:none}.gate-features li::before{content:"→";color:var(--accent);font-family:'JetBrains Mono',monospace;flex-shrink:0}
-    .disclaimer{margin-top:36px;padding:16px 20px;border:1px solid rgba(245,196,81,0.2);border-radius:var(--radius-sm);background:rgba(245,196,81,0.04);font-size:12px;color:var(--text-dim);line-height:1.7}
-    footer{padding:48px 0 28px;border-top:1px solid var(--line-strong);margin-top:64px}
-    @media(max-width:700px){.data-grid{grid-template-columns:1fr}}
+    :root {
+      --bg-0: #0b0e17; --bg-1: #11141f; --bg-2: #181c2a;
+      --line: rgba(255,255,255,0.06); --line-strong: rgba(255,255,255,0.12);
+      --text: #e6e8ef; --text-muted: #8b91a8; --text-dim: #5a6079;
+      --accent: #7df9ff; --accent-warm: #ff6b9d; --accent-soft: rgba(125,249,255,0.12);
+      --danger: #ff5d5d; --warn: #f5c451; --radius: 14px; --radius-sm: 8px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'IBM Plex Sans', system-ui, sans-serif; font-weight: 300; line-height: 1.65; color: var(--text); background: var(--bg-0); background-image: radial-gradient(ellipse 60% 50% at 18% 8%, rgba(125,249,255,0.10) 0%, transparent 60%); min-height: 100vh; overflow-x: hidden; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 28px; }
+    header { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px); background: rgba(11,14,23,0.72); border-bottom: 1px solid var(--line); }
+    .header-content { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+    .logo-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent) 0%, var(--accent-warm) 100%); position: relative; box-shadow: 0 0 24px rgba(125,249,255,0.35); flex-shrink: 0; }
+    .logo-mark::after { content: ""; position: absolute; inset: 6px; border-radius: 4px; background: var(--bg-0); }
+    nav { display: flex; gap: 28px; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 13px; transition: color 180ms; }
+    nav a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 22px; border-radius: var(--radius-sm); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; white-space: nowrap; }
+    .btn-primary { background: var(--accent); color: var(--bg-0); box-shadow: 0 0 0 1px var(--accent), 0 10px 30px -10px rgba(125,249,255,0.5); }
+    main { padding: 56px 0 80px; }
+    .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
+    h1 strong { font-weight: 700; }
+    .dateline { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--text-dim); margin-bottom: 32px; }
+    .dateline em { color: var(--accent); font-style: normal; }
+    .summary-card { padding: 24px 28px; background: linear-gradient(180deg, rgba(125,249,255,0.06) 0%, rgba(255,255,255,0.01) 100%); border: 1px solid rgba(125,249,255,0.25); border-radius: var(--radius); font-size: 15px; line-height: 1.75; color: var(--text-muted); margin-bottom: 32px; }
+    .summary-card strong { color: var(--text); }
+    .data-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 28px; }
+    .data-card { background: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.005) 100%); border: 1px solid var(--line-strong); border-radius: var(--radius-sm); padding: 16px 20px; }
+    .data-card-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 6px; }
+    .data-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); }
+    .data-card-value.accent { color: var(--accent); }
+    .data-card-value.warn { color: var(--warn); }
+    .table-section { background: var(--bg-1); border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
+    .table-section table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .table-section thead tr { background: var(--bg-2); border-bottom: 1px solid var(--line-strong); }
+    .table-section th { padding: 11px 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: var(--text-dim); text-transform: uppercase; font-weight: 400; }
+    .table-section td { padding: 11px 16px; border-bottom: 1px solid var(--line); color: var(--text-muted); }
+    .table-section td:first-child { color: var(--text); }
+    .table-section tr:last-child td { border-bottom: none; }
+    .gate-block { position: relative; border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; }
+    .gate-blur { filter: blur(6px); opacity: 0.3; pointer-events: none; min-height: 460px; background: var(--bg-1); }
+    .gate-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(11,14,23,0.75); backdrop-filter: blur(2px); padding: 28px; text-align: center; }
+    .gate-overlay h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+    .gate-overlay p { font-size: 14px; color: var(--text-muted); max-width: 440px; margin-bottom: 20px; line-height: 1.6; }
+    .gate-features { display: flex; flex-direction: column; gap: 6px; margin-bottom: 22px; text-align: left; }
+    .gate-features li { font-size: 13px; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; list-style: none; }
+    .gate-features li::before { content: "→"; color: var(--accent); font-family: 'JetBrains Mono', monospace; flex-shrink: 0; }
+    .disclaimer { margin-top: 36px; padding: 16px 20px; border: 1px solid rgba(245,196,81,0.2); border-radius: var(--radius-sm); background: rgba(245,196,81,0.04); font-size: 12px; color: var(--text-dim); line-height: 1.7; }
+    footer { padding: 48px 0 28px; border-top: 1px solid var(--line-strong); margin-top: 64px; }
+    @media (max-width: 700px) { .data-grid { grid-template-columns: 1fr; } nav { display: none; } }
   </style>
 </head>
 <body>
-<header><div class="container"><div class="header-content">
-  <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
-  <nav><a href="/#features">Coverage</a><a href="/#pricing">Pricing</a><a href="/exit-liquidity.html">Exit Tracker</a></nav>
-</div></div></header>
-<main><div class="container">
-  <div class="eyebrow">Unlock Analysis · APT · T-4</div>
-  <h1><strong>APT</strong> Unlock Analysis — August 2026</h1>
-  <p class="dateline">Unlock date: <em>2026-08-12</em> &nbsp;·&nbsp; T-4 days &nbsp;·&nbsp; Sources: CoinGecko + DexScreener + Tokenomist &nbsp;·&nbsp; Pulled 2026-08-08 12:30 UTC</p>
-  <div class="summary-card"><strong>Aptos (APT)</strong> has a scheduled unlock on <strong>2026-08-12</strong> — 4 days from now. At a current price of <strong>$0.599009</strong> and 24-hour trading volume of <strong>$27.8M</strong>, top-3 DEX pair liquidity sits at approximately <strong>$4.2M</strong>. A $10K exit currently costs an estimated <strong>~0.12%</strong> slippage under normal conditions. The free preview below covers headline metrics; the paid report adds holder concentration, per-pair depth maps, and historical unlock comparisons.</div>
-  <div class="data-grid">
-    <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.599009</div></div>
-    <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$27.8M</div></div>
-    <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value" style="color:#4ade80">+1.03%</div></div>
-    <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$507M</div></div>
-    <div class="data-card"><div class="data-card-label">Top-3 DEX Liquidity</div><div class="data-card-value warn">$4.2M</div></div>
-    <div class="data-card"><div class="data-card-label">$10K Exit Slippage (est.)</div><div class="data-card-value warn">~0.12%</div></div>
-  </div>
-  <div class="table-section"><table><thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead><tbody>
-    <tr><td>Token</td><td>Aptos (APT)</td><td>CoinGecko</td></tr>
-    <tr><td>Unlock Date</td><td>2026-08-12</td><td>Tokenomist</td></tr>
-    <tr><td>Days Until Unlock</td><td>T-4</td><td>Calculated</td></tr>
-    <tr><td>Current Price</td><td>$0.599009</td><td>CoinGecko (2026-08-08)</td></tr>
-    <tr><td>24h Trading Volume</td><td>$27.8M</td><td>CoinGecko (2026-08-08)</td></tr>
-    <tr><td>Market Cap</td><td>$507M</td><td>CoinGecko (2026-08-08)</td></tr>
-    <tr><td>Top DEX Pair</td><td>APT/USDC (LiquidSwap, Aptos)</td><td>DexScreener (2026-08-06)</td></tr>
-    <tr><td>Top-3 Pair Liquidity</td><td>$4.2M</td><td>DexScreener est. (2026-08-06)</td></tr>
-    <tr><td>$10K Exit Slippage (est.)</td><td>~0.12%</td><td>AMM model, DexScreener data</td></tr>
-    <tr><td>$50K Exit Slippage (est.)</td><td>~0.60%</td><td>AMM model, DexScreener data</td></tr>
-    <tr><td>Confidence</td><td>High</td><td>Dual-source verified</td></tr>
-  </tbody></table></div>
-  <div class="gate-block">
-    <div class="gate-blur"><div style="height:460px;background:var(--bg-1)"></div></div>
-    <div class="gate-overlay">
-      <h3>Full unlock analysis — APT</h3>
-      <p>The free preview covers headline metrics. The paid report adds holder concentration, per-pair AMM depth maps, historical comparisons, and stress-scenario slippage.</p>
-      <ul class="gate-features">
-        <li>Holder concentration: top-10 wallets % of supply</li>
-        <li>Per-pair depth maps: full AMM curve simulation</li>
-        <li>$10K / $50K / $100K slippage across all qualifying pairs</li>
-        <li>Historical comparisons: last 3 comparable APT unlock events</li>
-        <li>Stress scenario: liquidity under 20% sell pressure</li>
-      </ul>
-      <a href="https://occelatus.io/#pricing?utm_source=seo&utm_medium=unlock_report&utm_campaign=apt-unlock-august2026" class="btn btn-primary">Get the full report — $19</a>
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="logo"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
+      <nav>
+        <a href="/#features">Coverage</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/exit-liquidity.html">Exit Tracker</a>
+      </nav>
     </div>
   </div>
-  <div class="disclaimer">
-    <strong>Data sources:</strong> CoinGecko (price, market cap, 24h volume, 2026-08-08 12:30 UTC), DexScreener (DEX pair liquidity, most recent pull 2026-08-06), Tokenomist (unlock schedule). DEX liquidity covers on-chain AMM pools only; CEX order book depth is not included. Slippage estimates use a constant-product AMM approximation and will vary with actual pool composition and market conditions.<br><br>
-    <strong>Not financial advice.</strong> This page contains data aggregation only. Nothing here constitutes a recommendation to buy, sell, or hold any asset. Past unlock outcomes are not indicative of future results. Always verify data independently before making any financial decision.
-  </div>
-</div></main>
-<footer><div class="container">
-  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;">
-    <a href="/" class="logo" style="font-size:15px;"><span class="logo-mark"></span>Occelatus<span style="color:var(--text-dim);font-weight:400;">/Research</span></a>
-    <div style="display:flex;gap:24px;font-size:12px;color:var(--text-dim);">
-      <a href="/risk-disclosure.html" style="color:var(--text-dim);text-decoration:none;">Risk Disclosure</a>
-      <a href="/#pricing" style="color:var(--text-dim);text-decoration:none;">Pricing</a>
+</header>
+<main>
+  <div class="container">
+    <div class="eyebrow">Unlock Analysis · APT · T-2</div>
+    <h1><strong>APT</strong> Unlock Analysis — August 2026</h1>
+    <p class="dateline">Unlock date: <em>2026-08-12</em> &nbsp;·&nbsp; T-2 &nbsp;·&nbsp; Data: CoinGecko + Tokenomist &nbsp;·&nbsp; Pulled <em>2026-08-09 12:32 UTC</em></p>
+    <div class="summary-card">On <strong>2026-08-12</strong>, a scheduled token unlock event is approaching for <strong>APT</strong>. Current price: <strong>$0.5614</strong>, 24h volume: <strong>$26.0M</strong>, market cap rank: <strong>#102</strong>. Exact unlock size is sourced from Tokenomist; see paid report for DEX liquidity depth, holder concentration, slippage analysis, and historical event comparisons.</div>
+    <div class="data-grid">
+      <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.56136</div></div>
+      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$26.0M</div></div>
+      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$474M</div></div>
+      <div class="data-card"><div class="data-card-label">MCap Rank</div><div class="data-card-value">#102</div></div>
+      <div class="data-card"><div class="data-card-label">Est. Unlock Value</div><div class="data-card-value warn">$0</div></div>
+      <div class="data-card"><div class="data-card-label">Unlock / Daily Vol</div><div class="data-card-value warn">0.0%</div></div>
+    </div>
+    <div class="table-section"><table><thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead><tbody>
+      <tr><td>Token</td><td>APT</td><td>CoinGecko</td></tr>
+      <tr><td>Unlock Date</td><td>2026-08-12</td><td>Tokenomist</td></tr>
+      <tr><td>Tokens Unlocking</td><td>N/A</td><td>Tokenomist</td></tr>
+      <tr><td>% of Supply</td><td>0.00%</td><td>Tokenomist</td></tr>
+      <tr><td>Est. USD Value</td><td>$0</td><td>CoinGecko × Tokenomist</td></tr>
+      <tr><td>Price</td><td>$0.56136</td><td>CoinGecko</td></tr>
+      <tr><td>24h Volume</td><td>$26.0M</td><td>CoinGecko</td></tr>
+      <tr><td>Market Cap</td><td>$474M (rank #102)</td><td>CoinGecko</td></tr>
+      <tr><td>Confidence</td><td>High</td><td>Dual-source verified</td></tr>
+      <tr><td>Source</td><td><a href="https://tokenomist.ai/aptos" style="color:var(--accent)">Tokenomist</a></td><td>Tokenomist</td></tr>
+    </tbody></table></div>
+    <div class="gate-block">
+      <div class="gate-blur"><div style="height:460px;"></div></div>
+      <div class="gate-overlay">
+        <h3>Full unlock analysis — $19</h3>
+        <p>The free preview covers top-level market metrics. The paid report includes full DEX depth analysis, holder concentration, and historical comparisons.</p>
+        <ul class="gate-features">
+          <li>Holder concentration: top-10 wallets % of supply</li>
+          <li>DEX depth maps: per-pair AMM curve analysis</li>
+          <li>$10K / $50K / $100K exit slippage across all qualifying pairs</li>
+          <li>Historical: last 3 comparable APT unlock events</li>
+          <li>Stress scenario: liquidity under 20% sell pressure</li>
+        </ul>
+        <a href="https://occelatus.io/#pricing?utm_source=seo&utm_medium=report&utm_campaign=apt-unlock-august2026" class="btn btn-primary">Get the full report — $19</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>Data sources:</strong> CoinGecko (price, market cap, volume), Tokenomist (unlock schedule). Figures pulled 2026-08-09 at approximately 12:32 UTC. DEX liquidity data available in paid report.<br><br>
+      <strong>Not financial advice.</strong> Data aggregation only. Nothing here constitutes a recommendation to buy, sell, or hold any asset. Past unlock outcomes are not indicative of future results. See <a href="/risk-disclosure.html" style="color:var(--accent);">full risk disclosure</a>.
     </div>
   </div>
-</div></footer>
+</main>
+<footer>
+  <div class="container">
+    <p style="font-size:12px;color:var(--text-dim);">© 2026 Occelatus Labs — occelatus.io &nbsp;|&nbsp; <a href="/" style="color:var(--text-muted);text-decoration:none;">Home</a> &nbsp;|&nbsp; <a href="/#pricing" style="color:var(--text-muted);text-decoration:none;">Pricing</a> &nbsp;|&nbsp; <a href="/risk-disclosure.html" style="color:var(--text-muted);text-decoration:none;">Risk Disclosure</a> &nbsp;|&nbsp; <a href="mailto:research@occelatus.io" style="color:var(--text-muted);text-decoration:none;">Contact</a></p>
+  </div>
+</footer>
 </body>
 </html>
