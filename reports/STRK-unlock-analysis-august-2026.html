@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STRK Unlock Analysis — August 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
-  <meta name="description" content="STRK token unlock 2026-08-15: T-5. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio. Price $0.0244, 24h vol $15.9M.">
+  <meta name="description" content="STRK token unlock 2026-08-15: unlock day. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio. Price $0.0230, 24h vol $5.97M.">
   <link rel="canonical" href="https://occelatus.io/reports/STRK-unlock-analysis-august-2026.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -43,6 +43,7 @@
     .data-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); }
     .data-card-value.accent { color: var(--accent); }
     .data-card-value.warn { color: var(--warn); }
+    .data-card-value.danger { color: var(--danger); }
     .table-section { background: var(--bg-1); border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
     .table-section table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .table-section thead tr { background: var(--bg-2); border-bottom: 1px solid var(--line-strong); }
@@ -61,7 +62,7 @@
     .disclaimer { margin-top: 36px; padding: 16px 20px; border: 1px solid rgba(245,196,81,0.2); border-radius: var(--radius-sm); background: rgba(245,196,81,0.04); font-size: 12px; color: var(--text-dim); line-height: 1.7; }
     footer { padding: 48px 0 28px; border-top: 1px solid var(--line-strong); margin-top: 64px; }
     @media (max-width: 700px) { .data-grid { grid-template-columns: 1fr; } nav { display: none; } }
-</style>
+  </style>
 </head>
 <body>
 <header>
@@ -78,30 +79,31 @@
 </header>
 <main>
   <div class="container">
-    <div class="eyebrow">Unlock Analysis · STRK · T-5</div>
+    <div class="eyebrow">Unlock Analysis · STRK · T+0 (Unlock Day)</div>
     <h1><strong>STRK</strong> Unlock Analysis — August 2026</h1>
-    <p class="dateline">Unlock date: <em>2026-08-15</em> &nbsp;·&nbsp; T-5 &nbsp;·&nbsp; Data: CoinGecko + Tokenomist &nbsp;·&nbsp; Pulled <em>2026-08-10 12:30 UTC</em></p>
-    <div class="summary-card">On <strong>2026-08-15</strong>, a scheduled token unlock event is approaching for <strong>STRK (StarkNet)</strong>. Current price: <strong>$0.0244</strong>, 24h volume: <strong>$15.9M</strong>, 24h change: <strong>-1.72%</strong>, market cap: <strong>$166M</strong> (rank approx. #148). STRK trades primarily on CEXes; Ethereum DEX liquidity is thin; most on-chain activity is on StarkNet L2. Holder concentration, DEX depth maps, and slippage analysis are available in the paid report.</div>
+    <p class="dateline">Unlock date: <em>2026-08-15</em> &nbsp;·&nbsp; T+0 (unlock day) &nbsp;·&nbsp; Data: CoinGecko &nbsp;·&nbsp; Pulled <em>2026-08-15 12:30 UTC</em></p>
+    <div class="summary-card">Today, <strong>2026-08-15</strong>, is the scheduled unlock date for <strong>STRK (Starknet)</strong>. Current price: <strong>$0.0230</strong>, 24h volume: <strong>$5.97M</strong>, 24h change: <strong>+2.78%</strong>, market cap: <strong>$157M</strong>. STRK carries one of the heavier unlock schedules in the L2 space — thin DEX liquidity relative to market cap means any concentrated selling pressure has an outsized price impact. Full depth analysis and slippage data are available in the paid report.</div>
     <div class="data-grid">
-      <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.02441</div></div>
-      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$15.9M</div></div>
-      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$166M</div></div>
-      <div class="data-card"><div class="data-card-label">MCap Rank</div><div class="data-card-value">#148</div></div>
-      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value warn">-1.72%</div></div>
-      <div class="data-card"><div class="data-card-label">Days to Unlock</div><div class="data-card-value warn">T-5</div></div>
+      <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.02300</div></div>
+      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$5.97M</div></div>
+      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$157M</div></div>
+      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value accent">+2.78%</div></div>
+      <div class="data-card"><div class="data-card-label">Vol / MCap Ratio</div><div class="data-card-value warn">3.8%</div></div>
+      <div class="data-card"><div class="data-card-label">Unlock Status</div><div class="data-card-value danger">TODAY</div></div>
     </div>
     <div class="table-section"><table><thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead><tbody>
-      <tr><td>Token</td><td>STRK (StarkNet)</td><td>CoinGecko</td></tr>
-      <tr><td>Unlock Date</td><td>2026-08-15</td><td>Tokenomist</td></tr>
-      <tr><td>Price</td><td>$0.02441</td><td>CoinGecko</td></tr>
-      <tr><td>24h Volume</td><td>$15.9M</td><td>CoinGecko</td></tr>
-      <tr><td>24h Change</td><td>-1.72%</td><td>CoinGecko</td></tr>
-      <tr><td>Market Cap</td><td>$166M (rank #148)</td><td>CoinGecko</td></tr>
+      <tr><td>Token</td><td>STRK (Starknet)</td><td>CoinGecko</td></tr>
+      <tr><td>Unlock Date</td><td>2026-08-15 (today)</td><td>Tokenomist</td></tr>
+      <tr><td>Price</td><td>$0.02300</td><td>CoinGecko</td></tr>
+      <tr><td>24h Volume</td><td>$5.97M</td><td>CoinGecko</td></tr>
+      <tr><td>24h Change</td><td>+2.78%</td><td>CoinGecko</td></tr>
+      <tr><td>Market Cap</td><td>$157M</td><td>CoinGecko</td></tr>
+      <tr><td>Vol / MCap</td><td>3.8% (low liquidity signal)</td><td>Calculated</td></tr>
       <tr><td>Unlock Size</td><td>See paid report</td><td>Tokenomist</td></tr>
       <tr><td>DEX Liquidity (top pair)</td><td>See paid report</td><td>DexScreener</td></tr>
       <tr><td>$10K Exit Slippage</td><td>See paid report</td><td>DexScreener + model</td></tr>
       <tr><td>$50K Exit Slippage</td><td>See paid report</td><td>DexScreener + model</td></tr>
-      <tr><td>Data pulled</td><td>2026-08-10 12:30 UTC</td><td>Live API</td></tr>
+      <tr><td>Data pulled</td><td>2026-08-15 12:30 UTC</td><td>Live API</td></tr>
     </tbody></table></div>
     <div class="gate-block">
       <div class="gate-blur"><div style="height:460px;"></div></div>
@@ -119,7 +121,7 @@
       </div>
     </div>
     <div class="disclaimer">
-      <strong>Data sources:</strong> CoinGecko (price, market cap, volume, 24h change), Tokenomist (unlock schedule). Figures pulled 2026-08-10 12:30 UTC. DEX liquidity and slippage data available in paid report.<br><br>
+      <strong>Data sources:</strong> CoinGecko (price, market cap, volume, 24h change), Tokenomist (unlock schedule). Figures pulled 2026-08-15 12:30 UTC. DEX liquidity and slippage data available in paid report.<br><br>
       <strong>Not financial advice.</strong> Data aggregation only. Nothing here constitutes a recommendation to buy, sell, or hold any asset. Past unlock outcomes are not indicative of future results. See <a href="/risk-disclosure.html" style="color:var(--accent);">full risk disclosure</a>.
     </div>
   </div>

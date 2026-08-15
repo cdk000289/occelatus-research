@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SUI Unlock Analysis — September 2026 | Liquidity Depth, Exit Slippage, Holder Data | Occelatus Research</title>
-  <meta name="description" content="SUI token unlock 2026-09-01: T-22. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio. Price $0.6947, 24h vol $155.4M.">
+  <meta name="description" content="SUI token unlock 2026-09-01: T-17. Live DEX liquidity depth, exit slippage estimates, unlock-to-volume ratio. Price $0.6815, 24h vol $124M.">
   <link rel="canonical" href="https://occelatus.io/reports/SUI-unlock-analysis-september-2026.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=IBM+Plex+Sans:wght@300;400;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -43,6 +43,7 @@
     .data-card-value { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: var(--text); }
     .data-card-value.accent { color: var(--accent); }
     .data-card-value.warn { color: var(--warn); }
+    .data-card-value.danger { color: var(--danger); }
     .table-section { background: var(--bg-1); border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
     .table-section table { width: 100%; border-collapse: collapse; font-size: 13px; }
     .table-section thead tr { background: var(--bg-2); border-bottom: 1px solid var(--line-strong); }
@@ -61,7 +62,7 @@
     .disclaimer { margin-top: 36px; padding: 16px 20px; border: 1px solid rgba(245,196,81,0.2); border-radius: var(--radius-sm); background: rgba(245,196,81,0.04); font-size: 12px; color: var(--text-dim); line-height: 1.7; }
     footer { padding: 48px 0 28px; border-top: 1px solid var(--line-strong); margin-top: 64px; }
     @media (max-width: 700px) { .data-grid { grid-template-columns: 1fr; } nav { display: none; } }
-</style>
+  </style>
 </head>
 <body>
 <header>
@@ -78,30 +79,30 @@
 </header>
 <main>
   <div class="container">
-    <div class="eyebrow">Unlock Analysis · SUI · T-22</div>
+    <div class="eyebrow">Unlock Analysis · SUI · T-17</div>
     <h1><strong>SUI</strong> Unlock Analysis — September 2026</h1>
-    <p class="dateline">Unlock date: <em>2026-09-01</em> &nbsp;·&nbsp; T-22 &nbsp;·&nbsp; Data: CoinGecko + Tokenomist &nbsp;·&nbsp; Pulled <em>2026-08-10 12:30 UTC</em></p>
-    <div class="summary-card">On <strong>2026-09-01</strong>, a scheduled token unlock event is approaching for <strong>SUI (Sui)</strong>. Current price: <strong>$0.6947</strong>, 24h volume: <strong>$155.4M</strong>, 24h change: <strong>+0.52%</strong>, market cap: <strong>$2831M</strong> (rank approx. #27). SUI has significant on-chain DEX liquidity on Sui-native protocols; full depth breakdown in paid report. Holder concentration, DEX depth maps, and slippage analysis are available in the paid report.</div>
+    <p class="dateline">Unlock date: <em>2026-09-01</em> &nbsp;·&nbsp; T-17 &nbsp;·&nbsp; Data: CoinGecko &nbsp;·&nbsp; Pulled <em>2026-08-15 12:30 UTC</em></p>
+    <div class="summary-card">On <strong>2026-09-01</strong>, a scheduled token unlock is approaching for <strong>SUI (Sui Network)</strong>. Current price: <strong>$0.6815</strong>, 24h volume: <strong>$124.4M</strong>, 24h change: <strong>+0.78%</strong>, market cap: <strong>$2.78B</strong>. SUI has the deepest on-chain liquidity of the current unlock cohort — high absolute volume but unlock events in the past have shown price sensitivity proportional to the unlock size relative to circulating float. Full depth and holder concentration data in the paid report.</div>
     <div class="data-grid">
-      <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.69471</div></div>
-      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$155.4M</div></div>
-      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$2831M</div></div>
-      <div class="data-card"><div class="data-card-label">MCap Rank</div><div class="data-card-value">#27</div></div>
-      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value accent">+0.52%</div></div>
-      <div class="data-card"><div class="data-card-label">Days to Unlock</div><div class="data-card-value warn">T-22</div></div>
+      <div class="data-card"><div class="data-card-label">Current Price</div><div class="data-card-value accent">$0.6815</div></div>
+      <div class="data-card"><div class="data-card-label">24h Volume</div><div class="data-card-value">$124.4M</div></div>
+      <div class="data-card"><div class="data-card-label">Market Cap</div><div class="data-card-value">$2.78B</div></div>
+      <div class="data-card"><div class="data-card-label">24h Change</div><div class="data-card-value accent">+0.78%</div></div>
+      <div class="data-card"><div class="data-card-label">Vol / MCap Ratio</div><div class="data-card-value accent">4.5%</div></div>
+      <div class="data-card"><div class="data-card-label">Days to Unlock</div><div class="data-card-value">T-17</div></div>
     </div>
     <div class="table-section"><table><thead><tr><th>Field</th><th>Value</th><th>Source</th></tr></thead><tbody>
-      <tr><td>Token</td><td>SUI (Sui)</td><td>CoinGecko</td></tr>
+      <tr><td>Token</td><td>SUI (Sui Network)</td><td>CoinGecko</td></tr>
       <tr><td>Unlock Date</td><td>2026-09-01</td><td>Tokenomist</td></tr>
-      <tr><td>Price</td><td>$0.69471</td><td>CoinGecko</td></tr>
-      <tr><td>24h Volume</td><td>$155.4M</td><td>CoinGecko</td></tr>
-      <tr><td>24h Change</td><td>+0.52%</td><td>CoinGecko</td></tr>
-      <tr><td>Market Cap</td><td>$2831M (rank #27)</td><td>CoinGecko</td></tr>
+      <tr><td>Price</td><td>$0.6815</td><td>CoinGecko</td></tr>
+      <tr><td>24h Volume</td><td>$124.4M</td><td>CoinGecko</td></tr>
+      <tr><td>24h Change</td><td>+0.78%</td><td>CoinGecko</td></tr>
+      <tr><td>Market Cap</td><td>$2.78B</td><td>CoinGecko</td></tr>
       <tr><td>Unlock Size</td><td>See paid report</td><td>Tokenomist</td></tr>
       <tr><td>DEX Liquidity (top pair)</td><td>See paid report</td><td>DexScreener</td></tr>
       <tr><td>$10K Exit Slippage</td><td>See paid report</td><td>DexScreener + model</td></tr>
       <tr><td>$50K Exit Slippage</td><td>See paid report</td><td>DexScreener + model</td></tr>
-      <tr><td>Data pulled</td><td>2026-08-10 12:30 UTC</td><td>Live API</td></tr>
+      <tr><td>Data pulled</td><td>2026-08-15 12:30 UTC</td><td>Live API</td></tr>
     </tbody></table></div>
     <div class="gate-block">
       <div class="gate-blur"><div style="height:460px;"></div></div>
@@ -119,7 +120,7 @@
       </div>
     </div>
     <div class="disclaimer">
-      <strong>Data sources:</strong> CoinGecko (price, market cap, volume, 24h change), Tokenomist (unlock schedule). Figures pulled 2026-08-10 12:30 UTC. DEX liquidity and slippage data available in paid report.<br><br>
+      <strong>Data sources:</strong> CoinGecko (price, market cap, volume, 24h change), Tokenomist (unlock schedule). Figures pulled 2026-08-15 12:30 UTC. DEX liquidity and slippage data available in paid report.<br><br>
       <strong>Not financial advice.</strong> Data aggregation only. Nothing here constitutes a recommendation to buy, sell, or hold any asset. Past unlock outcomes are not indicative of future results. See <a href="/risk-disclosure.html" style="color:var(--accent);">full risk disclosure</a>.
     </div>
   </div>
