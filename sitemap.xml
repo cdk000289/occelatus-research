@@ -61,16 +61,16 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  <url><loc>https://occelatus.io/reports/strk-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/op-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/sui-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/sol-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/avax-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/apt-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/beat-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/hmstr-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/aio-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://occelatus.io/reports/w-liquidity-snapshot.html</loc><lastmod>2026-08-16</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/strk-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/op-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/sui-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/sol-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/avax-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/apt-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/beat-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/hmstr-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/aio-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/w-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://occelatus.io/reports/velvet-liquidity-snapshot.html</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url>
     <loc>https://occelatus.io/reports/birb-liquidity-snapshot</loc>
@@ -84,7 +84,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-  <url><loc>https://occelatus.io/reports/jito-liquidity-snapshot.html</loc><lastmod>2026-08-04</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/jito-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
   <url><loc>https://occelatus.io/reports/block-street-liquidity-snapshot</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
 
@@ -110,4 +110,6 @@
   <url><loc>https://occelatus.io/reports/ansem-liquidity-snapshot.html</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
 
   <url><loc>https://occelatus.io/reports/birb-liquidity-snapshot.html</loc><lastmod>2026-08-12</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://occelatus.io/reports/sei-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://occelatus.io/reports/arb-liquidity-snapshot.html</loc><lastmod>2026-08-20</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
 </urlset>
