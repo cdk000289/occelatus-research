@@ -512,6 +512,43 @@
     }
     .form-ok p { font-size: 14px; color: var(--text-muted); }
 
+    /* Service toggle */
+    .svc-toggle {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .svc-opt {
+      position: relative; cursor: pointer;
+    }
+    .svc-opt input[type="radio"] {
+      position: absolute; opacity: 0; width: 0; height: 0;
+    }
+    .svc-opt-inner {
+      display: flex; flex-direction: column; gap: 3px;
+      padding: 14px 16px; border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .svc-opt input:checked ~ .svc-opt-inner {
+      border-color: rgba(125,249,255,0.5);
+      background: rgba(125,249,255,0.07);
+      box-shadow: 0 0 20px rgba(125,249,255,0.1);
+    }
+    .svc-opt:hover .svc-opt-inner { border-color: rgba(125,249,255,0.25); }
+    .svc-opt-name {
+      font-size: 13px; font-weight: 600; color: var(--text);
+    }
+    .svc-opt-price {
+      font-size: 15px; font-weight: 700; color: var(--accent);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .svc-opt-desc {
+      font-size: 11px; color: var(--text-dim); line-height: 1.4;
+    }
+    @media (max-width: 480px) {
+      .svc-toggle { grid-template-columns: 1fr; }
+    }
+
     /* ============ FOOTER ============ */
     footer {
       border-top: 1px solid var(--line); padding: 40px 0;
@@ -776,18 +813,39 @@
               <input class="fi" type="email" id="f-email" name="email" placeholder="you@company.com" autocomplete="email" required>
             </div>
             <div class="ff">
+              <label class="fl">Which service?</label>
+              <div class="svc-toggle" id="f-svc-toggle">
+                <label class="svc-opt" id="svc-opt-audit">
+                  <input type="radio" name="service" value="audit" required>
+                  <span class="svc-opt-inner">
+                    <span class="svc-opt-name">Workflow Audit</span>
+                    <span class="svc-opt-price">$99 one-time</span>
+                    <span class="svc-opt-desc">Scoping + prioritized build plan in 48h</span>
+                  </span>
+                </label>
+                <label class="svc-opt" id="svc-opt-retainer">
+                  <input type="radio" name="service" value="retainer">
+                  <span class="svc-opt-inner">
+                    <span class="svc-opt-name">Done-For-You Retainer</span>
+                    <span class="svc-opt-price">$299/mo</span>
+                    <span class="svc-opt-desc">Full build, deploy, and 30-day async support</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="ff">
               <label class="fl" for="f-msg">What do you want automated?</label>
               <textarea class="ft" id="f-msg" name="message" placeholder="e.g. When a Typeform lead comes in, create a HubSpot contact, send a Slack alert to sales, and schedule a follow-up email — we're doing all of this manually right now." required></textarea>
             </div>
             <!-- FormSubmit config (hidden) -->
-            <input type="hidden" name="_subject" value="New automation inquiry — occelatus.io/automate">
+            <input type="hidden" name="_subject" id="f-subject" value="New automation inquiry — occelatus.io/automate">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
             <!-- honeypot: bots fill this, real users can't see it -->
             <input type="text" name="_honey" id="f-hp" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-foot">
-              <button type="submit" class="btn btn-primary" id="f-btn">Send inquiry →</button>
-              <span class="form-note">Replies within 24h via email</span>
+              <button type="submit" class="btn btn-primary" id="f-btn">Continue to payment →</button>
+              <span class="form-note">Intake captured — you'll pay on the next screen</span>
             </div>
             <div class="form-err" id="f-err"></div>
           </form>
@@ -847,26 +905,48 @@
     }, { threshold: 0.5 });
     document.querySelectorAll('[data-count]').forEach(el => cntObs.observe(el));
 
-    // Contact form
+    // Contact form → Stripe redirect
     (function () {
+      var PAYMENT_LINKS = {
+        audit:   'https://buy.stripe.com/5kQ5kE2Lb1Qn3yx19O2go05',
+        retainer: 'https://buy.stripe.com/4gM28s0D3cv1glj3hW2go06'
+      };
+
       var form = document.getElementById('form-inner');
       if (!form) return;
       var btn = document.getElementById('f-btn');
       var err = document.getElementById('f-err');
 
+      // Pre-select Audit when its card link is clicked
+      document.querySelectorAll('a[href="#contact"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var txt = a.textContent || '';
+          var target = txt.toLowerCase().indexOf('retainer') > -1 ? 'retainer' : 'audit';
+          var radio = form.querySelector('input[name="service"][value="' + target + '"]');
+          if (radio) { radio.checked = true; }
+        });
+      });
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-        err.textContent = '';
+        err.style.display = 'none'; err.textContent = '';
 
         if (form.querySelector('#f-hp').value) return;
 
         var email = form.querySelector('#f-email').value.trim();
-        var msg = form.querySelector('#f-msg').value.trim();
-        if (!email || !/.+@.+\..+/.test(email)) { err.textContent = 'Please enter a valid work email.'; return; }
-        if (!msg) { err.textContent = 'Tell us what you want automated.'; return; }
+        var msg   = form.querySelector('#f-msg').value.trim();
+        var svc   = (form.querySelector('input[name="service"]:checked') || {}).value;
+
+        if (!email || !/.+@.+\..+/.test(email)) { err.style.display='block'; err.textContent = 'Please enter a valid work email.'; return; }
+        if (!msg)  { err.style.display='block'; err.textContent = 'Tell us what you want automated.'; return; }
+        if (!svc)  { err.style.display='block'; err.textContent = 'Please select a service above.'; return; }
+
+        // Stamp the service in the email subject so the inbox monitor knows which to bill
+        var subjectEl = document.getElementById('f-subject');
+        if (subjectEl) subjectEl.value = 'New automation inquiry [' + svc + '] — occelatus.io/automate';
 
         var original = btn.textContent;
-        btn.disabled = true; btn.textContent = 'Sending…';
+        btn.disabled = true; btn.textContent = 'Processing…';
 
         fetch(form.action, {
           method: 'POST',
@@ -876,16 +956,17 @@
           .then(function (r) { return r.json(); })
           .then(function (data) {
             if (data.success === 'true' || data.success === true) {
-              form.innerHTML = '<div class="form-sent">Thanks — your inquiry is in. Expect a reply within 24h at ' +
-                email.replace(/[<>&]/g, '') + '.</div>';
+              // Intake captured — redirect to Stripe checkout
+              window.location.href = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
             } else {
-              err.textContent = 'Something went wrong. Email research@occelatus.io directly and we\'ll jump on it.';
+              err.style.display = 'block';
+              err.textContent = 'Something went wrong. Email automate@occelatus.io directly and we\'ll sort it out.';
               btn.disabled = false; btn.textContent = original;
             }
           })
           .catch(function () {
-            err.textContent = 'Network error. Email research@occelatus.io directly and we\'ll jump on it.';
-            btn.disabled = false; btn.textContent = original;
+            // FormSubmit occasionally returns non-JSON on first activation — redirect anyway
+            window.location.href = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
           });
       });
     })();
