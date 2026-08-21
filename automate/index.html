@@ -621,9 +621,10 @@
           <h1>Stop doing it<br><strong>by hand.</strong></h1>
           <p class="hero-sub">We build n8n automation workflows for small businesses — done-for-you, deployed in days, and fully documented so you own everything.</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Get Your Automation Blueprint — $99</a>
+            <a href="#contact" class="btn btn-primary" id="cta-blueprint">Get Your Automation Blueprint — $99</a>
             <a href="#services" class="btn btn-ghost">See services ↓</a>
           </div>
+          <p style="margin-top:14px;font-size:13px;color:var(--text-dim);">Not sure what to automate? <a href="#contact" id="cta-free" style="color:var(--accent);text-decoration:none;font-weight:500;">Get a free 2-min automation assessment →</a></p>
         </div>
         <div class="terminal-card">
           <div class="t-bar">
@@ -633,7 +634,11 @@
             <span class="t-title">automation-metrics.live</span>
           </div>
           <div class="t-body">
-            <div class="t-comment">// n8n self-hosted · cost model</div>
+            <div class="t-comment">// real numbers · no zapier required</div>
+            <div class="t-stat">
+              <span class="t-label"><a href="https://dev.to/pirateprentice" target="_blank" rel="noopener" style="color:var(--text-muted);text-decoration:none;">published_n8n_workflows →</a></span>
+              <span class="t-value">100+</span>
+            </div>
             <div class="t-stat">
               <span class="t-label">monthly_execution_fee</span>
               <span class="t-value warm">$0</span>
@@ -710,7 +715,7 @@
           <div class="svc-title">Automation Blueprint</div>
           <div class="svc-price">$99</div>
           <div class="svc-price-note">one-time · 48h turnaround</div>
-          <div class="svc-desc">Tell us your top 3 time sinks. We map the automation, estimate the ROI, and hand you a build-ready blueprint — whether you work with us or not.</div>
+          <div class="svc-desc">Describe your top 3 time sinks via the intake form. We map the automation, estimate the ROI, and hand you a build-ready Blueprint — whether you work with us or not.</div>
           <ul class="svc-list">
             <li><strong>Async intake form</strong> — describe your tools, team, and top 3 bottlenecks in detail</li>
             <li><strong>Written Blueprint PDF</strong> — 3 automation opportunities mapped</li>
@@ -718,12 +723,13 @@
             <li><strong>n8n workflow JSON</strong> — rough prototype included</li>
             <li><strong>Build roadmap</strong> — clear next steps either way</li>
           </ul>
-          <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Get Blueprint →</a>
+          <p style="font-size:12px;color:var(--text-dim);margin-bottom:18px;font-family:'JetBrains Mono',monospace;letter-spacing:0.02em;">100% money-back if the Blueprint isn't useful — zero risk.</p>
+          <a href="#contact" class="btn btn-primary" id="svc-blueprint" style="width:100%;justify-content:center;">Get Blueprint →</a>
         </div>
 
         <div class="svc-card r d1">
           <div class="svc-badge warm">Best value</div>
-          <div class="svc-title">Monthly Retainer</div>
+          <div class="svc-title">Done-For-You Retainer</div>
           <div class="svc-price warm">$299</div>
           <div class="svc-price-note">per month · cancel anytime</div>
           <div class="svc-desc">An ongoing automation partner — not a one-time build. One fully deployed workflow per month, support, and optimization. Stack automations over time without stacking Zapier bills.</div>
@@ -735,7 +741,7 @@
             <li><strong>Full documentation</strong> — you own the workflow JSON and docs, always</li>
             <li><strong>Monthly automation review</strong> — we surface new automation opportunities each cycle</li>
           </ul>
-          <a href="#contact" class="btn btn-warm" style="width:100%;justify-content:center;">Start Retainer →</a>
+          <a href="#contact" class="btn btn-warm" id="svc-retainer" style="width:100%;justify-content:center;">Start Retainer →</a>
         </div>
 
       </div>
