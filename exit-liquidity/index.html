@@ -1,228 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exit Liquidity Tracker — Occelatus Research</title>
-<style>
-  :root {
-    --bg: #0d1117;
-    --surface: #161b22;
-    --border: #30363d;
-    --text: #e6edf3;
-    --muted: #7d8590;
-    --green: #3fb950;
-    --yellow: #d29922;
-    --red: #f85149;
-    --green-bg: #0d2d1a;
-    --yellow-bg: #2d2000;
-    --red-bg: #3d1212;
-    --accent: #58a6ff;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
-    font-size: 14px;
-    padding: 24px;
-  }
-  header {
-    margin-bottom: 24px;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 16px;
-  }
-  h1 { font-size: 20px; font-weight: 700; color: var(--accent); }
-  .meta { color: var(--muted); font-size: 12px; margin-top: 4px; }
-  .legend {
-    display: flex; gap: 16px; margin-bottom: 16px; font-size: 12px;
-  }
-  .legend span { display: flex; align-items: center; gap: 6px; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-  .dot-green { background: var(--green); }
-  .dot-yellow { background: var(--yellow); }
-  .dot-red { background: var(--red); }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  thead th {
-    background: #21262d;
-    color: var(--muted);
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    padding: 10px 14px;
-    text-align: right;
-    white-space: nowrap;
-  }
-  thead th:first-child { text-align: left; }
-  tbody tr { border-top: 1px solid var(--border); }
-  tbody tr:hover { background: #1c2128; }
-  td {
-    padding: 10px 14px;
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-  td:first-child { text-align: left; font-weight: 600; }
-  .token-sym { font-weight: 700; font-size: 15px; }
-  .change-pos { color: var(--green); }
-  .change-neg { color: var(--red); }
-  .slip-cell {
-    border-radius: 4px;
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: 600;
-  }
-  .slip-green { background: var(--green-bg); color: var(--green); }
-  .slip-yellow { background: var(--yellow-bg); color: var(--yellow); }
-  .slip-red { background: var(--red-bg); color: var(--red); }
-  .cex-note { color: var(--muted); font-size: 11px; margin-top: 4px; }
-  footer {
-    margin-top: 20px;
-    color: var(--muted);
-    font-size: 11px;
-    border-top: 1px solid var(--border);
-    padding-top: 12px;
-  }
-  .note { background: #1c2128; border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-bottom: 16px; font-size: 12px; color: var(--muted); }
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exit Liquidity Tracker | Occelatus Research</title>
+  <meta name="description" content="Daily DEX liquidity depth and exit slippage estimates for top crypto tokens. Updated 7 AM CT every day."/>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161922;
+      --border: #242836;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+      --accent: #6366f1;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --red: #ef4444;
+      --green-bg: rgba(34,197,94,0.12);
+      --yellow-bg: rgba(234,179,8,0.12);
+      --red-bg: rgba(239,68,68,0.12);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+    header h1 { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    header h1 span { color: var(--accent); }
+    .badge { font-size: 0.7rem; background: var(--border); color: var(--muted); padding: 0.2rem 0.6rem; border-radius: 999px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 1.5rem 1rem; }
+    .meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+    .meta-item { font-size: 0.8rem; color: var(--muted); }
+    .meta-item strong { color: var(--text); }
+    .legend { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.75rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.35rem; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dot-g { background: var(--green); }
+    .dot-y { background: var(--yellow); }
+    .dot-r { background: var(--red); }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th { background: var(--surface); color: var(--muted); font-weight: 600; text-align: right; padding: 0.65rem 0.75rem; border-bottom: 2px solid var(--border); white-space: nowrap; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    th:first-child { text-align: left; }
+    td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); text-align: right; vertical-align: middle; }
+    td:first-child { text-align: left; font-weight: 600; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .symbol { font-size: 0.9rem; }
+    .ch { font-size: 0.75rem; }
+    .pos { color: var(--green); }
+    .neg { color: var(--red); }
+    .slip { display: inline-block; padding: 0.2rem 0.55rem; border-radius: 6px; font-weight: 700; font-size: 0.78rem; }
+    .slip-g { background: var(--green-bg); color: var(--green); }
+    .slip-y { background: var(--yellow-bg); color: var(--yellow); }
+    .slip-r { background: var(--red-bg); color: var(--red); }
+    .note { font-size: 0.7rem; color: var(--muted); margin-top: 0.25rem; }
+    .cta-bar { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; margin-top: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .cta-bar p { font-size: 0.85rem; color: var(--muted); max-width: 500px; }
+    .cta-bar p strong { color: var(--text); }
+    .btn { background: var(--accent); color: #fff; padding: 0.55rem 1.25rem; border-radius: 8px; text-decoration: none; font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
+    .btn:hover { opacity: 0.9; }
+    footer { border-top: 1px solid var(--border); padding: 1.5rem 1rem; margin-top: 2rem; font-size: 0.72rem; color: var(--muted); max-width: 1100px; margin-left: auto; margin-right: auto; }
+    @media (max-width: 600px) {
+      th, td { padding: 0.5rem 0.5rem; font-size: 0.75rem; }
+    }
+  </style>
 </head>
 <body>
-
 <header>
-  <h1>🏴‍☠️ Exit Liquidity Tracker</h1>
-  <div class="meta">Occelatus Research · Generated: 2026-08-21 07:20 CT · Data: CoinGecko + DexScreener</div>
+  <h1>🏴‍☠️ <span>Occelatus</span> — Exit Liquidity Tracker</h1>
+  <span class="badge">Updated Sun Aug 23, 2026 · 7:15 AM CT</span>
 </header>
 
-<div class="note">
-  <strong>Methodology:</strong> DEX liquidity = top pair on-chain. Slippage estimate = trade_size / (2 × pool_liquidity) × 100, constant-product AMM approximation.
-  BTC/ETH/ZEC/HYPE estimates use best available DEX pools. CEX orderbook depth is substantially deeper — treat as worst-case exit.
-  <strong>Thresholds:</strong> 🟢 &lt;0.3% · 🟡 0.3–1% · 🔴 &gt;1%
-</div>
+<div class="container">
+  <div class="meta">
+    <div class="meta-item">Source: <strong>DexScreener + CoinGecko</strong></div>
+    <div class="meta-item">Refresh: <strong>Daily 7 AM CT</strong></div>
+    <div class="meta-item">Slippage: <strong>DEX top-pair estimate</strong></div>
+  </div>
 
-<div class="legend">
-  <span><span class="dot dot-green"></span> Deep (&lt;0.3%)</span>
-  <span><span class="dot dot-yellow"></span> Thin (0.3–1%)</span>
-  <span><span class="dot dot-red"></span> Illiquid (&gt;1%)</span>
-</div>
+  <div class="legend">
+    <div class="legend-item"><div class="dot dot-g"></div> <span style="color:var(--muted)">&lt; 0.3% — Liquid</span></div>
+    <div class="legend-item"><div class="dot dot-y"></div> <span style="color:var(--muted)">0.3–1% — Caution</span></div>
+    <div class="legend-item"><div class="dot dot-r"></div> <span style="color:var(--muted)">&gt; 1% — Thin</span></div>
+  </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Token</th>
-      <th>Price</th>
-      <th>24h Change</th>
-      <th>24h Vol</th>
-      <th>Top DEX Liq</th>
-      <th>$10K Exit Slip</th>
-      <th>$50K Exit Slip</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- BTC -->
-    <tr>
-      <td><span class="token-sym">BTC</span></td>
-      <td>$76,819</td>
-      <td class="change-pos">+7.13%</td>
-      <td>$67.8B</td>
-      <td>~$100M (WBTC/ETH Uni V3)</td>
-      <td><span class="slip-cell slip-green">0.005%</span></td>
-      <td><span class="slip-cell slip-green">0.025%</span></td>
-    </tr>
-    <!-- ETH -->
-    <tr>
-      <td><span class="token-sym">ETH</span></td>
-      <td>$2,375</td>
-      <td class="change-pos">+4.40%</td>
-      <td>$27.4B</td>
-      <td>~$80M (WETH/USDC Uni V3)</td>
-      <td><span class="slip-cell slip-green">0.006%</span></td>
-      <td><span class="slip-cell slip-green">0.031%</span></td>
-    </tr>
-    <!-- SOL -->
-    <tr>
-      <td><span class="token-sym">SOL</span></td>
-      <td>$90.35</td>
-      <td class="change-pos">+4.17%</td>
-      <td>$5.87B</td>
-      <td>$24.37M (Orca SOL/USDC)</td>
-      <td><span class="slip-cell slip-green">0.021%</span></td>
-      <td><span class="slip-cell slip-green">0.103%</span></td>
-    </tr>
-    <!-- HYPE -->
-    <tr>
-      <td><span class="token-sym">HYPE</span></td>
-      <td>$74.08</td>
-      <td class="change-pos">+3.80%</td>
-      <td>$1.51B</td>
-      <td>~$10M (HyperEVM DEX)</td>
-      <td><span class="slip-cell slip-green">0.050%</span></td>
-      <td><span class="slip-cell slip-green">0.250%</span></td>
-    </tr>
-    <!-- ZEC -->
-    <tr>
-      <td><span class="token-sym">ZEC</span></td>
-      <td>$634.16</td>
-      <td class="change-pos">+12.76%</td>
-      <td>$906M</td>
-      <td>~$200K (ZEC/USDC DEX)</td>
-      <td><span class="slip-cell slip-red">2.500%</span></td>
-      <td><span class="slip-cell slip-red">12.500%</span></td>
-    </tr>
-    <!-- SEI -->
-    <tr>
-      <td><span class="token-sym">SEI</span></td>
-      <td>$0.0461</td>
-      <td class="change-pos">+9.78%</td>
-      <td>$47.1M</td>
-      <td>~$2M (SEI native DEX)</td>
-      <td><span class="slip-cell slip-green">0.250%</span></td>
-      <td><span class="slip-cell slip-red">1.250%</span></td>
-    </tr>
-    <!-- ARB -->
-    <tr>
-      <td><span class="token-sym">ARB</span></td>
-      <td>$0.0966</td>
-      <td class="change-pos">+10.21%</td>
-      <td>$96.6M</td>
-      <td>~$5M (ARB/ETH Uni V3)</td>
-      <td><span class="slip-cell slip-green">0.100%</span></td>
-      <td><span class="slip-cell slip-yellow">0.500%</span></td>
-    </tr>
-    <!-- TIA -->
-    <tr>
-      <td><span class="token-sym">TIA</span></td>
-      <td>$0.3766</td>
-      <td class="change-pos">+13.99%</td>
-      <td>$39.5M</td>
-      <td>~$1.5M (Osmosis TIA/USDC)</td>
-      <td><span class="slip-cell slip-yellow">0.333%</span></td>
-      <td><span class="slip-cell slip-red">1.667%</span></td>
-    </tr>
-    <!-- JUP -->
-    <tr>
-      <td><span class="token-sym">JUP</span></td>
-      <td>$0.2081</td>
-      <td class="change-pos">+11.30%</td>
-      <td>$48.2M</td>
-      <td>$394K (Orca JUP/SOL)</td>
-      <td><span class="slip-cell slip-red">1.269%</span></td>
-      <td><span class="slip-cell slip-red">6.345%</span></td>
-    </tr>
-  </tbody>
-</table>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Price</th>
+          <th>24h Chg</th>
+          <th>24h Vol</th>
+          <th>Top-Pair Liq.</th>
+          <th>$10K Slippage</th>
+          <th>$50K Slippage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- BTC -->
+        <tr>
+          <td><span class="symbol">BTC</span><br><span class="note">Bitcoin</span></td>
+          <td>$77,039</td>
+          <td class="ch pos">+0.6%</td>
+          <td>$27.3B</td>
+          <td>$2.1B+</td>
+          <td><span class="slip slip-g">&lt;0.01%</span></td>
+          <td><span class="slip slip-g">&lt;0.01%</span></td>
+        </tr>
+        <!-- ETH -->
+        <tr>
+          <td><span class="symbol">ETH</span><br><span class="note">Ethereum</span></td>
+          <td>$2,421</td>
+          <td class="ch pos">+1.0%</td>
+          <td>$13.4B</td>
+          <td>$800M+</td>
+          <td><span class="slip slip-g">&lt;0.01%</span></td>
+          <td><span class="slip slip-g">&lt;0.01%</span></td>
+        </tr>
+        <!-- SOL -->
+        <tr>
+          <td><span class="symbol">SOL</span><br><span class="note">Solana</span></td>
+          <td>$94.22</td>
+          <td class="ch pos">+2.0%</td>
+          <td>$4.43B</td>
+          <td>$385M+</td>
+          <td><span class="slip slip-g">&lt;0.01%</span></td>
+          <td><span class="slip slip-g">&lt;0.05%</span></td>
+        </tr>
+        <!-- HYPE -->
+        <tr>
+          <td><span class="symbol">HYPE</span><br><span class="note">Hyperliquid</span></td>
+          <td>$80.13</td>
+          <td class="ch pos">+5.4%</td>
+          <td>$790M</td>
+          <td>$5.4M</td>
+          <td><span class="slip slip-y">~0.37%</span></td>
+          <td><span class="slip slip-r">~1.85%</span></td>
+        </tr>
+        <!-- ZEC -->
+        <tr>
+          <td><span class="symbol">ZEC</span><br><span class="note">Zcash</span></td>
+          <td>$816.30</td>
+          <td class="ch pos">+5.1%</td>
+          <td>$1.34B</td>
+          <td>$8.2M est.</td>
+          <td><span class="slip slip-y">~0.24%</span></td>
+          <td><span class="slip slip-y">~1.2%</span></td>
+        </tr>
+        <!-- ARB -->
+        <tr>
+          <td><span class="symbol">ARB</span><br><span class="note">Arbitrum</span></td>
+          <td>$0.0995</td>
+          <td class="ch pos">+2.8%</td>
+          <td>$83M</td>
+          <td>$22M est.</td>
+          <td><span class="slip slip-g">~0.09%</span></td>
+          <td><span class="slip slip-y">~0.45%</span></td>
+        </tr>
+        <!-- JUP -->
+        <tr>
+          <td><span class="symbol">JUP</span><br><span class="note">Jupiter</span></td>
+          <td>$0.2028</td>
+          <td class="ch pos">+0.5%</td>
+          <td>$40.8M</td>
+          <td>$4.1M est.</td>
+          <td><span class="slip slip-y">~0.49%</span></td>
+          <td><span class="slip slip-r">~2.4%</span></td>
+        </tr>
+        <!-- TIA -->
+        <tr>
+          <td><span class="symbol">TIA</span><br><span class="note">Celestia</span></td>
+          <td>$0.3758</td>
+          <td class="ch neg">-0.5%</td>
+          <td>$37.8M</td>
+          <td>$5.0M est.</td>
+          <td><span class="slip slip-y">~0.40%</span></td>
+          <td><span class="slip slip-r">~2.0%</span></td>
+        </tr>
+        <!-- SEI -->
+        <tr>
+          <td><span class="symbol">SEI</span><br><span class="note">Sei Network</span></td>
+          <td>$0.04675</td>
+          <td class="ch neg">-1.2%</td>
+          <td>$34.7M</td>
+          <td>$3.2M est.</td>
+          <td><span class="slip slip-y">~0.63%</span></td>
+          <td><span class="slip slip-r">~3.1%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note" style="margin-top:0.75rem;">Slippage estimates use DEX top-pair liquidity depth via constant-product model approximation. Large-cap CEX-dominant tokens (BTC, ETH, SOL) show aggregate DEX liquidity. Figures are estimates — execute via aggregator for live quotes. <em>est.</em> = estimated from volume/liquidity ratios.</p>
+
+  <div class="cta-bar">
+    <p><strong>Need the full depth map?</strong> Paid reports include multi-pair depth maps, holder concentration, historical unlock comparisons, and $10K–$500K slippage bands across 5+ venues.</p>
+    <a class="btn" href="https://occelatus.io/?utm_source=tracker&utm_medium=cta&utm_campaign=exit-liquidity">View Paid Reports →</a>
+  </div>
+</div>
 
 <footer>
-  <strong>Key:</strong> Slippage = constant-product AMM estimate on top DEX pair. Aggregate depth (Uni V2/V3, Orca, Meteora, native chains) may be 2–5× deeper.
-  BTC/ETH/ZEC/HYPE CEX books are orders of magnitude deeper.
-  Data sourced at 07:20 CT · Refresh daily · <a href="https://occelatus.io" style="color:var(--accent)">occelatus.io</a>
+  <strong>Disclaimer:</strong> This page is for informational purposes only. It does not constitute financial, investment, or trading advice. Slippage figures are estimates derived from on-chain liquidity snapshots and may not reflect real-time conditions. Always use a DEX aggregator for live execution quotes. Past liquidity conditions do not guarantee future market depth. Occelatus Research is not a registered investment advisor.<br><br>
+  © 2026 Occelatus Research · <a href="https://occelatus.io/risk-disclosure.html" style="color:var(--muted)">Risk Disclosure</a> · <a href="https://occelatus.io/terms.html" style="color:var(--muted)">Terms</a> · <a href="mailto:hello@occelatus.io" style="color:var(--muted)">hello@occelatus.io</a>
 </footer>
-
 </body>
 </html>
