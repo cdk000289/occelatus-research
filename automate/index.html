@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) — Google Ads AW-1839991905 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1839991905"></script>
+  <!-- Google tag (gtag.js) — Google Ads AW-18399941905 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399941905"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'AW-1839991905');
+    gtag('config', 'AW-18399941905');
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -962,8 +962,16 @@
           .then(function (r) { return r.json(); })
           .then(function (data) {
             if (data.success === 'true' || data.success === true) {
-              // Intake captured — redirect to Stripe checkout
-              window.location.href = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
+              var dest = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
+              var redirected = false;
+              function go(){ if (!redirected){ redirected = true; window.location.href = dest; } }
+              gtag('event', 'conversion', {
+                'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE',
+                'value': 1.0,
+                'currency': 'USD',
+                'event_callback': go
+              });
+              setTimeout(go, 1000);
             } else {
               err.style.display = 'block';
               err.textContent = 'Something went wrong. Email automate@occelatus.io directly and we\'ll sort it out.';
