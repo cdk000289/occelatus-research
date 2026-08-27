@@ -620,10 +620,10 @@
           <h1>Stop doing it<br><strong>by hand.</strong></h1>
           <p class="hero-sub">We build n8n automation workflows for small businesses — done-for-you, deployed in days, and fully documented so you own everything.</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary" id="cta-blueprint">Get Your Automation Blueprint — $99</a>
-            <a href="#services" class="btn btn-ghost">See services ↓</a>
+            <a href="#contact" class="btn btn-primary" id="cta-free">Get a Free Automation Assessment →</a>
+            <a href="#services" class="btn btn-ghost">See plans &amp; pricing ↓</a>
           </div>
-          <p style="margin-top:14px;font-size:13px;color:var(--text-dim);">Not sure what to automate? <a href="#contact" id="cta-free" style="color:var(--accent);text-decoration:none;font-weight:500;">Get a free 2-min automation assessment →</a></p>
+          <p style="margin-top:14px;font-size:13px;color:var(--text-dim);">Ready to build? <a href="#contact" id="cta-blueprint" style="color:var(--accent);text-decoration:none;font-weight:500;">Get the $99 Automation Blueprint →</a></p>
         </div>
         <div class="terminal-card">
           <div class="t-bar">
@@ -820,8 +820,16 @@
             <div class="ff">
               <label class="fl">Which service?</label>
               <div class="svc-toggle" id="f-svc-toggle">
+                <label class="svc-opt" id="svc-opt-free" style="grid-column:1/-1;">
+                  <input type="radio" name="service" value="free" checked required>
+                  <span class="svc-opt-inner">
+                    <span class="svc-opt-name">Free Automation Assessment</span>
+                    <span class="svc-opt-price">Free · no card</span>
+                    <span class="svc-opt-desc">We review your workflows and tell you honestly what's worth automating — then show you exactly what a build would cost.</span>
+                  </span>
+                </label>
                 <label class="svc-opt" id="svc-opt-audit">
-                  <input type="radio" name="service" value="audit" required>
+                  <input type="radio" name="service" value="audit">
                   <span class="svc-opt-inner">
                     <span class="svc-opt-name">Automation Blueprint</span>
                     <span class="svc-opt-price">$99 one-time</span>
@@ -849,15 +857,23 @@
             <!-- honeypot: bots fill this, real users can't see it -->
             <input type="text" name="_honey" id="f-hp" style="display:none" tabindex="-1" autocomplete="off">
             <div class="form-foot">
-              <button type="submit" class="btn btn-primary" id="f-btn">Continue to payment →</button>
-              <span class="form-note">Intake captured — you'll pay on the next screen</span>
+              <button type="submit" class="btn btn-primary" id="f-btn">Send my free assessment →</button>
+              <span class="form-note" id="f-note">No payment — we'll reply within 24 hours</span>
             </div>
             <div class="form-err" id="f-err"></div>
           </form>
           <div class="form-ok" id="form-ok">
             <div class="form-ok-check">✓</div>
-            <h3>We'll be in touch.</h3>
+            <h3>Your free assessment is on the way.</h3>
             <p>Expect a reply within 24 hours with an honest take on your workflows and what automation can actually move the needle on.</p>
+            <div class="form-ok-cta" style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border);">
+              <p style="font-weight:600;margin-bottom:12px;">Don't want to wait? Skip the queue and start now:</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <a href="https://buy.stripe.com/5kQ5kE2Lb1Qn3yx19O2go05" class="btn btn-primary" style="justify-content:center;">Get the $99 Blueprint →</a>
+                <a href="https://buy.stripe.com/4gM28s0D3cv1glj3hW2go06" class="btn btn-ghost" style="justify-content:center;">Start $299/mo Retainer →</a>
+              </div>
+              <p style="font-size:12px;color:var(--text-dim);margin-top:10px;">The Blueprint fee is credited toward your first build.</p>
+            </div>
           </div>
         </div>
 
@@ -922,15 +938,40 @@
       var btn = document.getElementById('f-btn');
       var err = document.getElementById('f-err');
 
-      // Pre-select Audit when its card link is clicked
+      var note = document.getElementById('f-note');
+
+      // Swap the submit button + note to match the selected service.
+      // Free = lead-gen (no checkout); paid = Stripe redirect.
+      function syncCta() {
+        var svc = (form.querySelector('input[name="service"]:checked') || {}).value;
+        if (svc === 'retainer') {
+          btn.textContent = 'Continue to payment →';
+          if (note) note.textContent = 'Intake captured — you\'ll set up the $299/mo retainer on the next screen';
+        } else if (svc === 'audit') {
+          btn.textContent = 'Continue to payment →';
+          if (note) note.textContent = 'Intake captured — you\'ll pay the $99 fee on the next screen';
+        } else {
+          btn.textContent = 'Send my free assessment →';
+          if (note) note.textContent = 'No payment — we\'ll reply within 24 hours';
+        }
+      }
+      form.querySelectorAll('input[name="service"]').forEach(function (r) {
+        r.addEventListener('change', syncCta);
+      });
+
+      // Pre-select the matching service when a CTA link is clicked
       document.querySelectorAll('a[href="#contact"]').forEach(function (a) {
         a.addEventListener('click', function () {
-          var txt = a.textContent || '';
-          var target = txt.toLowerCase().indexOf('retainer') > -1 ? 'retainer' : 'audit';
+          var txt = (a.textContent || '').toLowerCase();
+          var target = txt.indexOf('retainer') > -1 ? 'retainer'
+                     : txt.indexOf('blueprint') > -1 ? 'audit'
+                     : 'free';
           var radio = form.querySelector('input[name="service"][value="' + target + '"]');
-          if (radio) { radio.checked = true; }
+          if (radio) { radio.checked = true; syncCta(); }
         });
       });
+
+      syncCta();
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -961,16 +1002,29 @@
           .then(function (r) { return r.json(); })
           .then(function (data) {
             if (data.success === 'true' || data.success === true) {
-              var dest = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
-              var redirected = false;
-              function go(){ if (!redirected){ redirected = true; window.location.href = dest; } }
+              // Fire the Google Ads lead conversion for every completed inquiry
               gtag('event', 'conversion', {
                 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE',
-                'value': 1.0,
-                'currency': 'USD',
-                'event_callback': go
+                'value': svc === 'free' ? 1.0 : (svc === 'retainer' ? 299.0 : 99.0),
+                'currency': 'USD'
               });
-              setTimeout(go, 1000);
+
+              if (svc === 'free') {
+                // Free lead: no checkout — show confirmation + buy pathway
+                form.style.display = 'none';
+                var ok = document.getElementById('form-ok');
+                if (ok) { ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+              } else {
+                // Paid: redirect to Stripe
+                var dest = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
+                var redirected = false;
+                function go(){ if (!redirected){ redirected = true; window.location.href = dest; } }
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE',
+                  'event_callback': go
+                });
+                setTimeout(go, 1000);
+              }
             } else {
               err.style.display = 'block';
               err.textContent = 'Something went wrong. Email automate@occelatus.io directly and we\'ll sort it out.';
@@ -978,8 +1032,14 @@
             }
           })
           .catch(function () {
-            // FormSubmit occasionally returns non-JSON on first activation — redirect anyway
-            window.location.href = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
+            // FormSubmit occasionally returns non-JSON on first activation.
+            if (svc === 'free') {
+              form.style.display = 'none';
+              var ok = document.getElementById('form-ok');
+              if (ok) { ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            } else {
+              window.location.href = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
+            }
           });
       });
     })();
