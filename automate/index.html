@@ -11,8 +11,8 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Occelatus Labs — n8n automation for small businesses. Done-for-you workflows built and deployed in days. Automation Blueprint from $99, retainer from $299/mo.">
-  <title>Automation Services — Occelatus Labs</title>
+  <meta name="description" content="Workflow automation service for small businesses. Occelatus Labs builds done-for-you n8n automations — deployed in days, fully documented, you own everything. Free assessment; Blueprint from $99, retainer from $299/mo.">
+  <title>Workflow Automation Service for Small Business — Occelatus Labs</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -183,6 +183,17 @@
       max-width: 480px; margin-bottom: 40px; line-height: 1.7;
     }
     .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-trust {
+      display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 26px;
+    }
+    .ht-item {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px; letter-spacing: 0.04em; color: var(--text-muted);
+    }
+    .ht-item::before {
+      content: "✓"; color: var(--accent); font-weight: 700; font-size: 12px;
+    }
 
     /* Hero stagger */
     .hero-left > * { animation: fadeSlideUp 0.7s ease both; }
@@ -429,6 +440,37 @@
     }
     .p-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
+    /* ============ FAQ ============ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .faq-item {
+      background: var(--bg-1);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 4px 26px;
+      transition: border-color 220ms ease;
+    }
+    .faq-item[open] { border-color: rgba(125,249,255,0.22); }
+    .faq-item summary {
+      list-style: none; cursor: pointer;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px; font-weight: 600; color: var(--text);
+      padding: 22px 0; position: relative; padding-right: 32px;
+      transition: color 180ms ease;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--accent); }
+    .faq-item summary::after {
+      content: "+"; position: absolute; right: 0; top: 50%;
+      transform: translateY(-50%);
+      font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 400;
+      color: var(--accent); transition: transform 200ms ease;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item p {
+      font-size: 14px; color: var(--text-muted); line-height: 1.7;
+      padding: 0 0 24px; max-width: 760px;
+    }
+
     /* ============ CONTACT ============ */
     #contact { padding: 80px 0 100px; }
     .contact-grid {
@@ -605,6 +647,7 @@
         <nav>
           <a href="https://occelatus.io" class="nav-hidden">Research</a>
           <a href="/automate/" class="nav-active">Automation</a>
+          <a href="#faq" class="nav-hidden">FAQ</a>
           <a href="#contact" class="nav-cta">Get Blueprint →</a>
         </nav>
       </div>
@@ -624,6 +667,12 @@
             <a href="#services" class="btn btn-ghost">See plans &amp; pricing ↓</a>
           </div>
           <p style="margin-top:14px;font-size:13px;color:var(--text-dim);">Ready to build? <a href="#contact" id="cta-blueprint" style="color:var(--accent);text-decoration:none;font-weight:500;">Get the $99 Automation Blueprint →</a></p>
+          <div class="hero-trust">
+            <span class="ht-item">Reply in 24h</span>
+            <span class="ht-item">100% money-back Blueprint</span>
+            <span class="ht-item">You own every workflow</span>
+            <span class="ht-item">No Zapier fees</span>
+          </div>
         </div>
         <div class="terminal-card">
           <div class="t-bar">
@@ -772,6 +821,41 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq" style="padding-top: 0;">
+    <div class="container">
+      <div class="s-label r">// before you ask</div>
+      <h2 class="s-heading r d1">Questions small businesses<br>ask us first.</h2>
+      <p class="s-sub r d2">Straight answers. If yours isn't here, put it in the form below and we'll reply within 24 hours.</p>
+      <div class="faq-list">
+        <details class="faq-item r">
+          <summary>I'm not technical — can I actually run this?</summary>
+          <p>Yes. That's the whole point of done-for-you. We build, test, and deploy the workflow into your stack, then hand you plain-English documentation. You don't touch code. If something breaks, the workflow sends a Slack/email alert and we're one message away.</p>
+        </details>
+        <details class="faq-item r d1">
+          <summary>How is this different from hiring a Zapier freelancer?</summary>
+          <p>Zapier charges per task and gets expensive fast as you scale. We build on self-hosted n8n — unlimited executions at $0/mo in ongoing platform fees, no per-task metering, and 400+ integrations. You own the workflow outright instead of renting it.</p>
+        </details>
+        <details class="faq-item r d2">
+          <summary>How fast will something actually be live?</summary>
+          <p>Most first workflows are deployed within days of your intake, not weeks. The $99 Blueprint turns around in 48 hours. We're already inside n8n every day, so there's no ramp-up or engineering-queue wait.</p>
+        </details>
+        <details class="faq-item r">
+          <summary>What does the free assessment include — is there a catch?</summary>
+          <p>No catch. You describe your top 2–3 manual processes, and we reply with an honest take on whether automation helps, what it would look like, and a rough cost. If it won't move the needle for you, we'll say so. No card, no obligation.</p>
+        </details>
+        <details class="faq-item r d1">
+          <summary>What if the Blueprint isn't useful?</summary>
+          <p>Full money-back guarantee on the $99 Blueprint — if it isn't genuinely useful, you don't pay. And the Blueprint fee is credited toward your first build if you move forward.</p>
+        </details>
+        <details class="faq-item r d2">
+          <summary>What do you need from me to get started?</summary>
+          <p>Just the manual processes eating your time and the tools you already use (CRM, email, spreadsheets, forms, etc.). We handle the mapping, building, and connecting. You review and approve.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" style="padding-bottom: 100px;">
     <div class="container">
@@ -780,7 +864,7 @@
         <div class="r">
           <div class="s-label">// get in touch</div>
           <h2 class="contact-h">Tell us what's eating your time.</h2>
-          <p class="contact-sub">Send us the 2–3 manual processes that cost you the most. We'll reply within 24 hours with an honest take on whether automation helps and what it would look like.</p>
+          <p class="contact-sub">Send us the 2–3 manual processes that cost you the most. We'll reply within 24 hours with an honest take on whether automation helps and what it would look like. We take on a limited number of new builds each month to keep turnaround fast — earlier inquiries get first slots.</p>
           <ul class="expect-list">
             <li>
               <div class="e-icon">⚡</div>
