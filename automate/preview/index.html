@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- PREVIEW/staging copy — not for indexing (brand-transition-plan.md §6 step 1) -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Google tag (gtag.js) — Google Ads AW-18399941905 — DO NOT CHANGE, fixed 2026-08-24 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399941905"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18399941905');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI-powered automation for small businesses. We set up systems that answer leads, chase invoices, and handle the busywork — done for you, no tech skills needed. Free assessment; from $99.">
+  <title>AI-Powered Automation for Small Business — Occelatus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf8f3;
+      --bg-card: #ffffff;
+      --line: rgba(20,24,34,0.08);
+      --line-strong: rgba(20,24,34,0.14);
+      --navy: #16233d;
+      --navy-soft: #47536b;
+      --text-dim: #7a8299;
+      --accent: #c96f3e;
+      --accent-soft: rgba(201,111,62,0.10);
+      --teal: #2a7d76;
+      --teal-soft: rgba(42,125,118,0.10);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.65; color: var(--navy); background: var(--bg);
+    }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    h1, h2, h3, .brand-font { font-family: 'Fraunces', Georgia, serif; }
+
+    /* HEADER */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(251,248,243,0.92); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--navy); font-weight: 600; font-size: 19px; }
+    .logo-mark { width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(135deg, var(--accent) 0%, var(--teal) 100%); }
+    nav { display: flex; gap: 30px; align-items: center; }
+    nav a { color: var(--navy-soft); text-decoration: none; font-size: 14px; font-weight: 500; }
+    nav a:hover { color: var(--navy); }
+    .nav-cta { padding: 10px 20px; border-radius: 100px; background: var(--navy); color: #fff !important; font-weight: 600 !important; }
+    .nav-cta:hover { background: #223252; }
+
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 15px 28px; border: none; border-radius: 100px; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform 150ms ease, box-shadow 150ms ease; white-space: nowrap; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px -8px rgba(201,111,62,0.55); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(201,111,62,0.65); }
+    .btn-ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--line-strong); }
+    .btn-ghost:hover { border-color: var(--navy); }
+    .btn-outline-inv { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+    .btn-outline-inv:hover { border-color: #fff; }
+
+    /* HERO */
+    .hero { padding: 76px 0 64px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--teal); background: var(--teal-soft); padding: 7px 14px; border-radius: 100px; margin-bottom: 26px; }
+    .hero h1 { font-size: clamp(34px, 5vw, 56px); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 22px; color: var(--navy); }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub { font-size: 19px; color: var(--navy-soft); max-width: 560px; margin-bottom: 34px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13.5px; color: var(--navy-soft); font-weight: 500; }
+    .ht-item::before { content: "✓ "; color: var(--teal); font-weight: 700; }
+
+    /* PROOF STRIP */
+    .proof-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 30px 0; background: var(--bg-card); }
+    .proof-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+    .proof-num { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 600; color: var(--navy); }
+    .proof-label { font-size: 12.5px; color: var(--text-dim); margin-top: 4px; }
+
+    /* SECTIONS */
+    section { padding: 84px 0; }
+    .s-label { font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .s-heading { font-size: clamp(28px, 3.6vw, 42px); font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 16px; color: var(--navy); }
+    .s-sub { font-size: 17px; color: var(--navy-soft); max-width: 620px; margin-bottom: 50px; }
+
+    /* PROBLEM CARDS */
+    .problem-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .problem-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px; }
+    .problem-icon { font-size: 26px; margin-bottom: 18px; }
+    .problem-title { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+    .problem-desc { font-size: 14.5px; color: var(--navy-soft); line-height: 1.65; }
+
+    /* SOLUTION OUTCOMES */
+    .outcome-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .outcome-card { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; border-left: 4px solid var(--teal); }
+    .outcome-title { font-size: 16.5px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .outcome-desc { font-size: 14px; color: var(--navy-soft); margin-bottom: 14px; }
+    .outcome-tag { font-size: 12px; color: var(--teal); font-weight: 600; background: var(--teal-soft); display: inline-block; padding: 5px 10px; border-radius: 6px; }
+
+    /* ILLUSTRATIVE EXAMPLE */
+    .example-card { background: var(--navy); color: #fff; border-radius: var(--radius); padding: 44px; }
+    .example-label { font-size: 12.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: #ffcfae; margin-bottom: 16px; }
+    .example-text { font-size: 19px; line-height: 1.6; font-weight: 500; margin-bottom: 18px; }
+    .example-note { font-size: 13.5px; color: rgba(255,255,255,0.6); }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .svc-card { background: var(--bg-card); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 38px; }
+    .svc-card.featured { border-color: var(--accent); box-shadow: 0 16px 40px -16px rgba(201,111,62,0.3); }
+    .svc-badge { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; margin-bottom: 18px; }
+    .svc-badge.cyan { color: var(--accent); background: var(--accent-soft); }
+    .svc-badge.warm { color: var(--teal); background: var(--teal-soft); }
+    .svc-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+    .svc-price { font-size: 42px; font-weight: 600; font-family: 'Fraunces', serif; color: var(--navy); line-height: 1; margin-bottom: 4px; }
+    .svc-price-note { font-size: 13px; color: var(--text-dim); margin-bottom: 20px; }
+    .svc-desc { font-size: 14.5px; color: var(--navy-soft); margin-bottom: 22px; }
+    .svc-list { list-style: none; margin-bottom: 28px; }
+    .svc-list li { display: flex; gap: 10px; font-size: 14px; padding: 9px 0; border-bottom: 1px solid var(--line); color: var(--navy-soft); }
+    .svc-list li:last-child { border-bottom: none; }
+    .svc-list li::before { content: "✓"; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .svc-list strong { color: var(--navy); }
+
+    /* PROCESS */
+    .process-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 8px; }
+    .p-step { padding: 30px 26px; background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); }
+    .p-num { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 14px; }
+    .p-title { font-size: 17px; font-weight: 700; margin-bottom: 10px; color: var(--navy); }
+    .p-desc { font-size: 14px; color: var(--navy-soft); }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 4px 24px; }
+    .faq-item summary { list-style: none; cursor: pointer; font-size: 16px; font-weight: 700; color: var(--navy); padding: 20px 0; position: relative; padding-right: 30px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 22px; color: var(--accent); }
+    .faq-item[open] summary::after { content: "\2212"; }
+    .faq-item p { font-size: 14.5px; color: var(--navy-soft); line-height: 1.7; padding: 0 0 22px; max-width: 760px; }
+
+    /* CONTACT */
+    #contact { padding: 76px 0 100px; }
+    .contact-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items: start; }
+    .contact-h { font-size: clamp(26px, 3.2vw, 38px); font-weight: 600; line-height: 1.15; margin-bottom: 14px; color: var(--navy); }
+    .contact-sub { font-size: 15px; color: var(--navy-soft); margin-bottom: 32px; }
+    .expect-list { list-style: none; }
+    .expect-list li { display: flex; align-items: flex-start; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--navy-soft); }
+    .expect-list li:last-child { border-bottom: none; }
+    .e-icon { width: 30px; height: 30px; flex-shrink: 0; background: var(--accent-soft); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .expect-list strong { color: var(--navy); }
+
+    .form-wrap { background: var(--bg-card); border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 34px; box-shadow: 0 20px 50px -20px rgba(22,35,61,0.15); }
+    .fg { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .ff { display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px; }
+    .ff.full { grid-column: 1/-1; }
+    .fl { font-size: 12.5px; font-weight: 600; color: var(--navy-soft); }
+    .fi, .ft { width: 100%; background: #fff; border: 1.5px solid var(--line-strong); border-radius: var(--radius-sm); color: var(--navy); padding: 12px 14px; font-family: 'Inter', sans-serif; font-size: 15px; transition: border-color 150ms; }
+    .ft { min-height: 104px; resize: vertical; }
+    .fi:focus, .ft:focus { outline: none; border-color: var(--accent); }
+    .form-foot { display: flex; align-items: center; gap: 16px; margin-top: 6px; flex-wrap: wrap; }
+    .form-note { font-size: 12.5px; color: var(--text-dim); }
+    .form-err { display: none; margin-top: 10px; font-size: 13px; color: #c0392b; }
+    .form-ok { display: none; text-align: center; padding: 48px 16px; }
+    .form-ok-check { width: 56px; height: 56px; border-radius: 50%; background: var(--teal-soft); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 24px; color: var(--teal); }
+    .form-ok h3 { font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
+    .form-ok p { font-size: 14px; color: var(--navy-soft); }
+
+    .svc-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .svc-opt { position: relative; cursor: pointer; }
+    .svc-opt input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+    .svc-opt-inner { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px; border-radius: 10px; border: 1.5px solid var(--line-strong); background: #fff; transition: border-color 0.15s, background 0.15s; }
+    .svc-opt input:checked ~ .svc-opt-inner { border-color: var(--accent); background: var(--accent-soft); }
+    .svc-opt-name { font-size: 13px; font-weight: 700; color: var(--navy); }
+    .svc-opt-price { font-size: 15px; font-weight: 700; color: var(--accent); }
+    .svc-opt-desc { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+    @media (max-width: 480px) { .svc-toggle { grid-template-columns: 1fr; } }
+
+    footer { border-top: 1px solid var(--line); padding: 36px 0; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 13px; color: var(--text-dim); }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a { font-size: 13px; color: var(--text-dim); text-decoration: none; }
+    .footer-links a:hover { color: var(--accent); }
+
+    @media (max-width: 960px) {
+      .problem-row, .outcome-grid, .services-grid, .process-row { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .fg { grid-template-columns: 1fr; }
+      .proof-grid { grid-template-columns: repeat(2, 1fr); gap: 26px; }
+      nav .nav-hide-mobile { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="https://occelatus.io" class="logo">
+          <div class="logo-mark"></div>
+          Occelatus
+        </a>
+        <nav>
+          <a href="#how-it-works" class="nav-hide-mobile">How it works</a>
+          <a href="#pricing" class="nav-hide-mobile">Pricing</a>
+          <a href="#faq" class="nav-hide-mobile">FAQ</a>
+          <a href="#contact" class="nav-cta">Get free assessment →</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">AI-Powered Automation for Small Business</div>
+      <h1>Stop losing customers<br>to <em>slow replies.</em></h1>
+      <p class="hero-sub">We set up AI-powered automation that answers leads, follows up with customers, and chases down late payments — so nothing falls through the cracks while you run your business. No new software to learn. No developer to hire. We handle it.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get My Free Automation Assessment →</a>
+        <a href="#pricing" class="btn btn-ghost">See pricing ↓</a>
+      </div>
+      <div class="hero-trust">
+        <span class="ht-item">Reply within 24 hours</span>
+        <span class="ht-item">Money-back on the Blueprint</span>
+        <span class="ht-item">No tech skills needed</span>
+        <span class="ht-item">You're never locked in</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="proof-strip">
+    <div class="container">
+      <div class="proof-grid">
+        <div><div class="proof-num">24h</div><div class="proof-label">Reply time on every inquiry</div></div>
+        <div><div class="proof-num">48h</div><div class="proof-label">Blueprint turnaround</div></div>
+        <div><div class="proof-num">$0</div><div class="proof-label">Cost if the Blueprint isn't useful</div></div>
+        <div><div class="proof-num">100%</div><div class="proof-label">Done for you — zero setup on your end</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Problem -->
+  <section>
+    <div class="container">
+      <div class="s-label">The real cost of doing it by hand</div>
+      <h2 class="s-heading">If you're busy running the<br>business, things slip.</h2>
+      <p class="s-sub">Every small business owner we talk to is dealing with some version of the same three problems.</p>
+      <div class="problem-row">
+        <div class="problem-card">
+          <div class="problem-icon">📵</div>
+          <div class="problem-title">Leads go cold waiting on you</div>
+          <div class="problem-desc">A customer reaches out, you're mid-job or mid-meeting, and by the time you reply they've already called someone else.</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">💸</div>
+          <div class="problem-title">Invoices sit unpaid</div>
+          <div class="problem-desc">Chasing payments feels awkward and takes time you don't have — so reminders get pushed off, and cash flow suffers for it.</div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">⌨️</div>
+          <div class="problem-title">The same info gets typed three times</div>
+          <div class="problem-desc">A new customer's details get copied by hand from your inbox to your spreadsheet to your CRM — and sometimes they don't all match.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Outcomes -->
+  <section style="background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="container">
+      <div class="s-label">What we actually set up for you</div>
+      <h2 class="s-heading">Automation, built around your<br>business — not a tool you learn.</h2>
+      <p class="s-sub">You tell us what's eating your time. We figure out the right way to fix it — using AI and automation behind the scenes — and hand you something that just works.</p>
+      <div class="outcome-grid">
+        <div class="outcome-card">
+          <span class="outcome-tag">Never miss a lead</span>
+          <div class="outcome-title" style="margin-top:14px;">Instant replies to every inquiry</div>
+          <div class="outcome-desc">New leads get an immediate, personal-sounding response and land straight in your inbox or CRM — even after hours.</div>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">Get paid faster</span>
+          <div class="outcome-title" style="margin-top:14px;">Automatic, polite payment reminders</div>
+          <div class="outcome-desc">Overdue invoices trigger friendly follow-ups on a schedule you set — no more awkward phone calls to chase down money you're owed.</div>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">Stop retyping data</span>
+          <div class="outcome-title" style="margin-top:14px;">Your tools, kept in sync</div>
+          <div class="outcome-desc">New customer info entered once flows automatically into your CRM, spreadsheet, and inbox — no manual copy-paste, no mismatches.</div>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">Keep customers close</span>
+          <div class="outcome-title" style="margin-top:14px;">Automatic follow-up sequences</div>
+          <div class="outcome-desc">Every customer gets a check-in, a review request, or a re-engagement message at the right time — without you remembering to send it.</div>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">See what's working</span>
+          <div class="outcome-title" style="margin-top:14px;">Automatic weekly reports</div>
+          <div class="outcome-desc">A plain-English summary of leads, bookings, and revenue lands in your inbox every week — no dashboard login required.</div>
+        </div>
+        <div class="outcome-card">
+          <span class="outcome-tag">Custom fit</span>
+          <div class="outcome-title" style="margin-top:14px;">Whatever's actually eating your time</div>
+          <div class="outcome-desc">If it's repetitive and it touches software you already use, it's usually fixable. Tell us the specifics and we'll tell you honestly if automation helps.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Illustrative example (explicitly labeled — no client testimonials yet, see brand-transition-plan.md §2.6) -->
+  <section>
+    <div class="container">
+      <div class="s-label">A common use case</div>
+      <h2 class="s-heading">See it in action: chasing unpaid invoices.</h2>
+      <p class="s-sub">Here's a typical situation we set up automation for — and what changes for the owner once it's running.</p>
+      <div class="example-card">
+        <div class="example-label">Use case — invoice follow-up automation</div>
+        <p class="example-text">A service business sends 15–20 invoices a month, with a handful going unpaid past 30 days. We set up automatic reminders that go out on day 3, day 10, and day 20 after the due date. The owner stops manually tracking who owes what — the system flags it, and the reminder goes out on its own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section id="how-it-works" style="background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="container">
+      <div class="s-label">How it works</div>
+      <h2 class="s-heading">Live in days, not months.</h2>
+      <div class="process-row">
+        <div class="p-step">
+          <div class="p-num">STEP 1 — TELL US</div>
+          <div class="p-title">A short form, not a sales call</div>
+          <div class="p-desc">Describe your top 2–3 time-wasters and the tools you already use. Takes about 5 minutes.</div>
+        </div>
+        <div class="p-step">
+          <div class="p-num">STEP 2 — WE BUILD</div>
+          <div class="p-title">We set it up, end to end</div>
+          <div class="p-desc">We build and test the automation against your real tools — no software for you to install or configure.</div>
+        </div>
+        <div class="p-step">
+          <div class="p-num">STEP 3 — YOU'RE DONE</div>
+          <div class="p-title">We hand it off and stay close</div>
+          <div class="p-desc">Plain-English walkthrough, no jargon. If something needs adjusting, we fix it — you're never left to figure it out alone.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section id="pricing">
+    <div class="container">
+      <div class="s-label">Simple pricing</div>
+      <h2 class="s-heading">Two ways to get started.</h2>
+      <p class="s-sub">Start with the Blueprint if you want a clear plan before committing to anything. Jump to the Automation Partner plan if you already know you want ongoing help.</p>
+      <div class="services-grid">
+        <div class="svc-card featured">
+          <div class="svc-badge cyan">Start here</div>
+          <div class="svc-title">Automation Blueprint</div>
+          <div class="svc-price">$99</div>
+          <div class="svc-price-note">one-time · 48-hour turnaround</div>
+          <div class="svc-desc">Tell us your top 3 time-wasters. We map out exactly what to automate, what it'll cost, and what you'll get back — whether or not you build with us.</div>
+          <ul class="svc-list">
+            <li><strong>Short intake form</strong> — your tools, team, and biggest bottlenecks</li>
+            <li><strong>Written plan</strong> — 3 automation opportunities, explained in plain English</li>
+            <li><strong>Honest ROI estimate</strong> — hours saved and what that's worth</li>
+            <li><strong>Working prototype</strong> — a rough first build included</li>
+            <li><strong>Clear next steps</strong> — no pressure to continue with us</li>
+          </ul>
+          <p style="font-size:13px;color:var(--text-dim);margin-bottom:18px;">100% money-back if the Blueprint isn't genuinely useful.</p>
+          <a href="#contact" class="btn btn-primary" style="width:100%;">Get the Blueprint →</a>
+        </div>
+        <div class="svc-card">
+          <div class="svc-badge warm">Best value</div>
+          <div class="svc-title">Automation Partner</div>
+          <div class="svc-price">$299</div>
+          <div class="svc-price-note">per month · cancel anytime</div>
+          <div class="svc-desc">An ongoing partner, not a one-time project. One fully set-up automation a month, plus support — so you keep improving without hiring anyone.</div>
+          <ul class="svc-list">
+            <li><strong>1 new automation/month</strong> — built, tested, and handed off</li>
+            <li><strong>Works with what you have</strong> — your CRM, inbox, spreadsheets, and more</li>
+            <li><strong>24-hour support</strong> — a real person replies, not a bot</li>
+            <li><strong>2 revisions included</strong> — we adjust until it's right</li>
+            <li><strong>Full documentation</strong> — plain-English, always yours to keep</li>
+            <li><strong>Monthly check-in</strong> — we flag new time-savers each month</li>
+          </ul>
+          <a href="#contact" class="btn btn-ghost" style="width:100%;">Start the Partner plan →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="background: var(--bg-card); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+    <div class="container">
+      <div class="s-label">Before you ask</div>
+      <h2 class="s-heading">Questions small business owners<br>ask us first.</h2>
+      <p class="s-sub">Straight answers. If yours isn't here, ask in the form below and we'll reply within 24 hours.</p>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>I'm not technical — can I actually use this?</summary>
+          <p>Yes. That's the entire point of done-for-you. We build, test, and set everything up. You don't install software, write code, or manage anything technical. You get a plain-English explanation of what it does and how to use it — that's it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What exactly do you mean by "AI-powered automation"?</summary>
+          <p>We use whatever mix of AI tools and automation actually solves your problem — sometimes that's an AI system that reads and responds to messages, sometimes it's simpler rule-based automation moving data between tools. You don't need to know the difference. You tell us the problem; we pick the right tool for it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How fast will something actually be live?</summary>
+          <p>Most first automations are live within days of your intake form, not weeks. The $99 Blueprint itself turns around in 48 hours.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What does the free assessment include — is there a catch?</summary>
+          <p>No catch. Describe your top 2–3 manual processes and we'll reply with an honest take on whether automation actually helps, roughly what it would look like, and a ballpark cost. If it won't move the needle for your business, we'll tell you that instead of trying to sell you something. No card required.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What if the Blueprint isn't useful to me?</summary>
+          <p>Full money-back guarantee. If it isn't genuinely useful, you don't pay. If you do move forward with a build, the Blueprint fee is credited toward it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What kinds of things can you actually automate?</summary>
+          <p>If it's repetitive and touches software you already use — email, a CRM, a spreadsheet, a booking calendar, a payment processor — it's usually automatable: replying to leads, chasing invoices, syncing customer data, sending follow-ups, generating reports, and more. Not sure yours qualifies? Describe it in the form below and we'll give you a straight answer.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Am I locked into a monthly contract?</summary>
+          <p>No. Every automation we build is yours to keep, whether or not you continue with us. The $299/mo plan is optional — it covers ongoing changes and new automations — and you can pause or cancel anytime.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What do you need from me to get started?</summary>
+          <p>Just the manual tasks that are eating your time, and the tools you already use. We handle the rest — you review and approve before anything goes live.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <div class="s-label">Get in touch</div>
+          <h2 class="contact-h">Tell us what's eating your time.</h2>
+          <p class="contact-sub">Send us the 2–3 manual tasks that cost you the most. We'll reply within 24 hours with an honest take on whether automation helps and what it would look like. We take on a limited number of new builds each month — earlier inquiries get first slots.</p>
+          <ul class="expect-list">
+            <li><div class="e-icon">⚡</div><span><strong>24-hour reply</strong> — a real person, not an autoresponder</span></li>
+            <li><div class="e-icon">🔒</div><span><strong>No pressure</strong> — we'll say so plainly if automation won't help</span></li>
+            <li><div class="e-icon">📋</div><span><strong>Free assessment</strong> — every inquiry gets a brief review at no charge</span></li>
+            <li><div class="e-icon">🤝</div><span><strong>No lock-in</strong> — what we build is always yours to keep</span></li>
+          </ul>
+        </div>
+
+        <div class="form-wrap">
+          <form id="form-inner" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST">
+            <div class="fg">
+              <div class="ff">
+                <label class="fl" for="f-name">Your name</label>
+                <input class="fi" type="text" id="f-name" name="name" placeholder="Alex Rivera" autocomplete="name" required>
+              </div>
+              <div class="ff">
+                <label class="fl" for="f-company">Business name</label>
+                <input class="fi" type="text" id="f-company" name="company" placeholder="Acme Co." autocomplete="organization">
+              </div>
+            </div>
+            <div class="ff">
+              <label class="fl" for="f-email">Email</label>
+              <input class="fi" type="email" id="f-email" name="email" placeholder="you@company.com" autocomplete="email" required>
+            </div>
+            <div class="ff">
+              <label class="fl">Which service?</label>
+              <div class="svc-toggle" id="f-svc-toggle">
+                <label class="svc-opt" id="svc-opt-free" style="grid-column:1/-1;">
+                  <input type="radio" name="service" value="free" checked required>
+                  <span class="svc-opt-inner">
+                    <span class="svc-opt-name">Free Automation Assessment</span>
+                    <span class="svc-opt-price">Free · no card</span>
+                    <span class="svc-opt-desc">We'll tell you honestly what's worth automating, and what it would cost.</span>
+                  </span>
+                </label>
+                <label class="svc-opt" id="svc-opt-audit">
+                  <input type="radio" name="service" value="audit">
+                  <span class="svc-opt-inner">
+                    <span class="svc-opt-name">Automation Blueprint</span>
+                    <span class="svc-opt-price">$99 one-time</span>
+                    <span class="svc-opt-desc">A full plan in 48 hours</span>
+                  </span>
+                </label>
+                <label class="svc-opt" id="svc-opt-retainer">
+                  <input type="radio" name="service" value="retainer">
+                  <span class="svc-opt-inner">
+                    <span class="svc-opt-name">Automation Partner</span>
+                    <span class="svc-opt-price">$299/mo</span>
+                    <span class="svc-opt-desc">Full build + ongoing support</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+            <div class="ff">
+              <label class="fl" for="f-msg">What's eating your time?</label>
+              <textarea class="ft" id="f-msg" name="message" placeholder="e.g. When someone fills out our contact form, I want them to get an instant reply and show up in our CRM automatically — right now I do this by hand." required></textarea>
+            </div>
+            <input type="hidden" name="_subject" id="f-subject" value="New automation inquiry — occelatus.io/automate">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="text" name="_honey" id="f-hp" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="form-foot">
+              <button type="submit" class="btn btn-primary" id="f-btn">Send my free assessment →</button>
+              <span class="form-note" id="f-note">No payment — we'll reply within 24 hours</span>
+            </div>
+            <div class="form-err" id="f-err"></div>
+          </form>
+          <div class="form-ok" id="form-ok">
+            <div class="form-ok-check">✓</div>
+            <h3>Your free assessment is on the way.</h3>
+            <p>Expect a reply within 24 hours with an honest take on your situation and what automation can actually do for you.</p>
+            <div class="form-ok-cta" style="margin-top:24px;padding-top:20px;border-top:1px solid var(--line);">
+              <p style="font-weight:700;margin-bottom:12px;">Don't want to wait? Skip the queue:</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+                <a href="https://buy.stripe.com/5kQ5kE2Lb1Qn3yx19O2go05" class="btn btn-primary">Get the $99 Blueprint →</a>
+                <a href="https://buy.stripe.com/4gM28s0D3cv1glj3hW2go06" class="btn btn-ghost">Start $299/mo Partner plan →</a>
+              </div>
+              <p style="font-size:12px;color:var(--text-dim);margin-top:12px;">The Blueprint fee is credited toward your first build.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-copy">© 2026 Occelatus. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="https://occelatus.io">Research</a>
+          <a href="https://occelatus.io/terms.html">Terms</a>
+          <a href="https://occelatus.io/risk-disclosure.html">Risk Disclosure</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var PAYMENT_LINKS = {
+        audit:   'https://buy.stripe.com/5kQ5kE2Lb1Qn3yx19O2go05',
+        retainer: 'https://buy.stripe.com/4gM28s0D3cv1glj3hW2go06'
+      };
+
+      var form = document.getElementById('form-inner');
+      if (!form) return;
+      var btn = document.getElementById('f-btn');
+      var err = document.getElementById('f-err');
+      var note = document.getElementById('f-note');
+
+      function syncCta() {
+        var svc = (form.querySelector('input[name="service"]:checked') || {}).value;
+        if (svc === 'retainer') {
+          btn.textContent = 'Continue to payment →';
+          if (note) note.textContent = 'Intake captured — you\'ll set up the $299/mo plan on the next screen';
+        } else if (svc === 'audit') {
+          btn.textContent = 'Continue to payment →';
+          if (note) note.textContent = 'Intake captured — you\'ll pay the $99 fee on the next screen';
+        } else {
+          btn.textContent = 'Send my free assessment →';
+          if (note) note.textContent = 'No payment — we\'ll reply within 24 hours';
+        }
+      }
+      form.querySelectorAll('input[name="service"]').forEach(function (r) {
+        r.addEventListener('change', syncCta);
+      });
+
+      document.querySelectorAll('a[href="#contact"]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          var txt = (a.textContent || '').toLowerCase();
+          var target = txt.indexOf('partner') > -1 ? 'retainer'
+                     : txt.indexOf('blueprint') > -1 ? 'audit'
+                     : 'free';
+          var radio = form.querySelector('input[name="service"][value="' + target + '"]');
+          if (radio) { radio.checked = true; syncCta(); }
+        });
+      });
+
+      syncCta();
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        err.style.display = 'none'; err.textContent = '';
+
+        if (form.querySelector('#f-hp').value) return;
+
+        var email = form.querySelector('#f-email').value.trim();
+        var msg   = form.querySelector('#f-msg').value.trim();
+        var svc   = (form.querySelector('input[name="service"]:checked') || {}).value;
+
+        if (!email || !/.+@.+\..+/.test(email)) { err.style.display='block'; err.textContent = 'Please enter a valid email.'; return; }
+        if (!msg)  { err.style.display='block'; err.textContent = 'Tell us what you want automated.'; return; }
+        if (!svc)  { err.style.display='block'; err.textContent = 'Please select a service above.'; return; }
+
+        var subjectEl = document.getElementById('f-subject');
+        if (subjectEl) subjectEl.value = 'New automation inquiry [' + svc + '] — occelatus.io/automate';
+
+        var original = btn.textContent;
+        btn.disabled = true; btn.textContent = 'Processing…';
+
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data.success === 'true' || data.success === true) {
+              gtag('event', 'conversion', {
+                'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE',
+                'value': svc === 'free' ? 1.0 : (svc === 'retainer' ? 299.0 : 99.0),
+                'currency': 'USD'
+              });
+
+              if (svc === 'free') {
+                form.style.display = 'none';
+                var ok = document.getElementById('form-ok');
+                if (ok) { ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+              } else {
+                var dest = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
+                var redirected = false;
+                function go(){ if (!redirected){ redirected = true; window.location.href = dest; } }
+                gtag('event', 'conversion', {
+                  'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE',
+                  'event_callback': go
+                });
+                setTimeout(go, 1000);
+              }
+            } else {
+              err.style.display = 'block';
+              err.textContent = 'Something went wrong. Email automate@occelatus.io directly and we\'ll sort it out.';
+              btn.disabled = false; btn.textContent = original;
+            }
+          })
+          .catch(function () {
+            if (svc === 'free') {
+              form.style.display = 'none';
+              var ok = document.getElementById('form-ok');
+              if (ok) { ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+            } else {
+              window.location.href = PAYMENT_LINKS[svc] || PAYMENT_LINKS.audit;
+            }
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
