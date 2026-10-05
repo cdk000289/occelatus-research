@@ -494,8 +494,8 @@
               </div>
             </div>
             <div class="ff">
-              <label class="fl" for="f-msg">What's eating your time?</label>
-              <textarea class="ft" id="f-msg" name="message" placeholder="e.g. When someone fills out our contact form, I want them to get an instant reply and show up in our CRM automatically — right now I do this by hand." required></textarea>
+              <label class="fl" for="f-msg">What's eating your time? <span style="color:var(--text-dim);font-weight:400;">(optional)</span></label>
+              <textarea class="ft" id="f-msg" name="message" placeholder="e.g. When someone fills out our contact form, I want them to get an instant reply and show up in our CRM automatically — right now I do this by hand. Not sure yet? Just tell us your industry and we'll suggest where automation helps most."></textarea>
             </div>
             <input type="hidden" name="_subject" id="f-subject" value="New automation inquiry — occelatus.io/automate">
             <input type="hidden" name="_template" value="table">
@@ -592,8 +592,10 @@
         var svc   = (form.querySelector('input[name="service"]:checked') || {}).value;
 
         if (!email || !/.+@.+\..+/.test(email)) { err.style.display='block'; err.textContent = 'Please enter a valid email.'; return; }
-        if (!msg)  { err.style.display='block'; err.textContent = 'Tell us what you want automated.'; return; }
         if (!svc)  { err.style.display='block'; err.textContent = 'Please select a service above.'; return; }
+        // Message is optional for the free assessment (lower friction); still ask for it on paid tiers.
+        if (!msg && svc !== 'free') { err.style.display='block'; err.textContent = 'Tell us what you want automated so we can scope it.'; return; }
+        if (!msg) { form.querySelector('#f-msg').value = '(Free assessment — no details provided yet; follow up to learn their workflows.)'; }
 
         var subjectEl = document.getElementById('f-subject');
         if (subjectEl) subjectEl.value = 'New automation inquiry [' + svc + '] — occelatus.io/automate';
