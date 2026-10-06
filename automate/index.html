@@ -352,6 +352,12 @@
       <div class="s-label">Simple pricing</div>
       <h2 class="s-heading">Two ways to get started.</h2>
       <p class="s-sub">Start with the Blueprint if you want a clear plan before committing to anything. Jump to the Automation Partner plan if you already know you want ongoing help.</p>
+      <div class="svc-card" id="founding" style="margin:0 0 28px;border:1px solid var(--accent);">
+        <div class="svc-badge cyan">Founding clients · 3 spots</div>
+        <div class="svc-title">Your Blueprint free, in exchange for an honest case study</div>
+        <p style="margin:10px 0 14px;color:var(--text-dim);">We're a new studio, founded in 2026, and we'd rather show real work than make claims. The first three businesses get the full Automation Blueprint at no cost. In return, you let us publish a short write-up of what we built and what changed, reported as it actually turned out, and you approve it before anything goes live. No card, no obligation to buy a build.</p>
+        <a href="#contact" class="btn btn-primary" onclick="var r=document.querySelector('input[name=service][value=founding]');if(r){r.checked=true;}">Apply for a founding spot →</a>
+      </div>
       <div class="services-grid">
         <div class="svc-card featured">
           <div class="svc-badge cyan">Start here</div>
@@ -473,6 +479,14 @@
                     <span class="svc-opt-name">Free Automation Assessment</span>
                     <span class="svc-opt-price">Free · no card</span>
                     <span class="svc-opt-desc">We'll tell you honestly what's worth automating, and what it would cost.</span>
+                  </span>
+                </label>
+                <label class="svc-opt" id="svc-opt-founding" style="grid-column:1/-1;">
+                  <input type="radio" name="service" value="founding">
+                  <span class="svc-opt-inner">
+                    <span class="svc-opt-name">Founding client (3 spots)</span>
+                    <span class="svc-opt-price">Blueprint free · case study</span>
+                    <span class="svc-opt-desc">Free Blueprint in exchange for an honest, client-approved write-up of the results.</span>
                   </span>
                 </label>
                 <label class="svc-opt" id="svc-opt-audit">
