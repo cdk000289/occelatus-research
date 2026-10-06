@@ -356,7 +356,7 @@
         <div class="svc-badge cyan">Founding clients · 3 spots</div>
         <div class="svc-title">Your Blueprint free, in exchange for an honest case study</div>
         <p style="margin:10px 0 14px;color:var(--text-dim);">We're a new studio, founded in 2026, and we'd rather show real work than make claims. The first three businesses get the full Automation Blueprint at no cost. In return, you let us publish a short write-up of what we built and what changed, reported as it actually turned out, and you approve it before anything goes live. No card, no obligation to buy a build.</p>
-        <a href="#contact" class="btn btn-primary" onclick="var r=document.querySelector('input[name=service][value=founding]');if(r){r.checked=true;}">Apply for a founding spot →</a>
+        <a href="#contact" class="btn btn-primary">Apply for a founding spot →</a>
       </div>
       <div class="services-grid">
         <div class="svc-card featured">
@@ -573,6 +573,9 @@
         } else if (svc === 'audit') {
           btn.textContent = 'Continue to payment →';
           if (note) note.textContent = 'Intake captured — you\'ll pay the $99 fee on the next screen';
+        } else if (svc === 'founding') {
+          btn.textContent = 'Apply for a founding spot →';
+          if (note) note.textContent = 'No payment — we\'ll reply within 24 hours';
         } else {
           btn.textContent = 'Send my free assessment →';
           if (note) note.textContent = 'No payment — we\'ll reply within 24 hours';
@@ -585,7 +588,8 @@
       document.querySelectorAll('a[href="#contact"]').forEach(function (a) {
         a.addEventListener('click', function () {
           var txt = (a.textContent || '').toLowerCase();
-          var target = txt.indexOf('partner') > -1 ? 'retainer'
+          var target = txt.indexOf('founding') > -1 ? 'founding'
+                     : txt.indexOf('partner') > -1 ? 'retainer'
                      : txt.indexOf('blueprint') > -1 ? 'audit'
                      : 'free';
           var radio = form.querySelector('input[name="service"][value="' + target + '"]');
@@ -627,11 +631,11 @@
             if (data.success === 'true' || data.success === true) {
               gtag('event', 'conversion', {
                 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE',
-                'value': svc === 'free' ? 1.0 : (svc === 'retainer' ? 299.0 : 99.0),
+                'value': (svc === 'free' || svc === 'founding') ? 1.0 : (svc === 'retainer' ? 299.0 : 99.0),
                 'currency': 'USD'
               });
 
-              if (svc === 'free') {
+              if (svc === 'free' || svc === 'founding') {
                 form.style.display = 'none';
                 var ok = document.getElementById('form-ok');
                 if (ok) { ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
@@ -652,7 +656,7 @@
             }
           })
           .catch(function () {
-            if (svc === 'free') {
+            if (svc === 'free' || svc === 'founding') {
               form.style.display = 'none';
               var ok = document.getElementById('form-ok');
               if (ok) { ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
