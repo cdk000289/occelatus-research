@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) — Google Ads AW-18399941905 — same tag as /automate -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399941905"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18399941905');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Broken n8n workflow? Send us the error and the workflow export. We fix it for $99 flat, usually within 48 hours, and you pay only after it works.">
+  <title>n8n Rescue: we fix your broken n8n workflow, $99 flat — Occelatus</title>
+  <link rel="canonical" href="https://occelatus.io/n8n-rescue/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fbf8f3; --bg-card: #ffffff; --line: rgba(20,24,34,0.08); --line-strong: rgba(20,24,34,0.14);
+      --navy: #16233d; --navy-soft: #47536b; --text-dim: #7a8299;
+      --accent: #c96f3e; --accent-soft: rgba(201,111,62,0.10); --teal: #2a7d76; --teal-soft: rgba(42,125,118,0.10);
+      --radius: 16px; --radius-sm: 10px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.65; color: var(--navy); background: var(--bg); }
+    .container { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+    h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; line-height: 1.2; }
+    header { position: sticky; top: 0; z-index: 50; background: rgba(251,248,243,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--navy); font-weight: 600; font-size: 18px; }
+    .logo-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent) 0%, var(--teal) 100%); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 15px 28px; border: none; border-radius: 100px; font: 600 15px 'Inter', sans-serif; cursor: pointer; text-decoration: none; }
+    .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 8px 24px -8px rgba(201,111,62,0.55); }
+    .btn-primary:disabled { opacity: .6; cursor: wait; }
+    .nav-cta { padding: 9px 18px; font-size: 14px; background: var(--navy); color: #fff; box-shadow: none; }
+    section { padding: 64px 0; }
+    .hero { padding: 72px 0 48px; }
+    .pill { display: inline-block; font-size: 13px; font-weight: 600; color: var(--teal); background: var(--teal-soft); padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(34px, 5vw, 54px); max-width: 820px; margin-bottom: 18px; }
+    .hero p.lead { font-size: 19px; color: var(--navy-soft); max-width: 680px; margin-bottom: 28px; }
+    .hero-points { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 22px; font-size: 14.5px; color: var(--navy-soft); }
+    .hero-points span::before { content: "✓ "; color: var(--teal); font-weight: 700; }
+    .s-label { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    h2 { font-size: clamp(26px, 3.4vw, 36px); margin-bottom: 18px; }
+    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-top: 26px; }
+    .card { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
+    .card .n { font-family: 'Fraunces', serif; font-size: 26px; color: var(--accent); }
+    .card h3 { font-size: 19px; margin: 6px 0 8px; }
+    .card p { font-size: 15px; color: var(--navy-soft); }
+    .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; margin-top: 22px; }
+    ul.ticks { list-style: none; }
+    ul.ticks li { padding: 6px 0 6px 26px; position: relative; font-size: 15.5px; color: var(--navy-soft); }
+    ul.ticks li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+    ul.crosses li::before { content: "–"; color: var(--text-dim); }
+    .price { font-family: 'Fraunces', serif; font-size: 44px; color: var(--navy); }
+    .faq details { background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 16px 20px; margin-bottom: 10px; }
+    .faq summary { cursor: pointer; font-weight: 600; }
+    .faq p { margin-top: 10px; color: var(--navy-soft); font-size: 15px; }
+    #request { background: var(--navy); color: #fff; }
+    #request h2 { color: #fff; }
+    #request .sub { color: #c9d0de; margin-bottom: 26px; max-width: 640px; }
+    form { background: #fff; color: var(--navy); border-radius: var(--radius); padding: 28px; max-width: 720px; }
+    label { display: block; font-size: 14px; font-weight: 600; margin: 14px 0 6px; }
+    label .opt { font-weight: 400; color: var(--text-dim); }
+    .fi, .ft, select { width: 100%; font: 15px 'Inter', sans-serif; padding: 12px 14px; border: 1px solid var(--line-strong); border-radius: var(--radius-sm); background: #fff; color: var(--navy); }
+    .ft { min-height: 110px; resize: vertical; }
+    .ft.code { font-family: ui-monospace, Menlo, monospace; font-size: 13px; min-height: 90px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+    .hint { font-size: 13px; color: var(--text-dim); margin-top: 6px; }
+    .err { display: none; margin-top: 14px; padding: 12px 14px; border-radius: var(--radius-sm); background: #fdecea; color: #8a2c1f; font-size: 14px; }
+    #form-ok { display: none; background: #fff; color: var(--navy); border-radius: var(--radius); padding: 28px; max-width: 720px; }
+    footer { padding: 30px 0; border-top: 1px solid var(--line); font-size: 13.5px; color: var(--text-dim); }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    footer a { color: var(--text-dim); margin-left: 16px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <a class="logo" href="/automate/"><span class="logo-mark"></span>Occelatus</a>
+      <a class="btn nav-cta" href="#request">Get it fixed</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <span class="pill">n8n Rescue · $99 flat</span>
+      <h1>Broken n8n workflow? Send it over. We'll fix it.</h1>
+      <p class="lead">Tell us what's failing and paste the workflow export. We find the problem, fix it, and send back a working workflow, usually within 48 hours. You pay $99 only after it runs. If we can't fix it, you pay nothing.</p>
+      <a class="btn btn-primary" href="#request">Send us your broken workflow</a>
+      <div class="hero-points"><span>Pay after it works</span><span>No calls needed</span><span>Cloud or self-hosted</span><span>Fixed price, no hourly meter</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="s-label">How it works</div>
+      <h2>Four steps, all by email</h2>
+      <div class="steps">
+        <div class="card"><div class="n">1</div><h3>Send the details</h3><p>Use the form below: what's broken, the error message, and the workflow export if you have it.</p></div>
+        <div class="card"><div class="n">2</div><h3>We diagnose</h3><p>Within one business day we reply with what's wrong and whether it's a $99 fix. Nothing is owed yet.</p></div>
+        <div class="card"><div class="n">3</div><h3>We fix it</h3><p>You get back a corrected workflow to import, plus a short note on what we changed and why.</p></div>
+        <div class="card"><div class="n">4</div><h3>Pay once it runs</h3><p>When it works in your n8n, we send a $99 Stripe link. If it doesn't, you don't pay.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:8px">
+    <div class="container">
+      <div class="two">
+        <div class="card">
+          <h3>What we fix</h3>
+          <ul class="ticks">
+            <li>Node errors and failed executions</li>
+            <li>Credential and auth problems (OAuth, API keys, expired tokens)</li>
+            <li>Webhooks that don't fire or return the wrong response</li>
+            <li>Expressions and data mapping between nodes</li>
+            <li>Loops, pagination, batching and rate limits</li>
+            <li>AI agent and LLM nodes that misbehave</li>
+            <li>Schedules that don't trigger, and breakage after an n8n update</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>What $99 covers</h3>
+          <div class="price">$99</div>
+          <p style="color:var(--navy-soft);font-size:15px;margin:6px 0 12px">One workflow, one problem, fixed. Paid after it works.</p>
+          <ul class="ticks crosses">
+            <li>Building a brand-new workflow: we'll quote it separately</li>
+            <li>Problems inside a third-party service that n8n can't control</li>
+            <li>Need n8n installed or your self-hosted server stabilized? Say so in the form and we'll quote a flat fee first.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" style="padding-top:8px">
+    <div class="container">
+      <div class="s-label">Questions</div>
+      <h2>Before you send it</h2>
+      <details><summary>Is it safe to send my workflow?</summary><p>n8n's workflow export doesn't include your credential secrets, only their names. Still, remove any API keys or personal data you've pasted directly into nodes before sending. We only use what you send to fix the workflow.</p></details>
+      <details><summary>Do you need access to my n8n?</summary><p>Usually not. The export plus the error message is enough for most fixes, and you import the corrected file yourself. If a fix needs your instance (for example a server problem), we'll ask first and explain why.</p></details>
+      <details><summary>What if you can't fix it?</summary><p>Then you owe nothing. We'll tell you what we found so the time isn't wasted.</p></details>
+      <details><summary>Who are you?</summary><p>Occelatus is a small automation studio, founded in 2026, that builds workflows in n8n and Make. We're new, so we price per fix and you only pay when it works. Occelatus isn't affiliated with n8n GmbH.</p></details>
+    </div>
+  </section>
+
+  <section id="request">
+    <div class="container">
+      <div class="s-label" style="color:#ffcfae">Get it fixed</div>
+      <h2>Tell us what's broken</h2>
+      <p class="sub">We reply within one business day. No payment now.</p>
+      <form id="rescue-form" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST">
+        <div class="row">
+          <div><label for="f-name">Name</label><input class="fi" id="f-name" name="name" autocomplete="name" required></div>
+          <div><label for="f-email">Email</label><input class="fi" type="email" id="f-email" name="email" autocomplete="email" required></div>
+        </div>
+        <label for="f-company">Company <span class="opt">(optional)</span></label>
+        <input class="fi" id="f-company" name="company" autocomplete="organization">
+        <label for="f-host">Where does your n8n run?</label>
+        <select id="f-host">
+          <option value="n8n Cloud">n8n Cloud</option>
+          <option value="Self-hosted">Self-hosted (VPS, Docker, etc.)</option>
+          <option value="Not sure">Not sure</option>
+        </select>
+        <label for="f-what">What's broken?</label>
+        <textarea class="ft" id="f-what" placeholder="e.g. My Gmail → Google Sheets workflow stopped adding rows on Monday. It runs, but the Sheets node errors out." required></textarea>
+        <label for="f-error">Error message <span class="opt">(optional, paste it exactly)</span></label>
+        <textarea class="ft code" id="f-error" placeholder="NodeOperationError: ..."></textarea>
+        <label for="f-json">Workflow export <span class="opt">(optional, but it speeds things up)</span></label>
+        <textarea class="ft code" id="f-json" placeholder="In n8n: open the workflow → ⋯ menu → Download, then paste the file contents here. Or attach it when you reply to our email."></textarea>
+        <p class="hint">Remove any API keys or personal data you've typed directly into nodes.</p>
+        <input type="hidden" name="service" value="rescue">
+        <input type="hidden" name="message" id="f-msg">
+        <input type="hidden" name="_subject" value="New automation inquiry [rescue] — occelatus.io/n8n-rescue">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" id="f-hp" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="err" id="f-err"></div>
+        <div style="margin-top:20px"><button class="btn btn-primary" id="f-btn" type="submit">Send my broken workflow</button></div>
+      </form>
+      <div id="form-ok">
+        <h3 style="font-family:'Fraunces',serif;font-size:24px;margin-bottom:8px">Got it. We're on it.</h3>
+        <p style="color:var(--navy-soft)">You'll get a confirmation email now, and a diagnosis from a real person within one business day. If you didn't paste the workflow export, you can attach it when you reply to that email.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Occelatus. Not affiliated with n8n GmbH.</div>
+      <div><a href="/automate/">Automation services</a><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById('rescue-form');
+      var err = document.getElementById('f-err');
+      var btn = document.getElementById('f-btn');
+      function fail(t) { err.style.display = 'block'; err.textContent = t; }
+      function done() {
+        form.style.display = 'none';
+        var ok = document.getElementById('form-ok');
+        ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        err.style.display = 'none';
+        if (document.getElementById('f-hp').value) return;
+        var email = document.getElementById('f-email').value.trim();
+        var what = document.getElementById('f-what').value.trim();
+        if (!/.+@.+\..+/.test(email)) return fail('Please enter a valid email.');
+        if (what.length < 15) return fail("Tell us a little about what's broken (a sentence or two is fine).");
+        var json = document.getElementById('f-json').value.trim();
+        if (json.length > 60000) return fail('That export is too big to paste here. Leave it out and attach the file when you reply to our email.');
+        var errorTxt = document.getElementById('f-error').value.trim();
+        document.getElementById('f-msg').value =
+          '[n8n Rescue] Hosting: ' + document.getElementById('f-host').value +
+          ' || What is broken: ' + what +
+          (errorTxt ? ' || Error: ' + errorTxt : ' || Error: (none given)') +
+          (json ? ' || Workflow export: ' + json : ' || Workflow export: (not attached yet)');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data.success === 'true' || data.success === true) {
+              gtag('event', 'conversion', { 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE', 'value': 20.0, 'currency': 'USD' });
+              gtag('event', 'rescue_request');
+              done();
+            } else {
+              fail("Something went wrong sending the form. Email research@occelatus.io with the details and we'll take it from there.");
+              btn.disabled = false; btn.textContent = 'Send my broken workflow';
+            }
+          })
+          .catch(function () {
+            fail("We couldn't send that. Email research@occelatus.io with the details and we'll take it from there.");
+            btn.disabled = false; btn.textContent = 'Send my broken workflow';
+          });
+      });
+    })();
+  </script>
+</body>
+</html>
