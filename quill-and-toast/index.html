@@ -309,9 +309,9 @@
     <div class="bg"></div>
     <div class="wrap">
       <div>
-        <span class="eyebrow rv"><i>New</i>For wedding &amp; event planners</span>
-        <h1 class="rv d1">Be the <em class="g">first</em> planner they hear back from.</h1>
-        <p class="lede rv d2">Couples email several planners at once and often book whoever replies first with real answers. Quill &amp; Toast drafts a warm, personal reply to every new inquiry, in your voice, with your actual packages, and has it waiting in your inbox within minutes. You read it, tweak it if you like, and hit send.</p>
+        <span class="eyebrow rv"><i>New</i><span id="aud">For wedding &amp; event planners</span></span>
+        <h1 class="rv d1">Be the <em class="g">first</em> <span class="who-n">planner</span> they hear back from.</h1>
+        <p class="lede rv d2">Couples email several <span class="who-p">planners</span> at once and often book whoever replies first with real answers. Quill &amp; Toast drafts a warm, personal reply to every new inquiry, in your voice, with your actual packages, and has it waiting in your inbox within minutes. You read it, tweak it if you like, and hit send.</p>
         <div class="ctas rv d3">
           <a class="btn btn-ink" href="#trial">Try it free for 14 days <span aria-hidden="true">→</span></a>
           <a class="btn btn-ghost" href="#demo">See a real draft</a>
@@ -556,6 +556,17 @@
 
   <script>
     var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // audience from the ad (?for=photographers|venues|vendors); default = planners
+    (function () {
+      var A = { photographers: ['For wedding photographers', 'photographer', 'photographers'],
+                venues: ['For wedding &amp; event venues', 'venue', 'venues'],
+                vendors: ['For wedding &amp; event vendors', 'vendor', 'vendors'] };
+      var a = A[(new URLSearchParams(location.search).get('for') || '').toLowerCase()];
+      if (!a) return;
+      document.getElementById('aud').innerHTML = a[0];
+      document.querySelectorAll('.who-n').forEach(function (e) { e.textContent = a[1]; });
+      document.querySelectorAll('.who-p').forEach(function (e) { e.textContent = a[2]; });
+    })();
     var EX = [
       { from:'Priya', when:'Inquiry · 11:42 pm',
         inq:"Hi! My fiancé Marco and I are getting married October 10, 2027 at Camp Lucy. About 140 guests. We're looking for someone to help with the whole thing honestly, we both work long hours. What would full planning cost and are you available? — Priya",
