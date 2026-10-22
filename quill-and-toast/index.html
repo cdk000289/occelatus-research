@@ -662,7 +662,7 @@
         if (!/.+@.+\..+/.test(email)) return fail('Please enter a valid email.');
         if (!document.getElementById('f-company').value.trim()) return fail('Please add your business name.');
         var v = function (id) { return document.getElementById(id).value.trim(); };
-        document.getElementById('f-msg').value = '[Quill & Toast trial] Type: ' + v('f-type') + ' || Inquiries/month: ' + v('f-vol') +
+        document.getElementById('f-msg').value = '[Quill and Toast trial] Type: ' + v('f-type') + ' || Inquiries/month: ' + v('f-vol') +
           ' || Site: ' + (v('f-site') || '(none)') + ' || Notes: ' + (v('f-pain') || '(none)');
         btn.disabled = true; btn.textContent = 'Sending…';
         fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
