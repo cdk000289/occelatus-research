@@ -632,7 +632,7 @@
           cancel = typeInto(dOut, e.out, 420, function () { dSt.className = 'status ok'; dSt.textContent = 'Ready to send'; });
         }
       }
-      tabs.forEach(function (t) { t.addEventListener('click', function () { show(+t.dataset.i); }); });
+      tabs.forEach(function (t) { t.addEventListener('click', function () { started = true; show(+t.dataset.i); }); });
       dIn.textContent = EX[0].inq;
       var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting && !started) { started = true; show(0); io.disconnect(); } }, { threshold: .3 });
       io.observe(document.getElementById('demo'));
