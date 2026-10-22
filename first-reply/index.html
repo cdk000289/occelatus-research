@@ -100,7 +100,7 @@
   <section style="padding-top:12px"><div class="container">
     <div class="lbl">Real output</div>
     <h2>What a First Reply draft looks like</h2>
-    <p class="sub">These were produced by our system for a <strong>fictional</strong> planner, "Golden Hour Events" in Austin, with packages from $2,400 (day-of) to $8,500 (full planning). The inquiries are made up; the replies are unedited output.</p>
+    <p class="sub">These were produced by our system for a <strong>fictional</strong> planner, "Golden Hour Events" in Austin, with packages from $2,400 (day-of) to $8,500 (full planning). The inquiries are made up; the first reply is unedited output.</p>
 
     <div class="ex">
       <div class="in"><span class="tag">Inquiry · 11:42 pm</span>Hi! My fiancé Marco and I are getting married October 10, 2027 at Camp Lucy. About 140 guests. We're looking for someone to help with the whole thing honestly, we both work long hours. What would full planning cost and are you available? — Priya</div>
@@ -170,12 +170,13 @@ Dana</div>
     <h2>Start your free trial</h2>
     <p class="sub">Tell us a little about your business. A real person will email you within one business day to set it up. No card needed.</p>
     <form id="fr-form" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST">
+      <!-- field order name → company → email → service → message must match v5_lead_intake.py's plaintext parser -->
       <div class="row">
         <div><label for="f-name">Your name</label><input class="fi" id="f-name" name="name" autocomplete="name" required></div>
-        <div><label for="f-email">Email you get inquiries at</label><input class="fi" type="email" id="f-email" name="email" autocomplete="email" required></div>
+        <div><label for="f-company">Business name</label><input class="fi" id="f-company" name="company" autocomplete="organization" required></div>
       </div>
-      <label for="f-company">Business name</label>
-      <input class="fi" id="f-company" name="company" autocomplete="organization" required>
+      <label for="f-email">Email you get inquiries at</label>
+      <input class="fi" type="email" id="f-email" name="email" autocomplete="email" required>
       <div class="row">
         <div><label for="f-type">What you do</label>
           <select id="f-type"><option>Wedding planner</option><option>Event planner (corporate / social)</option><option>Venue</option><option>Photographer / videographer</option><option>Other event vendor</option></select></div>
