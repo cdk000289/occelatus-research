@@ -266,6 +266,8 @@
     .fi:focus, .ft:focus, select:focus { outline:none; background:#fff; box-shadow:inset 0 0 0 1.5px var(--gold), 0 0 0 4px rgba(201,164,106,.18); }
     .ft { min-height:96px; resize:vertical; }
     .err { display:none; margin-top:16px; padding:12px 14px; border-radius:var(--rs); background:#fbeae5; color:#8a2c1f; font-size:14px; }
+    details.more { margin-top:18px; } details.more summary { cursor:pointer; font-size:13.5px; font-weight:600; color:var(--ink2); }
+    details.more[open] summary { margin-bottom:4px; } details.more .row > div:first-child { margin-top:18px; }
     .fine { font-size:12.5px; color:var(--mute); margin-top:14px; }
     form .btn { width:100%; margin-top:24px; padding:17px; font-size:16px; }
 
@@ -418,6 +420,10 @@
         </div>
       </div>
       <p class="note rv">The elopement reply is lightly shortened for this page; the full-planning reply is unedited. Drafts are written by AI from your information and checked against it before you see them.</p>
+      <div class="ctas rv" style="margin-top:22px;justify-content:center">
+        <a class="btn btn-ink" href="#trial" data-cta="demo">Get drafts like this for your inquiries <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="fine rv" style="text-align:center">Free for 14 days. Name, business and email is all we need to start.</p>
     </div>
   </section>
 
@@ -523,6 +529,7 @@
           </div>
           <label for="f-email">Email you get inquiries at</label>
           <input class="fi" type="email" id="f-email" name="email" autocomplete="email" required>
+          <details class="more" id="f-more"><summary>Add a few details <span class="o">(optional, helps us prepare)</span></summary>
           <div class="row">
             <div><label for="f-type">What you do</label>
               <select id="f-type"><option>Wedding planner</option><option>Event planner (corporate / social)</option><option>Venue</option><option>Photographer / videographer</option><option>Other event vendor</option></select></div>
@@ -533,6 +540,7 @@
           <input class="fi" id="f-site" placeholder="yourbusiness.com or @yourhandle">
           <label for="f-pain">Anything we should know? <span class="o">(optional)</span></label>
           <textarea class="ft" id="f-pain" placeholder="e.g. Most inquiries come through The Knot and I can't answer them on wedding weekends."></textarea>
+          </details>
           <input type="hidden" name="service" value="events">
           <input type="hidden" name="message" id="f-msg">
           <input type="hidden" name="_subject" value="New automation inquiry [events] — occelatus.io/quill-and-toast">
@@ -571,6 +579,8 @@
       document.getElementById('aud').innerHTML = a[0];
       document.querySelectorAll('.who-n').forEach(function (e) { e.textContent = a[1]; });
       document.querySelectorAll('.who-p').forEach(function (e) { e.textContent = a[2]; });
+      var ty = { photographers: 'Photographer / videographer', venues: 'Venue', vendors: 'Other event vendor' }[(new URLSearchParams(location.search).get('for') || '').toLowerCase()];
+      if (ty) document.getElementById('f-type').value = ty;
     })();
     var EX = [
       { from:'Priya', when:'Inquiry · 11:42 pm',
