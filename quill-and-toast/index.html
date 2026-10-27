@@ -423,7 +423,45 @@
       <div class="ctas rv" style="margin-top:22px;justify-content:center">
         <a class="btn btn-ink" href="#trial" data-cta="demo">Get drafts like this for your inquiries <span aria-hidden="true">→</span></a>
       </div>
-      <p class="fine rv" style="text-align:center">Free for 14 days. Name, business and email is all we need to start.</p>
+      <p class="fine rv" style="text-align:center">Free for 14 days. Name, business and email is all we need to start. Or <a href="#sample" data-cta="demo-sample">try it on one of your own inquiries first</a>.</p>
+    </div>
+  </section>
+
+  <!-- SAMPLE (lead magnet; processed by scripts/first_reply/sample_runner.py) -->
+  <section id="sample" style="padding-top:20px">
+    <div class="wrap" style="max-width:760px">
+      <div class="kicker">Free sample</div>
+      <h2>Try it on a real inquiry of yours.</h2>
+      <p class="sub">Paste one inquiry you got recently and your starting prices. We'll email you a ready-to-send reply in a few minutes, written only from the prices you give us. No trial, no card. We never contact your couple.</p>
+      <form id="s-form" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST" style="margin-top:30px">
+        <div class="row">
+          <div><label for="s-name">Your name</label><input class="fi" id="s-name" name="name" autocomplete="name" required></div>
+          <div><label for="s-company">Business name</label><input class="fi" id="s-company" name="company" autocomplete="organization" required></div>
+        </div>
+        <div class="row" style="margin-top:18px">
+          <div><label for="s-email">Email to send the sample to</label><input class="fi" type="email" id="s-email" name="email" autocomplete="email" required></div>
+          <div><label for="s-type">What you do</label>
+            <select id="s-type" name="vtype"><option>Wedding planner</option><option>Event planner</option><option>Venue</option><option>Photographer / videographer</option><option>Florist</option><option>DJ / band</option><option>Caterer</option><option>Other event vendor</option></select></div>
+        </div>
+        <label for="s-prices">Your packages and starting prices</label>
+        <textarea class="ft" id="s-prices" name="prices" maxlength="1500" required placeholder="e.g. Day-of coordination from $2,400 · Partial planning from $4,800 · Full planning from $8,500"></textarea>
+        <label for="s-inq">The inquiry <span class="o">(paste it as you received it; remove phone numbers if you like)</span></label>
+        <textarea class="ft" id="s-inq" name="inquiry" maxlength="3000" required style="min-height:140px" placeholder="Hi! We're getting married next June at..."></textarea>
+        <label for="s-next">How you like to book <span class="o">(optional)</span></label>
+        <input class="fi" id="s-next" name="nextstep" maxlength="300" placeholder="e.g. a free 20-minute call, or a venue tour">
+        <label style="display:flex;gap:10px;align-items:flex-start;font-weight:400;margin-top:20px"><input type="checkbox" id="s-consent" name="consent" value="yes" required style="margin-top:3px"> <span>Email me the sample reply. Quill &amp; Toast may follow up once about a free trial.</span></label>
+        <input type="hidden" name="_subject" value="Quill and Toast sample request — occelatus.io/quill-and-toast">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" id="s-hp" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="err" id="s-err"></div>
+        <button class="btn btn-ink" id="s-btn" type="submit">Email me a sample reply</button>
+        <p class="fine">We use what you paste only to write your sample. See our <a href="/privacy.html">privacy policy</a>.</p>
+      </form>
+      <div id="s-ok" style="display:none;margin-top:30px;background:var(--paper);border-radius:26px;padding:44px 36px;text-align:center;box-shadow:0 40px 80px -30px rgba(0,0,0,.35)">
+        <h3 class="serif" style="font-size:26px;font-weight:500;margin-bottom:10px">On its way.</h3>
+        <p style="color:var(--ink2)">Your sample reply should land in your inbox within about 10 minutes (check promotions/spam if not). Like it? <a href="#trial">Start the free 14-day trial</a> and every new inquiry gets one.</p>
+      </div>
     </div>
   </section>
 
@@ -675,6 +713,31 @@
         mcta.classList.toggle('show', window.scrollY > 600 && r.top > window.innerHeight);
       }
       window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+    })();
+
+    // sample-reply form (lead magnet; separate subject so the trial intake ignores it)
+    (function () {
+      var form = document.getElementById('s-form'), err = document.getElementById('s-err'), btn = document.getElementById('s-btn');
+      if (!form) return;
+      function fail(t) { err.style.display = 'block'; err.textContent = t; btn.disabled = false; btn.textContent = 'Email me a sample reply'; }
+      form.addEventListener('submit', function (e) {
+        e.preventDefault(); err.style.display = 'none';
+        if (document.getElementById('s-hp').value) return;
+        if (!/.+@.+\..+/.test(document.getElementById('s-email').value.trim())) return fail('Please enter a valid email.');
+        if (document.getElementById('s-inq').value.trim().length < 30) return fail('Please paste the full inquiry.');
+        if (!document.getElementById('s-consent').checked) return fail('Please tick the box so we can email you the sample.');
+        btn.disabled = true; btn.textContent = 'Sending…';
+        fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form).entries())) })
+          .then(function (r) { return r.json(); })
+          .then(function (d) {
+            if (d.success === 'true' || d.success === true) {
+              gtag('event', 'quill_toast_sample');
+              form.style.display = 'none'; var ok = document.getElementById('s-ok'); ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else { fail("Something went wrong. Email the inquiry to research@occelatus.io and we'll send a sample back."); }
+          })
+          .catch(function () { fail("We couldn't send that. Email the inquiry to research@occelatus.io and we'll send a sample back."); });
+      });
     })();
 
     // trial form (same submission contract as v1)
