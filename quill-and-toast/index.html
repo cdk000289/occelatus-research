@@ -339,10 +339,10 @@
         <div class="device">
           <div class="dbar"><i></i><i></i><i></i><span>Inbox · Golden Hour Events (example)</span></div>
           <div class="mail new" id="m-new">
-            <div class="av" style="background:#c4775c">PM</div>
-            <div class="meta"><div class="top"><b>Priya &amp; Marco</b><time>11:42 pm</time></div>
-              <div class="subj">Oct 10, 2027 at Camp Lucy, full planning?</div>
-              <div class="prev">Hi! My fiancé Marco and I are getting married October 10, 2027 at Camp Lucy…</div></div>
+            <div class="av" style="background:#c4775c" id="m-av">PM</div>
+            <div class="meta"><div class="top"><b id="m-from">Priya &amp; Marco</b><time>11:42 pm</time></div>
+              <div class="subj" id="m-subj">Oct 10, 2027 at Camp Lucy, full planning?</div>
+              <div class="prev" id="m-prev">Hi! My fiancé Marco and I are getting married October 10, 2027 at Camp Lucy…</div></div>
           </div>
           <div class="draft">
             <div class="dhead">
@@ -403,13 +403,13 @@
     <div class="wrap">
       <div class="kicker rv">Real output</div>
       <h2 class="rv d1">What a Quill &amp; Toast draft actually looks like.</h2>
-      <p class="sub rv d2">Produced by our system for a <strong>fictional</strong> Austin planner, "Golden Hour Events". The inquiries are made up; pick one to see the draft.</p>
+      <p class="sub rv d2" id="d-sub">Produced by our system for a <strong>fictional</strong> Austin planner, "Golden Hour Events". The inquiries are made up; pick one to see the draft.</p>
       <div class="tabs rv" role="tablist" aria-label="Example inquiries">
-        <button class="tab" role="tab" aria-selected="true" data-i="0">Full planning · Priya</button>
+        <button class="tab" role="tab" aria-selected="true" data-i="0" id="tab0">Full planning · Priya</button>
         <button class="tab" role="tab" aria-selected="false" data-i="1">Elopement · Jess</button>
         <button class="tab" role="tab" aria-selected="false" data-i="2">Corporate party · Ryan</button>
       </div>
-      <div class="profile rv"><span>Planner's info:</span>
+      <div class="profile rv" id="d-profile"><span>Planner's info:</span>
         <span class="pc"><b>Day-of</b> from $2,400</span><span class="pc"><b>Partial</b> from $4,800</span><span class="pc"><b>Full</b> from $8,500</span><span class="pc">Never confirms dates in writing</span><span class="pc">Weddings &amp; couples' events</span>
       </div>
       <div class="pair rv">
@@ -419,7 +419,7 @@
           <div class="pb" id="d-out"></div>
         </div>
       </div>
-      <p class="note rv">The elopement reply is lightly shortened for this page; the full-planning reply is unedited. Drafts are written by AI from your information and checked against it before you see them.</p>
+      <p class="note rv" id="d-note">The elopement reply is lightly shortened for this page; the full-planning reply is unedited. Drafts are written by AI from your information and checked against it before you see them.</p>
       <div class="ctas rv" style="margin-top:22px;justify-content:center">
         <a class="btn btn-ink" href="#trial" data-cta="demo">Get drafts like this for your inquiries <span aria-hidden="true">→</span></a>
       </div>
@@ -630,6 +630,23 @@
       { from:'Ryan', when:'Inquiry · Tuesday 9:05 am', flag:true,
         inq:"hello, do you do corporate events? we have a 60-person company holiday party Dec 12 in downtown Austin, venue is booked, need someone to run the night + help with decor. budget around $3k for planning. thanks, Ryan" }
     ];
+
+    // Photographer variant (?for=photographers, used by the photo-site display ads). Real engine output for a
+    // fictional photographer profile (scripts/first_reply/profiles/willowlight_EXAMPLE.json), lightly shortened.
+    if ((new URLSearchParams(location.search).get('for') || '').toLowerCase() === 'photographers') {
+      EX[0] = { from:'Sarah & Ben', when:'Inquiry · 10:58 pm',
+        inq:"Hi Jamie! We just got engaged and are planning an October 2027 wedding at Cheekwood, around 150 guests. We love your candid, documentary style. Do you have a package with a second shooter, and what does that run? - Sarah & Ben",
+        out:"Hi Sarah & Ben,\n\nCongratulations! An October 2027 wedding at Cheekwood sounds wonderful, and with 150 guests that's exactly the kind of full, lively day where a second shooter earns their place.\n\nYes, I have a package built for that. Full Day + Second Shooter starts from $3,900 and includes 8 hours with two photographers covering the day together. Final pricing depends on your details, but that's the starting point.\n\nI'll check my calendar for your date. The best next step is a free 15-minute video call so we can talk through your vision. Grab a time using the link in my signature!\n\nJamie" };
+      var setT = function (id, t) { var e = document.getElementById(id); if (e) e.textContent = t; };
+      setT('m-av', 'SB'); setT('m-from', 'Sarah & Ben'); setT('m-subj', 'Oct 2027 at Cheekwood, second shooter?');
+      setT('m-prev', 'Hi Jamie! We just got engaged and are planning an October 2027 wedding at Cheekwood…');
+      setT('c1', '✓ Second shooter from $3,900'); setT('tab0', 'Second shooter · Sarah');
+      var pr = document.getElementById('d-profile');
+      if (pr) pr.innerHTML = "<span>Photographer's info:</span><span class=\"pc\"><b>Elopement</b> from $1,200</span><span class=\"pc\"><b>Full Day</b> from $3,200</span><span class=\"pc\"><b>+ Second Shooter</b> from $3,900</span><span class=\"pc\">Never confirms dates in writing</span>";
+      var sub = document.getElementById('d-sub');
+      if (sub) sub.innerHTML = 'Produced by our system for <strong>fictional</strong> businesses: "Willow &amp; Light Photography" in Nashville, and an Austin planner. The inquiries are made up; pick one to see the draft.';
+      setT('d-note', 'The photographer and elopement replies are lightly shortened for this page. Drafts are written by AI from your information and checked against it before you see them.');
+    }
 
     // typewriter helper; returns a cancel fn
     function typeInto(el, text, cps, done) {
