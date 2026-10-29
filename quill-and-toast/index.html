@@ -337,7 +337,7 @@
           <span><b>Checked against your packages</b><small>No invented prices or promises</small></span></div>
 
         <div class="device">
-          <div class="dbar"><i></i><i></i><i></i><span>Inbox · Golden Hour Events (example)</span></div>
+          <div class="dbar"><i></i><i></i><i></i><span id="m-inbox">Inbox · Golden Hour Events (example)</span></div>
           <div class="mail new" id="m-new">
             <div class="av" style="background:#c4775c" id="m-av">PM</div>
             <div class="meta"><div class="top"><b id="m-from">Priya &amp; Marco</b><time>11:42 pm</time></div>
@@ -372,7 +372,7 @@
       <div class="kicker rv">The weekend problem</div>
       <h2 class="rv d1">Your busiest days are when the best inquiries arrive.</h2>
       <div class="tl">
-        <div class="s rv"><div class="when">Friday · 9:14 pm</div><h3>A couple emails you and four other planners.</h3><p>They have a date, a venue in mind and a real question about price.</p></div>
+        <div class="s rv"><div class="when">Friday · 9:14 pm</div><h3>A couple emails you and four other <span class="who-p">planners</span>.</h3><p>They have a date, a venue in mind and a real question about price.</p></div>
         <div class="s rv d1"><div class="when">Saturday · all day</div><h3>You're running someone else's wedding.</h3><p>Timelines, vendors, a rehearsal dinner. Your inbox waits, as it should.</p></div>
         <div class="s bad rv d2"><div class="when">Tuesday · 10:30 am</div><h3>You finally reply.</h3><p>Sometimes they've already booked a call with whoever answered first.</p></div>
       </div>
@@ -638,7 +638,7 @@
         inq:"Hi Jamie! We just got engaged and are planning an October 2027 wedding at Cheekwood, around 150 guests. We love your candid, documentary style. Do you have a package with a second shooter, and what does that run? - Sarah & Ben",
         out:"Hi Sarah & Ben,\n\nCongratulations! An October 2027 wedding at Cheekwood sounds wonderful, and with 150 guests that's exactly the kind of full, lively day where a second shooter earns their place.\n\nYes, I have a package built for that. Full Day + Second Shooter starts from $3,900 and includes 8 hours with two photographers covering the day together. Final pricing depends on your details, but that's the starting point.\n\nI'll check my calendar for your date. The best next step is a free 15-minute video call so we can talk through your vision. Grab a time using the link in my signature!\n\nJamie" };
       var setT = function (id, t) { var e = document.getElementById(id); if (e) e.textContent = t; };
-      setT('m-av', 'SB'); setT('m-from', 'Sarah & Ben'); setT('m-subj', 'Oct 2027 at Cheekwood, second shooter?');
+      setT('m-inbox', 'Inbox · Willow & Light Photography (example)'); setT('m-av', 'SB'); setT('m-from', 'Sarah & Ben'); setT('m-subj', 'Oct 2027 at Cheekwood, second shooter?');
       setT('m-prev', 'Hi Jamie! We just got engaged and are planning an October 2027 wedding at Cheekwood…');
       setT('c1', '✓ Second shooter from $3,900'); setT('tab0', 'Second shooter · Sarah');
       var pr = document.getElementById('d-profile');
