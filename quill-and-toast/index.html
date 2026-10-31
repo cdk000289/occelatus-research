@@ -305,7 +305,7 @@
       <a class="hide-m" href="#how">How it works</a>
       <a class="hide-m" href="#demo">See a draft</a>
       <a class="hide-m" href="#pricing">Pricing</a>
-      <a class="btn btn-ink btn-sm" href="#trial">Start free trial</a>
+      <a class="btn btn-ink btn-sm" href="#sample" data-cta="nav-sample">Free sample reply</a>
     </nav>
   </div></header>
 
@@ -318,9 +318,10 @@
         <h1 class="rv d1">Be the <em class="g">first</em> <span class="who-n">planner</span> they hear back from.</h1>
         <p class="lede rv d2">Couples email several <span class="who-p">planners</span> at once and often book whoever replies first with real answers. Quill &amp; Toast drafts a warm, personal reply to every new inquiry, in your voice, with your actual packages, and has it waiting in your inbox within minutes. You read it, tweak it if you like, and hit send.</p>
         <div class="ctas rv d3">
-          <a class="btn btn-ink" href="#trial">Try it free for 14 days <span aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost" href="#demo">See a real draft</a>
+          <a class="btn btn-ink" href="#sample" data-cta="hero-sample">Get a free reply to one of your inquiries <span aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#trial" data-cta="hero-trial">Or start the 14-day trial</a>
         </div>
+        <p class="fine rv d3" style="margin-top:12px">Paste one inquiry you got and your starting prices. We email you a drafted reply. No trial, no card.</p>
         <div class="assure rv d3">
           <span><svg><use href="#i-check"/></svg>Nothing sends without you</span>
           <span><svg><use href="#i-check"/></svg>Only your real prices</span>
@@ -378,7 +379,7 @@
       </div>
       <div class="fix rv">
         <p>With Quill &amp; Toast, a thoughtful draft is ready <em>minutes later</em>. Read it between toasts and send it in ten seconds.</p>
-        <a class="btn btn-gold" href="#trial">Start free trial</a>
+        <a class="btn btn-gold" href="#sample" data-cta="weekend-sample">Try it on one of your inquiries</a>
       </div>
     </div>
   </section>
@@ -421,9 +422,9 @@
       </div>
       <p class="note rv" id="d-note">The elopement reply is lightly shortened for this page; the full-planning reply is unedited. Drafts are written by AI from your information and checked against it before you see them.</p>
       <div class="ctas rv" style="margin-top:22px;justify-content:center">
-        <a class="btn btn-ink" href="#trial" data-cta="demo">Get drafts like this for your inquiries <span aria-hidden="true">→</span></a>
+        <a class="btn btn-ink" href="#sample" data-cta="demo-sample">Get a draft like this for one of your inquiries <span aria-hidden="true">→</span></a>
       </div>
-      <p class="fine rv" style="text-align:center">Free for 14 days. Name, business and email is all we need to start. Or <a href="#sample" data-cta="demo-sample">try it on one of your own inquiries first</a>.</p>
+      <p class="fine rv" style="text-align:center">Free, no card. Ready for every inquiry? <a href="#trial" data-cta="demo-trial">Start the 14-day trial</a>: name, business and email is all we need.</p>
     </div>
   </section>
 
@@ -603,7 +604,7 @@
     <div><a href="/automate/">Automation services</a><a href="/privacy.html">Privacy</a></div>
   </div></footer>
 
-  <div class="mcta" id="mcta"><a class="btn btn-ink" href="#trial">Start free 14-day trial</a></div>
+  <div class="mcta" id="mcta"><a class="btn btn-ink" href="#sample" data-cta="mobile-sample">Get a free sample reply</a></div>
 
   <script>
     var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -723,13 +724,18 @@
     (function () {
       var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
       document.querySelectorAll('.rv').forEach(function (el) { io.observe(el); });
-      var hdr = document.getElementById('hdr'), mcta = document.getElementById('mcta'), trial = document.getElementById('trial');
+      var hdr = document.getElementById('hdr'), mcta = document.getElementById('mcta'), trial = document.getElementById('trial'), sample = document.getElementById('sample');
       function onScroll() {
         hdr.classList.toggle('scrolled', window.scrollY > 8);
-        var r = trial.getBoundingClientRect();
-        mcta.classList.toggle('show', window.scrollY > 600 && r.top > window.innerHeight);
+        var r = trial.getBoundingClientRect(), s = sample.getBoundingClientRect();
+        var inForm = (s.top < window.innerHeight && s.bottom > 0) || r.top <= window.innerHeight;
+        mcta.classList.toggle('show', window.scrollY > 600 && !inForm);
       }
       window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+      // CTA click measurement: sample vs trial intent by placement
+      document.querySelectorAll('[data-cta]').forEach(function (a) {
+        a.addEventListener('click', function () { gtag('event', 'quill_toast_cta', { cta: a.getAttribute('data-cta') }); });
+      });
     })();
 
     // sample-reply form (lead magnet; separate subject so the trial intake ignores it)
