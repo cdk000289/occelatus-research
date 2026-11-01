@@ -451,6 +451,7 @@
         <label for="s-next">How you like to book <span class="o">(optional)</span></label>
         <input class="fi" id="s-next" name="nextstep" maxlength="300" placeholder="e.g. a free 20-minute call, or a venue tour">
         <label style="display:flex;gap:10px;align-items:flex-start;font-weight:400;margin-top:20px"><input type="checkbox" id="s-consent" name="consent" value="yes" required style="margin-top:3px"> <span>Email me the sample reply. Quill &amp; Toast may follow up once about a free trial.</span></label>
+        <input type="hidden" name="src" id="s-src" value="">
         <input type="hidden" name="_subject" value="Quill and Toast sample request — occelatus.io/quill-and-toast">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
@@ -743,9 +744,24 @@
       var form = document.getElementById('s-form'), err = document.getElementById('s-err'), btn = document.getElementById('s-btn');
       if (!form) return;
       function fail(t) { err.style.display = 'block'; err.textContent = t; btn.disabled = false; btn.textContent = 'Email me a sample reply'; }
+      // source attribution: ?src / utm_source > gclid (search ad) > referrer (guide, other site) > direct; plus ?for audience + last CTA clicked
+      var lastCta = '';
+      document.querySelectorAll('[data-cta]').forEach(function (a) { a.addEventListener('click', function () { lastCta = a.getAttribute('data-cta'); }); });
+      function srcTag() {
+        var q = new URLSearchParams(location.search), src = q.get('src') || q.get('utm_source') || '';
+        if (!src && (q.get('gclid') || q.get('gbraid') || q.get('wbraid'))) src = 'ads';
+        if (!src && document.referrer) {
+          try { var r = new URL(document.referrer); src = r.host === location.host ? (r.pathname.indexOf('/guide/') > -1 ? 'guide' : 'site:' + r.pathname) : 'ref:' + r.host; } catch (x) { src = 'ref'; }
+        }
+        var t = src || 'direct';
+        if (q.get('for')) t += ' for=' + q.get('for');
+        if (lastCta) t += ' cta=' + lastCta;
+        return t.slice(0, 120);
+      }
       form.addEventListener('submit', function (e) {
         e.preventDefault(); err.style.display = 'none';
         if (document.getElementById('s-hp').value) return;
+        document.getElementById('s-src').value = srcTag();
         if (!/.+@.+\..+/.test(document.getElementById('s-email').value.trim())) return fail('Please enter a valid email.');
         if (document.getElementById('s-inq').value.trim().length < 30) return fail('Please paste the full inquiry.');
         if (!document.getElementById('s-consent').checked) return fail('Please tick the box so we can email you the sample.');
