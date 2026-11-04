@@ -736,7 +736,20 @@
       window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
       // CTA click measurement: sample vs trial intent by placement
       document.querySelectorAll('[data-cta]').forEach(function (a) {
-        a.addEventListener('click', function () { gtag('event', 'quill_toast_cta', { cta: a.getAttribute('data-cta') }); });
+        a.addEventListener('click', function () {
+          gtag('event', 'quill_toast_cta', { cta: a.getAttribute('data-cta') });
+          gtag('event', 'conversion', { 'send_to': 'AW-18399941905/tcBrCIrNgLIdEJGq48VE' }); // secondary: Q&T CTA click
+        });
+      });
+      // form start (secondary conversion, once per page): first focus inside the sample or trial form
+      var started = false;
+      ['s-form', 'fr-form'].forEach(function (id) {
+        var f = document.getElementById(id); if (!f) return;
+        f.addEventListener('focusin', function () {
+          if (started) return; started = true;
+          gtag('event', 'qt_form_start', { form: id });
+          gtag('event', 'conversion', { 'send_to': 'AW-18399941905/hb0dCI3NgLIdEJGq48VE' }); // secondary: Q&T form start
+        });
       });
     })();
 
@@ -772,6 +785,7 @@
           .then(function (r) { return r.json(); })
           .then(function (d) {
             if (d.success === 'true' || d.success === true) {
+              gtag('event', 'conversion', { 'send_to': 'AW-18399941905/4TysCIfNgLIdEJGq48VE', 'value': 20.0, 'currency': 'USD' }); // secondary: Q&T sample request
               gtag('event', 'quill_toast_sample');
               form.style.display = 'none'; var ok = document.getElementById('s-ok'); ok.style.display = 'block'; ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else { fail("Something went wrong. Email the inquiry to research@occelatus.io and we'll send a sample back."); }
