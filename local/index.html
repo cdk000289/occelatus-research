@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) — Google Ads AW-18399941905 — DO NOT CHANGE -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18399941905"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18399941905');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Your Google Business Profile is your best salesperson. We manage it for you: weekly updates, every review answered, more 5-star reviews. Free 10-point audit. From $149/mo.">
+  <title>Google Business Profile Management for Local Businesses — Occelatus Local</title>
+  <link rel="canonical" href="https://occelatus.io/local/">
+  <meta property="og:title" content="Manage your Google Business Profile — Occelatus Local">
+  <meta property="og:description" content="Weekly updates, every review answered, more 5-star reviews. Free 10-point audit.">
+  <meta property="og:url" content="https://occelatus.io/local/">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:#f7f9f6; --bg-card:#ffffff; --bg-dark:#16233d;
+      --line:rgba(20,24,34,.08); --line-strong:rgba(20,24,34,.14);
+      --navy:#16233d; --navy2:#47536b; --dim:#7a8299;
+      --green:#2a7d76; --green-soft:rgba(42,125,118,.10);
+      --gold:#c96f3e; --gold-soft:rgba(201,111,62,.08);
+      --r:16px; --rs:10px;
+      --shadow:0 4px 20px -8px rgba(22,35,61,.12);
+      --shadow-lg:0 24px 60px -20px rgba(22,35,61,.25);
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.65;color:var(--navy);background:var(--bg);-webkit-font-smoothing:antialiased;}
+    h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif;}
+    a{color:inherit;text-decoration:none;}
+    .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+
+    /* HEADER */
+    header{position:sticky;top:0;z-index:50;background:rgba(247,249,246,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:16px 0;}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:19px;color:var(--navy);}
+    .brand .mk{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--green),var(--gold));}
+    .brand small{font-size:13px;font-weight:500;color:var(--dim);margin-left:2px;}
+    .nav a.cta{padding:10px 22px;border-radius:100px;background:var(--navy);color:#fff;font-weight:600;font-size:14px;}
+
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:15px 28px;border:0;border-radius:100px;font:600 15px 'Inter',sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .15s;white-space:nowrap;}
+    .btn-primary{background:var(--green);color:#fff;box-shadow:0 8px 24px -8px rgba(42,125,118,.5);}
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 28px -8px rgba(42,125,118,.6);}
+    .btn-ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line-strong);}
+    .btn-ghost:hover{border-color:var(--navy);}
+    .btn:disabled{opacity:.6;cursor:wait;transform:none;}
+
+    /* HERO */
+    .hero{padding:64px 0 80px;position:relative;overflow:hidden;}
+    .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+    @media(max-width:940px){.hero .wrap{grid-template-columns:1fr;gap:48px;}}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--green);background:var(--green-soft);padding:7px 14px;border-radius:100px;margin-bottom:24px;}
+    .hero h1{font-size:clamp(32px,5vw,54px);font-weight:600;line-height:1.08;letter-spacing:-.01em;margin-bottom:22px;}
+    .hero h1 em{font-style:normal;color:var(--green);}
+    .hero .sub{font-size:19px;color:var(--navy2);margin-bottom:32px;max-width:520px;}
+    .hero .actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;}
+    .hero .trust{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;color:var(--navy2);font-weight:500;}
+    .hero .trust span::before{content:"\2713 ";color:var(--green);font-weight:700;}
+
+    /* Google card mockup */
+    .gcard{background:var(--bg-card);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--line);max-width:440px;}
+    .gcard .top{padding:16px 18px 14px;display:flex;gap:14px;align-items:flex-start;}
+    .gcard .pin{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--green),#3a9d96);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0;}
+    .gcard .biz-name{font-weight:700;font-size:17px;line-height:1.2;}
+    .gcard .biz-meta{font-size:12px;color:var(--dim);margin-top:3px;}
+    .gcard .stars{color:#f5a623;font-size:14px;margin-top:4px;}
+    .gcard .stars span{color:var(--dim);font-weight:500;margin-left:4px;}
+    .gcard .tags{display:flex;gap:6px;flex-wrap:wrap;padding:0 18px 14px;}
+    .gcard .tag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px;background:var(--bg);color:var(--navy2);}
+    .gcard .badges{padding:14px 18px;border-top:1px solid var(--line);display:flex;gap:12px;font-size:12px;font-weight:600;color:var(--green);}
+    .gcard .badges div{display:flex;align-items:center;gap:5px;}
+    .gcard .reply{padding:14px 18px;border-top:1px solid var(--line);background:var(--bg);}
+    .gcard .reply-label{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--green);margin-bottom:6px;}
+    .gcard .reply-body{font-size:13px;color:var(--navy2);line-height:1.55;}
+    .gcard .reply-from{font-size:11px;color:var(--dim);margin-top:4px;}
+
+    /* PROOF STRIP */
+    .proof{background:var(--bg-card);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;}
+    .proof .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;}
+    @media(max-width:760px){.proof .wrap{grid-template-columns:1fr 1fr;gap:24px;}}
+    .proof .num{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--navy);}
+    .proof .lbl{font-size:12.5px;color:var(--dim);margin-top:4px;}
+
+    /* SECTION */
+    .sec{padding:72px 0;}
+    .sec .h2{font-size:clamp(26px,3.5vw,38px);font-weight:600;line-height:1.15;margin-bottom:16px;}
+    .sec .s-sub{font-size:17px;color:var(--navy2);margin-bottom:40px;max-width:600px;}
+    .sec .ey2{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+
+    /* PROBLEM */
+    .problem{background:var(--bg-card);}
+    .problem .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+    @media(max-width:880px){.problem .wrap{grid-template-columns:1fr;gap:40px;}}
+    .problem ul{list-style:none;}
+    .problem li{padding:18px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:flex-start;}
+    .problem li:last-child{border:0;}
+    .problem li .ic{width:28px;height:28px;border-radius:8px;background:var(--gold-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px;color:var(--gold);}
+    .problem li .tx b{font-size:15px;}
+    .problem li .tx p{font-size:13.5px;color:var(--navy2);margin-top:2px;}
+
+    /* WHAT YOU GET */
+    .features{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+    @media(max-width:760px){.features{grid-template-columns:1fr;}}
+    .feat{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--r);padding:28px;}
+    .feat .ic{width:40px;height:40px;border-radius:10px;background:var(--green-soft);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--green);margin-bottom:16px;}
+    .feat h3{font-size:18px;font-weight:600;margin-bottom:8px;font-family:'Inter',sans-serif;}
+    .feat p{font-size:14px;color:var(--navy2);}
+
+    /* HOW IT WORKS */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:step;}
+    @media(max-width:880px){.steps{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:480px){.steps{grid-template-columns:1fr;}}
+    .step{position:relative;padding:28px 24px 24px;background:var(--bg-card);border:1px solid var(--line);border-radius:var(--r);}
+    .step .n{counter-increment:step;width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;margin-bottom:16px;}
+    .step .n::before{content:counter(step);}
+    .step h3{font-size:16px;font-weight:600;font-family:'Inter',sans-serif;margin-bottom:8px;}
+    .step p{font-size:13.5px;color:var(--navy2);}
+    .step .tag{display:inline-block;margin-top:12px;font-size:12px;color:var(--green);font-weight:600;}
+
+    /* PRICING */
+    .pricing{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
+    @media(max-width:760px){.pricing{grid-template-columns:1fr;}}
+    .pcard{background:var(--bg-card);border:1px solid var(--line);border-radius:var(--r);padding:32px;}
+    .pcard.feat-card{border:2px solid var(--green);position:relative;box-shadow:0 20px 50px -20px rgba(42,125,118,.3);}
+    .pcard .badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:12px;font-weight:700;padding:5px 16px;border-radius:100px;letter-spacing:.02em;}
+    .pcard .pt{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);}
+    .pcard .price{font-family:'Fraunces',serif;font-size:42px;font-weight:600;margin:12px 0 4px;}
+    .pcard .price small{font-size:15px;font-weight:400;color:var(--dim);font-family:'Inter',sans-serif;}
+    .pcard ul{list-style:none;margin:20px 0 0;}
+    .pcard li{padding:10px 0;font-size:14px;color:var(--navy2);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:flex-start;}
+    .pcard li:last-child{border:0;}
+    .pcard li::before{content:"\2713";color:var(--green);font-weight:700;flex-shrink:0;}
+    .pcard .cta{margin-top:24px;width:100%;;}
+
+    /* AUDIT FORM */
+    .audit-sec{background:var(--bg-dark);color:#fff;}
+    .audit-sec h2{font-size:clamp(26px,3.5vw,38px);font-weight:600;line-height:1.15;margin-bottom:14px;}
+    .audit-sec .s-sub{font-size:17px;color:rgba(255,255,255,.7);margin-bottom:36px;max-width:560px;}
+    .audit-form{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:32px;max-width:520px;}
+    .audit-form .fld{margin-bottom:18px;}
+    .audit-form label{display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:6px;}
+    .audit-form input,.audit-form select,.audit-form textarea{width:100%;padding:13px 16px;border:1px solid rgba(255,255,255,.16);border-radius:var(--rs);background:rgba(255,255,255,.05);color:#fff;font:500 15px 'Inter',sans-serif;outline:none;transition:border .15s;}
+    .audit-form input:focus,.audit-form select:focus,.audit-form textarea:focus{border-color:var(--green);}
+    .audit-form input::placeholder,.audit-form textarea::placeholder{color:rgba(255,255,255,.35);}
+    .audit-form textarea{min-height:70px;resize:vertical;}
+    .audit-form .btn{width:100%;margin-top:8px;background:var(--green);color:#fff;}
+    .audit-form .note{font-size:12px;color:rgba(255,255,255,.5);margin-top:12px;}
+    .audit-form .err{display:none;margin-top:12px;font-size:13px;color:#e57373;}
+    .audit-ok{display:none;text-align:center;padding:40px 16px;}
+    .audit-ok .ck{width:52px;height:52px;border-radius:50%;background:var(--green-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:22px;color:var(--green);}
+    .audit-ok h3{font-size:22px;margin-bottom:8px;}
+    .audit-ok p{font-size:14px;color:rgba(255,255,255,.7);}
+
+    /* FAQ */
+    .faq-sec{padding:64px 0;}
+    .faq{max-width:760px;}
+    details{padding:18px 0;border-bottom:1px solid var(--line);}
+    details:first-child{border-top:1px solid var(--line);}
+    summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+    summary::after{content:"+";font-size:22px;color:var(--green);font-weight:400;}
+    details[open] summary::after{content:"\2013";}
+    details p{font-size:14px;color:var(--navy2);margin-top:10px;max-width:600px;}
+
+    /* FOOTER */
+    footer{background:var(--bg-card);border-top:1px solid var(--line);padding:40px 0 32px;}
+    footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+    footer .brand{font-size:17px;}
+    footer .links{display:flex;gap:28px;font-size:13.5px;color:var(--dim);}
+    footer .links a:hover{color:var(--navy);}
+    footer .copy{font-size:12px;color:var(--dim);margin-top:32px;text-align:center;}
+
+    /* sticky mobile CTA */
+    .sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:80;padding:12px 16px;background:rgba(247,249,246,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);}
+    .sticky-cta .btn{width:100%;}
+    @media(max-width:680px){.sticky-cta{display:block;}.hero .actions .btn-ghost{display:none;}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <a class="brand" href="/local/">
+          <span class="mk"></span>
+          Occelatus <small>Local</small>
+        </a>
+        <a href="#audit" class="cta">Free audit</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">&#9745; Free 10-point Google Business Profile audit</span>
+        <h1>Your Google listing is your <em>best salesperson.</em> Is it doing its job?</h1>
+        <p class="sub">Most local businesses lose calls to competitors because their Google Business Profile is outdated, reviews go unanswered, and nobody asks happy customers for a review. We fix that, for a flat monthly fee.</p>
+        <div class="actions">
+          <a href="#audit" class="btn btn-primary">Get my free audit &#8594;</a>
+          <a href="#pricing" class="btn btn-ghost">See pricing</a>
+        </div>
+        <div class="trust">
+          <span>No password needed</span>
+          <span>Cancel anytime</span>
+          <span>Set up in 10 minutes</span>
+        </div>
+      </div>
+      <div>
+        <div class="gcard">
+          <div class="top">
+            <div class="pin">&#128205;</div>
+            <div>
+              <div class="biz-name">Sunrise HVAC Solutions</div>
+              <div class="biz-meta">HVAC Contractor &middot; Austin, TX &middot; Open now</div>
+              <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733; <span>4.9 &middot; 127 reviews</span></div>
+            </div>
+          </div>
+          <div class="tags">
+            <span class="tag">Air Conditioning</span>
+            <span class="tag">Heating</span>
+            <span class="tag">Emergency Repair</span>
+          </div>
+          <div class="badges">
+            <div>&#9989; Verified</div>
+            <div>&#128172; Responds in 1 hr</div>
+            <div>&#11088; Top rated</div>
+          </div>
+          <div class="reply">
+            <div class="reply-label">Our reply &middot; posted in 8 minutes</div>
+            <div class="reply-body">Hi Jennifer, thanks for the kind words about Mike's punctuality and the cleanup. We just added you to our priority list, so next time something breaks you can text us directly at this number. Stay cool! &#128168;</div>
+            <div class="reply-from">Sunrise HVAC &middot; Owner</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF STRIP -->
+  <section class="proof">
+    <div class="wrap">
+      <div><div class="num">76%</div><div class="lbl">of nearby mobile searches visit within a day</div></div>
+      <div><div class="num">28%</div><div class="lbl">more calls to businesses that respond to every review</div></div>
+      <div><div class="num">5&#9733;</div><div class="lbl">is what 89% of consumers check before calling</div></div>
+      <div><div class="num">$149</div><div class="lbl">flat monthly, no contract, cancel anytime</div></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="sec problem">
+    <div class="wrap">
+      <div>
+        <div class="ey2">The problem</div>
+        <h2 class="h2">You're losing calls you don't even know about.</h2>
+        <p class="s-sub">Every day your Google profile sits unmanaged, a potential customer is searching for someone like you, comparing your listing to three competitors, and calling the one that looks alive and responsive. That's rarely the one that does the best work.</p>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <div class="ic">&#9888;</div>
+            <div class="tx"><b>Reviews go unanswered</b><p>A customer takes the time to leave a 5-star review and hears nothing back. A frustrated one leaves 1 star and you don't reply for a week. Both cost you the next customer who reads them.</p></div>
+          </li>
+          <li>
+            <div class="ic">&#128197;</div>
+            <div class="tx"><b>No posts in months</b><p>Your last Google update was a seasonal greeting in March. A competitor posts weekly. Google's algorithm rewards fresh content, and so do the eyes scanning the results.</p></div>
+          </li>
+          <li>
+            <div class="ic">&#10060;</div>
+            <div class="tx"><b>No new reviews coming in</b><p>You did good work for hundreds of customers. None of them thought to leave a review because nobody asked. Your competitor has 40 more reviews than you, and it's the first thing people notice.</p></div>
+          </li>
+          <li>
+            <div class="ic">&#128269;</div>
+            <div class="tx"><b>Wrong categories, missing details</b><p>You're listed under "Contractor" instead of "Plumbing Contractor." Your hours are wrong for holidays. A typo in your phone number has been sending calls to someone else for six months.</p></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="sec" style="padding-top:72px;">
+    <div class="wrap">
+      <div class="ey2" style="text-align:center;">What you get</div>
+      <h2 class="h2" style="text-align:center;">Everything your Google profile needs, managed for you.</h2>
+      <p class="s-sub" style="text-align:center;margin-left:auto;margin-right:auto;">One flat fee. No setup charges, no per-post pricing, no surprises. We do the work, you see the calls.</p>
+      <div class="features">
+        <div class="feat">
+          <div class="ic">&#128221;</div>
+          <h3>Weekly profile updates</h3>
+          <p>One to two posts per week on your Google listing: seasonal tips, promotions, project photos, or community involvement. Written in your voice, posted directly by us.</p>
+        </div>
+        <div class="feat">
+          <div class="ic">&#11088;</div>
+          <h3>Every review answered</h3>
+          <p>Every review, good or bad, gets a prompt, professional response within 24 hours. Thank-yous for the 5-star reviews, thoughtful replies for the 1-star ones. Never argued with, never ignored.</p>
+        </div>
+        <div class="feat">
+          <div class="ic">&#128241;</div>
+          <h3>Review request engine</h3>
+          <p>We give you QR codes and message templates you can send to happy customers in under a minute. Each one includes your direct review link. More 5-star reviews, steadily, month after month.</p>
+        </div>
+        <div class="feat">
+          <div class="ic">&#128202;</div>
+          <h3>Monthly growth report</h3>
+          <p>A clear one-page report each month: profile views, calls, direction requests, and review count, with month-over-month change. No dashboards to log into, no data to interpret.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="sec problem">
+    <div class="wrap">
+      <div class="ey2" style="text-align:center;">How it works</div>
+      <h2 class="h2" style="text-align:center;">Up and running in one business day.</h2>
+      <p class="s-sub" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:48px;">You add us as a Manager on your Google Business Profile. We never ask for your password, and you can remove us anytime.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="n"></div>
+          <h3>Free audit</h3>
+          <p>We review your profile across 10 points and send you a plain-English report within one business day. No cost, no obligation.</p>
+          <span class="tag">0 min of your time</span>
+        </div>
+        <div class="step">
+          <div class="n"></div>
+          <h3>Add us as Manager</h3>
+          <p>You invite our email as a Manager on your Google Business Profile. Takes about two minutes. We never see your password.</p>
+          <span class="tag">2 min setup</span>
+        </div>
+        <div class="step">
+          <div class="n"></div>
+          <h3>We get to work</h3>
+          <p>Within one business day we post your first update, reply to open reviews, and set up your review request templates.</p>
+          <span class="tag">Done same day</span>
+        </div>
+        <div class="step">
+          <div class="n"></div>
+          <h3>Watch the calls</h3>
+          <p>Each month you get a growth report. More profile views, more calls, more reviews. If you want to stop, you stop. No contract.</p>
+          <span class="tag">Cancel anytime</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="sec" id="pricing" style="padding-top:72px;">
+    <div class="wrap">
+      <div class="ey2" style="text-align:center;">Pricing</div>
+      <h2 class="h2" style="text-align:center;">One price. No surprises.</h2>
+      <p class="s-sub" style="text-align:center;margin-left:auto;margin-right:auto;margin-bottom:40px;">Founding pricing for our first 10 clients. After that it goes up. Lock in your rate now.</p>
+      <div class="pricing">
+        <div class="pcard">
+          <div class="pt">Free audit</div>
+          <div class="price">$0</div>
+          <p style="font-size:14px;color:var(--navy2);margin-top:8px;">See exactly where you're losing calls.</p>
+          <ul>
+            <li>10-point profile audit</li>
+            <li>Competitor comparison</li>
+            <li>3 quick fixes you can do today</li>
+            <li>Delivered within one business day</li>
+            <li>No card, no obligation</li>
+          </ul>
+          <a href="#audit" class="btn btn-ghost cta">Get my free audit</a>
+        </div>
+        <div class="pcard feat-card">
+          <div class="badge">Founding price</div>
+          <div class="pt">Full management</div>
+          <div class="price">$149<small>/mo</small></div>
+          <p style="font-size:14px;color:var(--navy2);margin-top:8px;">Everything, managed for you.</p>
+          <ul>
+            <li>Weekly profile updates (4-8 per month)</li>
+            <li>Every review answered within 24 hours</li>
+            <li>Review request engine with QR codes</li>
+            <li>Monthly growth report</li>
+            <li>Profile optimization and monitoring</li>
+            <li>No contract, cancel anytime</li>
+          </ul>
+          <a href="#audit" class="btn btn-primary cta">Start with a free audit</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUDIT FORM -->
+  <section class="audit-sec sec" id="audit">
+    <div class="wrap">
+      <h2>Get your free 10-point Google Business Profile audit.</h2>
+      <p class="s-sub">Tell us your business name and where you are. We'll review your Google profile across 10 points and email you a plain-English report within one business day. No cost, no sales call, no obligation.</p>
+      <div class="audit-form">
+        <form id="audit-form" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST">
+          <input type="hidden" name="_subject" value="Local audit request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="source" value="local-landing-page">
+          <div class="fld">
+            <label for="f-name">Your name</label>
+            <input type="text" id="f-name" name="name" placeholder="Jane Smith" required>
+          </div>
+          <div class="fld">
+            <label for="f-biz">Business name</label>
+            <input type="text" id="f-biz" name="business_name" placeholder="Sunrise HVAC Solutions" required>
+          </div>
+          <div class="fld">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" placeholder="jane@sunrisehvac.com" required>
+          </div>
+          <div class="fld">
+            <label for="f-type">Business type</label>
+            <select id="f-type" name="business_type">
+              <option value="">Select one...</option>
+              <option>HVAC / Air Conditioning</option>
+              <option>Plumbing</option>
+              <option>Roofing</option>
+              <option>Auto Repair</option>
+              <option>Dentist / Dental</option>
+              <option>Med Spa / Aesthetics</option>
+              <option>Landscaping / Lawn</option>
+              <option>Electrician</option>
+              <option>Restaurant / Cafe</option>
+              <option>Other service business</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label for="f-city">City</label>
+            <input type="text" id="f-city" name="city" placeholder="Austin, TX">
+          </div>
+          <div class="fld">
+            <label for="f-url">Google Maps link (optional)</label>
+            <input type="text" id="f-url" name="maps_link" placeholder="Paste your Google Maps URL">
+          </div>
+          <button type="submit" class="btn" id="audit-btn">Send my free audit &#8594;</button>
+          <p class="note">We'll email your audit within one business day. No card, no sales call.</p>
+          <div class="err" id="audit-err"></div>
+        </form>
+        <div class="audit-ok" id="audit-ok">
+          <div class="ck">&#9989;</div>
+          <h3>Audit request sent</h3>
+          <p>We'll email your 10-point report within one business day. Check your inbox.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-sec">
+    <div class="wrap">
+      <div class="ey2" style="margin-bottom:16px;">Questions</div>
+      <h2 class="h2" style="margin-bottom:28px;">Straight answers</h2>
+      <div class="faq">
+        <details>
+          <summary>Do you need my Google password?</summary>
+          <p>No. You add our email as a Manager on your Google Business Profile. We can post updates and reply to reviews, but we never see your password or your email. You can remove us anytime with two clicks.</p>
+        </details>
+        <details>
+          <summary>Do you write fake reviews?</summary>
+          <p>Never. We help you ask real customers for honest reviews and make it easy for them to leave one. Fake reviews violate Google's policies, can get your listing suspended, and they hurt your reputation when a customer figures it out.</p>
+        </details>
+        <details>
+          <summary>Can't I just do this myself?</summary>
+          <p>You could, and some owners do. Most don't, because they're running a business. The cost of an hour spent on Google is a job not done, and most owners we talk to have been meaning to get to it for months. We do it consistently, every week, for less than the cost of one missed call.</p>
+        </details>
+        <details>
+          <summary>What if I already use an SEO agency?</summary>
+          <p>We're not an SEO agency. We manage your Google Business Profile specifically: posts, reviews, and review generation. If your SEO agency isn't doing this (and many aren't), we complement their work. If they are, you probably don't need us.</p>
+        </details>
+        <details>
+          <summary>Is there a contract?</summary>
+          <p>No. Month to month. Cancel anytime, for any reason. If you cancel, we hand back a profile that's in better shape than we found it, and you keep the reviews.</p>
+        </details>
+        <details>
+          <summary>What types of businesses is this for?</summary>
+          <p>Local service businesses that get customers through Google Maps: HVAC, plumbing, roofing, auto repair, dentists, med spas, landscapers, electricians, restaurants, and similar. If people search for you by location, this is for you.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <a class="brand" href="/local/">
+        <span class="mk"></span>
+        Occelatus <small>Local</small>
+      </a>
+      <div class="links">
+        <a href="/local/">Local</a>
+        <a href="/automate/">Automation</a>
+        <a href="/quill-and-toast/">Quill &amp; Toast</a>
+        <a href="/local/#audit">Free audit</a>
+      </div>
+    </div>
+    <div class="wrap">
+      <p class="copy">&copy; 2026 Occelatus Labs &middot; <a href="/terms/" style="color:var(--dim);">Terms</a> &middot; <a href="/privacy/" style="color:var(--dim);">Privacy</a></p>
+    </div>
+  </footer>
+
+  <!-- sticky mobile CTA -->
+  <div class="sticky-cta">
+    <a href="#audit" class="btn btn-primary">Get my free audit &#8594;</a>
+  </div>
+
+  <script>
+    // Form submit
+    const form = document.getElementById('audit-form');
+    const btn = document.getElementById('audit-btn');
+    const ok = document.getElementById('audit-ok');
+    const err = document.getElementById('audit-err');
+
+    if (form) {
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        btn.disabled = true;
+        btn.textContent = 'Sending...';
+        err.style.display = 'none';
+        try {
+          const fd = new FormData(form);
+          const res = await fetch(form.action, { method: 'POST', body: fd });
+          if (!res.ok) throw new Error('Request failed');
+          form.style.display = 'none';
+          ok.style.display = 'block';
+          if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18399941905/local_audit' });
+        } catch (ex) {
+          btn.disabled = false;
+          btn.innerHTML = 'Send my free audit &#8594;';
+          err.textContent = 'Something went wrong. Please email research@occelatus.io directly.';
+          err.style.display = 'block';
+        }
+      });
+    }
+
+    // Header shadow on scroll
+    const hdr = document.querySelector('header');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 10) hdr.style.borderBottomColor = 'var(--line-strong)';
+      else hdr.style.borderBottomColor = 'var(--line)';
+    }, { passive: true });
+  </script>
+</body>
+</html>
