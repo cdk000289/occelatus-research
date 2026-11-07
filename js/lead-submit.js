@@ -6,7 +6,7 @@
  * Field order matters for the intake parser: name, company, email, service, message.
  */
 (function () {
-  var W3F_KEY = 'REPLACE_WITH_WEB3FORMS_ACCESS_KEY'; // public by design (Web3Forms access keys live in page HTML)
+  var W3F_KEY = '3940eb9e-cb2b-42ee-9ae7-15e3d3ab1566'; // public by design (Web3Forms access keys live in page HTML)
 
   function post(url, body, ms) {
     var ctl = new AbortController();
