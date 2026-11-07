@@ -109,6 +109,31 @@
     .facts .ic{width:34px;height:34px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:16px}
     @media(max-width:760px){.facts .wrap{justify-content:flex-start}.facts div{flex:1 1 44%}}
 
+
+    /* photo band */
+    .band{padding:56px 0 8px}
+    .band .holder{position:relative}
+    .band .frame{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:1264/848;max-height:560px;width:100%;background:#d9d4c8}
+    .band picture,.band img{display:block;width:100%;height:100%}
+    .band img{object-fit:cover;object-position:70% 40%}
+    .band .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,33,58,.28),rgba(20,33,58,0) 55%);pointer-events:none}
+    .rcard{position:absolute;left:5%;top:50%;transform:translateY(-50%);z-index:2;width:min(380px,42%);background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-radius:18px;box-shadow:0 24px 50px -18px rgba(20,33,58,.5);padding:18px 18px 16px;font-size:13.5px}
+    .rcard .who{display:flex;align-items:center;gap:10px}
+    .rcard .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7aa7a2,#2a7d76);color:#fff;font-weight:700;display:grid;place-items:center;font-size:15px}
+    .rcard .nm{font-weight:700;font-size:14px;line-height:1.2}
+    .rcard .sm{font-size:12px;color:var(--dim)}
+    .rcard .stars{margin:10px 0 6px}
+    .rcard .txt{color:var(--ink);line-height:1.5}
+    .rcard .own{margin-top:12px;padding:10px 12px;border-left:3px solid var(--teal);background:var(--bg);border-radius:0 10px 10px 0;color:var(--ink2);line-height:1.5}
+    .rcard .own b{display:block;font-size:11.5px;color:var(--teal2);margin-bottom:2px}
+    .rcard .ex{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);background:var(--bg);border:1px solid var(--line);padding:2px 8px;border-radius:999px;float:right}
+    @media(max-width:760px){
+      .band{padding:36px 0 0}
+      .band .frame{aspect-ratio:4/3;border-radius:22px}
+      .band img{object-position:78% 40%}
+      .rcard{position:relative;left:auto;top:auto;transform:none;width:auto;margin:-64px 14px 0;font-size:13px}
+    }
+
     /* sections */
     .sec{padding:88px 0}
     .sec.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -308,8 +333,30 @@
     </div>
   </section>
 
+
+  <!-- PHOTO BAND -->
+  <section class="band">
+    <div class="wrap">
+      <div class="holder">
+      <div class="frame">
+        <picture>
+          <source type="image/webp" srcset="/local/img/hero-a-800.webp 800w, /local/img/hero-a-1264.webp 1264w" sizes="(max-width:1200px) 100vw, 1112px">
+          <img src="/local/img/hero-a-1264.jpg" width="1264" height="848" loading="lazy" decoding="async" alt="A smiling local tradesperson leaning on his work van, reading a new five-star review on his phone">
+        </picture>
+      </div>
+        <div class="rcard" aria-label="Example review and reply">
+          <span class="ex">Example</span>
+          <div class="who"><div class="av">M</div><div><div class="nm">Maria G.</div><div class="sm">Local Guide &middot; 2 days ago</div></div></div>
+          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="txt">Called in the morning and the water heater was replaced by 3pm. Clear price up front, and he left the garage cleaner than he found it. Our new go-to plumber.</div>
+          <div class="own"><b>Response from the owner &middot; 1 hour later</b>Thank you, Maria! Glad we could get you hot water the same day. We're here whenever you need us.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- WHAT'S IN THE AUDIT -->
-  <section class="sec" id="inside">
+  <section class="sec" id="inside" style="padding-top:72px">
     <div class="wrap audit-grid">
       <div>
         <div class="kick rv">What's in the free audit</div>
