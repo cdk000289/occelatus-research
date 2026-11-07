@@ -397,7 +397,9 @@
       <p class="s-sub">Tell us your business name and where you are. We'll review your Google profile across 10 points and email you a plain-English report within one business day. No cost, no sales call, no obligation.</p>
       <div class="audit-form">
         <form id="audit-form" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST">
-          <input type="hidden" name="_subject" value="Local audit request">
+          <input type="hidden" name="_subject" value="New automation inquiry [local] — occelatus.io/local">
+          <input type="hidden" name="service" value="local">
+          <input type="hidden" name="message" id="f-msg">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="source" value="local-landing-page">
@@ -407,7 +409,7 @@
           </div>
           <div class="fld">
             <label for="f-biz">Business name</label>
-            <input type="text" id="f-biz" name="business_name" placeholder="Sunrise HVAC Solutions" required>
+            <input type="text" id="f-biz" name="company" placeholder="Sunrise HVAC Solutions" required>
           </div>
           <div class="fld">
             <label for="f-email">Email</label>
@@ -499,7 +501,7 @@
       </div>
     </div>
     <div class="wrap">
-      <p class="copy">&copy; 2026 Occelatus Labs &middot; <a href="/terms/" style="color:var(--dim);">Terms</a> &middot; <a href="/privacy/" style="color:var(--dim);">Privacy</a></p>
+      <p class="copy">&copy; 2026 Occelatus Labs &middot; <a href="/terms.html" style="color:var(--dim);">Terms</a> &middot; <a href="/privacy.html" style="color:var(--dim);">Privacy</a></p>
     </div>
   </footer>
 
@@ -522,12 +524,14 @@
         btn.textContent = 'Sending...';
         err.style.display = 'none';
         try {
+          const v = function(id){ const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+          document.getElementById('f-msg').value = '[Local audit] Business: ' + v('f-biz') + ' || Type: ' + (v('f-type') || '(not given)') + ' || City: ' + (v('f-city') || '(not given)') + ' || Maps: ' + (v('f-url') || '(none)');
           const fd = new FormData(form);
           const res = await fetch(form.action, { method: 'POST', body: fd });
           if (!res.ok) throw new Error('Request failed');
           form.style.display = 'none';
           ok.style.display = 'block';
-          if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18399941905/local_audit' });
+          if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE' });
         } catch (ex) {
           btn.disabled = false;
           btn.innerHTML = 'Send my free audit &#8594;';
