@@ -194,6 +194,7 @@
       nav .nav-hide-mobile { display: none; }
     }
   </style>
+<script src="/js/lead-submit.js"></script>
 </head>
 <body>
 
@@ -644,11 +645,7 @@
         var original = btn.textContent;
         btn.disabled = true; btn.textContent = 'Processing…';
 
-        fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(form).entries()))
-        })
+        occSubmit(form)
           .then(function (r) { return r.json(); })
           .then(function (data) {
             if (data.success === 'true' || data.success === true) {

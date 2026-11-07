@@ -183,6 +183,7 @@
     .sticky-cta .btn{width:100%;}
     @media(max-width:680px){.sticky-cta{display:block;}.hero .actions .btn-ghost{display:none;}}
   </style>
+<script src="/js/lead-submit.js"></script>
 </head>
 <body>
   <header>
@@ -526,9 +527,7 @@
         try {
           const v = function(id){ const el = document.getElementById(id); return el ? el.value.trim() : ''; };
           document.getElementById('f-msg').value = '[Local audit] Business: ' + v('f-biz') + ' || Type: ' + (v('f-type') || '(not given)') + ' || City: ' + (v('f-city') || '(not given)') + ' || Maps: ' + (v('f-url') || '(none)');
-          const fd = new FormData(form);
-          const res = await fetch(form.action, { method: 'POST', body: fd });
-          if (!res.ok) throw new Error('Request failed');
+          await occSubmit(form);  // Web3Forms first, FormSubmit fallback; throws if both fail
           form.style.display = 'none';
           ok.style.display = 'block';
           if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE' });

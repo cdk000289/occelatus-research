@@ -35,6 +35,7 @@
     form .btn{width:100%;justify-content:center;margin-top:22px} .err{display:none;margin-top:14px;color:#8a2c1f;font-size:14px}
     footer{padding:30px 0;font-size:13.5px;color:var(--mute)} footer a{color:var(--mute);margin-left:16px}
   </style>
+<script src="/js/lead-submit.js"></script>
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="/agencies/">Occelatus Labs<small>for agencies</small></a><a class="btn btn-ink btn-sm" href="#contact">Talk about a build</a></div></header>
@@ -112,7 +113,7 @@ f.addEventListener('submit',function(ev){ev.preventDefault();e.style.display='no
  if(!/.+@.+\..+/.test(v('a-email')))return fail('Please enter a valid email.');
  document.getElementById('a-msg').value='[Agency white-label] Platform: '+v('a-tool')+' || Builds/month: '+v('a-vol')+' || Brief: '+(v('a-brief')||'(none)');
  b.disabled=true;b.textContent='Sending…';
- fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(f).entries()))})
+ occSubmit(f)
  .then(function(r){return r.json();}).then(function(d){if(d.success==='true'||d.success===true){gtag('event','agency_inquiry');f.style.display='none';document.getElementById('ok').style.display='block';}else{fail("Something went wrong. Email research@occelatus.io.");b.disabled=false;b.textContent='Send';}})
  .catch(function(){fail("We couldn't send that. Email research@occelatus.io.");b.disabled=false;b.textContent='Send';});});})();
 </script>

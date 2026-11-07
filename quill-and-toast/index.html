@@ -293,6 +293,7 @@
       .plan, .fit, form { padding:28px 22px; }
     }
   </style>
+<script src="/js/lead-submit.js"></script>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -781,8 +782,7 @@
         if (document.getElementById('s-inq').value.trim().length < 30) return fail('Please paste the full inquiry.');
         if (!document.getElementById('s-consent').checked) return fail('Please tick the box so we can email you the sample.');
         btn.disabled = true; btn.textContent = 'Sending…';
-        fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(form).entries())) })
+        occSubmit(form)
           .then(function (r) { return r.json(); })
           .then(function (d) {
             if (d.success === 'true' || d.success === true) {
@@ -809,8 +809,7 @@
         document.getElementById('f-msg').value = '[Quill and Toast trial] Type: ' + v('f-type') + ' || Inquiries/month: ' + v('f-vol') +
           ' || Src: ' + (window.qtSrcTag ? window.qtSrcTag() : 'unknown') + ' || Site: ' + (v('f-site') || '(none)') + ' || Notes: ' + (v('f-pain') || '(none)');
         btn.disabled = true; btn.textContent = 'Sending…';
-        fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(Object.fromEntries(new FormData(form).entries())) })
+        occSubmit(form)
           .then(function (r) { return r.json(); })
           .then(function (d) {
             if (d.success === 'true' || d.success === true) {
