@@ -1,0 +1,52 @@
+/* Occelatus Local shared styles (guides, fix, checklist). Main /local/ page keeps its own inline CSS. */
+:root{--bg:#f6f8f5;--card:#fff;--ink:#14213a;--ink2:#46526a;--dim:#7b8399;--line:rgba(20,33,58,.08);--line2:rgba(20,33,58,.14);
+--teal:#2a7d76;--teal2:#1f625c;--teal-soft:rgba(42,125,118,.10);--amber:#d0743f;--amber-soft:rgba(208,116,63,.10);--bad:#c9503f;
+--sh:0 2px 6px rgba(20,33,58,.04),0 10px 30px -12px rgba(20,33,58,.14);--sh-lg:0 30px 70px -28px rgba(20,33,58,.35)}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.015em;line-height:1.15}
+a{color:var(--teal2)}a:hover{color:var(--ink)}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px}.narrow{max-width:760px}
+header{position:sticky;top:0;z-index:50;background:rgba(246,248,245,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;justify-content:space-between;align-items:center;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;color:var(--ink);text-decoration:none}
+.brand .mk{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-size:15px}
+.brand small{font-weight:500;color:var(--dim);font-size:14px}
+.nav .links{display:flex;align-items:center;gap:24px;font-size:14.5px;font-weight:500}
+.nav .links a{color:var(--ink2);text-decoration:none}.nav .links a:hover{color:var(--ink)}
+@media(max-width:760px){.nav .links .hide-m{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border:0;border-radius:999px;font:600 15px 'Inter',sans-serif;cursor:pointer;text-decoration:none;transition:transform .15s,background .15s;white-space:nowrap}
+.btn-primary{background:var(--teal);color:#fff!important;box-shadow:0 10px 24px -10px rgba(42,125,118,.65)}.btn-primary:hover{background:var(--teal2);transform:translateY(-1px)}
+.btn-dark{background:var(--ink);color:#fff!important;padding:10px 20px;font-size:14px}
+.btn-outline{background:#fff;color:var(--ink)!important;border:1.5px solid var(--line2)}
+.btn:disabled{opacity:.6;cursor:wait;transform:none}
+.crumbs{font-size:13px;color:var(--dim);padding:22px 0 0}.crumbs a{color:var(--dim)}
+.hero{padding:28px 0 40px}.kick{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.hero h1{font-size:clamp(32px,4.6vw,50px);margin-bottom:16px}.hero .sub{font-size:18px;color:var(--ink2);max-width:640px}
+.meta{font-size:13px;color:var(--dim);margin-top:14px}
+article{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:40px 44px;box-shadow:var(--sh);margin-bottom:28px}
+@media(max-width:640px){article{padding:26px 20px;border-radius:18px}}
+article h2{font-size:27px;margin:34px 0 12px}article h2:first-child{margin-top:0}
+article h3{font:600 17px 'Inter',sans-serif;letter-spacing:0;margin:22px 0 6px}
+article p,article li{font-size:16px;color:#2c3850}article p{margin-bottom:14px}
+article ul,article ol{padding-left:22px;margin-bottom:16px}article li{margin-bottom:8px}
+.tldr{background:var(--teal-soft);border-radius:16px;padding:18px 22px;margin-bottom:26px}.tldr b{color:var(--teal2)}
+.warn{background:var(--amber-soft);border-radius:16px;padding:16px 20px;margin:18px 0;color:#7a3f1f}
+.example{background:var(--bg);border-left:3px solid var(--teal);border-radius:0 14px 14px 0;padding:14px 18px;margin:12px 0 18px;font-size:15px}
+.example b{display:block;font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--teal2);margin-bottom:4px}
+.cta{background:linear-gradient(135deg,#14213a,#1d3b4f 55%,#22524f);color:#fff;border-radius:24px;padding:34px 32px;margin:8px 0 28px;display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.cta h3{font-family:'Fraunces',serif;font-size:25px;color:#fff;margin:0 0 6px}.cta p{color:rgba(255,255,255,.78);margin:0;max-width:520px;font-size:15.5px}
+.cta .btns{display:flex;gap:10px;flex-wrap:wrap}.cta .btn-outline{background:transparent;color:#fff!important;border-color:rgba(255,255,255,.4)}
+.related{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px}@media(max-width:760px){.related{grid-template-columns:1fr}}
+.related a{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;text-decoration:none;color:var(--ink);font-weight:600;font-size:15px}
+.related a span{display:block;font-weight:400;font-size:13.5px;color:var(--ink2);margin-top:4px}.related a:hover{border-color:rgba(42,125,118,.4)}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh-lg);padding:30px 28px 24px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:460px){.row2{grid-template-columns:1fr}}
+.fld{margin-bottom:12px}.fld label{display:block;font-size:12.5px;font-weight:600;color:var(--ink2);margin-bottom:5px}.fld label i{font-style:normal;font-weight:500;color:var(--dim)}
+.fld input,.fld select,.fld textarea{width:100%;padding:13px 14px;border:1px solid var(--line2);border-radius:12px;background:#fbfcfb;color:var(--ink);font:500 15px 'Inter',sans-serif;outline:none}
+.fld textarea{min-height:84px;resize:vertical}.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--teal);background:#fff;box-shadow:0 0 0 4px var(--teal-soft)}
+.fcard .btn{width:100%;margin-top:6px;padding:16px}.fnote{text-align:center;font-size:12.5px;color:var(--dim);margin-top:12px}
+.ferr{display:none;margin-top:12px;font-size:13.5px;color:var(--bad);text-align:center}.fok{display:none;text-align:center;padding:24px 6px}
+.fok .ck{width:58px;height:58px;border-radius:50%;background:var(--teal-soft);display:grid;place-items:center;margin:0 auto 14px;color:var(--teal);font-size:26px}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;font-size:13.5px;color:var(--dim)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}footer a{color:var(--dim);text-decoration:none;margin-left:18px}footer a:first-child{margin-left:0}
