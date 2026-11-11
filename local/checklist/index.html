@@ -64,7 +64,7 @@
       <div class="score"><div class="ring" id="ring"><span id="sc">0/10</span></div><div><h2 style="margin:0 0 4px;font-size:26px" id="verdict"></h2><p style="margin:0;color:var(--ink2)" id="vsub"></p></div></div>
       <div id="fixes"></div>
       <p style="margin-top:16px;font-size:14.5px;color:var(--ink2)">This checklist is based on your own answers. Our free audit checks your real listing, compares you with the top three businesses near you, and is emailed within one business day.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a class="btn btn-primary" href="/local/#audit">Get my free audit &#8594;</a><a class="btn btn-outline" href="/local/fix/">Have us fix it</a><button class="btn btn-outline" type="button" id="again">Start over</button></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a class="btn btn-primary" id="cta-audit" href="/local/#audit">Get my free audit &#8594;</a><a class="btn btn-outline" id="cta-fix" href="/local/fix/">Have us fix it</a><button class="btn btn-outline" type="button" id="again">Start over</button></div>
     </article>
       <div class="related">
         <a href="/local/guides/suspended/">Profile suspended?<span>Why it happens and how to request reinstatement.</span></a>
@@ -99,8 +99,11 @@
       document.getElementById('vsub').textContent = s===10 ? 'Nice work. Keep it up every week.' : (10-s)+' thing'+(10-s===1?'':'s')+' to fix, listed below.';
       document.getElementById('fixes').innerHTML = out ? '<h3 style="margin-top:4px">What to fix</h3>'+out : '';
       var r=document.getElementById('result'); r.style.display='block'; r.scrollIntoView({behavior:'smooth'});
+      var ca=document.getElementById('cta-audit'), cf=document.getElementById('cta-fix');
+      if(s<=4){ cf.className='btn btn-primary'; ca.className='btn btn-outline'; cf.parentNode.insertBefore(cf,ca); } else { ca.className='btn btn-primary'; cf.className='btn btn-outline'; ca.parentNode.insertBefore(ca,cf); }
       if(typeof gtag!=='undefined') gtag('event','checklist_complete',{score:s});
     });
+    ['cta-audit','cta-fix'].forEach(function(id){ document.getElementById(id).addEventListener('click',function(){ if(typeof gtag!=='undefined') gtag('event','checklist_cta_click',{cta:id}); }); });
     document.getElementById('again').addEventListener('click',function(){ A={}; document.querySelectorAll('.opts button').forEach(function(b){b.classList.remove('on');}); prog.textContent='0 of 10 answered'; go.disabled=true; document.getElementById('result').style.display='none'; window.scrollTo({top:0,behavior:'smooth'}); });
   })();
   </script>
