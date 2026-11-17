@@ -8,6 +8,33 @@
 (function () {
   var W3F_KEY = '3940eb9e-cb2b-42ee-9ae7-15e3d3ab1566'; // public by design (Web3Forms access keys live in page HTML)
 
+  /* Ad-source attribution (2026-11-16, Meta test): remember where the visitor came from (last touch,
+   * 30 days, this browser only) and send it with the form as `ad_source` so leads can be credited to
+   * Meta vs Google vs organic. No cookies, no third-party calls. The intake parser ignores unknown keys. */
+  var SRC_KEY = 'occ_ad_source';
+  function detectSource() {
+    var q = new URLSearchParams(location.search);
+    var utm = (q.get('utm_source') || '').toLowerCase();
+    var ref = '';
+    try { ref = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
+    if (q.get('fbclid') || /^(facebook|fb|ig|instagram|meta)$/.test(utm) || /(^|\.)(facebook|instagram)\.com$/.test(ref)) return 'meta';
+    if (q.get('gclid') || q.get('gbraid') || q.get('wbraid') || utm === 'google') return 'google-ads';
+    if (utm) return 'utm:' + utm;
+    if (ref && ref.indexOf('occelatus.io') === -1) return 'ref:' + ref;
+    return '';
+  }
+  try {
+    var s = detectSource();
+    if (s) localStorage.setItem(SRC_KEY, JSON.stringify({ s: s, p: location.pathname, t: Date.now() }));
+  } catch (e) {}
+  function adSource() {
+    try {
+      var v = JSON.parse(localStorage.getItem(SRC_KEY) || 'null');
+      if (v && Date.now() - v.t < 30 * 864e5) return v.s + ' (landed ' + v.p + ', ' + new Date(v.t).toISOString().slice(0, 10) + ')';
+    } catch (e) {}
+    return 'direct/unknown';
+  }
+
   function post(url, body, ms) {
     var ctl = new AbortController();
     var t = setTimeout(function () { ctl.abort(); }, ms);
@@ -27,6 +54,7 @@
 
   window.occSubmit = function (form) {
     var data = Object.fromEntries(new FormData(form).entries());
+    if (!data.ad_source) data.ad_source = adSource();   // appended last so field order for the parser is unchanged
     var w3 = {};
     Object.keys(data).forEach(function (k) {
       if (k === '_subject') w3.subject = data[k];
