@@ -140,11 +140,12 @@
     var form=document.getElementById('fix-form'),btn=document.getElementById('fix-btn'),ok=document.getElementById('fix-ok'),err=document.getElementById('fix-err'),label=btn.innerHTML;
     var q=new URLSearchParams(location.search).get('issue');
     if(q){var s=document.getElementById('f-issue');for(var i=0;i<s.options.length;i++){if(s.options[i].text.toLowerCase().indexOf(q.toLowerCase())>-1){s.selectedIndex=i;break;}}}
+    var CK=['verified/suspension','primary category','name-address-phone match','hours','recent photos','review replies','new reviews','recent posts','services/description','duplicates'];var ck=(function(){var p=new URLSearchParams(location.search),s=parseInt(p.get('cs'),10);if(isNaN(s)||s<0||s>10)return '';var m=(p.get('miss')||'').split(',').filter(function(x){return /^[0-9]$/.test(x);}).map(function(x){return CK[+x];});return ' || Checklist: '+s+'/10'+(m.length?' (needs work: '+m.join(', ')+')':'');})();
     form.addEventListener('submit',async function(e){
       e.preventDefault();btn.disabled=true;btn.textContent='Sending...';err.style.display='none';
       try{
         var v=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
-        document.getElementById('f-msg').value='[Local audit] [Profile Fix] Issue: '+v('f-issue')+' || Business: '+v('f-biz')+' || City: '+(v('f-city')||'(not given)')+' || Maps: '+(v('f-url')||'(none)')+' || Details: '+(v('f-det')||'(none)');
+        document.getElementById('f-msg').value='[Local audit] [Profile Fix] Issue: '+v('f-issue')+' || Business: '+v('f-biz')+' || City: '+(v('f-city')||'(not given)')+' || Maps: '+(v('f-url')||'(none)')+' || Details: '+(v('f-det')||'(none)')+ck;
         await occSubmit(form);
         form.style.display='none';ok.style.display='block';
         if(typeof gtag!=='undefined')gtag('event','conversion',{'send_to':'AW-18399941905/EBgrCO3AhuccEJGq48VE'});

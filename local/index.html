@@ -803,12 +803,13 @@
         a.addEventListener('click', function(){ setTimeout(function(){ document.getElementById('f-biz').focus({preventScroll:true}); }, 450); });
       });
 
+      var CK=['verified/suspension','primary category','name-address-phone match','hours','recent photos','review replies','new reviews','recent posts','services/description','duplicates'];var ck=(function(){var p=new URLSearchParams(location.search),s=parseInt(p.get('cs'),10);if(isNaN(s)||s<0||s>10)return '';var m=(p.get('miss')||'').split(',').filter(function(x){return /^[0-9]$/.test(x);}).map(function(x){return CK[+x];});return ' || Checklist: '+s+'/10'+(m.length?' (needs work: '+m.join(', ')+')':'');})();
       form.addEventListener('submit', async function(e){
         e.preventDefault();
         btn.disabled = true; btn.textContent = 'Sending...'; err.style.display = 'none';
         try {
           var v = function(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-          document.getElementById('f-msg').value = '[Local audit] Business: ' + v('f-biz') + ' || Type: (not given) || City: ' + (v('f-city') || '(not given)') + ' || Maps: ' + (v('f-url') || '(none)');
+          document.getElementById('f-msg').value = '[Local audit] Business: ' + v('f-biz') + ' || Type: (not given) || City: ' + (v('f-city') || '(not given)') + ' || Maps: ' + (v('f-url') || '(none)') + ck;
           await occSubmit(form);  // Web3Forms first, FormSubmit fallback; throws if both fail
           form.style.display = 'none'; ok.style.display = 'block';
           if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE' });
