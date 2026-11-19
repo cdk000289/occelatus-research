@@ -106,6 +106,7 @@
     .fld input::placeholder{color:#a3a9b8}
     .more{background:none;border:0;color:var(--teal2);font:600 13px 'Inter',sans-serif;cursor:pointer;padding:2px 0 10px}
     .fcard .btn{width:100%;margin-top:6px;padding:16px}
+    .falt{font-size:13px;color:var(--dim);text-align:center;margin-top:10px}.falt a{color:var(--teal2);font-weight:600}
     .fnote{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--dim);margin-top:14px}
     .ferr{display:none;margin-top:12px;font-size:13.5px;color:var(--bad);text-align:center}
     .fok{display:none;text-align:center;padding:28px 6px 18px}
@@ -464,14 +465,14 @@
     <div class="wrap grid">
       <div>
         <span class="pill"><b>FREE</b> 10-point Google Business Profile audit</span>
-        <h1>Make your Google listing the one that <em>gets the call.</em></h1>
-        <p class="sub">When someone nearby searches for what you do, they compare three listings and call the one that looks busy, trusted and up to date. We keep yours that way, every week, for a flat monthly fee.</p>
+        <h1>Is your Google listing losing you calls? <em>Get a free 10-point audit.</em></h1>
+        <p class="sub">For local business owners. We look at your Google Business Profile the way a customer does, compare it with your top 3 nearby competitors, and email you a plain-English list of what to fix. It&rsquo;s free whether or not you ever hire us.</p>
         <ul class="checks">
-          <li>Every review answered, the good and the bad</li>
-          <li>Fresh posts and photos on your profile every week</li>
-          <li>An easy way to collect more real reviews from happy customers</li>
+          <li>Category, hours, photos and details checked against Google&rsquo;s own guidelines</li>
+          <li>Your reviews and replies side by side with your top 3 local competitors</li>
+          <li>A short fix list you can do yourself, or have us do for $149/mo</li>
         </ul>
-        <div class="mini-trust"><span>No password needed</span><span>No contract</span><span>$149/mo founding price</span></div>
+        <div class="mini-trust"><span>No password needed</span><span>No card, no sales call</span><span>Takes 30 seconds</span></div>
       </div>
 
       <div class="fcard" id="audit">
@@ -488,14 +489,15 @@
             <div class="fld"><label for="f-biz">Business name</label><input type="text" id="f-biz" name="company" placeholder="Sunrise Plumbing" autocomplete="organization" required></div>
             <div class="fld"><label for="f-city">City</label><input type="text" id="f-city" name="city" placeholder="Austin, TX" autocomplete="address-level2" required></div>
           </div>
-          <div class="row2">
-            <div class="fld"><label for="f-name">Your name</label><input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name" required></div>
-            <div class="fld"><label for="f-email">Email</label><input type="email" id="f-email" name="email" placeholder="jane@business.com" autocomplete="email" required></div>
+          <div class="fld"><label for="f-email">Email for your report</label><input type="email" id="f-email" name="email" placeholder="jane@business.com" autocomplete="email" inputmode="email" required></div>
+          <button type="button" class="more" id="more-btn">+ Add your name or Google Maps link (optional)</button>
+          <div id="more-fld" hidden>
+            <div class="fld"><label for="f-name">Your name <i>(optional)</i></label><input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name"></div>
+            <div class="fld"><label for="f-url">Google Maps link <i>(optional)</i></label><input type="text" id="f-url" name="maps_link" placeholder="Paste the link to your listing"></div>
           </div>
-          <button type="button" class="more" id="more-btn">+ Add your Google Maps link (optional)</button>
-          <div class="fld" id="more-fld" hidden><label for="f-url">Google Maps link <i>(optional)</i></label><input type="text" id="f-url" name="maps_link" placeholder="Paste the link to your listing"></div>
           <button type="submit" class="btn btn-primary" id="audit-btn">Send me my free audit &#8594;</button>
           <div class="fnote"><span>&#128274; No card</span><span>No sales call</span><span>Report in 1 business day</span></div>
+          <p class="falt">Want a score right now? <a href="/local/checklist/" onclick="window.gtag&&gtag('event','hero_checklist_click')">Check your listing yourself in 2 minutes</a> (no signup).</p>
           <div class="ferr" id="audit-err"></div>
         </form>
         <div class="fok" id="audit-ok">
@@ -795,7 +797,7 @@
 
       document.getElementById('more-btn').addEventListener('click', function(){
         document.getElementById('more-fld').hidden = false; this.hidden = true;
-        document.getElementById('f-url').focus();
+        document.getElementById('f-name').focus();
       });
 
       // Focus the first field when a CTA jumps to the form
