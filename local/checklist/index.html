@@ -77,10 +77,33 @@
     <article id="result" style="margin-top:22px">
       <div class="score"><div class="ring" id="ring"><span id="sc">0/10</span></div><div><h2 style="margin:0 0 4px;font-size:26px" id="verdict"></h2><p style="margin:0;color:var(--ink2)" id="vsub"></p></div></div>
       <div id="fixes"></div>
-      <p style="margin-top:16px;font-size:14.5px;color:var(--ink2)">This checklist is based on your own answers. Our free audit checks your real listing, compares you with the top three businesses near you, and is emailed within one business day. If you ask for the audit or a fix from here, your score and the items to fix are sent with your request, so you don&#8217;t have to repeat them.</p>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a class="btn btn-primary" id="cta-audit" href="/local/#audit">Get my free audit &#8594;</a><a class="btn btn-outline" id="cta-fix" href="/local/fix/">Have us fix it</a><button class="btn btn-outline" type="button" id="again">Start over</button></div>
+      <p style="margin-top:16px;font-size:14.5px;color:var(--ink2)">This checklist is based on your own answers. Our free audit checks your real listing, compares you with the top three businesses near you, and is emailed within one business day. Ask for it right here: your score and the items to fix are sent with your request, so you don&#8217;t have to repeat them.</p>
+      <div class="fcard" id="ck-audit" style="margin-top:14px">
+        <form id="ck-form" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST">
+          <input type="hidden" name="_subject" value="New automation inquiry [local] — occelatus.io/local/checklist">
+          <input type="hidden" name="service" value="local">
+          <input type="hidden" name="message" id="ck-msg">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="source" value="local-checklist-result">
+          <div class="ft">Get your free audit</div>
+          <p class="fs">We check your real Google profile on 10 points and email you a plain-English report within one business day.</p>
+          <div class="row2">
+            <div class="fld"><label for="ck-biz">Business name</label><input type="text" id="ck-biz" name="company" placeholder="Sunrise Plumbing" autocomplete="organization" required></div>
+            <div class="fld"><label for="ck-city">City</label><input type="text" id="ck-city" name="city" placeholder="Austin, TX" autocomplete="address-level2" required></div>
+          </div>
+          <div class="fld"><label for="ck-email">Email for your report</label><input type="email" id="ck-email" name="email" placeholder="jane@business.com" autocomplete="email" inputmode="email" required></div>
+          <button type="submit" class="btn btn-primary" id="ck-btn">Send me my free audit &#8594;</button>
+          <div class="fnote"><span>&#128274; No card</span><span>No sales call</span><span>Report in 1 business day</span></div>
+          <div class="ferr" id="ck-err"></div>
+        </form>
+        <div class="fok" id="ck-ok"><div class="ck">&#10003;</div><h3>Got it. Your audit is on the way.</h3><p>We'll email your 10-point report within one business day. If you don't see it, check spam or write to local@occelatus.io.</p></div>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><a class="btn btn-outline" id="cta-fix" href="/local/fix/">Have us fix it</a><button class="btn btn-outline" type="button" id="again">Start over</button></div>
     </article>
       <div class="related">
+        <a href="/local/guides/holiday-hours/">Holiday hours wrong on Google?<span>Set special hours so customers know when you're open.</span></a>
+        <a href="/local/guides/info-changed/">Google changed your info?<span>Why edits appear on your listing and how to fix them.</span></a>
         <a href="/local/guides/home-services/">Locksmith, garage door, HVAC or plumber?<span>Why Google checks your trade harder.</span></a>
         <a href="/local/guides/moved-address/">Moved your business?<span>Change your address without losing the profile.</span></a>
         <a href="/local/guides/suspended/">Profile suspended?<span>Why it happens and how to request reinstatement.</span></a>
@@ -99,9 +122,11 @@
     <div>&copy; 2026 Occelatus Labs &middot; Occelatus Local is not affiliated with or endorsed by Google.</div>
     <div><a href="/local/">Home</a><a href="mailto:local@occelatus.io">local@occelatus.io</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></div>
   </div></footer>
+  <script src="/js/lead-submit.js?v=2"></script>
   <script>
   (function(){
     var D=[{"q": "Is your profile verified, with no suspension notice?", "fix": "Verify the profile, or follow our suspension guide if there's a notice.", "link": "/local/guides/suspended/"}, {"q": "Is your primary category the most specific one for your main service?", "fix": "Pick the most specific category (e.g. \"Plumber\", not \"Contractor\") and add secondary ones for other real services.", "link": "/local/guides/not-showing-on-maps/"}, {"q": "Do your name, address and phone match your website exactly?", "fix": "Make them identical everywhere. Use your real business name, with no extra keywords.", "link": null}, {"q": "Are your hours correct, including holiday hours?", "fix": "Update regular hours and add holiday hours as special hours before each holiday. Don't change your weekly hours for a one-off date.", "link": "/local/guides/holiday-hours/"}, {"q": "Have you added photos in the last 3 months?", "fix": "Upload 5 recent photos: your team, real jobs, your storefront or vehicles.", "link": null}, {"q": "Have you replied to every review from the last 6 months?", "fix": "Reply to every review, good and bad. Start with the newest. Stuck on a fake, stars-only or private-service review? Our guide has example replies.", "link": "/local/guides/negative-reviews/#tricky"}, {"q": "Did you get at least 2 new reviews last month?", "fix": "Ask every customer after each job, with your direct review link. Ask everyone, not just happy customers.", "link": null}, {"q": "Have you posted an update in the last 30 days?", "fix": "Post an offer, a recent job or a seasonal tip every week or two. If your posts keep getting rejected, see why.", "link": "/local/guides/posts-rejected/"}, {"q": "Are your services and business description filled in?", "fix": "List each service with a one-line description, and write a clear description for customers.", "link": null}, {"q": "Is there only one listing for your business on Maps?", "fix": "Search your phone number and address on Maps and report or merge any duplicates.", "link": "/local/guides/duplicate-listing/"}], A={};
+    var CK=['verified/suspension','primary category','name-address-phone match','hours','recent photos','review replies','new reviews','recent posts','services/description','duplicates'], CKS='';
     var prog=document.getElementById('prog'), go=document.getElementById('go');
     document.querySelectorAll('.q').forEach(function(q){
       q.querySelectorAll('button').forEach(function(b){
@@ -122,12 +147,27 @@
       document.getElementById('vsub').textContent = s===10 ? 'Nice work. Keep it up every week.' : (10-s)+' thing'+(10-s===1?'':'s')+' to fix, listed below.';
       document.getElementById('fixes').innerHTML = out ? '<h3 style="margin-top:4px">What to fix</h3>'+out : '';
       var r=document.getElementById('result'); r.style.display='block'; r.scrollIntoView({behavior:'smooth'});
-      var ca=document.getElementById('cta-audit'), cf=document.getElementById('cta-fix');
-      if(s<=4){ cf.className='btn btn-primary'; ca.className='btn btn-outline'; cf.parentNode.insertBefore(cf,ca); } else { ca.className='btn btn-primary'; cf.className='btn btn-outline'; ca.parentNode.insertBefore(ca,cf); }
-      var miss=[];D.forEach(function(d,i){if(A[i]!=='y')miss.push(i);});var qs='?cs='+s+(miss.length?'&miss='+miss.join(','):'');ca.href='/local/'+qs+'#audit';cf.href='/local/fix/'+qs;
+      var cf=document.getElementById('cta-fix'); cf.className = s<=4 ? 'btn btn-primary' : 'btn btn-outline';
+      var miss=[];D.forEach(function(d,i){if(A[i]!=='y')miss.push(i);});var qs='?cs='+s+(miss.length?'&miss='+miss.join(','):'');cf.href='/local/fix/'+qs;
+      CKS=' || Checklist: '+s+'/10'+(miss.length?' (needs work: '+miss.map(function(i){return CK[i];}).join(', ')+')':'');
       if(typeof gtag!=='undefined') gtag('event','checklist_complete',{score:s});
     });
-    ['cta-audit','cta-fix'].forEach(function(id){ document.getElementById(id).addEventListener('click',function(){ if(typeof gtag!=='undefined') gtag('event','checklist_cta_click',{cta:id}); }); });
+    document.getElementById('cta-fix').addEventListener('click',function(){ if(typeof gtag!=='undefined') gtag('event','checklist_cta_click',{cta:'cta-fix'}); });
+    var ckf=document.getElementById('ck-form'), ckb=document.getElementById('ck-btn'), ckl=ckb.innerHTML, cke=document.getElementById('ck-err'), started=false;
+    ckf.addEventListener('focusin',function(){ if(!started){ started=true; if(typeof gtag!=='undefined') gtag('event','checklist_form_start'); } });
+    ckf.addEventListener('submit', async function(e){
+      e.preventDefault(); ckb.disabled=true; ckb.textContent='Sending...'; cke.style.display='none';
+      try {
+        var v=function(id){ var el=document.getElementById(id); return el?el.value.trim():''; };
+        document.getElementById('ck-msg').value='[Local audit] Business: '+v('ck-biz')+' || Type: (not given) || City: '+(v('ck-city')||'(not given)')+' || Maps: (none)'+CKS+' || From: checklist result';
+        await occSubmit(ckf);  // Web3Forms first, FormSubmit fallback; throws if both fail
+        ckf.style.display='none'; document.getElementById('ck-ok').style.display='block';
+        if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE' });
+      } catch (ex) {
+        ckb.disabled=false; ckb.innerHTML=ckl;
+        cke.textContent='Something went wrong. Please email local@occelatus.io and we will send your audit.'; cke.style.display='block';
+      }
+    });
     document.getElementById('again').addEventListener('click',function(){ A={}; document.querySelectorAll('.opts button').forEach(function(b){b.classList.remove('on');}); prog.textContent='0 of 10 answered'; go.disabled=true; document.getElementById('result').style.display='none'; window.scrollTo({top:0,behavior:'smooth'}); });
   })();
   </script>
