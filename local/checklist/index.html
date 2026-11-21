@@ -87,7 +87,7 @@
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="source" value="local-checklist-result">
           <div class="ft">Get your free audit</div>
-          <p class="fs">We check your real Google profile on 10 points and email you a plain-English report within one business day.</p>
+          <p class="fs">We check your real Google profile on 10 points and email you a plain-English report within one business day. Every report is checked by a person before we send it, and no Google sign-in is needed. <a href="/local/#inside" id="ck-sample" style="font-weight:600">See what the report looks like &#8594;</a></p>
           <div class="row2">
             <div class="fld"><label for="ck-biz">Business name</label><input type="text" id="ck-biz" name="company" placeholder="Sunrise Plumbing" autocomplete="organization" required></div>
             <div class="fld"><label for="ck-city">City</label><input type="text" id="ck-city" name="city" placeholder="Austin, TX" autocomplete="address-level2" required></div>
@@ -152,6 +152,7 @@
       CKS=' || Checklist: '+s+'/10'+(miss.length?' (needs work: '+miss.map(function(i){return CK[i];}).join(', ')+')':'');
       if(typeof gtag!=='undefined') gtag('event','checklist_complete',{score:s});
     });
+    document.getElementById('ck-sample').addEventListener('click',function(){ if(typeof gtag!=='undefined') gtag('event','checklist_cta_click',{cta:'ck-sample'}); });
     document.getElementById('cta-fix').addEventListener('click',function(){ if(typeof gtag!=='undefined') gtag('event','checklist_cta_click',{cta:'cta-fix'}); });
     var ckf=document.getElementById('ck-form'), ckb=document.getElementById('ck-btn'), ckl=ckb.innerHTML, cke=document.getElementById('ck-err'), started=false;
     ckf.addEventListener('focusin',function(){ if(!started){ started=true; if(typeof gtag!=='undefined') gtag('event','checklist_form_start'); } });
