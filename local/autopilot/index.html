@@ -95,6 +95,8 @@
     footer a{color:var(--dim)}
   </style>
 <script src="/js/lead-submit.js?v=2"></script>
+<!-- Microsoft Clarity: session recordings + scroll/attention heatmaps (project zhspjfqm3l, added 2026-11-22). Masks form inputs by default. -->
+<script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","zhspjfqm3l");clarity("set","offer",/autopilot/.test(location.pathname)?"39":"149");</script>
 </head>
 <body>
   <div class="wrap">
@@ -213,7 +215,7 @@
       var $ = function(id){ return document.getElementById(id); };
       var form = $('audit-form'), btn = $('audit-btn'), ok = $('audit-ok'), err = $('audit-err');
       var biz = $('f-biz'), email = $('f-email'), s1 = $('step1'), s2 = $('step2');
-      var ev = function(n, p){ if (typeof gtag !== 'undefined') gtag('event', n, p || {}); };
+      var ev = function(n, p){ if (typeof gtag !== 'undefined') gtag('event', n, p || {}); if (window.clarity) clarity('event', n); };
 
       function goStep2(){
         var v = biz.value.trim();
