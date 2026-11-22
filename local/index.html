@@ -11,11 +11,12 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Google Business Profile management for local businesses. Weekly posts, every review answered, a steady stream of new reviews. Start with a free 10-point audit. $149/mo, no contract.">
-  <title>Google Business Profile Management for Local Businesses — Occelatus Local</title>
+  <!-- 2026-11-22 [ovn] landing overhaul: short single-goal page (spec: ventures/local/landing-overhaul-2026-11-21.md). Old long page is in git history. -->
+  <meta name="description" content="Free 10-point audit of your Google Business Profile, checked by a person and emailed in 1 business day. No card, no sales call. Managed listing from $149/mo, no contract.">
+  <title>Free 10-Point Google Business Profile Audit — Occelatus Local</title>
   <link rel="canonical" href="https://occelatus.io/local/">
-  <meta property="og:title" content="Google Business Profile management — Occelatus Local">
-  <meta property="og:description" content="Weekly posts, every review answered, more real reviews. Free 10-point audit.">
+  <meta property="og:title" content="Free 10-point audit of your Google Business Profile — Occelatus Local">
+  <meta property="og:description" content="Emailed in 1 business day. No card, no sales call.">
   <meta property="og:url" content="https://occelatus.io/local/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Occelatus Local">
@@ -24,836 +25,264 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Occelatus Local: Make your Google listing the one that gets the call. Free 10-point Google Business Profile audit.">
+  <meta property="og:image:alt" content="Occelatus Local: free 10-point Google Business Profile audit.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Google Business Profile management — Occelatus Local">
-  <meta name="twitter:description" content="Weekly posts, every review answered, more real reviews. Free 10-point audit.">
+  <meta name="twitter:title" content="Free 10-point audit of your Google Business Profile — Occelatus Local">
+  <meta name="twitter:description" content="Emailed in 1 business day. No card, no sales call.">
   <meta name="twitter:image" content="https://occelatus.io/local/img/og-local.jpg">
   <meta name="theme-color" content="#f6f8f5">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#f6f8f5; --card:#fff; --ink:#14213a; --ink2:#46526a; --dim:#7b8399;
-      --line:rgba(20,33,58,.08); --line2:rgba(20,33,58,.14);
-      --teal:#2a7d76; --teal2:#1f625c; --teal-soft:rgba(42,125,118,.10);
-      --amber:#d0743f; --amber-soft:rgba(208,116,63,.10);
-      --star:#f5a623; --bad:#c9503f;
-      --r:20px; --rs:12px;
-      --sh:0 2px 6px rgba(20,33,58,.04),0 10px 30px -12px rgba(20,33,58,.14);
-      --sh-lg:0 30px 70px -28px rgba(20,33,58,.35);
-    }
+    :root{--bg:#f6f8f5;--card:#fff;--ink:#14213a;--ink2:#46526a;--dim:#7b8399;--line:rgba(20,33,58,.10);--teal:#2a7d76;--teal2:#1f625c;--teal-soft:rgba(42,125,118,.10);--amber:#c9702f;--amber-soft:rgba(208,116,63,.12);--bad:#c9503f;--bad-soft:rgba(201,80,63,.10);--r:16px}
     *{margin:0;padding:0;box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:84px}
-    body{font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
-    h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.015em}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-
-    /* header */
-    header{position:sticky;top:0;z-index:50;background:rgba(246,248,245,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .2s}
-    header.scrolled{border-bottom-color:var(--line2)}
-    .nav{display:flex;justify-content:space-between;align-items:center;height:68px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
-    .brand .mk{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-size:15px}
-    .brand small{font-weight:500;color:var(--dim);font-size:14px}
-    .nav .links{display:flex;align-items:center;gap:28px;font-size:14.5px;font-weight:500;color:var(--ink2)}
-    .nav .links a:hover{color:var(--ink)}
-    @media(max-width:760px){.nav .links .hide-m{display:none}}
-
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border:0;border-radius:999px;font:600 15px 'Inter',sans-serif;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s;white-space:nowrap}
-    .btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 24px -10px rgba(42,125,118,.65)}
-    .btn-primary:hover{background:var(--teal2);transform:translateY(-1px)}
-    .btn-dark{background:var(--ink);color:#fff;padding:10px 20px;font-size:14px}
-    .btn-light{background:#fff;color:var(--ink)}
-    .btn:disabled{opacity:.6;cursor:wait;transform:none}
-
-    /* hero */
-    .hero{position:relative;padding:56px 0 72px;overflow:hidden}
-    .hero::before{content:"";position:absolute;inset:-20% -10% auto -10%;height:760px;z-index:-1;
-      background:radial-gradient(520px 360px at 12% 20%,rgba(42,125,118,.16),transparent 70%),
-                 radial-gradient(480px 340px at 88% 8%,rgba(208,116,63,.14),transparent 70%),
-                 radial-gradient(600px 300px at 60% 90%,rgba(42,125,118,.08),transparent 70%);
-      -webkit-mask-image:linear-gradient(#000 55%,transparent 92%);mask-image:linear-gradient(#000 55%,transparent 92%)}
-    .hero .grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
-    @media(max-width:960px){.hero .grid{grid-template-columns:1fr;gap:36px}}
-    @media(max-width:680px){.hero{padding:36px 0 56px}.hero .checks{display:none}.hero .sub{margin-bottom:18px}}
-    .pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--teal2);background:#fff;border:1px solid var(--line2);padding:6px 14px 6px 8px;border-radius:999px;box-shadow:var(--sh);margin-bottom:22px}
-    .pill b{background:var(--teal);color:#fff;font-size:11px;letter-spacing:.04em;padding:3px 8px;border-radius:999px}
-    .hero h1{font-size:clamp(34px,5.2vw,60px);line-height:1.04;margin-bottom:20px}
-    .hero h1 em{font-style:italic;color:var(--teal)}
-    .hero .sub{font-size:clamp(17px,1.6vw,19px);color:var(--ink2);max-width:540px;margin-bottom:26px}
-    .checks{list-style:none;display:grid;gap:10px;margin-bottom:28px}
-    .checks li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;font-weight:500}
-    .checks li::before{content:"";flex:0 0 22px;height:22px;border-radius:50%;background:var(--teal-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232a7d76' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4 8-9'/%3E%3C/svg%3E") center/13px no-repeat;margin-top:1px}
-    .mini-trust{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px;color:var(--dim)}
-    .mini-trust span{display:inline-flex;align-items:center;gap:6px}
-    .mini-trust span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal)}
-
-    /* form card */
-    .fcard{position:relative;background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--sh-lg);padding:30px 28px 24px}
-    .fcard::before{content:"";position:absolute;inset:-1px;border-radius:25px;padding:1px;background:linear-gradient(160deg,rgba(42,125,118,.5),rgba(208,116,63,.35) 60%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
-    .fcard .ft{font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1.2;margin-bottom:6px}
-    .fcard .fs{font-size:14px;color:var(--ink2);margin-bottom:20px}
-    .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    @media(max-width:460px){.row2{grid-template-columns:1fr}}
-    .fld{margin-bottom:12px}
-    .fld label{display:block;font-size:12.5px;font-weight:600;color:var(--ink2);margin-bottom:5px}
-    .fld label i{font-style:normal;font-weight:500;color:var(--dim)}
-    .fld input{width:100%;padding:13px 14px;border:1px solid var(--line2);border-radius:var(--rs);background:#fbfcfb;color:var(--ink);font:500 15px 'Inter',sans-serif;outline:none;transition:border-color .15s,box-shadow .15s,background .15s}
-    .fld input:focus{border-color:var(--teal);background:#fff;box-shadow:0 0 0 4px var(--teal-soft)}
-    .fld input::placeholder{color:#a3a9b8}
-    .more{background:none;border:0;color:var(--teal2);font:600 13px 'Inter',sans-serif;cursor:pointer;padding:2px 0 10px}
-    .fcard .btn{width:100%;margin-top:6px;padding:16px}
-    .falt{font-size:13px;color:var(--dim);text-align:center;margin-top:10px}.falt a{color:var(--teal2);font-weight:600}
-    .fnote{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--dim);margin-top:14px}
-    .ferr{display:none;margin-top:12px;font-size:13.5px;color:var(--bad);text-align:center}
-    .fok{display:none;text-align:center;padding:28px 6px 18px}
-    .fok .ck{width:60px;height:60px;border-radius:50%;background:var(--teal-soft);display:grid;place-items:center;margin:0 auto 16px;color:var(--teal);font-size:28px}
-    .fok h3{font-size:24px;margin-bottom:8px}
-    .fok p{font-size:14.5px;color:var(--ink2)}
-
-    /* facts strip */
-    .facts{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.6)}
-    .facts .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px 28px;padding-top:20px;padding-bottom:20px}
-    .facts div{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--ink2)}
-    .facts .ic{width:34px;height:34px;border-radius:10px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:16px}
-    @media(max-width:760px){.facts .wrap{justify-content:flex-start}.facts div{flex:1 1 44%}}
-
-
-
-    /* problem strip */
-    .probs{padding:28px 0 0}
-    .navhelp{padding:14px 0 0}.navhelp p{margin:0;font-size:14px;color:var(--ink2);background:#fff;border:1px dashed var(--line);border-radius:12px;padding:12px 16px}.navhelp a{font-weight:600}
-    .probs .row{display:grid;grid-template-columns:auto repeat(4,1fr);gap:12px;align-items:stretch}
-    @media(max-width:980px){.probs .row{grid-template-columns:1fr 1fr}.probs .lbl{grid-column:1/-1}}
-    .probs .lbl{display:flex;flex-direction:column;justify-content:center;padding-right:10px}
-    .probs .lbl b{font-family:'Fraunces',serif;font-size:20px}.probs .lbl span{font-size:13.5px;color:var(--ink2)}
-    .probs a.p{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;font-weight:600;font-size:14.5px;transition:border-color .2s,transform .2s}
-    .probs a.p:hover{border-color:rgba(42,125,118,.4);transform:translateY(-2px)}
-    .probs a.p span{display:block;font-weight:500;font-size:12.5px;color:var(--teal2);margin-top:3px}
-
-    /* photo band */
-    .band{padding:56px 0 8px}
-    .band .holder{position:relative}
-    .band .frame{position:relative;border-radius:28px;overflow:hidden;box-shadow:var(--sh-lg);aspect-ratio:1264/848;max-height:560px;width:100%;background:#d9d4c8}
-    .band picture,.band img{display:block;width:100%;height:100%}
-    .band img{object-fit:cover;object-position:70% 40%}
-    .band .frame::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,33,58,.28),rgba(20,33,58,0) 55%);pointer-events:none}
-    .rcard{position:absolute;left:5%;top:50%;transform:translateY(-50%);z-index:2;width:min(380px,42%);background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-radius:18px;box-shadow:0 24px 50px -18px rgba(20,33,58,.5);padding:18px 18px 16px;font-size:13.5px}
-    .rcard .who{display:flex;align-items:center;gap:10px}
-    .rcard .av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#7aa7a2,#2a7d76);color:#fff;font-weight:700;display:grid;place-items:center;font-size:15px}
-    .rcard .nm{font-weight:700;font-size:14px;line-height:1.2}
-    .rcard .sm{font-size:12px;color:var(--dim)}
-    .rcard .stars{margin:10px 0 6px}
-    .rcard .txt{color:var(--ink);line-height:1.5}
-    .rcard .own{margin-top:12px;padding:10px 12px;border-left:3px solid var(--teal);background:var(--bg);border-radius:0 10px 10px 0;color:var(--ink2);line-height:1.5}
-    .rcard .own b{display:block;font-size:11.5px;color:var(--teal2);margin-bottom:2px}
-    .rcard .ex{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);background:var(--bg);border:1px solid var(--line);padding:2px 8px;border-radius:999px;float:right}
-    @media(max-width:760px){
-      .band{padding:36px 0 0}
-      .band .frame{aspect-ratio:4/3;border-radius:22px}
-      .band img{object-position:78% 40%}
-      .rcard{position:relative;left:auto;top:auto;transform:none;width:auto;margin:-64px 14px 0;font-size:13px}
-    }
-
-    /* sections */
-    .sec{padding:88px 0}
-    .sec.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-    .kick{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-    .h2{font-size:clamp(28px,3.6vw,42px);line-height:1.12;margin-bottom:14px}
-    .lead{font-size:17px;color:var(--ink2);max-width:620px}
-    .center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
-    .head{margin-bottom:44px}
-
-    /* audit contents */
-    .audit-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-    @media(max-width:960px){.audit-grid{grid-template-columns:1fr}}
-    .points{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px;counter-reset:p}
-    @media(max-width:560px){.points{grid-template-columns:1fr}}
-    .points li{counter-increment:p;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px 14px 52px;position:relative;font-size:14px;color:var(--ink2);transition:border-color .2s,transform .2s}
-    .points li:hover{border-color:rgba(42,125,118,.35);transform:translateY(-2px)}
-    .points li::before{content:counter(p);position:absolute;left:14px;top:14px;width:26px;height:26px;border-radius:8px;background:var(--teal-soft);color:var(--teal2);font-weight:700;font-size:13px;display:grid;place-items:center}
-    .points b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:2px}
-    .report{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh-lg);overflow:hidden;position:sticky;top:96px}
-    .report .rh{display:flex;align-items:center;gap:18px;padding:22px 24px;border-bottom:1px solid var(--line)}
-    .ring{--v:60;width:74px;height:74px;border-radius:50%;flex:0 0 74px;background:conic-gradient(var(--amber) calc(var(--v)*1%),#eef1ee 0);display:grid;place-items:center}
-    .ring span{width:58px;height:58px;border-radius:50%;background:#fff;display:grid;place-items:center;font:700 19px 'Fraunces',serif}
-    .report .rt{font-weight:700;font-size:16px}
-    .report .rm{font-size:12.5px;color:var(--dim)}
-    .report ul{list-style:none;padding:8px 24px}
-    .report li{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
-    .report li:last-child{border:0}
-    .st{font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;white-space:nowrap}
-    .st.ok{background:var(--teal-soft);color:var(--teal2)}
-    .st.fix{background:var(--amber-soft);color:#a9552a}
-    .report .rf{padding:16px 24px;background:var(--bg);font-size:13px;color:var(--ink2);border-top:1px solid var(--line)}
-    .report .rf b{color:var(--ink)}
-    .tagline{font-size:11.5px;color:var(--dim);text-align:center;padding:10px;border-top:1px solid var(--line)}
-
-    /* before / after */
-    .ba{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-    @media(max-width:820px){.ba{grid-template-columns:1fr}}
-    .lst{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--sh)}
-    .lst .lbl{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin-bottom:16px}
-    .lst.bad .lbl{background:#f6e7e4;color:var(--bad)}
-    .lst.good .lbl{background:var(--teal-soft);color:var(--teal2)}
-    .lst.good{border-color:rgba(42,125,118,.35)}
-    .lst .nm{font-weight:700;font-size:17px}
-    .lst .meta{font-size:12.5px;color:var(--dim);margin:2px 0 8px}
-    .stars{color:var(--star);font-size:14px;letter-spacing:1px}
-    .stars small{color:var(--dim);letter-spacing:0;font-weight:500;margin-left:6px}
-    .lst .items{list-style:none;margin-top:14px;display:grid;gap:8px}
-    .lst .items li{font-size:13.5px;color:var(--ink2);display:flex;gap:8px}
-    .lst.bad .items li::before{content:"\2715";color:var(--bad);font-weight:700}
-    .lst.good .items li::before{content:"\2713";color:var(--teal);font-weight:700}
-    .bubble{margin-top:14px;background:var(--bg);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--ink2)}
-    .bubble b{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal2);margin-bottom:4px}
-    .illus{font-size:12px;color:var(--dim);text-align:center;margin-top:16px}
-
-    /* features */
-    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    @media(max-width:1000px){.features{grid-template-columns:1fr 1fr}}
-    @media(max-width:560px){.features{grid-template-columns:1fr}}
-    .feat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;transition:transform .2s,box-shadow .2s}
-    .feat:hover{transform:translateY(-3px);box-shadow:var(--sh)}
-    .feat .ic{width:44px;height:44px;border-radius:12px;background:var(--teal-soft);display:grid;place-items:center;font-size:20px;margin-bottom:16px}
-    .feat h3{font:600 17px 'Inter',sans-serif;margin-bottom:6px;letter-spacing:0}
-    .feat p{font-size:14px;color:var(--ink2)}
-
-    /* steps */
-    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative}
-    @media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
-    @media(max-width:520px){.steps{grid-template-columns:1fr}}
-    .step{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);padding:24px 22px}
-    .step .n{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;margin-bottom:14px}
-    .step h3{font:600 16px 'Inter',sans-serif;letter-spacing:0;margin-bottom:6px}
-    .step p{font-size:14px;color:var(--ink2)}
-    .step .t{display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--teal2);background:var(--teal-soft);padding:3px 10px;border-radius:999px}
-
-    /* pricing */
-    .pricing{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:880px;margin:0 auto;align-items:stretch}
-    @media(max-width:760px){.pricing{grid-template-columns:1fr}}
-    .pcard{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px;display:flex;flex-direction:column}
-    .pcard.hl{border:2px solid var(--teal);box-shadow:0 30px 60px -30px rgba(42,125,118,.45);position:relative}
-    .pcard .badge{position:absolute;top:-13px;left:32px;background:var(--teal);color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px}
-    .pcard .pt{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
-    .pcard .price{font:700 48px 'Fraunces',serif;margin:10px 0 2px;letter-spacing:-.02em}
-    .pcard .price small{font:500 16px 'Inter',sans-serif;color:var(--dim)}
-    .pcard .pd{font-size:14.5px;color:var(--ink2)}
-    .pcard ul{list-style:none;margin:20px 0 24px;flex:1}
-    .pcard li{padding:9px 0;font-size:14.5px;color:var(--ink2);display:flex;gap:10px}
-    .pcard li::before{content:"\2713";color:var(--teal);font-weight:700}
-    .pcard .btn{width:100%}
-    .btn-outline{background:#fff;color:var(--ink);border:1.5px solid var(--line2)}
-    .btn-outline:hover{border-color:var(--ink)}
-
-    /* final cta */
-    .final{padding:0 0 88px}
-    .final .box{background:linear-gradient(135deg,#14213a,#1d3b4f 55%,#22524f);color:#fff;border-radius:28px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
-    .final .box::after{content:"";position:absolute;width:420px;height:420px;right:-120px;top:-160px;border-radius:50%;background:radial-gradient(rgba(208,116,63,.35),transparent 65%)}
-    .final h2{font-size:clamp(28px,3.6vw,40px);margin-bottom:12px;position:relative}
-    .final p{color:rgba(255,255,255,.75);max-width:540px;margin:0 auto 26px;position:relative}
-    .final .btn{position:relative}
-
-    /* faq */
-    .faq{max-width:780px;margin:0 auto}
-    details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:10px}
-    summary{cursor:pointer;font-weight:600;font-size:15.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
-    summary::-webkit-details-marker{display:none}
-    summary::after{content:"+";font-size:22px;color:var(--teal);font-weight:400;transition:transform .2s}
-    details[open] summary::after{transform:rotate(45deg)}
-    details p{font-size:14.5px;color:var(--ink2);margin-top:10px}
-
-    footer{border-top:1px solid var(--line);padding:32px 0 96px}
-    footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:13.5px;color:var(--dim)}
-    footer .fl{display:flex;flex-wrap:wrap;gap:10px 22px}
-    footer a:hover{color:var(--ink)}
-    @media(min-width:681px){footer{padding-bottom:32px}}
-
-    .sticky-cta{display:none;position:fixed;left:12px;right:12px;bottom:12px;z-index:80;transition:transform .25s,opacity .25s}
-    .sticky-cta .btn{width:100%;box-shadow:0 16px 30px -10px rgba(20,33,58,.45)}
-    .sticky-cta.away{transform:translateY(120%);opacity:0;pointer-events:none}
-    @media(max-width:680px){.sticky-cta{display:block}}
-
-    /* reveal */
-    .js .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-    .js .rv.in{opacity:1;transform:none}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.js .rv{opacity:1;transform:none;transition:none}}
+    html{scroll-behavior:smooth}
+    body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;line-height:1.5;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;font-size:17px}
+    a{color:var(--teal2)}
+    .wrap{max-width:560px;margin:0 auto;padding:0 18px}
+    .hd{height:48px;display:flex;align-items:center;gap:9px;font-weight:700;font-size:16px}
+    .mk{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-size:13px}
+    h1{font-size:27px;line-height:1.18;letter-spacing:-.01em;margin:6px 0 6px}
+    .sub{color:var(--ink2);font-size:17px;margin-bottom:14px}
+    h2{font-size:21px;line-height:1.25;margin-bottom:10px}
+    section{padding:26px 0 6px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:0 8px 26px -14px rgba(20,33,58,.25)}
+    label{display:block;font-weight:600;font-size:15px;margin-bottom:6px}
+    input[type=text],input[type=email]{width:100%;font:inherit;font-size:17px;padding:13px 14px;border:1.5px solid rgba(20,33,58,.22);border-radius:12px;background:#fff;color:var(--ink)}
+    input:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+    .btn{display:block;width:100%;margin-top:12px;font:inherit;font-weight:700;font-size:17px;padding:15px;border:0;border-radius:12px;background:var(--teal);color:#fff;cursor:pointer;text-align:center;text-decoration:none}
+    .btn:hover{background:var(--teal2)}
+    .btn[disabled]{opacity:.6}
+    .lnk{background:none;border:0;color:var(--teal2);font:inherit;font-size:14px;text-decoration:underline;margin-top:10px;cursor:pointer;padding:0}
+    .tr{margin-top:12px;font-size:13.5px;color:var(--dim);text-align:center}
+    .step2-note{font-size:14px;color:var(--ink2);margin-bottom:10px}
+    .ferr{display:none;margin-top:10px;color:var(--bad);font-size:14px}
+    .fok{display:none;text-align:center;padding:6px 0}
+    .fok .ck{width:44px;height:44px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;margin:0 auto 10px;font-size:22px}
+    .fok h3{font-size:19px;margin-bottom:6px}
+    .fok p{color:var(--ink2);font-size:15px}
+    .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.06em;background:var(--amber-soft);color:var(--amber);border-radius:6px;padding:3px 7px;margin-bottom:8px}
+    .rp-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+    .rp-h b{font-size:16px}
+    .score{font-size:24px;font-weight:800;color:var(--amber)}
+    .it{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-top:1px solid var(--line);font-size:15px}
+    .dot{flex:none;width:10px;height:10px;border-radius:50%;margin-top:6px}
+    .r{background:var(--bad)}.a{background:var(--amber)}.g{background:var(--teal)}
+    .vs{display:flex;gap:6px;margin-top:10px;font-size:13px;text-align:center}
+    .vs div{flex:1;background:var(--bg);border-radius:10px;padding:7px 2px}
+    .vs b{display:block;font-size:17px}
+    .vs .you{background:var(--bad-soft)}
+    .cap{font-size:13px;color:var(--dim);margin-top:10px}
+    .q{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:15.5px}
+    .q:first-of-type{border-top:0}
+    .yn{display:flex;gap:6px;flex:none}
+    .yn button{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:10px;border:1.5px solid rgba(20,33,58,.2);background:#fff;color:var(--ink);cursor:pointer}
+    .yn button.on{background:var(--teal);border-color:var(--teal);color:#fff}
+    .yn button.on.no{background:var(--bad);border-color:var(--bad)}
+    #qc-out{display:none;margin-top:12px;background:var(--bg);border-radius:12px;padding:14px}
+    #qc-out .s{font-size:20px;font-weight:800}
+    #qc-out ul{margin:8px 0 0 18px;font-size:14.5px;color:var(--ink2)}
+    .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .chips div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 10px;font-size:14.5px}
+    ol.steps{list-style:none;counter-reset:s}
+    ol.steps li{counter-increment:s;position:relative;padding:4px 0 12px 40px;font-size:16px}
+    ol.steps li:before{content:counter(s);position:absolute;left:0;top:2px;width:28px;height:28px;border-radius:50%;background:var(--teal-soft);color:var(--teal2);font-weight:800;display:grid;place-items:center;font-size:14px}
+    .price{background:var(--teal-soft);border-radius:12px;padding:12px 14px;font-size:15.5px}
+    p.body{font-size:16px;color:var(--ink2)}
+    details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px}
+    summary{font-weight:600;cursor:pointer;font-size:16px}
+    details p{margin-top:8px;font-size:15px;color:var(--ink2)}
+    footer{padding:28px 0 36px;font-size:13px;color:var(--dim);text-align:center}
+    footer a{color:var(--dim)}
   </style>
-  <script>document.documentElement.classList.add('js');</script>
 <script src="/js/lead-submit.js?v=2"></script>
 <script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "Do you need my Google password?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "No. You add our email as a Manager on your Google Business Profile. That lets us post and reply to reviews, but we never see your password and can't delete your listing. You can remove us anytime with two clicks."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Do I have to give you access for the free audit?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "No. We check your profile the way any customer sees it on Google Search and Maps, so you don't add us as a user or share a login. That also means we can't see your private numbers, like calls or profile views. If you want those looked at, reply to the report with a screenshot. You only add us as a Manager if you later ask us to manage the profile."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Is the audit really free?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Yes. No card, no sales call. You get a written report by email. If you want us to manage your profile afterward, reply to the email. If not, the report is yours to keep and use."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Can I get a score right now instead of waiting a day?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Yes. Our free 2-minute checklist gives you an instant score out of 10 and a list of what to fix, with no email needed. The free audit takes up to one business day because it looks at your actual public profile and compares it with your top 3 local competitors, which a quick quiz can't do. You can do both: the checklist now, the audit after."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Do you write fake reviews?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Never. We help you ask real customers for honest reviews and make it easy for them to leave one. Fake reviews break Google's rules, can get your listing suspended, and customers can tell."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Can't I just do this myself?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "You can, and the audit will show you how. Most owners don't keep it up because they're busy running the business. We do it every week so you don't have to remember."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Who's behind Occelatus Local?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Occelatus Local is a new service from Occelatus Labs. We're taking on our first 10 clients at the founding price, so each one gets close attention. Questions go straight to local@occelatus.io."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Are you Google? I keep getting calls about my listing.",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "No. Occelatus Local is an independent service from Occelatus Labs. We are not Google and not endorsed by Google. Your Google Business Profile itself is free. Google's help page on fraudulent calls says its callers won't ask you to pay, sign up for a service or give personal info, and won't guarantee you a special spot. We don't cold-call or robocall businesses: we contact you by email, from an @occelatus.io address, after you ask us to. We never ask for your password or a verification code. If a caller says your listing will be suspended unless you pay or press a key, hang up; it isn't Google."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "I already have an SEO agency. Do I need this?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "We focus only on your Google Business Profile: posts, review replies and new reviews. If your agency already does that, you probably don't need us. If not, we fit alongside them."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "What does the $149 cover, and what doesn't it?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "It covers four things: weekly posts, a reply to every review within 24 hours (for 1- to 3-star reviews, a draft sent to you to OK), a steady flow of real review requests, and a one-page monthly report. It does not include website work, paid ads, citation building or rank tracking. Other providers often bundle those in at similar prices, so compare the list, not just the number. Not sure what you need? The free audit will say."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Who writes the review replies, and do I see them first?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "We do. Each reply is drafted with AI tools from what the reviewer actually said, then a person checks it before it goes up, so it doesn't read like a template. Replies to 1- to 3-star reviews come to you first: you know what really happened, so we send you the draft within 24 hours and post it once you say OK. Replies to 4- and 5-star reviews go up directly, unless you'd rather approve every one. Google also checks every owner reply before it shows publicly. That usually takes up to 10 minutes but can take longer, and if Google asks for an edit, we make it."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "My listing is suspended or broken. Can you help?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Yes. Our one-time Profile Fix ($149, credited to your first month if you stay) finds the cause and fixes what can be fixed. Google makes the final call on suspensions, so we'll always tell you honestly what we can and can't do."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "If I hire you, who owns my Google profile?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "You do, always. You stay the owner and add us as a manager, so we never need your password and you can remove us at any time. Google's own rules for agencies say the business must keep ownership. If an old agency or ex-employee still controls your profile, see our guide to getting it back."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Is there a contract?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "No. It's month to month and you can cancel anytime. You keep every review, post and photo, because they live on your own profile."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "What kinds of businesses is this for?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Local businesses that win customers through Google Maps: plumbers, HVAC, roofers, electricians, auto shops, dentists, med spas, landscapers, restaurants and similar. If people search for you by location, it's for you. Locksmiths, garage door, HVAC and plumbing businesses face extra checks from Google; our trades guide explains what to expect."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "How long until I see results?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Profile fixes — hours, categories, photos, unanswered reviews — are visible within the first few days. Ranking movement on Google Maps typically takes 30 to 90 days, depending on how competitive your area is and how much your profile was neglected. We don't guarantee a ranking position; Google decides that, and anyone who promises a specific result is overpromising. What we can promise is that the work gets done every week, and the monthly report shows what changed."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "Will this help my business show up in ChatGPT or Google's AI answers?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "It can help, but nobody can promise it, and we won't. More customers now ask AI tools for local recommendations (45% in BrightLocal's 2026 survey, up from 6%). Google says its AI answers need no special tricks beyond normal Search, and it points owners to an up-to-date Business Profile. Accurate details, fresh posts and recent reviews with replies are exactly what we keep current every week. We don't manage your listings on other sites or your ChatGPT listing; our AI answers guide shows how to do those yourself for free."
-   }
-  }
- ]
-}
-</script>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "Service",
- "name": "Occelatus Local: managed Google Business Profile",
- "serviceType": "Google Business Profile management",
- "url": "https://occelatus.io/local/",
- "provider": {
-  "@type": "Organization",
-  "name": "Occelatus",
-  "url": "https://occelatus.io/"
- },
- "offers": [
-  {
-   "@type": "Offer",
-   "name": "Free 10-point Google Business Profile audit",
-   "price": "0",
-   "priceCurrency": "USD"
-  },
-  {
-   "@type": "Offer",
-   "name": "Managed Google Business Profile",
-   "price": "149",
-   "priceCurrency": "USD",
-   "priceSpecification": {
-    "@type": "UnitPriceSpecification",
-    "price": "149",
-    "priceCurrency": "USD",
-    "unitText": "MONTH"
-   }
-  }
- ]
-}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is the audit really free?","acceptedAnswer":{"@type":"Answer","text":"Yes. The 10-point audit is free whether or not you ever hire us. No card and no sales call."}},
+{"@type":"Question","name":"Do you need my password?","acceptedAnswer":{"@type":"Answer","text":"No. We check your public listing, so the audit needs only your business name and city. If you hire us later, you add us as a manager in Google, so we still never need your password."}},
+{"@type":"Question","name":"Are you Google?","acceptedAnswer":{"@type":"Answer","text":"No. Occelatus Local is an independent service from Occelatus Labs. We are not affiliated with or endorsed by Google. Your Google Business Profile itself is free."}},
+{"@type":"Question","name":"What happens after the audit?","acceptedAnswer":{"@type":"Answer","text":"Nothing, unless you reply. You get your report by email. If you want us to handle the fixes, reply to that email. We don't call you."}}
+]}
 </script>
 </head>
 <body>
-  <header id="hdr">
-    <div class="wrap nav">
-      <a class="brand" href="/local/"><span class="mk">&#9679;</span>Occelatus <small>Local</small></a>
-      <nav class="links">
-        <a class="hide-m" href="#inside">The audit</a>
-        <a class="hide-m" href="#how">How it works</a>
-        <a class="hide-m" href="#pricing">Pricing</a>
-        <a href="#audit" class="btn btn-dark">Free audit</a>
-      </nav>
-    </div>
-  </header>
+  <div class="wrap">
+    <div class="hd"><span class="mk">&#9733;</span>Occelatus Local</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="wrap grid">
-      <div>
-        <span class="pill"><b>FREE</b> 10-point Google Business Profile audit</span>
-        <h1>Is your Google listing losing you calls? <em>Get a free 10-point audit.</em></h1>
-        <p class="sub">For local business owners. We look at your Google Business Profile the way a customer does, compare it with your top 3 nearby competitors, and email you a plain-English list of what to fix. It&rsquo;s free whether or not you ever hire us.</p>
-        <ul class="checks">
-          <li>Category, hours, photos and details checked against Google&rsquo;s own guidelines</li>
-          <li>Your reviews and replies side by side with your top 3 local competitors</li>
-          <li>A short fix list you can do yourself, or have us do for $149/mo</li>
-        </ul>
-        <div class="mini-trust"><span>No password needed</span><span>No card, no sales call</span><span>Takes 30 seconds</span></div>
-      </div>
+    <h1>Free 10-point audit of your Google Business Profile</h1>
+    <p class="sub">Emailed in 1 business day. No card, no sales call.</p>
 
-      <div class="fcard" id="audit">
-        <form id="audit-form" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST">
-          <input type="hidden" name="_subject" value="New automation inquiry [local] — occelatus.io/local">
-          <input type="hidden" name="service" value="local">
-          <input type="hidden" name="message" id="f-msg">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="source" value="local-landing-page">
-          <div class="ft">Get your free audit</div>
-          <p class="fs">We check your Google profile on 10 points and email you a plain-English report within one business day.</p>
-          <div class="row2">
-            <div class="fld"><label for="f-biz">Business name</label><input type="text" id="f-biz" name="company" placeholder="Sunrise Plumbing" autocomplete="organization" required></div>
-            <div class="fld"><label for="f-city">City</label><input type="text" id="f-city" name="city" placeholder="Austin, TX" autocomplete="address-level2" required></div>
+    <div class="card" id="audit">
+      <form id="audit-form" action="https://formsubmit.co/ajax/research@occelatus.io" method="POST" novalidate>
+        <input type="hidden" name="_subject" value="New automation inquiry [local] — occelatus.io/local">
+        <input type="hidden" name="service" value="local">
+        <input type="hidden" name="message" id="f-msg">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="source" value="local-landing-page">
+        <input type="hidden" name="city" id="f-city">
+        <div id="step1">
+          <label for="f-biz">Your business name and city</label>
+          <input type="text" id="f-biz" name="company" placeholder="Sunrise Plumbing, Austin TX" autocomplete="organization" required>
+          <button type="button" class="btn" id="s1-btn">Get my free audit &#8594;</button>
+        </div>
+        <div id="step2" hidden>
+          <p class="step2-note">Got it: <b id="s1-echo"></b>. <button type="button" class="lnk" id="s1-edit" style="margin:0">Change</button></p>
+          <label for="f-email">Where should we email it?</label>
+          <input type="email" id="f-email" name="email" placeholder="you@yourbusiness.com" autocomplete="email" inputmode="email" required>
+          <button type="button" class="lnk" id="more-btn">+ Add your Google Maps link (optional)</button>
+          <div id="more-fld" hidden style="margin-top:10px">
+            <label for="f-url">Google Maps link (optional)</label>
+            <input type="text" id="f-url" name="maps_link" placeholder="Paste the link to your listing">
           </div>
-          <div class="fld"><label for="f-email">Email for your report</label><input type="email" id="f-email" name="email" placeholder="jane@business.com" autocomplete="email" inputmode="email" required></div>
-          <button type="button" class="more" id="more-btn">+ Add your name or Google Maps link (optional)</button>
-          <div id="more-fld" hidden>
-            <div class="fld"><label for="f-name">Your name <i>(optional)</i></label><input type="text" id="f-name" name="name" placeholder="Jane Smith" autocomplete="name"></div>
-            <div class="fld"><label for="f-url">Google Maps link <i>(optional)</i></label><input type="text" id="f-url" name="maps_link" placeholder="Paste the link to your listing"></div>
-          </div>
-          <button type="submit" class="btn btn-primary" id="audit-btn">Send me my free audit &#8594;</button>
-          <div class="fnote"><span>&#128274; No card</span><span>No sales call</span><span>Report in 1 business day</span></div>
-          <p class="falt">Want a score right now? <a href="/local/checklist/" onclick="window.gtag&&gtag('event','hero_checklist_click')">Check your listing yourself in 2 minutes</a> (no signup).</p>
-          <div class="ferr" id="audit-err"></div>
-        </form>
-        <div class="fok" id="audit-ok">
-          <div class="ck">&#10003;</div>
-          <h3>Got it. Your audit is on the way.</h3>
-          <p>We'll email your 10-point report within one business day. If you don't see it, check spam or write to local@occelatus.io.</p>
+          <button type="submit" class="btn" id="audit-btn">Send my free audit</button>
         </div>
+        <p class="tr">Checked by a person &middot; We never ask for your password &middot; We&rsquo;re not Google</p>
+        <div class="ferr" id="audit-err"></div>
+      </form>
+      <div class="fok" id="audit-ok">
+        <div class="ck">&#10003;</div>
+        <h3>Got it. Your audit is on the way.</h3>
+        <p>We&rsquo;ll email your 10-point report within 1 business day. If you don&rsquo;t see it, check spam or write to local@occelatus.io.</p>
       </div>
     </div>
-  </section>
 
-  <!-- FACTS -->
-  <section class="facts">
-    <div class="wrap">
-      <div><span class="ic">&#128269;</span>10-point audit, free</div>
-      <div><span class="ic">&#9201;</span>Report in 1 business day</div>
-      <div><span class="ic">&#128273;</span>No password, ever</div>
-      <div><span class="ic">&#128197;</span>Month to month</div>
-      <div><span class="ic">&#128176;</span>$149/mo flat</div>
-    </div>
-  </section>
-
-
-
-  <!-- PROBLEM STRIP -->
-  <section class="probs">
-    <div class="wrap row">
-      <div class="lbl"><b>Something broken?</b><span>Free guides, or we fix it.</span></div>
-      <a class="p" href="/local/guides/suspended/">Profile suspended<span>What to do &rarr;</span></a>
-      <a class="p" href="/local/guides/not-showing-on-maps/">Not showing on Maps<span>Common causes &rarr;</span></a>
-      <a class="p" href="/local/guides/negative-reviews/">Bad review<span>How to reply &rarr;</span></a>
-      <a class="p" href="/local/checklist/">Score your listing<span>Free 2-min checklist &rarr;</span></a>
-    </div>
-  </section>
-
-  <!-- NAV HELP: owners looking for their own profile (ovn 2026-11-14) -->
-  <section class="navhelp">
-    <div class="wrap">
-      <p><b>Just trying to open your own profile?</b> Sign in free at Google&rsquo;s own site, <a href="https://business.google.com/" rel="noopener" target="_blank" onclick="window.gtag&&gtag('event','navhelp_click',{dest:'google'})">business.google.com</a>. Then check whether it&rsquo;s set up right with our <a href="/local/checklist/" onclick="window.gtag&&gtag('event','navhelp_click',{dest:'checklist'})">free 2-minute checklist</a> (no signup).</p>
-    </div>
-  </section>
-
-  <!-- PHOTO BAND -->
-  <section class="band">
-    <div class="wrap">
-      <div class="holder">
-      <div class="frame">
-        <picture>
-          <source type="image/webp" srcset="/local/img/hero-a-800.webp 800w, /local/img/hero-a-1264.webp 1264w" sizes="(max-width:1200px) 100vw, 1112px">
-          <img src="/local/img/hero-a-1264.jpg" width="1264" height="848" loading="lazy" decoding="async" alt="A smiling local tradesperson leaning on his work van, reading a new five-star review on his phone">
-        </picture>
+    <section>
+      <h2>Here&rsquo;s what you get</h2>
+      <div class="card">
+        <span class="tag">EXAMPLE</span>
+        <div class="rp-h"><b>Example report: Sunrise Plumbing<br><span style="font-weight:400;font-size:13px;color:var(--dim)">(example business)</span></b><span class="score">6/10</span></div>
+        <div class="it"><span class="dot r"></span><span>No reply on 4 of the last 10 reviews</span></div>
+        <div class="it"><span class="dot a"></span><span>Last post 5 months ago</span></div>
+        <div class="it"><span class="dot g"></span><span>Hours set, incl. holidays</span></div>
+        <div class="vs"><div class="you"><b>38</b>reviews (you)</div><div><b>112</b>#1 nearby</div><div><b>87</b>#2 nearby</div><div><b>64</b>#3 nearby</div></div>
+        <p class="cap">Made-up example. Your report covers all 10 points and your top 3 nearby competitors.</p>
       </div>
-        <div class="rcard" aria-label="Example review and reply">
-          <span class="ex">Example</span>
-          <div class="who"><div class="av">M</div><div><div class="nm">Maria G.</div><div class="sm">Local Guide &middot; 2 days ago</div></div></div>
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <div class="txt">Called in the morning and the water heater was replaced by 3pm. Clear price up front, and he left the garage cleaner than he found it. Our new go-to plumber.</div>
-          <div class="own"><b>Response from the owner &middot; 1 hour later</b>Thank you, Maria! Glad we could get you hot water the same day. We're here whenever you need us.</div>
+    </section>
+
+    <section>
+      <h2>Want a rough score right now?</h2>
+      <div class="card" id="qc">
+        <div class="q"><span>Do you reply to your reviews?</span><span class="yn" data-i="0"><button type="button">Yes</button><button type="button">No</button></span></div>
+        <div class="q"><span>Have you posted in the last 30 days?</span><span class="yn" data-i="1"><button type="button">Yes</button><button type="button">No</button></span></div>
+        <div class="q"><span>Do you have 10+ photos?</span><span class="yn" data-i="2"><button type="button">Yes</button><button type="button">No</button></span></div>
+        <div class="q"><span>Are your hours right, incl. holidays?</span><span class="yn" data-i="3"><button type="button">Yes</button><button type="button">No</button></span></div>
+        <div class="q"><span>Is your main category the right one?</span><span class="yn" data-i="4"><button type="button">Yes</button><button type="button">No</button></span></div>
+        <div id="qc-out">
+          <div class="s">Your self-check: <span id="qc-n"></span>/5</div>
+          <ul id="qc-gaps"></ul>
+          <a href="#audit" class="btn" id="qc-cta">Get the full 10-point audit</a>
         </div>
+        <p class="cap">This is a quick self-check from your answers, not a scan of your listing.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- WHAT'S IN THE AUDIT -->
-  <section class="sec" id="inside" style="padding-top:72px">
-    <div class="wrap audit-grid">
-      <div>
-        <div class="kick rv">What's in the free audit</div>
-        <h2 class="h2 rv">10 things that decide who gets the call.</h2>
-        <p class="lead rv" style="margin-bottom:28px">We look at your listing the way a customer and Google's ranking both do, compare you with the top three businesses near you, and tell you exactly what to fix.</p>
-        <ol class="points">
-          <li class="rv"><b>Categories</b>Your main and extra categories match what people search for.</li>
-          <li class="rv"><b>Name, address, phone</b>Correct, and the same everywhere online.</li>
-          <li class="rv"><b>Hours</b>Regular and holiday hours, so nobody finds you closed.</li>
-          <li class="rv"><b>Description &amp; services</b>Clear, complete and written for customers.</li>
-          <li class="rv"><b>Photos</b>How many, how recent, and what's missing.</li>
-          <li class="rv"><b>Reviews vs. competitors</b>Your count and rating against the local top 3.</li>
-          <li class="rv"><b>Review replies</b>How many reviews are still waiting for an answer.</li>
-          <li class="rv"><b>Posts</b>When you last posted, and how often competitors do.</li>
-          <li class="rv"><b>Questions &amp; answers</b>Unanswered customer questions on your listing.</li>
-          <li class="rv"><b>Links &amp; attributes</b>Website, booking link and features filled in.</li>
-        </ol>
+    <section>
+      <h2>What we check</h2>
+      <div class="chips">
+        <div>Verified, not suspended</div><div>Main category</div>
+        <div>Name, address, phone match</div><div>Hours</div>
+        <div>Recent photos</div><div>Review replies</div>
+        <div>New reviews</div><div>Recent posts</div>
+        <div>Services and description</div><div>Duplicate listings</div>
       </div>
-      <div class="report rv" aria-label="Sample audit report">
-        <div class="rh">
-          <div class="ring" style="--v:60"><span>6/10</span></div>
-          <div>
-            <div class="rt">Sample Plumbing Co.</div>
-            <div class="rm">Audit summary &middot; compared with 3 nearby competitors</div>
-          </div>
-        </div>
-        <ul>
-          <li>Categories <span class="st ok">Good</span></li>
-          <li>Name, address, phone <span class="st ok">Good</span></li>
-          <li>Holiday hours <span class="st fix">Missing</span></li>
-          <li>Photos <span class="st fix">Last added 14 months ago</span></li>
-          <li>Reviews vs. competitors <span class="st fix">38 vs. avg 112</span></li>
-          <li>Review replies <span class="st fix">17 unanswered</span></li>
-          <li>Posts <span class="st ok">Recent</span></li>
-        </ul>
-        <div class="rf"><b>3 fixes you can do today:</b> add holiday hours, reply to your 5 newest reviews, upload 5 recent job photos.</div>
-        <div class="tagline">Illustration of the report format. Your audit uses your real listing.</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- BEFORE / AFTER -->
-  <section class="sec alt">
-    <div class="wrap">
-      <div class="head center">
-        <div class="kick rv">Why it matters</div>
-        <h2 class="h2 rv">Customers pick the listing that looks alive.</h2>
-        <p class="lead rv">Doing the best work doesn't help if your listing looks forgotten. Here's the difference a customer sees in five seconds.</p>
-      </div>
-      <div class="ba">
-        <div class="lst bad rv">
-          <span class="lbl">Left alone</span>
-          <div class="nm">A neglected listing</div>
-          <div class="meta">Plumber &middot; hours not updated</div>
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;<small>4.1 &middot; 23 reviews</small></div>
-          <ul class="items">
-            <li>Last post: 11 months ago</li>
-            <li>A 1-star review from March with no reply</li>
-            <li>Three blurry photos from 2019</li>
-            <li>No new reviews this year</li>
-          </ul>
-        </div>
-        <div class="lst good rv">
-          <span class="lbl">Managed</span>
-          <div class="nm">A managed listing</div>
-          <div class="meta">Plumber &middot; open now &middot; holiday hours set</div>
-          <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;<small>4.8 &middot; growing every month</small></div>
-          <ul class="items">
-            <li>New post and photos this week</li>
-            <li>Every review has a thoughtful reply</li>
-            <li>Recent photos of real jobs</li>
-            <li>Happy customers asked for reviews after each job</li>
-          </ul>
-          <div class="bubble"><b>Reply to a review</b>Thanks, Maria! Glad the water heater swap went smoothly and that Dan left the garage spotless. We're here if you need anything.</div>
-        </div>
-      </div>
-      <p class="illus">Illustrations, not real businesses.</p>
-    </div>
-  </section>
+    <section>
+      <h2>What happens next</h2>
+      <ol class="steps">
+        <li>You send your business name and city.</li>
+        <li>A person checks your listing and 3 nearby competitors.</li>
+        <li>Within 1 business day, you get a plain-English list of what to fix.</li>
+      </ol>
+      <p class="price">Free either way. If you want us to handle it, it&rsquo;s $149/mo, no contract.</p>
+    </section>
 
-  <!-- WHAT YOU GET -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="head center">
-        <div class="kick rv">What you get for $149/mo</div>
-        <h2 class="h2 rv">Your Google profile, handled.</h2>
-        <p class="lead rv">One flat fee. No setup charge, no per-post pricing. We do the work. You get on with yours.</p>
-      </div>
-      <div class="features">
-        <div class="feat rv"><div class="ic">&#128221;</div><h3>Weekly posts</h3><p>One to two posts a week: offers, seasonal tips, recent jobs. Written in your voice and posted for you.</p></div>
-        <div class="feat rv"><div class="ic">&#128172;</div><h3>Every review answered</h3><p>A prompt, professional reply to every review within 24 hours. Calm and helpful on the tough ones.</p></div>
-        <div class="feat rv"><div class="ic">&#11088;</div><h3>More real reviews</h3><p>QR codes and ready-to-send text messages with your direct review link. Only real customers, never fake reviews.</p></div>
-        <div class="feat rv"><div class="ic">&#128200;</div><h3>Monthly report</h3><p>One page each month: profile views, calls, direction requests and reviews, with the change from last month.</p></div>
-      </div>
-    </div>
-  </section>
+    <section>
+      <h2>Who&rsquo;s behind it</h2>
+      <p class="body">Occelatus Local is a new service from Occelatus Labs. We&rsquo;re an independent team, not Google. We&rsquo;re taking our first 10 clients, so every report gets real attention. Questions: <a href="mailto:local@occelatus.io">local@occelatus.io</a></p>
+    </section>
 
-  <!-- HOW IT WORKS -->
-  <section class="sec alt" id="how">
-    <div class="wrap">
-      <div class="head center">
-        <div class="kick rv">How it works</div>
-        <h2 class="h2 rv">Start free. Decide after you see the audit.</h2>
-        <p class="lead rv">You add us as a Manager on your profile. We never ask for your password, and you can remove us with two clicks.</p>
-      </div>
-      <div class="steps">
-        <div class="step rv"><div class="n">1</div><h3>Request your audit</h3><p>Fill in the short form. We send your 10-point report within one business day.</p><span class="t">1 minute</span></div>
-        <div class="step rv"><div class="n">2</div><h3>Add us as Manager</h3><p>If you like what you see, invite our email as a Manager on your Google Business Profile.</p><span class="t">2 minutes</span></div>
-        <div class="step rv"><div class="n">3</div><h3>We get to work</h3><p>Within one business day we fix the basics, reply to waiting reviews and post your first update.</p><span class="t">1 business day</span></div>
-        <div class="step rv"><div class="n">4</div><h3>See the results</h3><p>Every month you get a short report. Stay because it's working, not because of a contract.</p><span class="t">Cancel anytime</span></div>
-      </div>
-    </div>
-  </section>
+    <section>
+      <h2>Questions</h2>
+      <details><summary>Is it really free?</summary><p>Yes. The 10-point audit is free whether or not you ever hire us. No card and no sales call.</p></details>
+      <details><summary>Do you need my password?</summary><p>No. We check your public listing, so we only need your business name and city. If you hire us later, you add us as a manager in Google, so we still never need your password.</p></details>
+      <details><summary>Are you Google?</summary><p>No. We&rsquo;re an independent service, not affiliated with or endorsed by Google. Your Google listing itself is free. <a href="https://support.google.com/business/answer/6212928" rel="noopener" target="_blank">Google&rsquo;s help page on fraudulent calls</a> explains how to spot callers who pretend to be Google.</p></details>
+      <details><summary>What happens after the audit?</summary><p>Nothing, unless you reply. You get your report by email. If you want us to handle the fixes, reply to that email. We don&rsquo;t call you.</p></details>
+      <a href="#audit" class="btn" id="end-cta" style="margin-top:16px">Get my free audit</a>
+    </section>
+  </div>
 
-  <!-- PRICING -->
-  <section class="sec" id="pricing">
-    <div class="wrap">
-      <div class="head center">
-        <div class="kick rv">Pricing</div>
-        <h2 class="h2 rv">One price. No surprises.</h2>
-        <p class="lead rv">Founding price for our first 10 clients, kept for as long as you stay with us.</p>
-      </div>
-      <div class="pricing">
-        <div class="pcard rv">
-          <div class="pt">Free audit</div>
-          <div class="price">$0</div>
-          <p class="pd">See exactly what's costing you calls.</p>
-          <ul>
-            <li>10-point profile audit</li>
-            <li>Comparison with your top 3 local competitors</li>
-            <li>3 fixes you can do yourself today</li>
-            <li>Emailed within one business day</li>
-            <li>No card, no obligation</li>
-          </ul>
-          <a href="#audit" class="btn btn-outline">Get my free audit</a>
-        </div>
-        <div class="pcard hl rv">
-          <span class="badge">Founding price</span>
-          <div class="pt">Full management</div>
-          <div class="price">$149<small>/month</small></div>
-          <p class="pd">Everything above, done for you every week.</p>
-          <ul>
-            <li>1&ndash;2 posts every week</li>
-            <li>Every review answered within 24 hours</li>
-            <li>Review requests with QR codes and text templates</li>
-            <li>Profile fixes and ongoing monitoring</li>
-            <li>Monthly one-page report</li>
-            <li>No contract, cancel anytime</li>
-          </ul>
-          <a href="#audit" class="btn btn-primary">Start with a free audit</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final">
-    <div class="wrap">
-      <div class="box rv">
-        <h2>Find out what your listing is missing.</h2>
-        <p>The audit is free and takes you about a minute to request. You'll know exactly what to fix, whether or not you hire us.</p>
-        <a href="#audit" class="btn btn-light">Get my free audit &#8594;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MORE GUIDES -->
-  <section class="sec" style="padding:56px 0 40px">
-    <div class="wrap">
-      <div class="head center">
-        <div class="kick">Free guides</div>
-        <h2 class="h2" style="font-size:clamp(24px,3vw,34px)">Fix it yourself, or let us help.</h2>
-      </div>
-      <div class="features" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px">
-        <a class="feat" href="/local/guides/suspended/" style="text-decoration:none"><div class="ic">&#9888;</div><h3>Profile suspended?</h3><p>Why it happens and how to request reinstatement.</p></a>
-        <a class="feat" href="/local/guides/not-showing-on-maps/" style="text-decoration:none"><div class="ic">&#128205;</div><h3>Not showing on Maps</h3><p>The common causes and what to check first.</p></a>
-        <a class="feat" href="/local/guides/negative-reviews/" style="text-decoration:none"><div class="ic">&#11088;</div><h3>Got a bad review?</h3><p>How to reply, with examples you can adapt.</p></a>
-        <a class="feat" href="/local/guides/verification-failed/" style="text-decoration:none"><div class="ic">&#9989;</div><h3>Verification failed</h3><p>What to do when Google rejects your video or documents.</p></a>
-        <a class="feat" href="/local/guides/service-area-business/" style="text-decoration:none"><div class="ic">&#128736;</div><h3>Service-area business</h3><p>Set up without showing your home address.</p></a>
-        <a class="feat" href="/local/guides/duplicate-listing/" style="text-decoration:none"><div class="ic">&#128451;</div><h3>Duplicate listing</h3><p>How to find and merge or remove a copy of your profile.</p></a>
-        <a class="feat" href="/local/guides/marked-closed/" style="text-decoration:none"><div class="ic">&#128686;</div><h3>Marked closed by mistake</h3><p>Reopen a listing Google wrongly marked as closed.</p></a>
-        <a class="feat" href="/local/guides/moved-address/" style="text-decoration:none"><div class="ic">&#128205;</div><h3>Moved to a new address</h3><p>Update your address without triggering a suspension.</p></a>
-        <a class="feat" href="/local/guides/home-services/" style="text-decoration:none"><div class="ic">&#128737;</div><h3>Home services trades</h3><p>Extra Google checks for locksmiths, HVAC, plumbing and more.</p></a>
-        <a class="feat" href="/local/guides/posts-rejected/" style="text-decoration:none"><div class="ic">&#128221;</div><h3>Posts rejected or not showing</h3><p>Why Google rejects posts and how to fix each cause.</p></a>
-        <a class="feat" href="/local/guides/competitor-spam/" style="text-decoration:none"><div class="ic">&#128681;</div><h3>Spam competitor listings</h3><p>Report fake or keyword-stuffed listings the way Google asks.</p></a>
-        <a class="feat" href="/local/guides/lost-access/" style="text-decoration:none"><div class="ic">&#128273;</div><h3>Locked out of your profile</h3><p>Get it back from an old agency, ex-employee or previous owner.</p></a>
-        <a class="feat" href="/local/guides/info-changed/" style="text-decoration:none"><div class="ic">&#9997;</div><h3>Google changed your info</h3><p>Reject wrong edits in the 4-day window and make the right hours stick.</p></a>
-        <a class="feat" href="/local/guides/holiday-hours/" style="text-decoration:none"><div class="ic">&#128197;</div><h3>Holiday hours</h3><p>Set special hours before Thanksgiving and Christmas so nobody finds you closed.</p></a>
-        <a class="feat" href="/local/guides/ai-answers/" style="text-decoration:none"><div class="ic">&#129302;</div><h3>Missing from AI answers</h3><p>What ChatGPT and Google's AI read about you, and what you can fix.</p></a>
-      </div>
-      <p style="margin-top:14px;font-size:15px"><a href="/local/guides/">See all guides, grouped by problem &rarr;</a></p>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="sec alt" style="padding-top:72px">
-    <div class="wrap">
-      <div class="head center"><div class="kick">Questions</div><h2 class="h2">Straight answers</h2></div>
-      <div class="faq">
-        <details><summary>Do you need my Google password?</summary><p>No. You add our email as a Manager on your Google Business Profile. That lets us post and reply to reviews, but we never see your password and can't delete your listing. You can remove us anytime with two clicks.</p></details>
-        <details><summary>Do I have to give you access for the free audit?</summary><p>No. We check your profile the way any customer sees it on Google Search and Maps, so you don't add us as a user or share a login. That also means we can't see your private numbers, like calls or profile views. If you want those looked at, reply to the report with a screenshot. You only add us as a Manager if you later ask us to manage the profile.</p></details>
-        <details><summary>Is the audit really free?</summary><p>Yes. No card, no sales call. You get a written report by email. If you want us to manage your profile afterward, reply to the email. If not, the report is yours to keep and use.</p></details>
-        <details><summary>Can I get a score right now instead of waiting a day?</summary><p>Yes. Our <a href="/local/checklist/" onclick="window.gtag&&gtag('event','faq_checklist_click')">free 2-minute checklist</a> gives you an instant score out of 10 and a list of what to fix, with no email needed. The free audit takes up to one business day because it looks at your actual public profile and compares it with your top 3 local competitors, which a quick quiz can&rsquo;t do. You can do both: the checklist now, the audit after.</p></details>
-        <details><summary>Do you write fake reviews?</summary><p>Never. We help you ask real customers for honest reviews and make it easy for them to leave one. Fake reviews break Google's rules, can get your listing suspended, and customers can tell.</p></details>
-        <details><summary>Can't I just do this myself?</summary><p>You can, and the audit will show you how. Most owners don't keep it up because they're busy running the business. We do it every week so you don't have to remember.</p></details>
-        <details><summary>Who's behind Occelatus Local?</summary><p>Occelatus Local is a new service from Occelatus Labs. We're taking on our first 10 clients at the founding price, so each one gets close attention. Questions go straight to local@occelatus.io.</p></details>
-        <details><summary>Are you Google? I keep getting calls about my listing.</summary><p>No. Occelatus Local is an independent service from Occelatus Labs. We are not Google and not endorsed by Google. Your Google Business Profile itself is free. <a href="https://support.google.com/business/answer/6212928" rel="noopener" target="_blank">Google&rsquo;s help page on fraudulent calls</a> says its callers won&rsquo;t ask you to pay, sign up for a service or give personal info, and won&rsquo;t guarantee you a special spot. We don&rsquo;t cold-call or robocall businesses: we contact you by email, from an @occelatus.io address, after you ask us to. We never ask for your password or a verification code. If a caller says your listing will be suspended unless you pay or press a key, hang up; it isn&rsquo;t Google.</p></details>
-        <details><summary>I already have an SEO agency. Do I need this?</summary><p>We focus only on your Google Business Profile: posts, review replies and new reviews. If your agency already does that, you probably don't need us. If not, we fit alongside them.</p></details>
-        <details><summary>What does the $149 cover, and what doesn't it?</summary><p>It covers four things: weekly posts, a reply to every review within 24 hours (for 1- to 3-star reviews, a draft sent to you to OK), a steady flow of real review requests, and a one-page monthly report. It does not include website work, paid ads, citation building or rank tracking. Other providers often bundle those in at similar prices, so compare the list, not just the number. Not sure what you need? The free audit will say.</p></details>
-        <details><summary>Who writes the review replies, and do I see them first?</summary><p>We do. Each reply is drafted with AI tools from what the reviewer actually said, then a person checks it before it goes up, so it doesn&rsquo;t read like a template. Replies to 1- to 3-star reviews come to you first: you know what really happened, so we send you the draft within 24 hours and post it once you say OK. Replies to 4- and 5-star reviews go up directly, unless you&rsquo;d rather approve every one. Google also checks every owner reply before it shows publicly. That usually takes up to 10 minutes but can take longer, and if Google asks for an edit, we make it. Want to see how we handle a tough one? Read our <a href="/local/guides/negative-reviews/" onclick="if(typeof gtag!=='undefined')gtag('event','faq_guide_click',{guide:'negative-reviews'})">negative review guide</a>.</p></details>
-        <details><summary>My listing is suspended or broken. Can you help?</summary><p>Yes. Our one-time <a href="/local/fix/" style="color:var(--teal2);text-decoration:underline">Profile Fix</a> ($149, credited to your first month if you stay) finds the cause and fixes what can be fixed. Google makes the final call on suspensions, so we'll always tell you honestly what we can and can't do.</p></details>
-        <details><summary>If I hire you, who owns my Google profile?</summary><p>You do, always. You stay the owner and add us as a manager, so we never need your password and you can remove us at any time. Google's own <a href="https://support.google.com/business/answer/7353941" rel="noopener" target="_blank">rules for agencies</a> say the business must keep ownership. If an old agency or ex-employee still controls your profile, see <a href="/local/guides/lost-access/" onclick="if(typeof gtag!=='undefined')gtag('event','faq_guide_click',{guide:'lost-access'})">how to get it back</a>.</p></details>
-        <details><summary>Is there a contract?</summary><p>No. It's month to month and you can cancel anytime. You keep every review, post and photo, because they live on your own profile.</p></details>
-        <details><summary>What kinds of businesses is this for?</summary><p>Local businesses that win customers through Google Maps: plumbers, HVAC, roofers, electricians, auto shops, dentists, med spas, landscapers, restaurants and similar. If people search for you by location, it's for you. Locksmiths, garage door, HVAC and plumbing businesses face extra checks from Google; our <a href="/local/guides/home-services/">trades guide</a> explains what to expect.</p></details>
-        <details><summary>Will this help my business show up in ChatGPT or Google&#39;s AI answers?</summary><p>It can help, but nobody can promise it, and we won't. More customers now ask AI tools for local recommendations (<a href="https://www.brightlocal.com/research/local-consumer-review-survey/" rel="noopener" target="_blank">45% in BrightLocal's 2026 survey</a>, up from 6%). Google says its AI answers need no special tricks beyond normal Search, and it points owners to an up-to-date Business Profile. Accurate details, fresh posts and recent reviews with replies are exactly what we keep current every week. We don't manage your listings on other sites or your ChatGPT listing; our <a href="/local/guides/ai-answers/" onclick="if(typeof gtag!=='undefined')gtag('event','faq_guide_click',{guide:'ai-answers'})">AI answers guide</a> shows how to do those yourself for free.</p></details>
-        <details><summary>How long until I see results?</summary><p>Profile fixes &mdash; hours, categories, photos, unanswered reviews &mdash; are visible within the first few days. Ranking movement on Google Maps typically takes 30 to 90 days, depending on how competitive your area is and how much your profile was neglected. We don't guarantee a ranking position; Google decides that, and anyone who promises a specific result is overpromising. What we can promise is that the work gets done every week, and the monthly report shows what changed.</p></details>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="wrap">
-      <a class="brand" href="/local/" style="font-size:16px"><span class="mk" style="width:26px;height:26px;font-size:13px">&#9679;</span>Occelatus <small>Local</small></a>
-      <div class="fl"><a href="/local/fix/">Profile Fix</a><a href="/local/checklist/">Checklist</a><a href="/local/agencies/">For agencies</a><a href="mailto:local@occelatus.io">local@occelatus.io</a><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a></div>
-      <div>&copy; 2026 Occelatus Labs</div>
-    </div>
-  </footer>
-
-  <div class="sticky-cta" id="sticky"><a href="#audit" class="btn btn-primary">Get my free audit &#8594;</a></div>
+  <footer>&copy; 2026 Occelatus Labs &middot; <a href="/privacy.html">Privacy</a></footer>
 
   <script>
     (function(){
-      var form = document.getElementById('audit-form');
-      var btn = document.getElementById('audit-btn');
-      var ok = document.getElementById('audit-ok');
-      var err = document.getElementById('audit-err');
-      var label = btn.innerHTML;
+      var $ = function(id){ return document.getElementById(id); };
+      var form = $('audit-form'), btn = $('audit-btn'), ok = $('audit-ok'), err = $('audit-err');
+      var biz = $('f-biz'), email = $('f-email'), s1 = $('step1'), s2 = $('step2');
+      var ev = function(n, p){ if (typeof gtag !== 'undefined') gtag('event', n, p || {}); };
 
-      document.getElementById('more-btn').addEventListener('click', function(){
-        document.getElementById('more-fld').hidden = false; this.hidden = true;
-        document.getElementById('f-name').focus();
-      });
+      function goStep2(){
+        var v = biz.value.trim();
+        if (v.length < 2){ biz.focus(); biz.style.borderColor = 'var(--bad)'; return; }
+        biz.style.borderColor = '';
+        var i = v.lastIndexOf(',');
+        $('f-city').value = (i > 0 && v.slice(i + 1).trim()) ? v.slice(i + 1).trim() : 'see business field';
+        $('s1-echo').textContent = v;
+        s1.hidden = true; s2.hidden = false; email.focus();
+        ev('form_step1');
+      }
+      $('s1-btn').addEventListener('click', goStep2);
+      biz.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); goStep2(); } });
+      $('s1-edit').addEventListener('click', function(){ s2.hidden = true; s1.hidden = false; biz.focus(); });
+      $('more-btn').addEventListener('click', function(){ $('more-fld').hidden = false; this.hidden = true; $('f-url').focus(); });
 
-      // Focus the first field when a CTA jumps to the form
+      // CTAs jump to the form and focus whichever step is showing
       document.querySelectorAll('a[href="#audit"]').forEach(function(a){
-        a.addEventListener('click', function(){ setTimeout(function(){ document.getElementById('f-biz').focus({preventScroll:true}); }, 450); });
+        a.addEventListener('click', function(){ setTimeout(function(){ (s2.hidden ? biz : email).focus({preventScroll:true}); }, 450); });
       });
 
+      // Instant 5-question self-check (answers only; not a scan)
+      var QN = ['review replies','recent posts','photos','hours','main category'];
+      var QW = ['Unanswered reviews tell new customers nobody is listening.','A listing with no recent posts looks closed or inactive.','Few photos means fewer people tap through to call.','Wrong hours send customers to a locked door, and they leave bad reviews.','The wrong main category is one of the biggest reasons a listing doesn&rsquo;t show up.'];
+      var ans = [null,null,null,null,null], qc = '';
+      document.querySelectorAll('#qc .yn').forEach(function(g){
+        var bs = g.querySelectorAll('button'), i = +g.getAttribute('data-i');
+        bs.forEach(function(b, k){ b.addEventListener('click', function(){
+          bs.forEach(function(x){ x.classList.remove('on','no'); });
+          b.classList.add('on'); if (k === 1) b.classList.add('no');
+          ans[i] = (k === 0);
+          if (ans.indexOf(null) === -1){
+            var n = ans.filter(Boolean).length, gaps = [], html = '';
+            ans.forEach(function(a, j){ if (!a){ gaps.push(QN[j]); html += '<li>' + QW[j] + '</li>'; } });
+            $('qc-n').textContent = n;
+            $('qc-gaps').innerHTML = html || '<li>Good start. The full audit also checks 5 more points and compares you with 3 nearby competitors.</li>';
+            $('qc-out').style.display = 'block';
+            qc = ' || Self-check: ' + n + '/5' + (gaps.length ? ' (needs work: ' + gaps.join(', ') + ')' : '');
+            ev('quickcheck_complete', {score: n});
+          }
+        }); });
+      });
+
+      // Checklist hand-off (/local/checklist/ links here with ?cs=&miss=)
       var CK=['verified/suspension','primary category','name-address-phone match','hours','recent photos','review replies','new reviews','recent posts','services/description','duplicates'];var ck=(function(){var p=new URLSearchParams(location.search),s=parseInt(p.get('cs'),10);if(isNaN(s)||s<0||s>10)return '';var m=(p.get('miss')||'').split(',').filter(function(x){return /^[0-9]$/.test(x);}).map(function(x){return CK[+x];});return ' || Checklist: '+s+'/10'+(m.length?' (needs work: '+m.join(', ')+')':'');})();
+
       form.addEventListener('submit', async function(e){
         e.preventDefault();
+        if (s2.hidden){ goStep2(); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())){ email.focus(); email.style.borderColor = 'var(--bad)'; return; }
+        email.style.borderColor = '';
         btn.disabled = true; btn.textContent = 'Sending...'; err.style.display = 'none';
         try {
-          var v = function(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; };
-          document.getElementById('f-msg').value = '[Local audit] Business: ' + v('f-biz') + ' || Type: (not given) || City: ' + (v('f-city') || '(not given)') + ' || Maps: ' + (v('f-url') || '(none)') + ck;
+          var v = function(id){ var el = $(id); return el ? el.value.trim() : ''; };
+          $('f-msg').value = '[Local audit] Business: ' + v('f-biz') + ' || Type: (not given) || City: ' + (v('f-city') || '(not given)') + ' || Maps: ' + (v('f-url') || '(none)') + ck + qc;
           await occSubmit(form);  // Web3Forms first, FormSubmit fallback; throws if both fail
           form.style.display = 'none'; ok.style.display = 'block';
-          if (typeof gtag !== 'undefined') gtag('event', 'conversion', { 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE' });
+          ev('conversion', { 'send_to': 'AW-18399941905/EBgrCO3AhuccEJGq48VE' });
         } catch (ex) {
-          btn.disabled = false; btn.innerHTML = label;
+          btn.disabled = false; btn.textContent = 'Send my free audit';
           err.textContent = 'Something went wrong. Please email local@occelatus.io and we will send your audit.';
           err.style.display = 'block';
         }
       });
-
-      // Header border + hide sticky CTA while the form is on screen
-      var hdr = document.getElementById('hdr'), sticky = document.getElementById('sticky');
-      window.addEventListener('scroll', function(){ hdr.classList.toggle('scrolled', window.scrollY > 8); }, {passive:true});
-      if ('IntersectionObserver' in window) {
-        new IntersectionObserver(function(es){ es.forEach(function(x){ sticky.classList.toggle('away', x.isIntersecting); }); }, {threshold:.15}).observe(document.getElementById('audit'));
-        var io = new IntersectionObserver(function(es){ es.forEach(function(x){ if (x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } }); }, {rootMargin:'0px 0px -8% 0px'});
-        document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
-      } else {
-        document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
-      }
     })();
   </script>
 </body>
