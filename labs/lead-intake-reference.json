@@ -1,0 +1,498 @@
+[
+ {
+  "id": "opDemoErrHandler1",
+  "name": "op: DEMO \u2014 Error handler (catches crashes in the demo)",
+  "active": false,
+  "settings": {
+   "executionOrder": "v1"
+  },
+  "pinData": {},
+  "nodes": [
+   {
+    "id": "33c85ad0-279e-4dc1-8912-aad760cecc6a",
+    "name": "On workflow error",
+    "type": "n8n-nodes-base.errorTrigger",
+    "typeVersion": 1,
+    "position": [
+     0,
+     0
+    ],
+    "parameters": {}
+   },
+   {
+    "id": "87ef8c9c-d28b-4063-b4c0-64944677d7d1",
+    "name": "Notify on-call (mock webhook)",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     240,
+     0
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "https://httpbin.org/post",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify({ crash: $json.workflow.name, node: $json.execution.lastNodeExecuted, error: $json.execution.error.message, url: $json.execution.url }) }}",
+     "options": {}
+    }
+   }
+  ],
+  "connections": {
+   "On workflow error": {
+    "main": [
+     [
+      {
+       "node": "Notify on-call (mock webhook)",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   }
+  }
+ },
+ {
+  "id": "opDemoLeadIntake1",
+  "name": "op: DEMO \u2014 Lead intake with retries + dead-letter",
+  "nodes": [
+   {
+    "id": "5794be06-052f-4d87-a8d6-34c1cfc76240",
+    "name": "About this demo",
+    "type": "n8n-nodes-base.stickyNote",
+    "typeVersion": 1,
+    "position": [
+     -80,
+     -260
+    ],
+    "parameters": {
+     "content": "## op: DEMO \u2014 Lead intake with retries + dead-letter\nReference build by Occelatus Labs to show our error-handling pattern (not a client workflow).\n1. Validate input \u2192 400 on bad payloads\n2. Idempotency key \u2192 duplicates are a no-op\n3. CRM push retries 3\u00d7 (2s apart)\n4. Still failing \u2192 dead-letter queue + on-call alert (mock), caller gets 202\n5. Anything unexpected \u2192 workflow-level Error Workflow\nSend `simulate_failure: true` to force the failure path.",
+     "height": 300,
+     "width": 420
+    }
+   },
+   {
+    "id": "9ca20555-ae7e-4f5c-b1c0-fd1e7ff64cec",
+    "name": "Receive lead (webhook)",
+    "type": "n8n-nodes-base.webhook",
+    "typeVersion": 2,
+    "position": [
+     0,
+     100
+    ],
+    "parameters": {
+     "httpMethod": "POST",
+     "path": "op-demo-lead",
+     "responseMode": "responseNode",
+     "options": {}
+    },
+    "webhookId": "d938bb66-b13f-438a-8db2-2e03de95fdb1"
+   },
+   {
+    "id": "00f59228-eb4d-4dcf-80b4-e65b2270d817",
+    "name": "Validate + build idempotency key",
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+     220,
+     100
+    ],
+    "parameters": {
+     "jsCode": "// Validate the payload and build an idempotency key (same lead twice = same key).\nconst out = [];\nfor (const item of $input.all()) {\n  const b = item.json.body || item.json;\n  const email = String(b.email || '').trim().toLowerCase();\n  const name = String(b.name || '').trim();\n  const errors = [];\n  if (!/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/.test(email)) errors.push('email missing or invalid');\n  if (!name) errors.push('name missing');\n  out.push({ json: {\n    valid: errors.length === 0, errors,\n    lead: { name, email, message: String(b.message || '').slice(0, 2000) },\n    idempotencyKey: email + '|' + String(b.submitted_at || b.message || '').slice(0, 64),\n    simulateFailure: b.simulate_failure === true,\n  }});\n}\nreturn out;"
+    }
+   },
+   {
+    "id": "2023628c-a8bc-477d-8420-c3073a229975",
+    "name": "Payload valid?",
+    "type": "n8n-nodes-base.if",
+    "typeVersion": 2,
+    "position": [
+     440,
+     100
+    ],
+    "parameters": {
+     "conditions": {
+      "options": {
+       "caseSensitive": true,
+       "leftValue": "",
+       "typeValidation": "strict"
+      },
+      "conditions": [
+       {
+        "id": "3e340094-fe94-4552-8d1b-d36bdb98fb4e",
+        "leftValue": "={{ $json.valid }}",
+        "rightValue": true,
+        "operator": {
+         "type": "boolean",
+         "operation": "true",
+         "singleValue": true
+        }
+       }
+      ],
+      "combinator": "and"
+     },
+     "options": {}
+    }
+   },
+   {
+    "id": "c682c3be-1ae3-4fe9-836e-0b1fb3c263ca",
+    "name": "Respond 400 \u2014 invalid payload",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     660,
+     280
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ { ok: false, errors: $json.errors } }}",
+     "options": {
+      "responseCode": 400
+     }
+    }
+   },
+   {
+    "id": "45e24b33-d0cc-43e4-ae04-1c3fcd043f25",
+    "name": "Skip already-processed leads",
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+     660,
+     0
+    ],
+    "parameters": {
+     "jsCode": "// Skip leads we've already pushed (survives retries and double-submits).\nconst seen = $getWorkflowStaticData('global');\nseen.keys = seen.keys || {};\nreturn $input.all().map(i => ({ json: { ...i.json, duplicate: Boolean(seen.keys[i.json.idempotencyKey]) } }));"
+    }
+   },
+   {
+    "id": "de28364f-c399-4010-9538-dbae8f3f0269",
+    "name": "Already processed?",
+    "type": "n8n-nodes-base.if",
+    "typeVersion": 2,
+    "position": [
+     880,
+     0
+    ],
+    "parameters": {
+     "conditions": {
+      "options": {
+       "caseSensitive": true,
+       "leftValue": "",
+       "typeValidation": "strict"
+      },
+      "conditions": [
+       {
+        "id": "a8dafdb7-eb9f-4ce4-a21c-103c50708d0e",
+        "leftValue": "={{ $json.duplicate }}",
+        "rightValue": true,
+        "operator": {
+         "type": "boolean",
+         "operation": "true",
+         "singleValue": true
+        }
+       }
+      ],
+      "combinator": "and"
+     },
+     "options": {}
+    }
+   },
+   {
+    "id": "45824260-8ab8-4dbd-bc08-43d3a67893d4",
+    "name": "Respond 200 \u2014 duplicate, no-op",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     1100,
+     -160
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ { ok: true, duplicate: true } }}",
+     "options": {
+      "responseCode": 200
+     }
+    }
+   },
+   {
+    "id": "5caba195-bdb9-451c-a7db-ffa29e06878a",
+    "name": "Push lead to CRM (mock)",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     1100,
+     60
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "={{ $json.simulateFailure ? 'https://httpbin.org/status/503' : 'https://httpbin.org/post' }}",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify($json.lead) }}",
+     "options": {
+      "timeout": 10000
+     }
+    },
+    "retryOnFail": true,
+    "maxTries": 3,
+    "waitBetweenTries": 2000,
+    "onError": "continueErrorOutput"
+   },
+   {
+    "id": "5fdcae7e-3400-4001-9a7c-73d41e60e792",
+    "name": "Mark lead processed",
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+     1340,
+     -40
+    ],
+    "parameters": {
+     "jsCode": "// Record the key only AFTER the CRM accepted it, so a failed push can be retried later.\nconst seen = $getWorkflowStaticData('global');\nseen.keys = seen.keys || {};\nconst lead = $('Skip already-processed leads').first().json;\nseen.keys[lead.idempotencyKey] = new Date().toISOString();\nreturn [{ json: { status: 'accepted', key: lead.idempotencyKey } }];"
+    }
+   },
+   {
+    "id": "264613cd-8f8d-4cac-8d79-94937728bb03",
+    "name": "Respond 200 \u2014 accepted",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     1560,
+     -40
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ { ok: true, status: 'accepted' } }}",
+     "options": {
+      "responseCode": 200
+     }
+    }
+   },
+   {
+    "id": "a7e23094-408a-4c6c-bb94-e5710241bd72",
+    "name": "Build dead-letter record",
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+     1340,
+     180
+    ],
+    "parameters": {
+     "jsCode": "// Build a dead-letter record: what failed, why, and the full lead so nothing is lost.\nconst lead = $('Skip already-processed leads').first().json;\nconst err = $json.error || {};\nreturn [{ json: {\n  failed_at: new Date().toISOString(),\n  step: 'Push lead to CRM (mock)',\n  attempts: 3,\n  error: err.message || JSON.stringify(err).slice(0, 300),\n  lead: lead.lead, idempotencyKey: lead.idempotencyKey,\n}}];"
+    }
+   },
+   {
+    "id": "6bc92470-7195-4e8a-81bf-853ad47ae041",
+    "name": "Save to dead-letter queue",
+    "type": "n8n-nodes-base.code",
+    "typeVersion": 2,
+    "position": [
+     1560,
+     180
+    ],
+    "parameters": {
+     "jsCode": "// Keep the failed lead in a dead-letter queue (workflow static data) so it can be replayed by hand.\nconst store = $getWorkflowStaticData('global');\nstore.deadLetter = store.deadLetter || [];\nstore.deadLetter.push($json);\nreturn [{ json: { ...$json, queued: store.deadLetter.length } }];"
+    }
+   },
+   {
+    "id": "c80616dd-bb80-4b3d-9b01-2e9fd3431d53",
+    "name": "Notify on-call (mock webhook)",
+    "type": "n8n-nodes-base.httpRequest",
+    "typeVersion": 4.2,
+    "position": [
+     1780,
+     180
+    ],
+    "parameters": {
+     "method": "POST",
+     "url": "https://httpbin.org/post",
+     "sendBody": true,
+     "specifyBody": "json",
+     "jsonBody": "={{ JSON.stringify({ alert: 'Lead push failed after 3 tries', email: $json.lead.email, error: $json.error, queued: $json.queued }) }}",
+     "options": {
+      "timeout": 10000
+     }
+    },
+    "retryOnFail": true,
+    "maxTries": 2,
+    "waitBetweenTries": 1000
+   },
+   {
+    "id": "8b7b3df9-fcd1-4b70-823e-1e55891e35b4",
+    "name": "Respond 202 \u2014 queued for follow-up",
+    "type": "n8n-nodes-base.respondToWebhook",
+    "typeVersion": 1.1,
+    "position": [
+     2000,
+     180
+    ],
+    "parameters": {
+     "respondWith": "json",
+     "responseBody": "={{ { ok: true, status: 'queued_for_manual_follow_up' } }}",
+     "options": {
+      "responseCode": 202
+     }
+    }
+   }
+  ],
+  "connections": {
+   "Receive lead (webhook)": {
+    "main": [
+     [
+      {
+       "node": "Validate + build idempotency key",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Validate + build idempotency key": {
+    "main": [
+     [
+      {
+       "node": "Payload valid?",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Payload valid?": {
+    "main": [
+     [
+      {
+       "node": "Skip already-processed leads",
+       "type": "main",
+       "index": 0
+      }
+     ],
+     [
+      {
+       "node": "Respond 400 \u2014 invalid payload",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Skip already-processed leads": {
+    "main": [
+     [
+      {
+       "node": "Already processed?",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Already processed?": {
+    "main": [
+     [
+      {
+       "node": "Respond 200 \u2014 duplicate, no-op",
+       "type": "main",
+       "index": 0
+      }
+     ],
+     [
+      {
+       "node": "Push lead to CRM (mock)",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Push lead to CRM (mock)": {
+    "main": [
+     [
+      {
+       "node": "Mark lead processed",
+       "type": "main",
+       "index": 0
+      }
+     ],
+     [
+      {
+       "node": "Build dead-letter record",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Mark lead processed": {
+    "main": [
+     [
+      {
+       "node": "Respond 200 \u2014 accepted",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Build dead-letter record": {
+    "main": [
+     [
+      {
+       "node": "Save to dead-letter queue",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Save to dead-letter queue": {
+    "main": [
+     [
+      {
+       "node": "Notify on-call (mock webhook)",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   },
+   "Notify on-call (mock webhook)": {
+    "main": [
+     [
+      {
+       "node": "Respond 202 \u2014 queued for follow-up",
+       "type": "main",
+       "index": 0
+      }
+     ]
+    ]
+   }
+  },
+  "active": false,
+  "settings": {
+   "executionOrder": "v1",
+   "errorWorkflow": "opDemoErrHandler1",
+   "saveManualExecutions": true
+  },
+  "pinData": {
+   "Receive lead (webhook)": [
+    {
+     "json": {
+      "headers": {
+       "content-type": "application/json"
+      },
+      "params": {},
+      "query": {},
+      "body": {
+       "name": "Jordan Lee",
+       "email": "jordan@example.com",
+       "message": "Need a quote for an onboarding automation",
+       "submitted_at": "2026-11-02T10:00:00Z",
+       "simulate_failure": true
+      }
+     }
+    }
+   ]
+  }
+ }
+]
